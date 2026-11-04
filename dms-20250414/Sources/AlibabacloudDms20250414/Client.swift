@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addAgenticDataSourceWithOptions(_ request: AddAgenticDataSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddAgenticDataSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adbSparkResourceGroup)) {
+            query["AdbSparkResourceGroup"] = request.adbSparkResourceGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.alias)) {
             query["Alias"] = request.alias ?? "";
         }
@@ -937,6 +940,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDataAgentWorkspaceWithOptions(_ request: CreateDataAgentWorkspaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            query["Config"] = request.config ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
             query["DMSUnit"] = request.DMSUnit ?? "";
         }
@@ -5289,6 +5295,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func testAgenticDataSourceConnectionWithOptions(_ request: TestAgenticDataSourceConnectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TestAgenticDataSourceConnectionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adbSparkResourceGroup)) {
+            query["AdbSparkResourceGroup"] = request.adbSparkResourceGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.alias)) {
             query["Alias"] = request.alias ?? "";
         }
@@ -5383,6 +5392,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAgenticDataSourceWithOptions(_ request: UpdateAgenticDataSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAgenticDataSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adbSparkResourceGroup)) {
+            query["AdbSparkResourceGroup"] = request.adbSparkResourceGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.alias)) {
             query["Alias"] = request.alias ?? "";
         }
@@ -5659,6 +5671,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateDataAgentSpaceInfoWithOptions(_ request: UpdateDataAgentSpaceInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDataAgentSpaceInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            query["Config"] = request.config ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
             query["DMSUnit"] = request.DMSUnit ?? "";
         }

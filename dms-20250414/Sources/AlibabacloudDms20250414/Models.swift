@@ -5947,6 +5947,8 @@ public class TrialOrderEligibilityVO : Tea.TeaModel {
 }
 
 public class AddAgenticDataSourceRequest : Tea.TeaModel {
+    public var adbSparkResourceGroup: String?
+
     public var alias: String?
 
     public var authAccount: String?
@@ -6007,6 +6009,9 @@ public class AddAgenticDataSourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adbSparkResourceGroup != nil {
+            map["AdbSparkResourceGroup"] = self.adbSparkResourceGroup!
+        }
         if self.alias != nil {
             map["Alias"] = self.alias!
         }
@@ -6081,6 +6086,9 @@ public class AddAgenticDataSourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdbSparkResourceGroup"] as? String {
+            self.adbSparkResourceGroup = value
+        }
         if let value = dict["Alias"] as? String {
             self.alias = value
         }
@@ -6155,6 +6163,8 @@ public class AddAgenticDataSourceRequest : Tea.TeaModel {
 
 public class AddAgenticDataSourceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var adbSparkResourceGroup: String?
+
         public var alias: String?
 
         public var authAccount: String?
@@ -6217,6 +6227,9 @@ public class AddAgenticDataSourceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.adbSparkResourceGroup != nil {
+                map["AdbSparkResourceGroup"] = self.adbSparkResourceGroup!
+            }
             if self.alias != nil {
                 map["Alias"] = self.alias!
             }
@@ -6294,6 +6307,9 @@ public class AddAgenticDataSourceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AdbSparkResourceGroup"] as? String {
+                self.adbSparkResourceGroup = value
+            }
             if let value = dict["Alias"] as? String {
                 self.alias = value
             }
@@ -12765,6 +12781,8 @@ public class CreateDataAgentThemeResponse : Tea.TeaModel {
 }
 
 public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
+    public var config: String?
+
     public var DMSUnit: String?
 
     public var isSessionShareEnabled: Bool?
@@ -12787,6 +12805,9 @@ public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
         }
@@ -12804,6 +12825,9 @@ public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Config"] as? String {
+            self.config = value
+        }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
         }
@@ -12821,6 +12845,8 @@ public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
 
 public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var config: String?
+
         public var createTime: Int64?
 
         public var creator: String?
@@ -12857,6 +12883,9 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["Config"] = self.config!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -12895,6 +12924,9 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Config"] as? String {
+                self.config = value
+            }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
@@ -20461,6 +20493,8 @@ public class GetAgenticDataSourceRequest : Tea.TeaModel {
 
 public class GetAgenticDataSourceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var adbSparkResourceGroup: String?
+
         public var alias: String?
 
         public var authAccount: String?
@@ -20535,6 +20569,9 @@ public class GetAgenticDataSourceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.adbSparkResourceGroup != nil {
+                map["AdbSparkResourceGroup"] = self.adbSparkResourceGroup!
+            }
             if self.alias != nil {
                 map["Alias"] = self.alias!
             }
@@ -20630,6 +20667,9 @@ public class GetAgenticDataSourceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AdbSparkResourceGroup"] as? String {
+                self.adbSparkResourceGroup = value
+            }
             if let value = dict["Alias"] as? String {
                 self.alias = value
             }
@@ -23195,6 +23235,8 @@ public class GetDataAgentWorkspaceInfoRequest : Tea.TeaModel {
 
 public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var config: String?
+
         public var createTime: String?
 
         public var creator: String?
@@ -23231,6 +23273,9 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["Config"] = self.config!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -23269,6 +23314,9 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Config"] as? String {
+                self.config = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -33160,6 +33208,8 @@ public class ListDataAgentWorkspaceRequest : Tea.TeaModel {
 public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Content : Tea.TeaModel {
+            public var config: String?
+
             public var createTime: Int64?
 
             public var creator: String?
@@ -33204,6 +33254,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.config != nil {
+                    map["Config"] = self.config!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
@@ -33254,6 +33307,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Config"] as? String {
+                    self.config = value
+                }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
                 }
@@ -42236,6 +42292,8 @@ public class StopDataAgentAccuracyTestTaskResponse : Tea.TeaModel {
 }
 
 public class TestAgenticDataSourceConnectionRequest : Tea.TeaModel {
+    public var adbSparkResourceGroup: String?
+
     public var alias: String?
 
     public var authAccount: String?
@@ -42294,6 +42352,9 @@ public class TestAgenticDataSourceConnectionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adbSparkResourceGroup != nil {
+            map["AdbSparkResourceGroup"] = self.adbSparkResourceGroup!
+        }
         if self.alias != nil {
             map["Alias"] = self.alias!
         }
@@ -42365,6 +42426,9 @@ public class TestAgenticDataSourceConnectionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdbSparkResourceGroup"] as? String {
+            self.adbSparkResourceGroup = value
+        }
         if let value = dict["Alias"] as? String {
             self.alias = value
         }
@@ -42589,6 +42653,8 @@ public class TestAgenticDataSourceConnectionResponse : Tea.TeaModel {
 }
 
 public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
+    public var adbSparkResourceGroup: String?
+
     public var alias: String?
 
     public var authAccount: String?
@@ -42643,6 +42709,9 @@ public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adbSparkResourceGroup != nil {
+            map["AdbSparkResourceGroup"] = self.adbSparkResourceGroup!
+        }
         if self.alias != nil {
             map["Alias"] = self.alias!
         }
@@ -42708,6 +42777,9 @@ public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdbSparkResourceGroup"] as? String {
+            self.adbSparkResourceGroup = value
+        }
         if let value = dict["Alias"] as? String {
             self.alias = value
         }
@@ -42773,6 +42845,8 @@ public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
 
 public class UpdateAgenticDataSourceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var adbSparkResourceGroup: String?
+
         public var alias: String?
 
         public var authAccount: String?
@@ -42835,6 +42909,9 @@ public class UpdateAgenticDataSourceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.adbSparkResourceGroup != nil {
+                map["AdbSparkResourceGroup"] = self.adbSparkResourceGroup!
+            }
             if self.alias != nil {
                 map["Alias"] = self.alias!
             }
@@ -42912,6 +42989,9 @@ public class UpdateAgenticDataSourceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AdbSparkResourceGroup"] as? String {
+                self.adbSparkResourceGroup = value
+            }
             if let value = dict["Alias"] as? String {
                 self.alias = value
             }
@@ -44356,6 +44436,8 @@ public class UpdateDataAgentMemoryResponse : Tea.TeaModel {
 }
 
 public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
+    public var config: String?
+
     public var DMSUnit: String?
 
     public var isSessionShareEnabled: Bool?
@@ -44380,6 +44462,9 @@ public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
         }
@@ -44400,6 +44485,9 @@ public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Config"] as? String {
+            self.config = value
+        }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
         }
@@ -44420,6 +44508,8 @@ public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
 
 public class UpdateDataAgentSpaceInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var config: String?
+
         public var createTime: String?
 
         public var creator: String?
@@ -44454,6 +44544,9 @@ public class UpdateDataAgentSpaceInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["Config"] = self.config!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -44489,6 +44582,9 @@ public class UpdateDataAgentSpaceInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Config"] as? String {
+                self.config = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
