@@ -5603,6 +5603,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var sshFlags: Bool?
 
+    public var supportPolicy: String?
+
     public var tags: [Tag]?
 
     public var taints: [Taint]?
@@ -5922,6 +5924,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.sshFlags != nil {
             map["ssh_flags"] = self.sshFlags!
+        }
+        if self.supportPolicy != nil {
+            map["support_policy"] = self.supportPolicy!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -6287,6 +6292,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if let value = dict["ssh_flags"] as? Bool {
             self.sshFlags = value
+        }
+        if let value = dict["support_policy"] as? String {
+            self.supportPolicy = value
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [Tag] = []
@@ -13350,6 +13358,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var subnetCidr: String?
 
+    public var supportPolicy: String?
+
     public var tags: [Tag]?
 
     public var timezone: String?
@@ -13493,6 +13503,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.subnetCidr != nil {
             map["subnet_cidr"] = self.subnetCidr!
+        }
+        if self.supportPolicy != nil {
+            map["support_policy"] = self.supportPolicy!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -13646,6 +13659,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["subnet_cidr"] as? String {
             self.subnetCidr = value
+        }
+        if let value = dict["support_policy"] as? String {
+            self.supportPolicy = value
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [Tag] = []
@@ -20462,6 +20478,8 @@ public class DescribeClustersForRegionResponseBody : Tea.TeaModel {
 
         public var state: String?
 
+        public var supportPolicy: String?
+
         public var tags: [Tag]?
 
         public var timezone: String?
@@ -20546,6 +20564,9 @@ public class DescribeClustersForRegionResponseBody : Tea.TeaModel {
             if self.state != nil {
                 map["state"] = self.state!
             }
+            if self.supportPolicy != nil {
+                map["support_policy"] = self.supportPolicy!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -20629,6 +20650,9 @@ public class DescribeClustersForRegionResponseBody : Tea.TeaModel {
             }
             if let value = dict["state"] as? String {
                 self.state = value
+            }
+            if let value = dict["support_policy"] as? String {
+                self.supportPolicy = value
             }
             if let value = dict["tags"] as? [Any?] {
                 var tmp : [Tag] = []
@@ -22297,6 +22321,8 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
 
     public var region: String?
 
+    public var supportPolicy: String?
+
     public var runtime: String?
 
     public override init() {
@@ -22331,6 +22357,9 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.supportPolicy != nil {
+            map["SupportPolicy"] = self.supportPolicy!
+        }
         if self.runtime != nil {
             map["runtime"] = self.runtime!
         }
@@ -22357,6 +22386,9 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
         if let value = dict["Region"] as? String {
             self.region = value
         }
+        if let value = dict["SupportPolicy"] as? String {
+            self.supportPolicy = value
+        }
         if let value = dict["runtime"] as? String {
             self.runtime = value
         }
@@ -22366,21 +22398,21 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
 public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public class Images : Tea.TeaModel {
+            public var architecture: String?
+
+            public var imageCategory: String?
+
             public var imageId: String?
 
             public var imageName: String?
-
-            public var platform: String?
-
-            public var osVersion: String?
 
             public var imageType: String?
 
             public var osType: String?
 
-            public var imageCategory: String?
+            public var osVersion: String?
 
-            public var architecture: String?
+            public var platform: String?
 
             public override init() {
                 super.init()
@@ -22396,17 +22428,17 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.architecture != nil {
+                    map["architecture"] = self.architecture!
+                }
+                if self.imageCategory != nil {
+                    map["image_category"] = self.imageCategory!
+                }
                 if self.imageId != nil {
                     map["image_id"] = self.imageId!
                 }
                 if self.imageName != nil {
                     map["image_name"] = self.imageName!
-                }
-                if self.platform != nil {
-                    map["platform"] = self.platform!
-                }
-                if self.osVersion != nil {
-                    map["os_version"] = self.osVersion!
                 }
                 if self.imageType != nil {
                     map["image_type"] = self.imageType!
@@ -22414,28 +22446,28 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
                 if self.osType != nil {
                     map["os_type"] = self.osType!
                 }
-                if self.imageCategory != nil {
-                    map["image_category"] = self.imageCategory!
+                if self.osVersion != nil {
+                    map["os_version"] = self.osVersion!
                 }
-                if self.architecture != nil {
-                    map["architecture"] = self.architecture!
+                if self.platform != nil {
+                    map["platform"] = self.platform!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["architecture"] as? String {
+                    self.architecture = value
+                }
+                if let value = dict["image_category"] as? String {
+                    self.imageCategory = value
+                }
                 if let value = dict["image_id"] as? String {
                     self.imageId = value
                 }
                 if let value = dict["image_name"] as? String {
                     self.imageName = value
-                }
-                if let value = dict["platform"] as? String {
-                    self.platform = value
-                }
-                if let value = dict["os_version"] as? String {
-                    self.osVersion = value
                 }
                 if let value = dict["image_type"] as? String {
                     self.imageType = value
@@ -22443,31 +22475,35 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
                 if let value = dict["os_type"] as? String {
                     self.osType = value
                 }
-                if let value = dict["image_category"] as? String {
-                    self.imageCategory = value
+                if let value = dict["os_version"] as? String {
+                    self.osVersion = value
                 }
-                if let value = dict["architecture"] as? String {
-                    self.architecture = value
+                if let value = dict["platform"] as? String {
+                    self.platform = value
                 }
             }
         }
         public var capabilities: [String: Any]?
 
+        public var creatable: Bool?
+
+        public var expirationDate: String?
+
+        public var extendedExpirationDate: String?
+
         public var images: [DescribeKubernetesVersionMetadataResponse.Body.Images]?
 
         public var metaData: [String: Any]?
 
-        public var runtimes: [Runtime]?
-
-        public var version: String?
-
         public var releaseDate: String?
 
-        public var expirationDate: String?
+        public var runtimes: [Runtime]?
 
-        public var creatable: Bool?
+        public var supportPolicy: String?
 
         public var upgradableVersions: [String]?
+
+        public var version: String?
 
         public override init() {
             super.init()
@@ -22486,6 +22522,15 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
             if self.capabilities != nil {
                 map["capabilities"] = self.capabilities!
             }
+            if self.creatable != nil {
+                map["creatable"] = self.creatable!
+            }
+            if self.expirationDate != nil {
+                map["expiration_date"] = self.expirationDate!
+            }
+            if self.extendedExpirationDate != nil {
+                map["extended_expiration_date"] = self.extendedExpirationDate!
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -22496,6 +22541,9 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
             if self.metaData != nil {
                 map["meta_data"] = self.metaData!
             }
+            if self.releaseDate != nil {
+                map["release_date"] = self.releaseDate!
+            }
             if self.runtimes != nil {
                 var tmp : [Any] = []
                 for k in self.runtimes! {
@@ -22503,20 +22551,14 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
                 }
                 map["runtimes"] = tmp
             }
-            if self.version != nil {
-                map["version"] = self.version!
-            }
-            if self.releaseDate != nil {
-                map["release_date"] = self.releaseDate!
-            }
-            if self.expirationDate != nil {
-                map["expiration_date"] = self.expirationDate!
-            }
-            if self.creatable != nil {
-                map["creatable"] = self.creatable!
+            if self.supportPolicy != nil {
+                map["support_policy"] = self.supportPolicy!
             }
             if self.upgradableVersions != nil {
                 map["upgradable_versions"] = self.upgradableVersions!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
             }
             return map
         }
@@ -22525,6 +22567,15 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["capabilities"] as? [String: Any] {
                 self.capabilities = value
+            }
+            if let value = dict["creatable"] as? Bool {
+                self.creatable = value
+            }
+            if let value = dict["expiration_date"] as? String {
+                self.expirationDate = value
+            }
+            if let value = dict["extended_expiration_date"] as? String {
+                self.extendedExpirationDate = value
             }
             if let value = dict["images"] as? [Any?] {
                 var tmp : [DescribeKubernetesVersionMetadataResponse.Body.Images] = []
@@ -22542,6 +22593,9 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
             if let value = dict["meta_data"] as? [String: Any] {
                 self.metaData = value
             }
+            if let value = dict["release_date"] as? String {
+                self.releaseDate = value
+            }
             if let value = dict["runtimes"] as? [Any?] {
                 var tmp : [Runtime] = []
                 for v in value {
@@ -22555,20 +22609,14 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
                 }
                 self.runtimes = tmp
             }
-            if let value = dict["version"] as? String {
-                self.version = value
-            }
-            if let value = dict["release_date"] as? String {
-                self.releaseDate = value
-            }
-            if let value = dict["expiration_date"] as? String {
-                self.expirationDate = value
-            }
-            if let value = dict["creatable"] as? Bool {
-                self.creatable = value
+            if let value = dict["support_policy"] as? String {
+                self.supportPolicy = value
             }
             if let value = dict["upgradable_versions"] as? [String] {
                 self.upgradableVersions = value
+            }
+            if let value = dict["version"] as? String {
+                self.version = value
             }
         }
     }
@@ -33935,6 +33983,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var supportPolicy: String?
+
     public var systemEventsLogging: ModifyClusterRequest.SystemEventsLogging?
 
     public var timezone: String?
@@ -34015,6 +34065,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["security_group_id"] = self.securityGroupId!
         }
+        if self.supportPolicy != nil {
+            map["support_policy"] = self.supportPolicy!
+        }
         if self.systemEventsLogging != nil {
             map["system_events_logging"] = self.systemEventsLogging?.toMap()
         }
@@ -34092,6 +34145,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if let value = dict["security_group_id"] as? String {
             self.securityGroupId = value
+        }
+        if let value = dict["support_policy"] as? String {
+            self.supportPolicy = value
         }
         if let value = dict["system_events_logging"] as? [String: Any?] {
             var model = ModifyClusterRequest.SystemEventsLogging()
