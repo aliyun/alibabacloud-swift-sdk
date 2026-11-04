@@ -513,6 +513,10 @@ public class ChannelProperties : Tea.TeaModel {
 
     public var vivoPushMode: String?
 
+    public var vivoTemplateId: String?
+
+    public var vivoTemplateParams: [String: Any]?
+
     public var xiaomiChannelId: String?
 
     public override init() {
@@ -574,6 +578,12 @@ public class ChannelProperties : Tea.TeaModel {
         if self.vivoPushMode != nil {
             map["vivoPushMode"] = self.vivoPushMode!
         }
+        if self.vivoTemplateId != nil {
+            map["vivoTemplateId"] = self.vivoTemplateId!
+        }
+        if self.vivoTemplateParams != nil {
+            map["vivoTemplateParams"] = self.vivoTemplateParams!
+        }
         if self.xiaomiChannelId != nil {
             map["xiaomiChannelId"] = self.xiaomiChannelId!
         }
@@ -626,6 +636,12 @@ public class ChannelProperties : Tea.TeaModel {
         }
         if let value = dict["vivoPushMode"] as? String {
             self.vivoPushMode = value
+        }
+        if let value = dict["vivoTemplateId"] as? String {
+            self.vivoTemplateId = value
+        }
+        if let value = dict["vivoTemplateParams"] as? [String: Any] {
+            self.vivoTemplateParams = value
         }
         if let value = dict["xiaomiChannelId"] as? String {
             self.xiaomiChannelId = value
