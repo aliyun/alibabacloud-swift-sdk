@@ -1417,6 +1417,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.encryptionContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionContext, "EncryptionContext", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataKeyName)) {
+            query["DataKeyName"] = request.dataKeyName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun ?? "";
         }
@@ -1426,8 +1429,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keyId)) {
             query["KeyId"] = request.keyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keyMaterial)) {
+            query["KeyMaterial"] = request.keyMaterial ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keySpec)) {
             query["KeySpec"] = request.keySpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managedByKms)) {
+            query["ManagedByKms"] = request.managedByKms!;
         }
         if (!TeaUtils.Client.isUnset(request.numberOfBytes)) {
             query["NumberOfBytes"] = request.numberOfBytes!;

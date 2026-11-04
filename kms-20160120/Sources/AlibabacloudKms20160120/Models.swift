@@ -6774,13 +6774,19 @@ public class GenerateAndExportDataKeyResponse : Tea.TeaModel {
 }
 
 public class GenerateDataKeyRequest : Tea.TeaModel {
+    public var dataKeyName: String?
+
     public var dryRun: String?
 
     public var encryptionContext: [String: Any]?
 
     public var keyId: String?
 
+    public var keyMaterial: String?
+
     public var keySpec: String?
+
+    public var managedByKms: Bool?
 
     public var numberOfBytes: Int32?
 
@@ -6800,6 +6806,9 @@ public class GenerateDataKeyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -6809,8 +6818,14 @@ public class GenerateDataKeyRequest : Tea.TeaModel {
         if self.keyId != nil {
             map["KeyId"] = self.keyId!
         }
+        if self.keyMaterial != nil {
+            map["KeyMaterial"] = self.keyMaterial!
+        }
         if self.keySpec != nil {
             map["KeySpec"] = self.keySpec!
+        }
+        if self.managedByKms != nil {
+            map["ManagedByKms"] = self.managedByKms!
         }
         if self.numberOfBytes != nil {
             map["NumberOfBytes"] = self.numberOfBytes!
@@ -6823,6 +6838,9 @@ public class GenerateDataKeyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
         if let value = dict["DryRun"] as? String {
             self.dryRun = value
         }
@@ -6832,8 +6850,14 @@ public class GenerateDataKeyRequest : Tea.TeaModel {
         if let value = dict["KeyId"] as? String {
             self.keyId = value
         }
+        if let value = dict["KeyMaterial"] as? String {
+            self.keyMaterial = value
+        }
         if let value = dict["KeySpec"] as? String {
             self.keySpec = value
+        }
+        if let value = dict["ManagedByKms"] as? Bool {
+            self.managedByKms = value
         }
         if let value = dict["NumberOfBytes"] as? Int32 {
             self.numberOfBytes = value
@@ -6845,13 +6869,19 @@ public class GenerateDataKeyRequest : Tea.TeaModel {
 }
 
 public class GenerateDataKeyShrinkRequest : Tea.TeaModel {
+    public var dataKeyName: String?
+
     public var dryRun: String?
 
     public var encryptionContextShrink: String?
 
     public var keyId: String?
 
+    public var keyMaterial: String?
+
     public var keySpec: String?
+
+    public var managedByKms: Bool?
 
     public var numberOfBytes: Int32?
 
@@ -6871,6 +6901,9 @@ public class GenerateDataKeyShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -6880,8 +6913,14 @@ public class GenerateDataKeyShrinkRequest : Tea.TeaModel {
         if self.keyId != nil {
             map["KeyId"] = self.keyId!
         }
+        if self.keyMaterial != nil {
+            map["KeyMaterial"] = self.keyMaterial!
+        }
         if self.keySpec != nil {
             map["KeySpec"] = self.keySpec!
+        }
+        if self.managedByKms != nil {
+            map["ManagedByKms"] = self.managedByKms!
         }
         if self.numberOfBytes != nil {
             map["NumberOfBytes"] = self.numberOfBytes!
@@ -6894,6 +6933,9 @@ public class GenerateDataKeyShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
         if let value = dict["DryRun"] as? String {
             self.dryRun = value
         }
@@ -6903,8 +6945,14 @@ public class GenerateDataKeyShrinkRequest : Tea.TeaModel {
         if let value = dict["KeyId"] as? String {
             self.keyId = value
         }
+        if let value = dict["KeyMaterial"] as? String {
+            self.keyMaterial = value
+        }
         if let value = dict["KeySpec"] as? String {
             self.keySpec = value
+        }
+        if let value = dict["ManagedByKms"] as? Bool {
+            self.managedByKms = value
         }
         if let value = dict["NumberOfBytes"] as? Int32 {
             self.numberOfBytes = value
@@ -6919,6 +6967,12 @@ public class GenerateDataKeyResponseBody : Tea.TeaModel {
     public var ciphertextBlob: String?
 
     public var ciphertextForRecipient: String?
+
+    public var dataKeyName: String?
+
+    public var dataKeyVersionId: String?
+
+    public var dataKeyVersionName: String?
 
     public var keyId: String?
 
@@ -6948,6 +7002,15 @@ public class GenerateDataKeyResponseBody : Tea.TeaModel {
         if self.ciphertextForRecipient != nil {
             map["CiphertextForRecipient"] = self.ciphertextForRecipient!
         }
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
+        if self.dataKeyVersionId != nil {
+            map["DataKeyVersionId"] = self.dataKeyVersionId!
+        }
+        if self.dataKeyVersionName != nil {
+            map["DataKeyVersionName"] = self.dataKeyVersionName!
+        }
         if self.keyId != nil {
             map["KeyId"] = self.keyId!
         }
@@ -6970,6 +7033,15 @@ public class GenerateDataKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["CiphertextForRecipient"] as? String {
             self.ciphertextForRecipient = value
+        }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
+        if let value = dict["DataKeyVersionId"] as? String {
+            self.dataKeyVersionId = value
+        }
+        if let value = dict["DataKeyVersionName"] as? String {
+            self.dataKeyVersionName = value
         }
         if let value = dict["KeyId"] as? String {
             self.keyId = value
