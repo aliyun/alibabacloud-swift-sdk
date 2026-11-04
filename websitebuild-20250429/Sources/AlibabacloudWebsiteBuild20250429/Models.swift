@@ -4671,6 +4671,8 @@ public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
 
         public var rdsDatabasePassword: String?
 
+        public var schemaName: String?
+
         public var serviceKey: String?
 
         public var status: Int32?
@@ -4692,6 +4694,8 @@ public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
         public var supabasePublicUrl: String?
 
         public var tenantId: String?
+
+        public var tenantMode: String?
 
         public var userId: String?
 
@@ -4742,6 +4746,9 @@ public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
             if self.rdsDatabasePassword != nil {
                 map["RdsDatabasePassword"] = self.rdsDatabasePassword!
             }
+            if self.schemaName != nil {
+                map["SchemaName"] = self.schemaName!
+            }
             if self.serviceKey != nil {
                 map["ServiceKey"] = self.serviceKey!
             }
@@ -4774,6 +4781,9 @@ public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
             }
             if self.tenantId != nil {
                 map["TenantId"] = self.tenantId!
+            }
+            if self.tenantMode != nil {
+                map["TenantMode"] = self.tenantMode!
             }
             if self.userId != nil {
                 map["UserId"] = self.userId!
@@ -4816,6 +4826,9 @@ public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
             if let value = dict["RdsDatabasePassword"] as? String {
                 self.rdsDatabasePassword = value
             }
+            if let value = dict["SchemaName"] as? String {
+                self.schemaName = value
+            }
             if let value = dict["ServiceKey"] as? String {
                 self.serviceKey = value
             }
@@ -4848,6 +4861,9 @@ public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
             }
             if let value = dict["TenantId"] as? String {
                 self.tenantId = value
+            }
+            if let value = dict["TenantMode"] as? String {
+                self.tenantMode = value
             }
             if let value = dict["UserId"] as? String {
                 self.userId = value
@@ -24791,6 +24807,8 @@ public class GetAppSupabaseInstanceResponseBody : Tea.TeaModel {
 
         public var instanceCreateStatus: String?
 
+        public var schemaName: String?
+
         public var serviceKey: String?
 
         public var status: Int32?
@@ -24798,6 +24816,8 @@ public class GetAppSupabaseInstanceResponseBody : Tea.TeaModel {
         public var supabaseInstanceId: String?
 
         public var supabasePublicUrl: String?
+
+        public var tenantMode: String?
 
         public override init() {
             super.init()
@@ -24828,6 +24848,9 @@ public class GetAppSupabaseInstanceResponseBody : Tea.TeaModel {
             if self.instanceCreateStatus != nil {
                 map["InstanceCreateStatus"] = self.instanceCreateStatus!
             }
+            if self.schemaName != nil {
+                map["SchemaName"] = self.schemaName!
+            }
             if self.serviceKey != nil {
                 map["ServiceKey"] = self.serviceKey!
             }
@@ -24839,6 +24862,9 @@ public class GetAppSupabaseInstanceResponseBody : Tea.TeaModel {
             }
             if self.supabasePublicUrl != nil {
                 map["SupabasePublicUrl"] = self.supabasePublicUrl!
+            }
+            if self.tenantMode != nil {
+                map["TenantMode"] = self.tenantMode!
             }
             return map
         }
@@ -24860,6 +24886,9 @@ public class GetAppSupabaseInstanceResponseBody : Tea.TeaModel {
             if let value = dict["InstanceCreateStatus"] as? String {
                 self.instanceCreateStatus = value
             }
+            if let value = dict["SchemaName"] as? String {
+                self.schemaName = value
+            }
             if let value = dict["ServiceKey"] as? String {
                 self.serviceKey = value
             }
@@ -24871,6 +24900,9 @@ public class GetAppSupabaseInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["SupabasePublicUrl"] as? String {
                 self.supabasePublicUrl = value
+            }
+            if let value = dict["TenantMode"] as? String {
+                self.tenantMode = value
             }
         }
     }
@@ -52492,6 +52524,8 @@ public class QuerySupabaseInstanceInfoForAdminResponseBody : Tea.TeaModel {
 
         public var rdsDatabasePassword: String?
 
+        public var schemaName: String?
+
         public var serviceKey: String?
 
         public var status: Int32?
@@ -52513,6 +52547,8 @@ public class QuerySupabaseInstanceInfoForAdminResponseBody : Tea.TeaModel {
         public var supabasePublicUrl: String?
 
         public var tenantId: String?
+
+        public var tenantMode: String?
 
         public var userId: String?
 
@@ -52563,6 +52599,9 @@ public class QuerySupabaseInstanceInfoForAdminResponseBody : Tea.TeaModel {
             if self.rdsDatabasePassword != nil {
                 map["RdsDatabasePassword"] = self.rdsDatabasePassword!
             }
+            if self.schemaName != nil {
+                map["SchemaName"] = self.schemaName!
+            }
             if self.serviceKey != nil {
                 map["ServiceKey"] = self.serviceKey!
             }
@@ -52595,6 +52634,9 @@ public class QuerySupabaseInstanceInfoForAdminResponseBody : Tea.TeaModel {
             }
             if self.tenantId != nil {
                 map["TenantId"] = self.tenantId!
+            }
+            if self.tenantMode != nil {
+                map["TenantMode"] = self.tenantMode!
             }
             if self.userId != nil {
                 map["UserId"] = self.userId!
@@ -52637,6 +52679,9 @@ public class QuerySupabaseInstanceInfoForAdminResponseBody : Tea.TeaModel {
             if let value = dict["RdsDatabasePassword"] as? String {
                 self.rdsDatabasePassword = value
             }
+            if let value = dict["SchemaName"] as? String {
+                self.schemaName = value
+            }
             if let value = dict["ServiceKey"] as? String {
                 self.serviceKey = value
             }
@@ -52669,6 +52714,9 @@ public class QuerySupabaseInstanceInfoForAdminResponseBody : Tea.TeaModel {
             }
             if let value = dict["TenantId"] as? String {
                 self.tenantId = value
+            }
+            if let value = dict["TenantMode"] as? String {
+                self.tenantMode = value
             }
             if let value = dict["UserId"] as? String {
                 self.userId = value
