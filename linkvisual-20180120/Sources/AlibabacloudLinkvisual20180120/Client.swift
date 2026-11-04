@@ -1822,37 +1822,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func detectUserFaceByUrlWithOptions(_ request: DetectUserFaceByUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetectUserFaceByUrlResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.facePicUrl)) {
-            query["FacePicUrl"] = request.facePicUrl ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DetectUserFaceByUrl",
-            "version": "2018-01-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DetectUserFaceByUrlResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func detectUserFaceByUrl(_ request: DetectUserFaceByUrlRequest) async throws -> DetectUserFaceByUrlResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await detectUserFaceByUrlWithOptions(request as! DetectUserFaceByUrlRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enableGbSubDeviceWithOptions(_ request: EnableGbSubDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableGbSubDeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
