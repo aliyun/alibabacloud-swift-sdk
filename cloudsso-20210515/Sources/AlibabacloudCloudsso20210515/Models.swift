@@ -14955,6 +14955,8 @@ public class ResetUserPasswordRequest : Tea.TeaModel {
 
     public var requirePasswordResetForNextLogin: Bool?
 
+    public var resetMethod: String?
+
     public var userId: String?
 
     public override init() {
@@ -14983,6 +14985,9 @@ public class ResetUserPasswordRequest : Tea.TeaModel {
         if self.requirePasswordResetForNextLogin != nil {
             map["RequirePasswordResetForNextLogin"] = self.requirePasswordResetForNextLogin!
         }
+        if self.resetMethod != nil {
+            map["ResetMethod"] = self.resetMethod!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -15002,6 +15007,9 @@ public class ResetUserPasswordRequest : Tea.TeaModel {
         }
         if let value = dict["RequirePasswordResetForNextLogin"] as? Bool {
             self.requirePasswordResetForNextLogin = value
+        }
+        if let value = dict["ResetMethod"] as? String {
+            self.resetMethod = value
         }
         if let value = dict["UserId"] as? String {
             self.userId = value

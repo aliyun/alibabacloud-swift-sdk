@@ -2578,6 +2578,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.requirePasswordResetForNextLogin)) {
             query["RequirePasswordResetForNextLogin"] = request.requirePasswordResetForNextLogin!;
         }
+        if (!TeaUtils.Client.isUnset(request.resetMethod)) {
+            query["ResetMethod"] = request.resetMethod ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             query["UserId"] = request.userId ?? "";
         }
