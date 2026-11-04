@@ -1768,6 +1768,44 @@ public class E2BLifecycle : Tea.TeaModel {
 }
 
 public class E2BListedSandbox : Tea.TeaModel {
+    public class ResourceTags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["tagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["tagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["tagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var cpuCount: Int32?
 
     public var diskSizeMB: Int32?
@@ -1781,6 +1819,8 @@ public class E2BListedSandbox : Tea.TeaModel {
     public var metadata: [String: String]?
 
     public var resourceGroupID: String?
+
+    public var resourceTags: [E2BListedSandbox.ResourceTags]?
 
     public var sandboxID: String?
 
@@ -1835,6 +1875,13 @@ public class E2BListedSandbox : Tea.TeaModel {
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
+        if self.resourceTags != nil {
+            var tmp : [Any] = []
+            for k in self.resourceTags! {
+                tmp.append(k.toMap())
+            }
+            map["resourceTags"] = tmp
+        }
         if self.sandboxID != nil {
             map["sandboxID"] = self.sandboxID!
         }
@@ -1887,6 +1934,19 @@ public class E2BListedSandbox : Tea.TeaModel {
         }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
+        }
+        if let value = dict["resourceTags"] as? [Any?] {
+            var tmp : [E2BListedSandbox.ResourceTags] = []
+            for v in value {
+                if v != nil {
+                    var model = E2BListedSandbox.ResourceTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceTags = tmp
         }
         if let value = dict["sandboxID"] as? String {
             self.sandboxID = value
@@ -2169,6 +2229,44 @@ public class E2BNetwork : Tea.TeaModel {
 }
 
 public class E2BSandbox : Tea.TeaModel {
+    public class ResourceTags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["tagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["tagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["tagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var accessEndpoint: String?
 
     public var allowInternetAccess: Bool?
@@ -2200,6 +2298,8 @@ public class E2BSandbox : Tea.TeaModel {
     public var network: E2BNetwork?
 
     public var resourceGroupID: String?
+
+    public var resourceTags: [E2BSandbox.ResourceTags]?
 
     public var runtime: InnerSandboxRuntimeConfig?
 
@@ -2288,6 +2388,13 @@ public class E2BSandbox : Tea.TeaModel {
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
+        if self.resourceTags != nil {
+            var tmp : [Any] = []
+            for k in self.resourceTags! {
+                tmp.append(k.toMap())
+            }
+            map["resourceTags"] = tmp
+        }
         if self.runtime != nil {
             map["runtime"] = self.runtime?.toMap()
         }
@@ -2375,6 +2482,19 @@ public class E2BSandbox : Tea.TeaModel {
         }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
+        }
+        if let value = dict["resourceTags"] as? [Any?] {
+            var tmp : [E2BSandbox.ResourceTags] = []
+            for v in value {
+                if v != nil {
+                    var model = E2BSandbox.ResourceTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceTags = tmp
         }
         if let value = dict["runtime"] as? [String: Any?] {
             var model = InnerSandboxRuntimeConfig()
@@ -4286,6 +4406,209 @@ public class OSSVolumeConfig : Tea.TeaModel {
     }
 }
 
+public class PublicListedSandbox : Tea.TeaModel {
+    public class ResourceTags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["tagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["tagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["tagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
+    public var autoPause: Bool?
+
+    public var autoResume: Bool?
+
+    public var cpu: Double?
+
+    public var diskSize: Int32?
+
+    public var endAt: String?
+
+    public var memorySize: Int32?
+
+    public var resourceGroupID: String?
+
+    public var resourceTags: [PublicListedSandbox.ResourceTags]?
+
+    public var sandboxID: String?
+
+    public var startedAt: String?
+
+    public var state: String?
+
+    public var teamID: String?
+
+    public var teamName: String?
+
+    public var templateID: String?
+
+    public var templateName: String?
+
+    public var userID: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPause != nil {
+            map["autoPause"] = self.autoPause!
+        }
+        if self.autoResume != nil {
+            map["autoResume"] = self.autoResume!
+        }
+        if self.cpu != nil {
+            map["cpu"] = self.cpu!
+        }
+        if self.diskSize != nil {
+            map["diskSize"] = self.diskSize!
+        }
+        if self.endAt != nil {
+            map["endAt"] = self.endAt!
+        }
+        if self.memorySize != nil {
+            map["memorySize"] = self.memorySize!
+        }
+        if self.resourceGroupID != nil {
+            map["resourceGroupID"] = self.resourceGroupID!
+        }
+        if self.resourceTags != nil {
+            var tmp : [Any] = []
+            for k in self.resourceTags! {
+                tmp.append(k.toMap())
+            }
+            map["resourceTags"] = tmp
+        }
+        if self.sandboxID != nil {
+            map["sandboxID"] = self.sandboxID!
+        }
+        if self.startedAt != nil {
+            map["startedAt"] = self.startedAt!
+        }
+        if self.state != nil {
+            map["state"] = self.state!
+        }
+        if self.teamID != nil {
+            map["teamID"] = self.teamID!
+        }
+        if self.teamName != nil {
+            map["teamName"] = self.teamName!
+        }
+        if self.templateID != nil {
+            map["templateID"] = self.templateID!
+        }
+        if self.templateName != nil {
+            map["templateName"] = self.templateName!
+        }
+        if self.userID != nil {
+            map["userID"] = self.userID!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoPause"] as? Bool {
+            self.autoPause = value
+        }
+        if let value = dict["autoResume"] as? Bool {
+            self.autoResume = value
+        }
+        if let value = dict["cpu"] as? Double {
+            self.cpu = value
+        }
+        if let value = dict["diskSize"] as? Int32 {
+            self.diskSize = value
+        }
+        if let value = dict["endAt"] as? String {
+            self.endAt = value
+        }
+        if let value = dict["memorySize"] as? Int32 {
+            self.memorySize = value
+        }
+        if let value = dict["resourceGroupID"] as? String {
+            self.resourceGroupID = value
+        }
+        if let value = dict["resourceTags"] as? [Any?] {
+            var tmp : [PublicListedSandbox.ResourceTags] = []
+            for v in value {
+                if v != nil {
+                    var model = PublicListedSandbox.ResourceTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceTags = tmp
+        }
+        if let value = dict["sandboxID"] as? String {
+            self.sandboxID = value
+        }
+        if let value = dict["startedAt"] as? String {
+            self.startedAt = value
+        }
+        if let value = dict["state"] as? String {
+            self.state = value
+        }
+        if let value = dict["teamID"] as? String {
+            self.teamID = value
+        }
+        if let value = dict["teamName"] as? String {
+            self.teamName = value
+        }
+        if let value = dict["templateID"] as? String {
+            self.templateID = value
+        }
+        if let value = dict["templateName"] as? String {
+            self.templateName = value
+        }
+        if let value = dict["userID"] as? String {
+            self.userID = value
+        }
+    }
+}
+
 public class PublicTemplate : Tea.TeaModel {
     public class ResourceTags : Tea.TeaModel {
         public var tagKey: String?
@@ -5182,6 +5505,8 @@ public class PublicUpdateTemplateEnvdInjectAction : Tea.TeaModel {
 public class PublicUpdateTemplateInput : Tea.TeaModel {
     public var buildConfig: PublicUpdateTemplateBuildConfig?
 
+    public var plan: String?
+
     public var runtimeConfig: PublicUpdateTemplateRuntimeConfig?
 
     public override init() {
@@ -5203,6 +5528,9 @@ public class PublicUpdateTemplateInput : Tea.TeaModel {
         if self.buildConfig != nil {
             map["buildConfig"] = self.buildConfig?.toMap()
         }
+        if self.plan != nil {
+            map["plan"] = self.plan!
+        }
         if self.runtimeConfig != nil {
             map["runtimeConfig"] = self.runtimeConfig?.toMap()
         }
@@ -5215,6 +5543,9 @@ public class PublicUpdateTemplateInput : Tea.TeaModel {
             var model = PublicUpdateTemplateBuildConfig()
             model.fromMap(value)
             self.buildConfig = model
+        }
+        if let value = dict["plan"] as? String {
+            self.plan = value
         }
         if let value = dict["runtimeConfig"] as? [String: Any?] {
             var model = PublicUpdateTemplateRuntimeConfig()
