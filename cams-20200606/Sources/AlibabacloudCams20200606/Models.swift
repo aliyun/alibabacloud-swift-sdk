@@ -6664,6 +6664,8 @@ public class CreateChatFlowRequest : Tea.TeaModel {
 
     public var lifeCycleExtendData: [String: String]?
 
+    public var lifeCycleExtendDataV2: [String: Any]?
+
     public var ownerId: Int64?
 
     public var remark: String?
@@ -6706,6 +6708,9 @@ public class CreateChatFlowRequest : Tea.TeaModel {
         if self.lifeCycleExtendData != nil {
             map["LifeCycleExtendData"] = self.lifeCycleExtendData!
         }
+        if self.lifeCycleExtendDataV2 != nil {
+            map["LifeCycleExtendDataV2"] = self.lifeCycleExtendDataV2!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -6744,6 +6749,9 @@ public class CreateChatFlowRequest : Tea.TeaModel {
         if let value = dict["LifeCycleExtendData"] as? [String: String] {
             self.lifeCycleExtendData = value
         }
+        if let value = dict["LifeCycleExtendDataV2"] as? [String: Any] {
+            self.lifeCycleExtendDataV2 = value
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
@@ -6774,6 +6782,8 @@ public class CreateChatFlowShrinkRequest : Tea.TeaModel {
     public var flowTriggerType: String?
 
     public var lifeCycleExtendDataShrink: String?
+
+    public var lifeCycleExtendDataV2Shrink: String?
 
     public var ownerId: Int64?
 
@@ -6817,6 +6827,9 @@ public class CreateChatFlowShrinkRequest : Tea.TeaModel {
         if self.lifeCycleExtendDataShrink != nil {
             map["LifeCycleExtendData"] = self.lifeCycleExtendDataShrink!
         }
+        if self.lifeCycleExtendDataV2Shrink != nil {
+            map["LifeCycleExtendDataV2"] = self.lifeCycleExtendDataV2Shrink!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -6854,6 +6867,9 @@ public class CreateChatFlowShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["LifeCycleExtendData"] as? String {
             self.lifeCycleExtendDataShrink = value
+        }
+        if let value = dict["LifeCycleExtendDataV2"] as? String {
+            self.lifeCycleExtendDataV2Shrink = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -7769,6 +7785,8 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
 
             public var text: String?
 
+            public var ttlMinutes: Int64?
+
             public var type: String?
 
             public var url: String?
@@ -7826,6 +7844,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
                 if self.text != nil {
                     map["Text"] = self.text!
                 }
+                if self.ttlMinutes != nil {
+                    map["TtlMinutes"] = self.ttlMinutes!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -7882,6 +7903,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
                 }
                 if let value = dict["Text"] as? String {
                     self.text = value
+                }
+                if let value = dict["TtlMinutes"] as? Int64 {
+                    self.ttlMinutes = value
                 }
                 if let value = dict["Type"] as? String {
                     self.type = value
@@ -18286,6 +18310,8 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
 
                 public var text: String?
 
+                public var ttlMinutes: Int64?
+
                 public var type: String?
 
                 public var url: String?
@@ -18346,6 +18372,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                     }
                     if self.text != nil {
                         map["Text"] = self.text!
+                    }
+                    if self.ttlMinutes != nil {
+                        map["TtlMinutes"] = self.ttlMinutes!
                     }
                     if self.type != nil {
                         map["Type"] = self.type!
@@ -18408,6 +18437,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Text"] as? String {
                         self.text = value
+                    }
+                    if let value = dict["TtlMinutes"] as? Int64 {
+                        self.ttlMinutes = value
                     }
                     if let value = dict["Type"] as? String {
                         self.type = value
@@ -36647,6 +36679,8 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
 
             public var text: String?
 
+            public var ttlMinutes: Int64?
+
             public var type: String?
 
             public var url: String?
@@ -36704,6 +36738,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
                 if self.text != nil {
                     map["Text"] = self.text!
                 }
+                if self.ttlMinutes != nil {
+                    map["TtlMinutes"] = self.ttlMinutes!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -36760,6 +36797,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
                 }
                 if let value = dict["Text"] as? String {
                     self.text = value
+                }
+                if let value = dict["TtlMinutes"] as? Int64 {
+                    self.ttlMinutes = value
                 }
                 if let value = dict["Type"] as? String {
                     self.type = value

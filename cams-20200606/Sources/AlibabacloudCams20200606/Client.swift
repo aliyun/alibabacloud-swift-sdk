@@ -9,9 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "ap-southeast-1": "cams.ap-southeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cams", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1206,6 +1203,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.lifeCycleExtendData)) {
             request.lifeCycleExtendDataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.lifeCycleExtendData, "LifeCycleExtendData", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.lifeCycleExtendDataV2)) {
+            request.lifeCycleExtendDataV2Shrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.lifeCycleExtendDataV2, "LifeCycleExtendDataV2", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizCode)) {
             query["BizCode"] = request.bizCode ?? "";
@@ -1224,6 +1224,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.lifeCycleExtendDataShrink)) {
             query["LifeCycleExtendData"] = request.lifeCycleExtendDataShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lifeCycleExtendDataV2Shrink)) {
+            query["LifeCycleExtendDataV2"] = request.lifeCycleExtendDataV2Shrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
