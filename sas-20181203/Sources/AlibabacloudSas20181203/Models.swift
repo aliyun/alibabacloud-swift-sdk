@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1400,6 +1401,8 @@ public class AddCloudVendorAccountAKRequest : Tea.TeaModel {
 
     public var vendorAuthAlias: String?
 
+    public var vendorUserName: String?
+
     public override init() {
         super.init()
     }
@@ -1453,6 +1456,9 @@ public class AddCloudVendorAccountAKRequest : Tea.TeaModel {
         if self.vendorAuthAlias != nil {
             map["VendorAuthAlias"] = self.vendorAuthAlias!
         }
+        if self.vendorUserName != nil {
+            map["VendorUserName"] = self.vendorUserName!
+        }
         return map
     }
 
@@ -1496,6 +1502,9 @@ public class AddCloudVendorAccountAKRequest : Tea.TeaModel {
         }
         if let value = dict["VendorAuthAlias"] as? String {
             self.vendorAuthAlias = value
+        }
+        if let value = dict["VendorUserName"] as? String {
+            self.vendorUserName = value
         }
     }
 }
@@ -7311,6 +7320,8 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var configId: String?
+
     public var configRequirementIds: ChangeCheckConfigRequest.ConfigRequirementIds?
 
     public var configStandardIds: ChangeCheckConfigRequest.ConfigStandardIds?
@@ -7319,6 +7330,8 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
 
     public var cycleDays: [Int32]?
 
+    public var daysOfMonth: [Int32]?
+
     public var dryRun: Bool?
 
     public var enableAddCheck: Bool?
@@ -7326,6 +7339,10 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
     public var enableAutoCheck: Bool?
 
     public var endTime: Int32?
+
+    public var endTimeSeconds: Int32?
+
+    public var frequency: String?
 
     public var regionId: String?
 
@@ -7336,6 +7353,10 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
     public var standardIds: [Int64]?
 
     public var startTime: Int32?
+
+    public var startTimeSeconds: Int32?
+
+    public var strategyName: String?
 
     public var systemConfig: Bool?
 
@@ -7367,6 +7388,9 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
         if self.configRequirementIds != nil {
             map["ConfigRequirementIds"] = self.configRequirementIds?.toMap()
         }
@@ -7379,6 +7403,9 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         if self.cycleDays != nil {
             map["CycleDays"] = self.cycleDays!
         }
+        if self.daysOfMonth != nil {
+            map["DaysOfMonth"] = self.daysOfMonth!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -7390,6 +7417,12 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.endTimeSeconds != nil {
+            map["EndTimeSeconds"] = self.endTimeSeconds!
+        }
+        if self.frequency != nil {
+            map["Frequency"] = self.frequency!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -7409,6 +7442,12 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.startTimeSeconds != nil {
+            map["StartTimeSeconds"] = self.startTimeSeconds!
+        }
+        if self.strategyName != nil {
+            map["StrategyName"] = self.strategyName!
         }
         if self.systemConfig != nil {
             map["SystemConfig"] = self.systemConfig!
@@ -7437,6 +7476,9 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
         if let value = dict["ConfigRequirementIds"] as? [String: Any?] {
             var model = ChangeCheckConfigRequest.ConfigRequirementIds()
             model.fromMap(value)
@@ -7453,6 +7495,9 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         if let value = dict["CycleDays"] as? [Int32] {
             self.cycleDays = value
         }
+        if let value = dict["DaysOfMonth"] as? [Int32] {
+            self.daysOfMonth = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -7464,6 +7509,12 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? Int32 {
             self.endTime = value
+        }
+        if let value = dict["EndTimeSeconds"] as? Int32 {
+            self.endTimeSeconds = value
+        }
+        if let value = dict["Frequency"] as? String {
+            self.frequency = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7489,6 +7540,12 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? Int32 {
             self.startTime = value
+        }
+        if let value = dict["StartTimeSeconds"] as? Int32 {
+            self.startTimeSeconds = value
+        }
+        if let value = dict["StrategyName"] as? String {
+            self.strategyName = value
         }
         if let value = dict["SystemConfig"] as? Bool {
             self.systemConfig = value
@@ -7580,6 +7637,8 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var configId: String?
+
     public var configRequirementIdsShrink: String?
 
     public var configStandardIdsShrink: String?
@@ -7588,6 +7647,8 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
 
     public var cycleDays: [Int32]?
 
+    public var daysOfMonth: [Int32]?
+
     public var dryRun: Bool?
 
     public var enableAddCheck: Bool?
@@ -7595,6 +7656,10 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
     public var enableAutoCheck: Bool?
 
     public var endTime: Int32?
+
+    public var endTimeSeconds: Int32?
+
+    public var frequency: String?
 
     public var regionId: String?
 
@@ -7605,6 +7670,10 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
     public var standardIds: [Int64]?
 
     public var startTime: Int32?
+
+    public var startTimeSeconds: Int32?
+
+    public var strategyName: String?
 
     public var systemConfig: Bool?
 
@@ -7634,6 +7703,9 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
         if self.configRequirementIdsShrink != nil {
             map["ConfigRequirementIds"] = self.configRequirementIdsShrink!
         }
@@ -7646,6 +7718,9 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         if self.cycleDays != nil {
             map["CycleDays"] = self.cycleDays!
         }
+        if self.daysOfMonth != nil {
+            map["DaysOfMonth"] = self.daysOfMonth!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -7657,6 +7732,12 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.endTimeSeconds != nil {
+            map["EndTimeSeconds"] = self.endTimeSeconds!
+        }
+        if self.frequency != nil {
+            map["Frequency"] = self.frequency!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -7676,6 +7757,12 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.startTimeSeconds != nil {
+            map["StartTimeSeconds"] = self.startTimeSeconds!
+        }
+        if self.strategyName != nil {
+            map["StrategyName"] = self.strategyName!
         }
         if self.systemConfig != nil {
             map["SystemConfig"] = self.systemConfig!
@@ -7704,6 +7791,9 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
         if let value = dict["ConfigRequirementIds"] as? String {
             self.configRequirementIdsShrink = value
         }
@@ -7716,6 +7806,9 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         if let value = dict["CycleDays"] as? [Int32] {
             self.cycleDays = value
         }
+        if let value = dict["DaysOfMonth"] as? [Int32] {
+            self.daysOfMonth = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -7727,6 +7820,12 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? Int32 {
             self.endTime = value
+        }
+        if let value = dict["EndTimeSeconds"] as? Int32 {
+            self.endTimeSeconds = value
+        }
+        if let value = dict["Frequency"] as? String {
+            self.frequency = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7753,6 +7852,12 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         if let value = dict["StartTime"] as? Int32 {
             self.startTime = value
         }
+        if let value = dict["StartTimeSeconds"] as? Int32 {
+            self.startTimeSeconds = value
+        }
+        if let value = dict["StrategyName"] as? String {
+            self.strategyName = value
+        }
         if let value = dict["SystemConfig"] as? Bool {
             self.systemConfig = value
         }
@@ -7763,6 +7868,8 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
 }
 
 public class ChangeCheckConfigResponseBody : Tea.TeaModel {
+    public var configId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -7779,6 +7886,9 @@ public class ChangeCheckConfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -7787,6 +7897,9 @@ public class ChangeCheckConfigResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -108090,6 +108203,52 @@ public class DescribeVersionConfigRequest : Tea.TeaModel {
 }
 
 public class DescribeVersionConfigResponseBody : Tea.TeaModel {
+    public class HybridPaidGrayStatus : Tea.TeaModel {
+        public var ANTI_RANSOMWARE: Int32?
+
+        public var CSPM_INSTANCE: Int32?
+
+        public var HOST: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ANTI_RANSOMWARE != nil {
+                map["ANTI_RANSOMWARE"] = self.ANTI_RANSOMWARE!
+            }
+            if self.CSPM_INSTANCE != nil {
+                map["CSPM_INSTANCE"] = self.CSPM_INSTANCE!
+            }
+            if self.HOST != nil {
+                map["HOST"] = self.HOST!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ANTI_RANSOMWARE"] as? Int32 {
+                self.ANTI_RANSOMWARE = value
+            }
+            if let value = dict["CSPM_INSTANCE"] as? Int32 {
+                self.CSPM_INSTANCE = value
+            }
+            if let value = dict["HOST"] as? Int32 {
+                self.HOST = value
+            }
+        }
+    }
     public class TrialModuleList : Tea.TeaModel {
         public var name: String?
 
@@ -108146,9 +108305,9 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
 
     public var honeypotCapacity: Int64?
 
-    public var hybridPaidGrayStatus: String?
+    public var hybridPaidGrayStatus: DescribeVersionConfigResponseBody.HybridPaidGrayStatus?
 
-    public var hybridPaidModuleSwitchMap: Int32?
+    public var hybridPaidModuleSwitchMap: String?
 
     public var hybridPaidStatus: Int32?
 
@@ -108262,6 +108421,7 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.hybridPaidGrayStatus?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -108306,7 +108466,7 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
             map["HoneypotCapacity"] = self.honeypotCapacity!
         }
         if self.hybridPaidGrayStatus != nil {
-            map["HybridPaidGrayStatus"] = self.hybridPaidGrayStatus!
+            map["HybridPaidGrayStatus"] = self.hybridPaidGrayStatus?.toMap()
         }
         if self.hybridPaidModuleSwitchMap != nil {
             map["HybridPaidModuleSwitchMap"] = self.hybridPaidModuleSwitchMap!
@@ -108512,10 +108672,12 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
         if let value = dict["HoneypotCapacity"] as? Int64 {
             self.honeypotCapacity = value
         }
-        if let value = dict["HybridPaidGrayStatus"] as? String {
-            self.hybridPaidGrayStatus = value
+        if let value = dict["HybridPaidGrayStatus"] as? [String: Any?] {
+            var model = DescribeVersionConfigResponseBody.HybridPaidGrayStatus()
+            model.fromMap(value)
+            self.hybridPaidGrayStatus = model
         }
-        if let value = dict["HybridPaidModuleSwitchMap"] as? Int32 {
+        if let value = dict["HybridPaidModuleSwitchMap"] as? String {
             self.hybridPaidModuleSwitchMap = value
         }
         if let value = dict["HybridPaidStatus"] as? Int32 {
@@ -129118,6 +129280,8 @@ public class GetCanTrySasResponse : Tea.TeaModel {
 }
 
 public class GetCheckConfigRequest : Tea.TeaModel {
+    public var configId: String?
+
     public var resourceDirectoryAccountId: Int64?
 
     public override init() {
@@ -129134,6 +129298,9 @@ public class GetCheckConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
         if self.resourceDirectoryAccountId != nil {
             map["ResourceDirectoryAccountId"] = self.resourceDirectoryAccountId!
         }
@@ -129142,6 +129309,9 @@ public class GetCheckConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
         if let value = dict["ResourceDirectoryAccountId"] as? Int64 {
             self.resourceDirectoryAccountId = value
         }
@@ -129241,13 +129411,25 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var configId: String?
+
     public var cycleDays: [Int32]?
+
+    public var daysOfMonth: [Int32]?
 
     public var enableAddCheck: Bool?
 
     public var enableAutoCheck: Bool?
 
     public var endTime: Int32?
+
+    public var endTimeSeconds: Int32?
+
+    public var exists: Bool?
+
+    public var frequency: String?
+
+    public var isDefault: Bool?
 
     public var requestId: String?
 
@@ -129256,6 +129438,10 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
     public var standards: [GetCheckConfigResponseBody.Standards]?
 
     public var startTime: Int32?
+
+    public var startTimeSeconds: Int32?
+
+    public var strategyName: String?
 
     public override init() {
         super.init()
@@ -129271,8 +129457,14 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
         if self.cycleDays != nil {
             map["CycleDays"] = self.cycleDays!
+        }
+        if self.daysOfMonth != nil {
+            map["DaysOfMonth"] = self.daysOfMonth!
         }
         if self.enableAddCheck != nil {
             map["EnableAddCheck"] = self.enableAddCheck!
@@ -129282,6 +129474,18 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.endTimeSeconds != nil {
+            map["EndTimeSeconds"] = self.endTimeSeconds!
+        }
+        if self.exists != nil {
+            map["Exists"] = self.exists!
+        }
+        if self.frequency != nil {
+            map["Frequency"] = self.frequency!
+        }
+        if self.isDefault != nil {
+            map["IsDefault"] = self.isDefault!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -129303,13 +129507,25 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.startTimeSeconds != nil {
+            map["StartTimeSeconds"] = self.startTimeSeconds!
+        }
+        if self.strategyName != nil {
+            map["StrategyName"] = self.strategyName!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
         if let value = dict["CycleDays"] as? [Int32] {
             self.cycleDays = value
+        }
+        if let value = dict["DaysOfMonth"] as? [Int32] {
+            self.daysOfMonth = value
         }
         if let value = dict["EnableAddCheck"] as? Bool {
             self.enableAddCheck = value
@@ -129319,6 +129535,18 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? Int32 {
             self.endTime = value
+        }
+        if let value = dict["EndTimeSeconds"] as? Int32 {
+            self.endTimeSeconds = value
+        }
+        if let value = dict["Exists"] as? Bool {
+            self.exists = value
+        }
+        if let value = dict["Frequency"] as? String {
+            self.frequency = value
+        }
+        if let value = dict["IsDefault"] as? Bool {
+            self.isDefault = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -129351,6 +129579,12 @@ public class GetCheckConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? Int32 {
             self.startTime = value
+        }
+        if let value = dict["StartTimeSeconds"] as? Int32 {
+            self.startTimeSeconds = value
+        }
+        if let value = dict["StrategyName"] as? String {
+            self.strategyName = value
         }
     }
 }
@@ -204221,6 +204455,8 @@ public class ModifyCloudVendorAccountAKRequest : Tea.TeaModel {
 
     public var vendorAuthAlias: String?
 
+    public var vendorUserName: String?
+
     public override init() {
         super.init()
     }
@@ -204274,6 +204510,9 @@ public class ModifyCloudVendorAccountAKRequest : Tea.TeaModel {
         if self.vendorAuthAlias != nil {
             map["VendorAuthAlias"] = self.vendorAuthAlias!
         }
+        if self.vendorUserName != nil {
+            map["VendorUserName"] = self.vendorUserName!
+        }
         return map
     }
 
@@ -204317,6 +204556,9 @@ public class ModifyCloudVendorAccountAKRequest : Tea.TeaModel {
         }
         if let value = dict["VendorAuthAlias"] as? String {
             self.vendorAuthAlias = value
+        }
+        if let value = dict["VendorUserName"] as? String {
+            self.vendorUserName = value
         }
     }
 }
@@ -209363,6 +209605,8 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
 
     public var edrModuleSwitch: ModifyPostPayModuleSwitchRequest.EdrModuleSwitch?
 
+    public var freeTrial: Bool?
+
     public var postPaidHostAutoBind: Int32?
 
     public var postPaidHostAutoBindVersion: Int32?
@@ -209398,6 +209642,9 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
         if self.edrModuleSwitch != nil {
             map["EdrModuleSwitch"] = self.edrModuleSwitch?.toMap()
         }
+        if self.freeTrial != nil {
+            map["FreeTrial"] = self.freeTrial!
+        }
         if self.postPaidHostAutoBind != nil {
             map["PostPaidHostAutoBind"] = self.postPaidHostAutoBind!
         }
@@ -209429,6 +209676,9 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
             model.fromMap(value)
             self.edrModuleSwitch = model
         }
+        if let value = dict["FreeTrial"] as? Bool {
+            self.freeTrial = value
+        }
         if let value = dict["PostPaidHostAutoBind"] as? Int32 {
             self.postPaidHostAutoBind = value
         }
@@ -209455,6 +209705,8 @@ public class ModifyPostPayModuleSwitchShrinkRequest : Tea.TeaModel {
     public var dryRun: Bool?
 
     public var edrModuleSwitchShrink: String?
+
+    public var freeTrial: Bool?
 
     public var postPaidHostAutoBind: Int32?
 
@@ -209489,6 +209741,9 @@ public class ModifyPostPayModuleSwitchShrinkRequest : Tea.TeaModel {
         if self.edrModuleSwitchShrink != nil {
             map["EdrModuleSwitch"] = self.edrModuleSwitchShrink!
         }
+        if self.freeTrial != nil {
+            map["FreeTrial"] = self.freeTrial!
+        }
         if self.postPaidHostAutoBind != nil {
             map["PostPaidHostAutoBind"] = self.postPaidHostAutoBind!
         }
@@ -209517,6 +209772,9 @@ public class ModifyPostPayModuleSwitchShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EdrModuleSwitch"] as? String {
             self.edrModuleSwitchShrink = value
+        }
+        if let value = dict["FreeTrial"] as? Bool {
+            self.freeTrial = value
         }
         if let value = dict["PostPaidHostAutoBind"] as? Int32 {
             self.postPaidHostAutoBind = value
@@ -225496,6 +225754,8 @@ public class StopHoneypotResponse : Tea.TeaModel {
 }
 
 public class SubmitCheckRequest : Tea.TeaModel {
+    public var configId: String?
+
     public var resourceDirectoryAccountId: Int64?
 
     public var scanRange: String?
@@ -225516,6 +225776,9 @@ public class SubmitCheckRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
         if self.resourceDirectoryAccountId != nil {
             map["ResourceDirectoryAccountId"] = self.resourceDirectoryAccountId!
         }
@@ -225530,6 +225793,9 @@ public class SubmitCheckRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
         if let value = dict["ResourceDirectoryAccountId"] as? Int64 {
             self.resourceDirectoryAccountId = value
         }
