@@ -1224,9 +1224,13 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var appType: String?
 
+    public var assignmentType: String?
+
     public var displayName: String?
 
     public var isMultiTenant: Bool?
+
+    public var needPrincipalConsent: Bool?
 
     public var predefinedScopes: String?
 
@@ -1263,11 +1267,17 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.appType != nil {
             map["AppType"] = self.appType!
         }
+        if self.assignmentType != nil {
+            map["AssignmentType"] = self.assignmentType!
+        }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
         }
         if self.isMultiTenant != nil {
             map["IsMultiTenant"] = self.isMultiTenant!
+        }
+        if self.needPrincipalConsent != nil {
+            map["NeedPrincipalConsent"] = self.needPrincipalConsent!
         }
         if self.predefinedScopes != nil {
             map["PredefinedScopes"] = self.predefinedScopes!
@@ -1301,11 +1311,17 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["AppType"] as? String {
             self.appType = value
         }
+        if let value = dict["AssignmentType"] as? String {
+            self.assignmentType = value
+        }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
         }
         if let value = dict["IsMultiTenant"] as? Bool {
             self.isMultiTenant = value
+        }
+        if let value = dict["NeedPrincipalConsent"] as? Bool {
+            self.needPrincipalConsent = value
         }
         if let value = dict["PredefinedScopes"] as? String {
             self.predefinedScopes = value
@@ -1493,6 +1509,8 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
 
         public var appType: String?
 
+        public var assignmentType: String?
+
         public var createDate: String?
 
         public var delegatedScope: CreateApplicationResponseBody.Application.DelegatedScope?
@@ -1500,6 +1518,8 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
         public var displayName: String?
 
         public var isMultiTenant: Bool?
+
+        public var needPrincipalConsent: Bool?
 
         public var protocolVersion: String?
 
@@ -1542,6 +1562,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
             if self.appType != nil {
                 map["AppType"] = self.appType!
             }
+            if self.assignmentType != nil {
+                map["AssignmentType"] = self.assignmentType!
+            }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
@@ -1553,6 +1576,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
             }
             if self.isMultiTenant != nil {
                 map["IsMultiTenant"] = self.isMultiTenant!
+            }
+            if self.needPrincipalConsent != nil {
+                map["NeedPrincipalConsent"] = self.needPrincipalConsent!
             }
             if self.protocolVersion != nil {
                 map["ProtocolVersion"] = self.protocolVersion!
@@ -1589,6 +1615,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
             if let value = dict["AppType"] as? String {
                 self.appType = value
             }
+            if let value = dict["AssignmentType"] as? String {
+                self.assignmentType = value
+            }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value
             }
@@ -1602,6 +1631,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsMultiTenant"] as? Bool {
                 self.isMultiTenant = value
+            }
+            if let value = dict["NeedPrincipalConsent"] as? Bool {
+                self.needPrincipalConsent = value
             }
             if let value = dict["ProtocolVersion"] as? String {
                 self.protocolVersion = value
@@ -1707,6 +1739,134 @@ public class CreateApplicationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateApplicationAssignmentRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var principalName: String?
+
+    public var principalType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.principalName != nil {
+            map["PrincipalName"] = self.principalName!
+        }
+        if self.principalType != nil {
+            map["PrincipalType"] = self.principalType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["PrincipalName"] as? String {
+            self.principalName = value
+        }
+        if let value = dict["PrincipalType"] as? String {
+            self.principalType = value
+        }
+    }
+}
+
+public class CreateApplicationAssignmentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateApplicationAssignmentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateApplicationAssignmentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateApplicationAssignmentResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -3915,6 +4075,134 @@ public class DeleteApplicationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteApplicationAssignmentRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var principalName: String?
+
+    public var principalType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.principalName != nil {
+            map["PrincipalName"] = self.principalName!
+        }
+        if self.principalType != nil {
+            map["PrincipalType"] = self.principalType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["PrincipalName"] as? String {
+            self.principalName = value
+        }
+        if let value = dict["PrincipalType"] as? String {
+            self.principalType = value
+        }
+    }
+}
+
+public class DeleteApplicationAssignmentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteApplicationAssignmentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteApplicationAssignmentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteApplicationAssignmentResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -7105,6 +7393,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var appType: String?
 
+        public var assignmentType: String?
+
         public var createDate: String?
 
         public var delegatedScope: GetApplicationResponseBody.Application.DelegatedScope?
@@ -7112,6 +7402,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         public var displayName: String?
 
         public var isMultiTenant: Bool?
+
+        public var needPrincipalConsent: Bool?
 
         public var protocolVersion: String?
 
@@ -7154,6 +7446,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.appType != nil {
                 map["AppType"] = self.appType!
             }
+            if self.assignmentType != nil {
+                map["AssignmentType"] = self.assignmentType!
+            }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
@@ -7165,6 +7460,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if self.isMultiTenant != nil {
                 map["IsMultiTenant"] = self.isMultiTenant!
+            }
+            if self.needPrincipalConsent != nil {
+                map["NeedPrincipalConsent"] = self.needPrincipalConsent!
             }
             if self.protocolVersion != nil {
                 map["ProtocolVersion"] = self.protocolVersion!
@@ -7201,6 +7499,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if let value = dict["AppType"] as? String {
                 self.appType = value
             }
+            if let value = dict["AssignmentType"] as? String {
+                self.assignmentType = value
+            }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value
             }
@@ -7214,6 +7515,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsMultiTenant"] as? Bool {
                 self.isMultiTenant = value
+            }
+            if let value = dict["NeedPrincipalConsent"] as? Bool {
+                self.needPrincipalConsent = value
             }
             if let value = dict["ProtocolVersion"] as? String {
                 self.protocolVersion = value
@@ -12182,6 +12486,520 @@ public class ListAppSecretIdsResponse : Tea.TeaModel {
     }
 }
 
+public class ListApplicationAssignmentsRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListApplicationAssignmentsResponseBody : Tea.TeaModel {
+    public class ApplicationAssignment : Tea.TeaModel {
+        public class ApplicationAssignmentInfo : Tea.TeaModel {
+            public var appId: String?
+
+            public var createTime: String?
+
+            public var principalName: String?
+
+            public var principalType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.principalName != nil {
+                    map["PrincipalName"] = self.principalName!
+                }
+                if self.principalType != nil {
+                    map["PrincipalType"] = self.principalType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppId"] as? String {
+                    self.appId = value
+                }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["PrincipalName"] as? String {
+                    self.principalName = value
+                }
+                if let value = dict["PrincipalType"] as? String {
+                    self.principalType = value
+                }
+            }
+        }
+        public var applicationAssignmentInfo: [ListApplicationAssignmentsResponseBody.ApplicationAssignment.ApplicationAssignmentInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationAssignmentInfo != nil {
+                var tmp : [Any] = []
+                for k in self.applicationAssignmentInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationAssignmentInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationAssignmentInfo"] as? [Any?] {
+                var tmp : [ListApplicationAssignmentsResponseBody.ApplicationAssignment.ApplicationAssignmentInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListApplicationAssignmentsResponseBody.ApplicationAssignment.ApplicationAssignmentInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationAssignmentInfo = tmp
+            }
+        }
+    }
+    public var applicationAssignment: ListApplicationAssignmentsResponseBody.ApplicationAssignment?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.applicationAssignment?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationAssignment != nil {
+            map["ApplicationAssignment"] = self.applicationAssignment?.toMap()
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationAssignment"] as? [String: Any?] {
+            var model = ListApplicationAssignmentsResponseBody.ApplicationAssignment()
+            model.fromMap(value)
+            self.applicationAssignment = model
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListApplicationAssignmentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListApplicationAssignmentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListApplicationAssignmentsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListApplicationAssignmentsForPrincipalRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var principalName: String?
+
+    public var principalType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.principalName != nil {
+            map["PrincipalName"] = self.principalName!
+        }
+        if self.principalType != nil {
+            map["PrincipalType"] = self.principalType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PrincipalName"] as? String {
+            self.principalName = value
+        }
+        if let value = dict["PrincipalType"] as? String {
+            self.principalType = value
+        }
+    }
+}
+
+public class ListApplicationAssignmentsForPrincipalResponseBody : Tea.TeaModel {
+    public class ApplicationAssignment : Tea.TeaModel {
+        public class ApplicationAssignmentInfo : Tea.TeaModel {
+            public var appId: String?
+
+            public var createTime: String?
+
+            public var principalName: String?
+
+            public var principalType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.principalName != nil {
+                    map["PrincipalName"] = self.principalName!
+                }
+                if self.principalType != nil {
+                    map["PrincipalType"] = self.principalType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppId"] as? String {
+                    self.appId = value
+                }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["PrincipalName"] as? String {
+                    self.principalName = value
+                }
+                if let value = dict["PrincipalType"] as? String {
+                    self.principalType = value
+                }
+            }
+        }
+        public var applicationAssignmentInfo: [ListApplicationAssignmentsForPrincipalResponseBody.ApplicationAssignment.ApplicationAssignmentInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationAssignmentInfo != nil {
+                var tmp : [Any] = []
+                for k in self.applicationAssignmentInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationAssignmentInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationAssignmentInfo"] as? [Any?] {
+                var tmp : [ListApplicationAssignmentsForPrincipalResponseBody.ApplicationAssignment.ApplicationAssignmentInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListApplicationAssignmentsForPrincipalResponseBody.ApplicationAssignment.ApplicationAssignmentInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationAssignmentInfo = tmp
+            }
+        }
+    }
+    public var applicationAssignment: ListApplicationAssignmentsForPrincipalResponseBody.ApplicationAssignment?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.applicationAssignment?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationAssignment != nil {
+            map["ApplicationAssignment"] = self.applicationAssignment?.toMap()
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationAssignment"] as? [String: Any?] {
+            var model = ListApplicationAssignmentsForPrincipalResponseBody.ApplicationAssignment()
+            model.fromMap(value)
+            self.applicationAssignment = model
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListApplicationAssignmentsForPrincipalResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListApplicationAssignmentsForPrincipalResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListApplicationAssignmentsForPrincipalResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListApplicationProvisionInfosRequest : Tea.TeaModel {
     public var sourceType: String?
 
@@ -12735,6 +13553,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var appType: String?
 
+            public var assignmentType: String?
+
             public var createDate: String?
 
             public var delegatedScope: ListApplicationsResponseBody.Applications.Application.DelegatedScope?
@@ -12742,6 +13562,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             public var displayName: String?
 
             public var isMultiTenant: Bool?
+
+            public var needPrincipalConsent: Bool?
 
             public var protocolVersion: String?
 
@@ -12784,6 +13606,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 if self.appType != nil {
                     map["AppType"] = self.appType!
                 }
+                if self.assignmentType != nil {
+                    map["AssignmentType"] = self.assignmentType!
+                }
                 if self.createDate != nil {
                     map["CreateDate"] = self.createDate!
                 }
@@ -12795,6 +13620,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.isMultiTenant != nil {
                     map["IsMultiTenant"] = self.isMultiTenant!
+                }
+                if self.needPrincipalConsent != nil {
+                    map["NeedPrincipalConsent"] = self.needPrincipalConsent!
                 }
                 if self.protocolVersion != nil {
                     map["ProtocolVersion"] = self.protocolVersion!
@@ -12831,6 +13659,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 if let value = dict["AppType"] as? String {
                     self.appType = value
                 }
+                if let value = dict["AssignmentType"] as? String {
+                    self.assignmentType = value
+                }
                 if let value = dict["CreateDate"] as? String {
                     self.createDate = value
                 }
@@ -12844,6 +13675,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IsMultiTenant"] as? Bool {
                     self.isMultiTenant = value
+                }
+                if let value = dict["NeedPrincipalConsent"] as? Bool {
+                    self.needPrincipalConsent = value
                 }
                 if let value = dict["ProtocolVersion"] as? String {
                     self.protocolVersion = value
@@ -21187,9 +22021,13 @@ public class UpdateApplicationRequest : Tea.TeaModel {
 
     public var newAccessTokenValidity: Int32?
 
+    public var newAssignmentType: String?
+
     public var newDisplayName: String?
 
     public var newIsMultiTenant: Bool?
+
+    public var newNeedPrincipalConsent: Bool?
 
     public var newPredefinedScopes: String?
 
@@ -21221,11 +22059,17 @@ public class UpdateApplicationRequest : Tea.TeaModel {
         if self.newAccessTokenValidity != nil {
             map["NewAccessTokenValidity"] = self.newAccessTokenValidity!
         }
+        if self.newAssignmentType != nil {
+            map["NewAssignmentType"] = self.newAssignmentType!
+        }
         if self.newDisplayName != nil {
             map["NewDisplayName"] = self.newDisplayName!
         }
         if self.newIsMultiTenant != nil {
             map["NewIsMultiTenant"] = self.newIsMultiTenant!
+        }
+        if self.newNeedPrincipalConsent != nil {
+            map["NewNeedPrincipalConsent"] = self.newNeedPrincipalConsent!
         }
         if self.newPredefinedScopes != nil {
             map["NewPredefinedScopes"] = self.newPredefinedScopes!
@@ -21253,11 +22097,17 @@ public class UpdateApplicationRequest : Tea.TeaModel {
         if let value = dict["NewAccessTokenValidity"] as? Int32 {
             self.newAccessTokenValidity = value
         }
+        if let value = dict["NewAssignmentType"] as? String {
+            self.newAssignmentType = value
+        }
         if let value = dict["NewDisplayName"] as? String {
             self.newDisplayName = value
         }
         if let value = dict["NewIsMultiTenant"] as? Bool {
             self.newIsMultiTenant = value
+        }
+        if let value = dict["NewNeedPrincipalConsent"] as? Bool {
+            self.newNeedPrincipalConsent = value
         }
         if let value = dict["NewPredefinedScopes"] as? String {
             self.newPredefinedScopes = value
@@ -21442,6 +22292,8 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
 
         public var appType: String?
 
+        public var assignmentType: String?
+
         public var createDate: String?
 
         public var delegatedScope: UpdateApplicationResponseBody.Application.DelegatedScope?
@@ -21449,6 +22301,8 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
         public var displayName: String?
 
         public var isMultiTenant: Bool?
+
+        public var needPrincipalConsent: Bool?
 
         public var protocolVersion: String?
 
@@ -21491,6 +22345,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
             if self.appType != nil {
                 map["AppType"] = self.appType!
             }
+            if self.assignmentType != nil {
+                map["AssignmentType"] = self.assignmentType!
+            }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
@@ -21502,6 +22359,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
             }
             if self.isMultiTenant != nil {
                 map["IsMultiTenant"] = self.isMultiTenant!
+            }
+            if self.needPrincipalConsent != nil {
+                map["NeedPrincipalConsent"] = self.needPrincipalConsent!
             }
             if self.protocolVersion != nil {
                 map["ProtocolVersion"] = self.protocolVersion!
@@ -21538,6 +22398,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
             if let value = dict["AppType"] as? String {
                 self.appType = value
             }
+            if let value = dict["AssignmentType"] as? String {
+                self.assignmentType = value
+            }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value
             }
@@ -21551,6 +22414,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsMultiTenant"] as? Bool {
                 self.isMultiTenant = value
+            }
+            if let value = dict["NeedPrincipalConsent"] as? Bool {
+                self.needPrincipalConsent = value
             }
             if let value = dict["ProtocolVersion"] as? String {
                 self.protocolVersion = value

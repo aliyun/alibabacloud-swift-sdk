@@ -274,11 +274,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appType)) {
             query["AppType"] = request.appType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.assignmentType)) {
+            query["AssignmentType"] = request.assignmentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             query["DisplayName"] = request.displayName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isMultiTenant)) {
             query["IsMultiTenant"] = request.isMultiTenant!;
+        }
+        if (!TeaUtils.Client.isUnset(request.needPrincipalConsent)) {
+            query["NeedPrincipalConsent"] = request.needPrincipalConsent!;
         }
         if (!TeaUtils.Client.isUnset(request.predefinedScopes)) {
             query["PredefinedScopes"] = request.predefinedScopes ?? "";
@@ -320,6 +326,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createApplication(_ request: CreateApplicationRequest) async throws -> CreateApplicationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createApplicationWithOptions(request as! CreateApplicationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createApplicationAssignmentWithOptions(_ request: CreateApplicationAssignmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateApplicationAssignmentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalName)) {
+            query["PrincipalName"] = request.principalName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalType)) {
+            query["PrincipalType"] = request.principalType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateApplicationAssignment",
+            "version": "2019-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateApplicationAssignmentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createApplicationAssignment(_ request: CreateApplicationAssignmentRequest) async throws -> CreateApplicationAssignmentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createApplicationAssignmentWithOptions(request as! CreateApplicationAssignmentRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -736,6 +779,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteApplication(_ request: DeleteApplicationRequest) async throws -> DeleteApplicationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteApplicationWithOptions(request as! DeleteApplicationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteApplicationAssignmentWithOptions(_ request: DeleteApplicationAssignmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteApplicationAssignmentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalName)) {
+            query["PrincipalName"] = request.principalName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalType)) {
+            query["PrincipalType"] = request.principalType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteApplicationAssignment",
+            "version": "2019-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteApplicationAssignmentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteApplicationAssignment(_ request: DeleteApplicationAssignmentRequest) async throws -> DeleteApplicationAssignmentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteApplicationAssignmentWithOptions(request as! DeleteApplicationAssignmentRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2063,6 +2143,83 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAppSecretIds(_ request: ListAppSecretIdsRequest) async throws -> ListAppSecretIdsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listAppSecretIdsWithOptions(request as! ListAppSecretIdsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listApplicationAssignmentsWithOptions(_ request: ListApplicationAssignmentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationAssignmentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListApplicationAssignments",
+            "version": "2019-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListApplicationAssignmentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listApplicationAssignments(_ request: ListApplicationAssignmentsRequest) async throws -> ListApplicationAssignmentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listApplicationAssignmentsWithOptions(request as! ListApplicationAssignmentsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listApplicationAssignmentsForPrincipalWithOptions(_ request: ListApplicationAssignmentsForPrincipalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationAssignmentsForPrincipalResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalName)) {
+            query["PrincipalName"] = request.principalName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalType)) {
+            query["PrincipalType"] = request.principalType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListApplicationAssignmentsForPrincipal",
+            "version": "2019-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListApplicationAssignmentsForPrincipalResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listApplicationAssignmentsForPrincipal(_ request: ListApplicationAssignmentsForPrincipalRequest) async throws -> ListApplicationAssignmentsForPrincipalResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listApplicationAssignmentsForPrincipalWithOptions(request as! ListApplicationAssignmentsForPrincipalRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3400,11 +3557,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.newAccessTokenValidity)) {
             query["NewAccessTokenValidity"] = request.newAccessTokenValidity!;
         }
+        if (!TeaUtils.Client.isUnset(request.newAssignmentType)) {
+            query["NewAssignmentType"] = request.newAssignmentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.newDisplayName)) {
             query["NewDisplayName"] = request.newDisplayName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.newIsMultiTenant)) {
             query["NewIsMultiTenant"] = request.newIsMultiTenant!;
+        }
+        if (!TeaUtils.Client.isUnset(request.newNeedPrincipalConsent)) {
+            query["NewNeedPrincipalConsent"] = request.newNeedPrincipalConsent!;
         }
         if (!TeaUtils.Client.isUnset(request.newPredefinedScopes)) {
             query["NewPredefinedScopes"] = request.newPredefinedScopes ?? "";
