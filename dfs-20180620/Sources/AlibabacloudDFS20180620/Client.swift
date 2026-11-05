@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dfs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -273,6 +273,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.inputRegionId)) {
             query["InputRegionId"] = request.inputRegionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.meteringMode)) {
+            query["MeteringMode"] = request.meteringMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.partitionNumber)) {
             query["PartitionNumber"] = request.partitionNumber!;
         }
@@ -417,6 +420,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.zoneIdsShrink)) {
             query["ZoneIds"] = request.zoneIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["storageType"] = request.storageType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1589,6 +1595,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.inputRegionId)) {
             query["InputRegionId"] = request.inputRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.meteringMode)) {
+            query["MeteringMode"] = request.meteringMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.provisionedThroughputInMiBps)) {
             query["ProvisionedThroughputInMiBps"] = request.provisionedThroughputInMiBps!;

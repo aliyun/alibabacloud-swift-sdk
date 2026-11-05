@@ -986,6 +986,8 @@ public class CreateFileSystemRequest : Tea.TeaModel {
 
     public var inputRegionId: String?
 
+    public var meteringMode: String?
+
     public var partitionNumber: Int32?
 
     public var protocolType: String?
@@ -1031,6 +1033,9 @@ public class CreateFileSystemRequest : Tea.TeaModel {
         if self.inputRegionId != nil {
             map["InputRegionId"] = self.inputRegionId!
         }
+        if self.meteringMode != nil {
+            map["MeteringMode"] = self.meteringMode!
+        }
         if self.partitionNumber != nil {
             map["PartitionNumber"] = self.partitionNumber!
         }
@@ -1074,6 +1079,9 @@ public class CreateFileSystemRequest : Tea.TeaModel {
         }
         if let value = dict["InputRegionId"] as? String {
             self.inputRegionId = value
+        }
+        if let value = dict["MeteringMode"] as? String {
+            self.meteringMode = value
         }
         if let value = dict["PartitionNumber"] as? Int32 {
             self.partitionNumber = value
@@ -1388,6 +1396,8 @@ public class CreateQosPolicyRequest : Tea.TeaModel {
 
     public var zoneIds: [String]?
 
+    public var storageType: String?
+
     public override init() {
         super.init()
     }
@@ -1432,6 +1442,9 @@ public class CreateQosPolicyRequest : Tea.TeaModel {
         if self.zoneIds != nil {
             map["ZoneIds"] = self.zoneIds!
         }
+        if self.storageType != nil {
+            map["storageType"] = self.storageType!
+        }
         return map
     }
 
@@ -1467,6 +1480,9 @@ public class CreateQosPolicyRequest : Tea.TeaModel {
         if let value = dict["ZoneIds"] as? [String] {
             self.zoneIds = value
         }
+        if let value = dict["storageType"] as? String {
+            self.storageType = value
+        }
     }
 }
 
@@ -1490,6 +1506,8 @@ public class CreateQosPolicyShrinkRequest : Tea.TeaModel {
     public var reqTagsShrink: String?
 
     public var zoneIdsShrink: String?
+
+    public var storageType: String?
 
     public override init() {
         super.init()
@@ -1535,6 +1553,9 @@ public class CreateQosPolicyShrinkRequest : Tea.TeaModel {
         if self.zoneIdsShrink != nil {
             map["ZoneIds"] = self.zoneIdsShrink!
         }
+        if self.storageType != nil {
+            map["storageType"] = self.storageType!
+        }
         return map
     }
 
@@ -1569,6 +1590,9 @@ public class CreateQosPolicyShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ZoneIds"] as? String {
             self.zoneIdsShrink = value
+        }
+        if let value = dict["storageType"] as? String {
+            self.storageType = value
         }
     }
 }
@@ -4984,6 +5008,8 @@ public class GetFileSystemResponseBody : Tea.TeaModel {
 
         public var fileSystemName: String?
 
+        public var meteringMode: String?
+
         public var meteringSpaceSize: Double?
 
         public var mountPointCount: Int64?
@@ -5037,6 +5063,9 @@ public class GetFileSystemResponseBody : Tea.TeaModel {
             }
             if self.fileSystemName != nil {
                 map["FileSystemName"] = self.fileSystemName!
+            }
+            if self.meteringMode != nil {
+                map["MeteringMode"] = self.meteringMode!
             }
             if self.meteringSpaceSize != nil {
                 map["MeteringSpaceSize"] = self.meteringSpaceSize!
@@ -5096,6 +5125,9 @@ public class GetFileSystemResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileSystemName"] as? String {
                 self.fileSystemName = value
+            }
+            if let value = dict["MeteringMode"] as? String {
+                self.meteringMode = value
             }
             if let value = dict["MeteringSpaceSize"] as? Double {
                 self.meteringSpaceSize = value
@@ -6582,6 +6614,8 @@ public class ListFileSystemsResponseBody : Tea.TeaModel {
 
         public var fileSystemName: String?
 
+        public var meteringMode: String?
+
         public var meteringSpaceSize: Double?
 
         public var mountPointCount: Int64?
@@ -6635,6 +6669,9 @@ public class ListFileSystemsResponseBody : Tea.TeaModel {
             }
             if self.fileSystemName != nil {
                 map["FileSystemName"] = self.fileSystemName!
+            }
+            if self.meteringMode != nil {
+                map["MeteringMode"] = self.meteringMode!
             }
             if self.meteringSpaceSize != nil {
                 map["MeteringSpaceSize"] = self.meteringSpaceSize!
@@ -6694,6 +6731,9 @@ public class ListFileSystemsResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileSystemName"] as? String {
                 self.fileSystemName = value
+            }
+            if let value = dict["MeteringMode"] as? String {
+                self.meteringMode = value
             }
             if let value = dict["MeteringSpaceSize"] as? Double {
                 self.meteringSpaceSize = value
@@ -7966,6 +8006,8 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
 
     public var inputRegionId: String?
 
+    public var meteringMode: String?
+
     public var provisionedThroughputInMiBps: Int64?
 
     public var spaceCapacity: Int64?
@@ -7998,6 +8040,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
         if self.inputRegionId != nil {
             map["InputRegionId"] = self.inputRegionId!
         }
+        if self.meteringMode != nil {
+            map["MeteringMode"] = self.meteringMode!
+        }
         if self.provisionedThroughputInMiBps != nil {
             map["ProvisionedThroughputInMiBps"] = self.provisionedThroughputInMiBps!
         }
@@ -8023,6 +8068,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
         }
         if let value = dict["InputRegionId"] as? String {
             self.inputRegionId = value
+        }
+        if let value = dict["MeteringMode"] as? String {
+            self.meteringMode = value
         }
         if let value = dict["ProvisionedThroughputInMiBps"] as? Int64 {
             self.provisionedThroughputInMiBps = value
