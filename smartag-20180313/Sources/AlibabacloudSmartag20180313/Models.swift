@@ -2133,9 +2133,59 @@ public class AssociateSmartAGWithApplicationBandwidthPackageResponse : Tea.TeaMo
 }
 
 public class AttachCcnInstanceToCenRequest : Tea.TeaModel {
+    public class RegionBindingList : Tea.TeaModel {
+        public var cidrBlock: String?
+
+        public var regionId: String?
+
+        public var transitRouterId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrBlock != nil {
+                map["CidrBlock"] = self.cidrBlock!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.transitRouterId != nil {
+                map["TransitRouterId"] = self.transitRouterId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CidrBlock"] as? String {
+                self.cidrBlock = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["TransitRouterId"] as? String {
+                self.transitRouterId = value
+            }
+        }
+    }
     public var ccnId: String?
 
     public var cenId: String?
+
+    public var cidrAllocationMode: String?
+
+    public var regionBindingList: [AttachCcnInstanceToCenRequest.RegionBindingList]?
 
     public var regionId: String?
 
@@ -2161,6 +2211,16 @@ public class AttachCcnInstanceToCenRequest : Tea.TeaModel {
         if self.cenId != nil {
             map["CenId"] = self.cenId!
         }
+        if self.cidrAllocationMode != nil {
+            map["CidrAllocationMode"] = self.cidrAllocationMode!
+        }
+        if self.regionBindingList != nil {
+            var tmp : [Any] = []
+            for k in self.regionBindingList! {
+                tmp.append(k.toMap())
+            }
+            map["RegionBindingList"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -2177,6 +2237,93 @@ public class AttachCcnInstanceToCenRequest : Tea.TeaModel {
         }
         if let value = dict["CenId"] as? String {
             self.cenId = value
+        }
+        if let value = dict["CidrAllocationMode"] as? String {
+            self.cidrAllocationMode = value
+        }
+        if let value = dict["RegionBindingList"] as? [Any?] {
+            var tmp : [AttachCcnInstanceToCenRequest.RegionBindingList] = []
+            for v in value {
+                if v != nil {
+                    var model = AttachCcnInstanceToCenRequest.RegionBindingList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.regionBindingList = tmp
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Subnet"] as? String {
+            self.subnet = value
+        }
+    }
+}
+
+public class AttachCcnInstanceToCenShrinkRequest : Tea.TeaModel {
+    public var ccnId: String?
+
+    public var cenId: String?
+
+    public var cidrAllocationMode: String?
+
+    public var regionBindingListShrink: String?
+
+    public var regionId: String?
+
+    public var subnet: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ccnId != nil {
+            map["CcnId"] = self.ccnId!
+        }
+        if self.cenId != nil {
+            map["CenId"] = self.cenId!
+        }
+        if self.cidrAllocationMode != nil {
+            map["CidrAllocationMode"] = self.cidrAllocationMode!
+        }
+        if self.regionBindingListShrink != nil {
+            map["RegionBindingList"] = self.regionBindingListShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.subnet != nil {
+            map["Subnet"] = self.subnet!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CcnId"] as? String {
+            self.ccnId = value
+        }
+        if let value = dict["CenId"] as? String {
+            self.cenId = value
+        }
+        if let value = dict["CidrAllocationMode"] as? String {
+            self.cidrAllocationMode = value
+        }
+        if let value = dict["RegionBindingList"] as? String {
+            self.regionBindingListShrink = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -11287,15 +11434,333 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class TrNetworkConfig : Tea.TeaModel {
+                public class RegionBindingList : Tea.TeaModel {
+                    public class RegionBinding : Tea.TeaModel {
+                        public var cidrBlock: String?
+
+                        public var regionId: String?
+
+                        public var relayCidrBlock: String?
+
+                        public var status: String?
+
+                        public var transitRouterId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.cidrBlock != nil {
+                                map["CidrBlock"] = self.cidrBlock!
+                            }
+                            if self.regionId != nil {
+                                map["RegionId"] = self.regionId!
+                            }
+                            if self.relayCidrBlock != nil {
+                                map["RelayCidrBlock"] = self.relayCidrBlock!
+                            }
+                            if self.status != nil {
+                                map["Status"] = self.status!
+                            }
+                            if self.transitRouterId != nil {
+                                map["TransitRouterId"] = self.transitRouterId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["CidrBlock"] as? String {
+                                self.cidrBlock = value
+                            }
+                            if let value = dict["RegionId"] as? String {
+                                self.regionId = value
+                            }
+                            if let value = dict["RelayCidrBlock"] as? String {
+                                self.relayCidrBlock = value
+                            }
+                            if let value = dict["Status"] as? String {
+                                self.status = value
+                            }
+                            if let value = dict["TransitRouterId"] as? String {
+                                self.transitRouterId = value
+                            }
+                        }
+                    }
+                    public var regionBinding: [DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig.RegionBindingList.RegionBinding]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.regionBinding != nil {
+                            var tmp : [Any] = []
+                            for k in self.regionBinding! {
+                                tmp.append(k.toMap())
+                            }
+                            map["RegionBinding"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["RegionBinding"] as? [Any?] {
+                            var tmp : [DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig.RegionBindingList.RegionBinding] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig.RegionBindingList.RegionBinding()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.regionBinding = tmp
+                        }
+                    }
+                }
+                public var cidrAllocationMode: String?
+
+                public var regionBindingList: DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig.RegionBindingList?
+
+                public var subnet: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.regionBindingList?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidrAllocationMode != nil {
+                        map["CidrAllocationMode"] = self.cidrAllocationMode!
+                    }
+                    if self.regionBindingList != nil {
+                        map["RegionBindingList"] = self.regionBindingList?.toMap()
+                    }
+                    if self.subnet != nil {
+                        map["Subnet"] = self.subnet!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CidrAllocationMode"] as? String {
+                        self.cidrAllocationMode = value
+                    }
+                    if let value = dict["RegionBindingList"] as? [String: Any?] {
+                        var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig.RegionBindingList()
+                        model.fromMap(value)
+                        self.regionBindingList = model
+                    }
+                    if let value = dict["Subnet"] as? String {
+                        self.subnet = value
+                    }
+                }
+            }
+            public class VpcNetworkConfig : Tea.TeaModel {
+                public class RegionBindingList : Tea.TeaModel {
+                    public class RegionBinding : Tea.TeaModel {
+                        public var regionId: String?
+
+                        public var relayCidrBlock: String?
+
+                        public var status: String?
+
+                        public var vpcCidrBlock: String?
+
+                        public var vpcId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.regionId != nil {
+                                map["RegionId"] = self.regionId!
+                            }
+                            if self.relayCidrBlock != nil {
+                                map["RelayCidrBlock"] = self.relayCidrBlock!
+                            }
+                            if self.status != nil {
+                                map["Status"] = self.status!
+                            }
+                            if self.vpcCidrBlock != nil {
+                                map["VpcCidrBlock"] = self.vpcCidrBlock!
+                            }
+                            if self.vpcId != nil {
+                                map["VpcId"] = self.vpcId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["RegionId"] as? String {
+                                self.regionId = value
+                            }
+                            if let value = dict["RelayCidrBlock"] as? String {
+                                self.relayCidrBlock = value
+                            }
+                            if let value = dict["Status"] as? String {
+                                self.status = value
+                            }
+                            if let value = dict["VpcCidrBlock"] as? String {
+                                self.vpcCidrBlock = value
+                            }
+                            if let value = dict["VpcId"] as? String {
+                                self.vpcId = value
+                            }
+                        }
+                    }
+                    public var regionBinding: [DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig.RegionBindingList.RegionBinding]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.regionBinding != nil {
+                            var tmp : [Any] = []
+                            for k in self.regionBinding! {
+                                tmp.append(k.toMap())
+                            }
+                            map["RegionBinding"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["RegionBinding"] as? [Any?] {
+                            var tmp : [DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig.RegionBindingList.RegionBinding] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig.RegionBindingList.RegionBinding()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.regionBinding = tmp
+                        }
+                    }
+                }
+                public var cidrAllocationMode: String?
+
+                public var regionBindingList: DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig.RegionBindingList?
+
+                public var subnet: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.regionBindingList?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidrAllocationMode != nil {
+                        map["CidrAllocationMode"] = self.cidrAllocationMode!
+                    }
+                    if self.regionBindingList != nil {
+                        map["RegionBindingList"] = self.regionBindingList?.toMap()
+                    }
+                    if self.subnet != nil {
+                        map["Subnet"] = self.subnet!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CidrAllocationMode"] as? String {
+                        self.cidrAllocationMode = value
+                    }
+                    if let value = dict["RegionBindingList"] as? [String: Any?] {
+                        var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig.RegionBindingList()
+                        model.fromMap(value)
+                        self.regionBindingList = model
+                    }
+                    if let value = dict["Subnet"] as? String {
+                        self.subnet = value
+                    }
+                }
+            }
             public var associatedCenId: String?
 
             public var associatedCenOwnerId: String?
 
+            public var associatedCenStatus: String?
+
             public var associatedCloudBoxCount: String?
+
+            public var associatedVpcStatus: String?
 
             public var availableCloudBoxCount: String?
 
             public var ccnId: String?
+
+            public var cenStatusErrorCode: String?
+
+            public var cenStatusErrorMessage: String?
 
             public var cidrBlock: String?
 
@@ -11309,6 +11774,8 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
 
             public var newAgw: Bool?
 
+            public var processingCenId: String?
+
             public var resourceGroupId: String?
 
             public var snatCidrBlock: String?
@@ -11316,6 +11783,14 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
             public var subnet: String?
 
             public var tags: DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.Tags?
+
+            public var trNetworkConfig: DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig?
+
+            public var vpcNetworkConfig: DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig?
+
+            public var vpcStatusErrorCode: String?
+
+            public var vpcStatusErrorMessage: String?
 
             public override init() {
                 super.init()
@@ -11328,6 +11803,8 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.tags?.validate()
+                try self.trNetworkConfig?.validate()
+                try self.vpcNetworkConfig?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -11338,14 +11815,26 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                 if self.associatedCenOwnerId != nil {
                     map["AssociatedCenOwnerId"] = self.associatedCenOwnerId!
                 }
+                if self.associatedCenStatus != nil {
+                    map["AssociatedCenStatus"] = self.associatedCenStatus!
+                }
                 if self.associatedCloudBoxCount != nil {
                     map["AssociatedCloudBoxCount"] = self.associatedCloudBoxCount!
+                }
+                if self.associatedVpcStatus != nil {
+                    map["AssociatedVpcStatus"] = self.associatedVpcStatus!
                 }
                 if self.availableCloudBoxCount != nil {
                     map["AvailableCloudBoxCount"] = self.availableCloudBoxCount!
                 }
                 if self.ccnId != nil {
                     map["CcnId"] = self.ccnId!
+                }
+                if self.cenStatusErrorCode != nil {
+                    map["CenStatusErrorCode"] = self.cenStatusErrorCode!
+                }
+                if self.cenStatusErrorMessage != nil {
+                    map["CenStatusErrorMessage"] = self.cenStatusErrorMessage!
                 }
                 if self.cidrBlock != nil {
                     map["CidrBlock"] = self.cidrBlock!
@@ -11365,6 +11854,9 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                 if self.newAgw != nil {
                     map["NewAgw"] = self.newAgw!
                 }
+                if self.processingCenId != nil {
+                    map["ProcessingCenId"] = self.processingCenId!
+                }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
@@ -11377,6 +11869,18 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
+                if self.trNetworkConfig != nil {
+                    map["TrNetworkConfig"] = self.trNetworkConfig?.toMap()
+                }
+                if self.vpcNetworkConfig != nil {
+                    map["VpcNetworkConfig"] = self.vpcNetworkConfig?.toMap()
+                }
+                if self.vpcStatusErrorCode != nil {
+                    map["VpcStatusErrorCode"] = self.vpcStatusErrorCode!
+                }
+                if self.vpcStatusErrorMessage != nil {
+                    map["VpcStatusErrorMessage"] = self.vpcStatusErrorMessage!
+                }
                 return map
             }
 
@@ -11388,14 +11892,26 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                 if let value = dict["AssociatedCenOwnerId"] as? String {
                     self.associatedCenOwnerId = value
                 }
+                if let value = dict["AssociatedCenStatus"] as? String {
+                    self.associatedCenStatus = value
+                }
                 if let value = dict["AssociatedCloudBoxCount"] as? String {
                     self.associatedCloudBoxCount = value
+                }
+                if let value = dict["AssociatedVpcStatus"] as? String {
+                    self.associatedVpcStatus = value
                 }
                 if let value = dict["AvailableCloudBoxCount"] as? String {
                     self.availableCloudBoxCount = value
                 }
                 if let value = dict["CcnId"] as? String {
                     self.ccnId = value
+                }
+                if let value = dict["CenStatusErrorCode"] as? String {
+                    self.cenStatusErrorCode = value
+                }
+                if let value = dict["CenStatusErrorMessage"] as? String {
+                    self.cenStatusErrorMessage = value
                 }
                 if let value = dict["CidrBlock"] as? String {
                     self.cidrBlock = value
@@ -11415,6 +11931,9 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                 if let value = dict["NewAgw"] as? Bool {
                     self.newAgw = value
                 }
+                if let value = dict["ProcessingCenId"] as? String {
+                    self.processingCenId = value
+                }
                 if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
                 }
@@ -11428,6 +11947,22 @@ public class DescribeCloudConnectNetworksResponseBody : Tea.TeaModel {
                     var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.Tags()
                     model.fromMap(value)
                     self.tags = model
+                }
+                if let value = dict["TrNetworkConfig"] as? [String: Any?] {
+                    var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.TrNetworkConfig()
+                    model.fromMap(value)
+                    self.trNetworkConfig = model
+                }
+                if let value = dict["VpcNetworkConfig"] as? [String: Any?] {
+                    var model = DescribeCloudConnectNetworksResponseBody.CloudConnectNetworks.CloudConnectNetwork.VpcNetworkConfig()
+                    model.fromMap(value)
+                    self.vpcNetworkConfig = model
+                }
+                if let value = dict["VpcStatusErrorCode"] as? String {
+                    self.vpcStatusErrorCode = value
+                }
+                if let value = dict["VpcStatusErrorMessage"] as? String {
+                    self.vpcStatusErrorMessage = value
                 }
             }
         }
@@ -26675,9 +27210,49 @@ public class DescribeUserOnlineClientsResponse : Tea.TeaModel {
 }
 
 public class DetachCcnInstanceFromCenRequest : Tea.TeaModel {
+    public class RegionBindingList : Tea.TeaModel {
+        public var regionId: String?
+
+        public var transitRouterId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.transitRouterId != nil {
+                map["TransitRouterId"] = self.transitRouterId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["TransitRouterId"] as? String {
+                self.transitRouterId = value
+            }
+        }
+    }
     public var ccnId: String?
 
     public var cenId: String?
+
+    public var regionBindingList: [DetachCcnInstanceFromCenRequest.RegionBindingList]?
 
     public var regionId: String?
 
@@ -26701,6 +27276,13 @@ public class DetachCcnInstanceFromCenRequest : Tea.TeaModel {
         if self.cenId != nil {
             map["CenId"] = self.cenId!
         }
+        if self.regionBindingList != nil {
+            var tmp : [Any] = []
+            for k in self.regionBindingList! {
+                tmp.append(k.toMap())
+            }
+            map["RegionBindingList"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -26714,6 +27296,74 @@ public class DetachCcnInstanceFromCenRequest : Tea.TeaModel {
         }
         if let value = dict["CenId"] as? String {
             self.cenId = value
+        }
+        if let value = dict["RegionBindingList"] as? [Any?] {
+            var tmp : [DetachCcnInstanceFromCenRequest.RegionBindingList] = []
+            for v in value {
+                if v != nil {
+                    var model = DetachCcnInstanceFromCenRequest.RegionBindingList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.regionBindingList = tmp
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DetachCcnInstanceFromCenShrinkRequest : Tea.TeaModel {
+    public var ccnId: String?
+
+    public var cenId: String?
+
+    public var regionBindingListShrink: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ccnId != nil {
+            map["CcnId"] = self.ccnId!
+        }
+        if self.cenId != nil {
+            map["CenId"] = self.cenId!
+        }
+        if self.regionBindingListShrink != nil {
+            map["RegionBindingList"] = self.regionBindingListShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CcnId"] as? String {
+            self.ccnId = value
+        }
+        if let value = dict["CenId"] as? String {
+            self.cenId = value
+        }
+        if let value = dict["RegionBindingList"] as? String {
+            self.regionBindingListShrink = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value

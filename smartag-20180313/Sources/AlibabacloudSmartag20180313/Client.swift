@@ -9,18 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "eu-central-1": "smartag.eu-central-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "smartag.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "smartag.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "smartag.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "smartag.cn-hangzhou.aliyuncs.com",
-            "ap-southeast-5": "smartag.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "smartag.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "smartag.ap-southeast-2.aliyuncs.com",
-            "ap-southeast-1": "smartag.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "smartag.ap-northeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("smartag", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -577,14 +565,25 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func attachCcnInstanceToCenWithOptions(_ request: AttachCcnInstanceToCenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachCcnInstanceToCenResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func attachCcnInstanceToCenWithOptions(_ tmpReq: AttachCcnInstanceToCenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachCcnInstanceToCenResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AttachCcnInstanceToCenShrinkRequest = AttachCcnInstanceToCenShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.regionBindingList)) {
+            request.regionBindingListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.regionBindingList, "RegionBindingList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ccnId)) {
             query["CcnId"] = request.ccnId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cidrAllocationMode)) {
+            query["CidrAllocationMode"] = request.cidrAllocationMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionBindingListShrink)) {
+            query["RegionBindingList"] = request.regionBindingListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -5476,14 +5475,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func detachCcnInstanceFromCenWithOptions(_ request: DetachCcnInstanceFromCenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachCcnInstanceFromCenResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func detachCcnInstanceFromCenWithOptions(_ tmpReq: DetachCcnInstanceFromCenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachCcnInstanceFromCenResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DetachCcnInstanceFromCenShrinkRequest = DetachCcnInstanceFromCenShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.regionBindingList)) {
+            request.regionBindingListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.regionBindingList, "RegionBindingList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ccnId)) {
             query["CcnId"] = request.ccnId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionBindingListShrink)) {
+            query["RegionBindingList"] = request.regionBindingListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
