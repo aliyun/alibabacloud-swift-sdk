@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -9,11 +10,17 @@ public class CreatePentestTaskRequest : Tea.TeaModel {
     public class OperationInput : Tea.TeaModel {
         public var assetSource: String?
 
+        public var credentials: [String: Any]?
+
+        public var creditsLimitAction: String?
+
         public var description_: String?
 
         public var execMode: String?
 
         public var ipDomains: String?
+
+        public var maxCredits: Int64?
 
         public var name: String?
 
@@ -44,6 +51,12 @@ public class CreatePentestTaskRequest : Tea.TeaModel {
             if self.assetSource != nil {
                 map["AssetSource"] = self.assetSource!
             }
+            if self.credentials != nil {
+                map["Credentials"] = self.credentials!
+            }
+            if self.creditsLimitAction != nil {
+                map["CreditsLimitAction"] = self.creditsLimitAction!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -52,6 +65,9 @@ public class CreatePentestTaskRequest : Tea.TeaModel {
             }
             if self.ipDomains != nil {
                 map["IpDomains"] = self.ipDomains!
+            }
+            if self.maxCredits != nil {
+                map["MaxCredits"] = self.maxCredits!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -79,6 +95,12 @@ public class CreatePentestTaskRequest : Tea.TeaModel {
             if let value = dict["AssetSource"] as? String {
                 self.assetSource = value
             }
+            if let value = dict["Credentials"] as? [String: Any] {
+                self.credentials = value
+            }
+            if let value = dict["CreditsLimitAction"] as? String {
+                self.creditsLimitAction = value
+            }
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
@@ -87,6 +109,9 @@ public class CreatePentestTaskRequest : Tea.TeaModel {
             }
             if let value = dict["IpDomains"] as? String {
                 self.ipDomains = value
+            }
+            if let value = dict["MaxCredits"] as? Int64 {
+                self.maxCredits = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -817,7 +842,85 @@ public class DescribePentestTaskListResponseBody : Tea.TeaModel {
         }
     }
     public class TaskList : Tea.TeaModel {
+        public class VulnStats : Tea.TeaModel {
+            public var critical: Int64?
+
+            public var high: Int64?
+
+            public var info: Int64?
+
+            public var low: Int64?
+
+            public var medium: Int64?
+
+            public var total: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.critical != nil {
+                    map["Critical"] = self.critical!
+                }
+                if self.high != nil {
+                    map["High"] = self.high!
+                }
+                if self.info != nil {
+                    map["Info"] = self.info!
+                }
+                if self.low != nil {
+                    map["Low"] = self.low!
+                }
+                if self.medium != nil {
+                    map["Medium"] = self.medium!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Critical"] as? Int64 {
+                    self.critical = value
+                }
+                if let value = dict["High"] as? Int64 {
+                    self.high = value
+                }
+                if let value = dict["Info"] as? Int64 {
+                    self.info = value
+                }
+                if let value = dict["Low"] as? Int64 {
+                    self.low = value
+                }
+                if let value = dict["Medium"] as? Int64 {
+                    self.medium = value
+                }
+                if let value = dict["Total"] as? Int64 {
+                    self.total = value
+                }
+            }
+        }
+        public var completedAt: Int64?
+
         public var createdAt: Int64?
+
+        public var creditsUsed: Int64?
+
+        public var duration: Int64?
+
+        public var failureReason: String?
 
         public var name: String?
 
@@ -825,11 +928,21 @@ public class DescribePentestTaskListResponseBody : Tea.TeaModel {
 
         public var scanId: String?
 
+        public var scanMode: String?
+
+        public var startedAt: Int64?
+
         public var status: String?
+
+        public var targetAssetType: String?
 
         public var targetUrl: String?
 
         public var taskId: String?
+
+        public var updatedAt: Int64?
+
+        public var vulnStats: DescribePentestTaskListResponseBody.TaskList.VulnStats?
 
         public override init() {
             super.init()
@@ -841,12 +954,25 @@ public class DescribePentestTaskListResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.vulnStats?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.completedAt != nil {
+                map["CompletedAt"] = self.completedAt!
+            }
             if self.createdAt != nil {
                 map["CreatedAt"] = self.createdAt!
+            }
+            if self.creditsUsed != nil {
+                map["CreditsUsed"] = self.creditsUsed!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.failureReason != nil {
+                map["FailureReason"] = self.failureReason!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -857,8 +983,17 @@ public class DescribePentestTaskListResponseBody : Tea.TeaModel {
             if self.scanId != nil {
                 map["ScanId"] = self.scanId!
             }
+            if self.scanMode != nil {
+                map["ScanMode"] = self.scanMode!
+            }
+            if self.startedAt != nil {
+                map["StartedAt"] = self.startedAt!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.targetAssetType != nil {
+                map["TargetAssetType"] = self.targetAssetType!
             }
             if self.targetUrl != nil {
                 map["TargetUrl"] = self.targetUrl!
@@ -866,13 +1001,31 @@ public class DescribePentestTaskListResponseBody : Tea.TeaModel {
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
+            if self.updatedAt != nil {
+                map["UpdatedAt"] = self.updatedAt!
+            }
+            if self.vulnStats != nil {
+                map["VulnStats"] = self.vulnStats?.toMap()
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CompletedAt"] as? Int64 {
+                self.completedAt = value
+            }
             if let value = dict["CreatedAt"] as? Int64 {
                 self.createdAt = value
+            }
+            if let value = dict["CreditsUsed"] as? Int64 {
+                self.creditsUsed = value
+            }
+            if let value = dict["Duration"] as? Int64 {
+                self.duration = value
+            }
+            if let value = dict["FailureReason"] as? String {
+                self.failureReason = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -883,14 +1036,31 @@ public class DescribePentestTaskListResponseBody : Tea.TeaModel {
             if let value = dict["ScanId"] as? String {
                 self.scanId = value
             }
+            if let value = dict["ScanMode"] as? String {
+                self.scanMode = value
+            }
+            if let value = dict["StartedAt"] as? Int64 {
+                self.startedAt = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["TargetAssetType"] as? String {
+                self.targetAssetType = value
             }
             if let value = dict["TargetUrl"] as? String {
                 self.targetUrl = value
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
+            }
+            if let value = dict["UpdatedAt"] as? Int64 {
+                self.updatedAt = value
+            }
+            if let value = dict["VulnStats"] as? [String: Any?] {
+                var model = DescribePentestTaskListResponseBody.TaskList.VulnStats()
+                model.fromMap(value)
+                self.vulnStats = model
             }
         }
     }
