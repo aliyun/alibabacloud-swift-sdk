@@ -39826,6 +39826,8 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
 
         public var draftMode: String?
 
+        public var editable: Bool?
+
         public var editingVersion: String?
 
         public var enable: Bool?
@@ -39877,6 +39879,9 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
             }
             if self.draftMode != nil {
                 map["draftMode"] = self.draftMode!
+            }
+            if self.editable != nil {
+                map["editable"] = self.editable!
             }
             if self.editingVersion != nil {
                 map["editingVersion"] = self.editingVersion!
@@ -39937,6 +39942,9 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["draftMode"] as? String {
                 self.draftMode = value
+            }
+            if let value = dict["editable"] as? Bool {
+                self.editable = value
             }
             if let value = dict["editingVersion"] as? String {
                 self.editingVersion = value
@@ -57847,6 +57855,8 @@ public class ListSkillsResponseBody : Tea.TeaModel {
 
             public var draftMode: String?
 
+            public var editable: Bool?
+
             public var editingVersion: String?
 
             public var enable: Bool?
@@ -57896,6 +57906,9 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                 }
                 if self.draftMode != nil {
                     map["draftMode"] = self.draftMode!
+                }
+                if self.editable != nil {
+                    map["editable"] = self.editable!
                 }
                 if self.editingVersion != nil {
                     map["editingVersion"] = self.editingVersion!
@@ -57949,6 +57962,9 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["draftMode"] as? String {
                     self.draftMode = value
+                }
+                if let value = dict["editable"] as? Bool {
+                    self.editable = value
                 }
                 if let value = dict["editingVersion"] as? String {
                     self.editingVersion = value
