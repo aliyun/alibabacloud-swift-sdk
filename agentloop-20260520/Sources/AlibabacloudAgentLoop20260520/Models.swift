@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -10025,6 +10026,7 @@ public class GetContextStoreAPIKeyResponse : Tea.TeaModel {
 }
 
 public class GetDatasetRequest : Tea.TeaModel {
+    public var version: String?
 
     public override init() {
         super.init()
@@ -10040,11 +10042,17 @@ public class GetDatasetRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.version != nil {
+            map["version"] = self.version!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
     }
 }
 
