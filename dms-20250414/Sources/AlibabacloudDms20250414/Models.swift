@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -9658,6 +9659,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public var callbackConfig: CreateCustomAgentRequest.CallbackConfig?
 
+    public var createFrom: String?
+
     public var DMSUnit: String?
 
     public var dataJson: String?
@@ -9714,6 +9717,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         }
         if self.callbackConfig != nil {
             map["CallbackConfig"] = self.callbackConfig?.toMap()
+        }
+        if self.createFrom != nil {
+            map["CreateFrom"] = self.createFrom!
         }
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
@@ -9786,6 +9792,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             var model = CreateCustomAgentRequest.CallbackConfig()
             model.fromMap(value)
             self.callbackConfig = model
+        }
+        if let value = dict["CreateFrom"] as? String {
+            self.createFrom = value
         }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
@@ -9870,6 +9879,8 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public var callbackConfigShrink: String?
 
+    public var createFrom: String?
+
     public var DMSUnit: String?
 
     public var dataJson: String?
@@ -9923,6 +9934,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if self.callbackConfigShrink != nil {
             map["CallbackConfig"] = self.callbackConfigShrink!
+        }
+        if self.createFrom != nil {
+            map["CreateFrom"] = self.createFrom!
         }
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
@@ -9985,6 +9999,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CallbackConfig"] as? String {
             self.callbackConfigShrink = value
+        }
+        if let value = dict["CreateFrom"] as? String {
+            self.createFrom = value
         }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
@@ -13418,6 +13435,191 @@ public class DeleteAgenticDataSourceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteAgenticDataSourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteAgenticVpcEndpointRequest : Tea.TeaModel {
+    public var endpointId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpointId != nil {
+            map["EndpointId"] = self.endpointId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndpointId"] as? String {
+            self.endpointId = value
+        }
+    }
+}
+
+public class DeleteAgenticVpcEndpointResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var endpointId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endpointId != nil {
+                map["EndpointId"] = self.endpointId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndpointId"] as? String {
+                self.endpointId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var data: DeleteAgenticVpcEndpointResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteAgenticVpcEndpointResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteAgenticVpcEndpointResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteAgenticVpcEndpointResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteAgenticVpcEndpointResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17878,6 +18080,615 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PreviewCustomAgent : Tea.TeaModel {
+            public class CallbackConfig : Tea.TeaModel {
+                public var callbackArgs: String?
+
+                public var callbackPrompt: String?
+
+                public var callbackTime: Int32?
+
+                public var toolId: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.callbackArgs != nil {
+                        map["CallbackArgs"] = self.callbackArgs!
+                    }
+                    if self.callbackPrompt != nil {
+                        map["CallbackPrompt"] = self.callbackPrompt!
+                    }
+                    if self.callbackTime != nil {
+                        map["CallbackTime"] = self.callbackTime!
+                    }
+                    if self.toolId != nil {
+                        map["ToolId"] = self.toolId!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CallbackArgs"] as? String {
+                        self.callbackArgs = value
+                    }
+                    if let value = dict["CallbackPrompt"] as? String {
+                        self.callbackPrompt = value
+                    }
+                    if let value = dict["CallbackTime"] as? Int32 {
+                        self.callbackTime = value
+                    }
+                    if let value = dict["ToolId"] as? String {
+                        self.toolId = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class ExecutionConfig : Tea.TeaModel {
+                public var clarificationTendency: Double?
+
+                public var forbiddenAppendDataSource: Bool?
+
+                public var skipAskHuman: Bool?
+
+                public var skipPlan: Bool?
+
+                public var skipSqlConfirm: Bool?
+
+                public var skipWebReportConfirm: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clarificationTendency != nil {
+                        map["ClarificationTendency"] = self.clarificationTendency!
+                    }
+                    if self.forbiddenAppendDataSource != nil {
+                        map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+                    }
+                    if self.skipAskHuman != nil {
+                        map["SkipAskHuman"] = self.skipAskHuman!
+                    }
+                    if self.skipPlan != nil {
+                        map["SkipPlan"] = self.skipPlan!
+                    }
+                    if self.skipSqlConfirm != nil {
+                        map["SkipSqlConfirm"] = self.skipSqlConfirm!
+                    }
+                    if self.skipWebReportConfirm != nil {
+                        map["SkipWebReportConfirm"] = self.skipWebReportConfirm!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ClarificationTendency"] as? Double {
+                        self.clarificationTendency = value
+                    }
+                    if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                        self.forbiddenAppendDataSource = value
+                    }
+                    if let value = dict["SkipAskHuman"] as? Bool {
+                        self.skipAskHuman = value
+                    }
+                    if let value = dict["SkipPlan"] as? Bool {
+                        self.skipPlan = value
+                    }
+                    if let value = dict["SkipSqlConfirm"] as? Bool {
+                        self.skipSqlConfirm = value
+                    }
+                    if let value = dict["SkipWebReportConfirm"] as? Bool {
+                        self.skipWebReportConfirm = value
+                    }
+                }
+            }
+            public class KnowledgeConfigList : Tea.TeaModel {
+                public var accessType: String?
+
+                public var kbUuid: String?
+
+                public var mcpServerId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessType != nil {
+                        map["AccessType"] = self.accessType!
+                    }
+                    if self.kbUuid != nil {
+                        map["KbUuid"] = self.kbUuid!
+                    }
+                    if self.mcpServerId != nil {
+                        map["McpServerId"] = self.mcpServerId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AccessType"] as? String {
+                        self.accessType = value
+                    }
+                    if let value = dict["KbUuid"] as? String {
+                        self.kbUuid = value
+                    }
+                    if let value = dict["McpServerId"] as? String {
+                        self.mcpServerId = value
+                    }
+                }
+            }
+            public class KnowledgeSemanticConfigList : Tea.TeaModel {
+                public var dbId: String?
+
+                public var instanceId: String?
+
+                public var knowledgeUuid: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dbId != nil {
+                        map["DbId"] = self.dbId!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    if self.knowledgeUuid != nil {
+                        map["KnowledgeUuid"] = self.knowledgeUuid!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DbId"] as? String {
+                        self.dbId = value
+                    }
+                    if let value = dict["InstanceId"] as? String {
+                        self.instanceId = value
+                    }
+                    if let value = dict["KnowledgeUuid"] as? String {
+                        self.knowledgeUuid = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class ScheduleTaskConfig : Tea.TeaModel {
+                public var cronExpression: String?
+
+                public var query: String?
+
+                public var relatedSessionId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cronExpression != nil {
+                        map["CronExpression"] = self.cronExpression!
+                    }
+                    if self.query != nil {
+                        map["Query"] = self.query!
+                    }
+                    if self.relatedSessionId != nil {
+                        map["RelatedSessionId"] = self.relatedSessionId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CronExpression"] as? String {
+                        self.cronExpression = value
+                    }
+                    if let value = dict["Query"] as? String {
+                        self.query = value
+                    }
+                    if let value = dict["RelatedSessionId"] as? String {
+                        self.relatedSessionId = value
+                    }
+                }
+            }
+            public var aliyunParentUid: String?
+
+            public var aliyunUid: String?
+
+            public var callbackConfig: DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.CallbackConfig?
+
+            public var creatorUserName: String?
+
+            public var customAgentId: String?
+
+            public var DMSUnit: String?
+
+            public var dataJson: String?
+
+            public var defaultAgent: Int32?
+
+            public var description_: String?
+
+            public var dmsUnit: String?
+
+            public var executionConfig: DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.ExecutionConfig?
+
+            public var gmtCreated: String?
+
+            public var gmtModified: String?
+
+            public var instruction: String?
+
+            public var isScheduleTask: Bool?
+
+            public var knowledge: String?
+
+            public var knowledgeConfigList: [DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.KnowledgeConfigList]?
+
+            public var knowledgeSemanticConfigList: [DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.KnowledgeSemanticConfigList]?
+
+            public var modifier: String?
+
+            public var modifierUserName: String?
+
+            public var name: String?
+
+            public var nextRuntime: Int64?
+
+            public var offlineTime: String?
+
+            public var recommendQuestionList: [String]?
+
+            public var region: String?
+
+            public var relatedSessionId: String?
+
+            public var releaseTime: String?
+
+            public var scheduleTaskConfig: DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.ScheduleTaskConfig?
+
+            public var status: String?
+
+            public var textReportConfig: String?
+
+            public var userSpecifiedSkillList: [String]?
+
+            public var webReportConfig: String?
+
+            public var webReportTheme: String?
+
+            public var workspaceId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.callbackConfig?.validate()
+                try self.executionConfig?.validate()
+                try self.scheduleTaskConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aliyunParentUid != nil {
+                    map["AliyunParentUid"] = self.aliyunParentUid!
+                }
+                if self.aliyunUid != nil {
+                    map["AliyunUid"] = self.aliyunUid!
+                }
+                if self.callbackConfig != nil {
+                    map["CallbackConfig"] = self.callbackConfig?.toMap()
+                }
+                if self.creatorUserName != nil {
+                    map["CreatorUserName"] = self.creatorUserName!
+                }
+                if self.customAgentId != nil {
+                    map["CustomAgentId"] = self.customAgentId!
+                }
+                if self.DMSUnit != nil {
+                    map["DMSUnit"] = self.DMSUnit!
+                }
+                if self.dataJson != nil {
+                    map["DataJson"] = self.dataJson!
+                }
+                if self.defaultAgent != nil {
+                    map["DefaultAgent"] = self.defaultAgent!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.dmsUnit != nil {
+                    map["DmsUnit"] = self.dmsUnit!
+                }
+                if self.executionConfig != nil {
+                    map["ExecutionConfig"] = self.executionConfig?.toMap()
+                }
+                if self.gmtCreated != nil {
+                    map["GmtCreated"] = self.gmtCreated!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.instruction != nil {
+                    map["Instruction"] = self.instruction!
+                }
+                if self.isScheduleTask != nil {
+                    map["IsScheduleTask"] = self.isScheduleTask!
+                }
+                if self.knowledge != nil {
+                    map["Knowledge"] = self.knowledge!
+                }
+                if self.knowledgeConfigList != nil {
+                    var tmp : [Any] = []
+                    for k in self.knowledgeConfigList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["KnowledgeConfigList"] = tmp
+                }
+                if self.knowledgeSemanticConfigList != nil {
+                    var tmp : [Any] = []
+                    for k in self.knowledgeSemanticConfigList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["KnowledgeSemanticConfigList"] = tmp
+                }
+                if self.modifier != nil {
+                    map["Modifier"] = self.modifier!
+                }
+                if self.modifierUserName != nil {
+                    map["ModifierUserName"] = self.modifierUserName!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.nextRuntime != nil {
+                    map["NextRuntime"] = self.nextRuntime!
+                }
+                if self.offlineTime != nil {
+                    map["OfflineTime"] = self.offlineTime!
+                }
+                if self.recommendQuestionList != nil {
+                    map["RecommendQuestionList"] = self.recommendQuestionList!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.relatedSessionId != nil {
+                    map["RelatedSessionId"] = self.relatedSessionId!
+                }
+                if self.releaseTime != nil {
+                    map["ReleaseTime"] = self.releaseTime!
+                }
+                if self.scheduleTaskConfig != nil {
+                    map["ScheduleTaskConfig"] = self.scheduleTaskConfig?.toMap()
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.textReportConfig != nil {
+                    map["TextReportConfig"] = self.textReportConfig!
+                }
+                if self.userSpecifiedSkillList != nil {
+                    map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
+                }
+                if self.webReportConfig != nil {
+                    map["WebReportConfig"] = self.webReportConfig!
+                }
+                if self.webReportTheme != nil {
+                    map["WebReportTheme"] = self.webReportTheme!
+                }
+                if self.workspaceId != nil {
+                    map["WorkspaceId"] = self.workspaceId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AliyunParentUid"] as? String {
+                    self.aliyunParentUid = value
+                }
+                if let value = dict["AliyunUid"] as? String {
+                    self.aliyunUid = value
+                }
+                if let value = dict["CallbackConfig"] as? [String: Any?] {
+                    var model = DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.CallbackConfig()
+                    model.fromMap(value)
+                    self.callbackConfig = model
+                }
+                if let value = dict["CreatorUserName"] as? String {
+                    self.creatorUserName = value
+                }
+                if let value = dict["CustomAgentId"] as? String {
+                    self.customAgentId = value
+                }
+                if let value = dict["DMSUnit"] as? String {
+                    self.DMSUnit = value
+                }
+                if let value = dict["DataJson"] as? String {
+                    self.dataJson = value
+                }
+                if let value = dict["DefaultAgent"] as? Int32 {
+                    self.defaultAgent = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["DmsUnit"] as? String {
+                    self.dmsUnit = value
+                }
+                if let value = dict["ExecutionConfig"] as? [String: Any?] {
+                    var model = DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.ExecutionConfig()
+                    model.fromMap(value)
+                    self.executionConfig = model
+                }
+                if let value = dict["GmtCreated"] as? String {
+                    self.gmtCreated = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["Instruction"] as? String {
+                    self.instruction = value
+                }
+                if let value = dict["IsScheduleTask"] as? Bool {
+                    self.isScheduleTask = value
+                }
+                if let value = dict["Knowledge"] as? String {
+                    self.knowledge = value
+                }
+                if let value = dict["KnowledgeConfigList"] as? [Any?] {
+                    var tmp : [DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.KnowledgeConfigList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.KnowledgeConfigList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.knowledgeConfigList = tmp
+                }
+                if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+                    var tmp : [DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.KnowledgeSemanticConfigList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.KnowledgeSemanticConfigList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.knowledgeSemanticConfigList = tmp
+                }
+                if let value = dict["Modifier"] as? String {
+                    self.modifier = value
+                }
+                if let value = dict["ModifierUserName"] as? String {
+                    self.modifierUserName = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["NextRuntime"] as? Int64 {
+                    self.nextRuntime = value
+                }
+                if let value = dict["OfflineTime"] as? String {
+                    self.offlineTime = value
+                }
+                if let value = dict["RecommendQuestionList"] as? [String] {
+                    self.recommendQuestionList = value
+                }
+                if let value = dict["Region"] as? String {
+                    self.region = value
+                }
+                if let value = dict["RelatedSessionId"] as? String {
+                    self.relatedSessionId = value
+                }
+                if let value = dict["ReleaseTime"] as? String {
+                    self.releaseTime = value
+                }
+                if let value = dict["ScheduleTaskConfig"] as? [String: Any?] {
+                    var model = DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent.ScheduleTaskConfig()
+                    model.fromMap(value)
+                    self.scheduleTaskConfig = model
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["TextReportConfig"] as? String {
+                    self.textReportConfig = value
+                }
+                if let value = dict["UserSpecifiedSkillList"] as? [String] {
+                    self.userSpecifiedSkillList = value
+                }
+                if let value = dict["WebReportConfig"] as? String {
+                    self.webReportConfig = value
+                }
+                if let value = dict["WebReportTheme"] as? String {
+                    self.webReportTheme = value
+                }
+                if let value = dict["WorkspaceId"] as? String {
+                    self.workspaceId = value
+                }
+            }
+        }
         public class RecallResults : Tea.TeaModel {
             public var content: String?
 
@@ -18062,6 +18873,8 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
 
         public var messages: [DescribeDataAgentSessionResponseBody.Data.Messages]?
 
+        public var previewCustomAgent: DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent?
+
         public var recallResults: [DescribeDataAgentSessionResponseBody.Data.RecallResults]?
 
         public var saved: Bool?
@@ -18086,6 +18899,7 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.previewCustomAgent?.validate()
             try self.sessionConfig?.validate()
         }
 
@@ -18140,6 +18954,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Messages"] = tmp
+            }
+            if self.previewCustomAgent != nil {
+                map["PreviewCustomAgent"] = self.previewCustomAgent?.toMap()
             }
             if self.recallResults != nil {
                 var tmp : [Any] = []
@@ -18250,6 +19067,11 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                     }
                 }
                 self.messages = tmp
+            }
+            if let value = dict["PreviewCustomAgent"] as? [String: Any?] {
+                var model = DescribeDataAgentSessionResponseBody.Data.PreviewCustomAgent()
+                model.fromMap(value)
+                self.previewCustomAgent = model
             }
             if let value = dict["RecallResults"] as? [Any?] {
                 var tmp : [DescribeDataAgentSessionResponseBody.Data.RecallResults] = []
@@ -42695,6 +43517,12 @@ public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
 
     public var useSsl: Int32?
 
+    public var vSwitchId: String?
+
+    public var vpcId: String?
+
+    public var zoneId: String?
+
     public override init() {
         super.init()
     }
@@ -42772,6 +43600,15 @@ public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
         if self.useSsl != nil {
             map["UseSsl"] = self.useSsl!
         }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
@@ -42839,6 +43676,15 @@ public class UpdateAgenticDataSourceRequest : Tea.TeaModel {
         }
         if let value = dict["UseSsl"] as? Int32 {
             self.useSsl = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
         }
     }
 }
