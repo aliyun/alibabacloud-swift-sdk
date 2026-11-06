@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1047,6 +1048,68 @@ public class BackupAppResponse : Tea.TeaModel {
 }
 
 public class BackupFileRequest : Tea.TeaModel {
+    public class CustomScripts : Tea.TeaModel {
+        public var ossBucket: String?
+
+        public var ossEndpoint: String?
+
+        public var ossObjectKey: String?
+
+        public var ossRegion: String?
+
+        public var testInstanceIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ossBucket != nil {
+                map["OssBucket"] = self.ossBucket!
+            }
+            if self.ossEndpoint != nil {
+                map["OssEndpoint"] = self.ossEndpoint!
+            }
+            if self.ossObjectKey != nil {
+                map["OssObjectKey"] = self.ossObjectKey!
+            }
+            if self.ossRegion != nil {
+                map["OssRegion"] = self.ossRegion!
+            }
+            if self.testInstanceIds != nil {
+                map["TestInstanceIds"] = self.testInstanceIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OssBucket"] as? String {
+                self.ossBucket = value
+            }
+            if let value = dict["OssEndpoint"] as? String {
+                self.ossEndpoint = value
+            }
+            if let value = dict["OssObjectKey"] as? String {
+                self.ossObjectKey = value
+            }
+            if let value = dict["OssRegion"] as? String {
+                self.ossRegion = value
+            }
+            if let value = dict["TestInstanceIds"] as? [String] {
+                self.testInstanceIds = value
+            }
+        }
+    }
     public var androidInstanceIdList: [String]?
 
     public var backupAll: Bool?
@@ -1054,6 +1117,8 @@ public class BackupFileRequest : Tea.TeaModel {
     public var backupFileName: String?
 
     public var backupFilePath: String?
+
+    public var customScripts: [BackupFileRequest.CustomScripts]?
 
     public var description_: String?
 
@@ -1095,6 +1160,13 @@ public class BackupFileRequest : Tea.TeaModel {
         if self.backupFilePath != nil {
             map["BackupFilePath"] = self.backupFilePath!
         }
+        if self.customScripts != nil {
+            var tmp : [Any] = []
+            for k in self.customScripts! {
+                tmp.append(k.toMap())
+            }
+            map["CustomScripts"] = tmp
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -1132,6 +1204,19 @@ public class BackupFileRequest : Tea.TeaModel {
         }
         if let value = dict["BackupFilePath"] as? String {
             self.backupFilePath = value
+        }
+        if let value = dict["CustomScripts"] as? [Any?] {
+            var tmp : [BackupFileRequest.CustomScripts] = []
+            for v in value {
+                if v != nil {
+                    var model = BackupFileRequest.CustomScripts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customScripts = tmp
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -18651,6 +18736,8 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var instanceName: String?
+
         public var jvsPackageId: String?
 
         public var modifyTime: String?
@@ -18699,6 +18786,9 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
             }
             if self.jvsPackageId != nil {
                 map["JvsPackageId"] = self.jvsPackageId!
@@ -18760,6 +18850,9 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["InstanceName"] as? String {
+                self.instanceName = value
             }
             if let value = dict["JvsPackageId"] as? String {
                 self.jvsPackageId = value
@@ -32510,6 +32603,68 @@ public class RecoverAppResponse : Tea.TeaModel {
 }
 
 public class RecoveryFileRequest : Tea.TeaModel {
+    public class CustomScripts : Tea.TeaModel {
+        public var ossBucket: String?
+
+        public var ossEndpoint: String?
+
+        public var ossObjectKey: String?
+
+        public var ossRegion: String?
+
+        public var testInstanceIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ossBucket != nil {
+                map["OssBucket"] = self.ossBucket!
+            }
+            if self.ossEndpoint != nil {
+                map["OssEndpoint"] = self.ossEndpoint!
+            }
+            if self.ossObjectKey != nil {
+                map["OssObjectKey"] = self.ossObjectKey!
+            }
+            if self.ossRegion != nil {
+                map["OssRegion"] = self.ossRegion!
+            }
+            if self.testInstanceIds != nil {
+                map["TestInstanceIds"] = self.testInstanceIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OssBucket"] as? String {
+                self.ossBucket = value
+            }
+            if let value = dict["OssEndpoint"] as? String {
+                self.ossEndpoint = value
+            }
+            if let value = dict["OssObjectKey"] as? String {
+                self.ossObjectKey = value
+            }
+            if let value = dict["OssRegion"] as? String {
+                self.ossRegion = value
+            }
+            if let value = dict["TestInstanceIds"] as? [String] {
+                self.testInstanceIds = value
+            }
+        }
+    }
     public var androidInstanceIdList: [String]?
 
     public var backupAll: Bool?
@@ -32517,6 +32672,8 @@ public class RecoveryFileRequest : Tea.TeaModel {
     public var backupFileId: String?
 
     public var backupFilePath: String?
+
+    public var customScripts: [RecoveryFileRequest.CustomScripts]?
 
     public var excludeAppList: [String]?
 
@@ -32550,6 +32707,13 @@ public class RecoveryFileRequest : Tea.TeaModel {
         if self.backupFilePath != nil {
             map["BackupFilePath"] = self.backupFilePath!
         }
+        if self.customScripts != nil {
+            var tmp : [Any] = []
+            for k in self.customScripts! {
+                tmp.append(k.toMap())
+            }
+            map["CustomScripts"] = tmp
+        }
         if self.excludeAppList != nil {
             map["ExcludeAppList"] = self.excludeAppList!
         }
@@ -32575,6 +32739,19 @@ public class RecoveryFileRequest : Tea.TeaModel {
         }
         if let value = dict["BackupFilePath"] as? String {
             self.backupFilePath = value
+        }
+        if let value = dict["CustomScripts"] as? [Any?] {
+            var tmp : [RecoveryFileRequest.CustomScripts] = []
+            for v in value {
+                if v != nil {
+                    var model = RecoveryFileRequest.CustomScripts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customScripts = tmp
         }
         if let value = dict["ExcludeAppList"] as? [String] {
             self.excludeAppList = value

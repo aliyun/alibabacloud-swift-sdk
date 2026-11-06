@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "eds-aic"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eds-aic", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -241,6 +245,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.backupFilePath)) {
             query["BackupFilePath"] = request.backupFilePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customScripts)) {
+            query["CustomScripts"] = request.customScripts ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -5044,6 +5051,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.backupFilePath)) {
             query["BackupFilePath"] = request.backupFilePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customScripts)) {
+            query["CustomScripts"] = request.customScripts ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.excludeAppList)) {
             query["ExcludeAppList"] = request.excludeAppList ?? [];
