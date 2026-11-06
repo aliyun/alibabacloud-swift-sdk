@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -2672,6 +2673,8 @@ public class CreateLangfuseProjectResponse : Tea.TeaModel {
 }
 
 public class CreateLangfuseUserRequest : Tea.TeaModel {
+    public var allowOrgCreation: Bool?
+
     public var DBInstanceId: String?
 
     public var email: String?
@@ -2700,6 +2703,9 @@ public class CreateLangfuseUserRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowOrgCreation != nil {
+            map["AllowOrgCreation"] = self.allowOrgCreation!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -2726,6 +2732,9 @@ public class CreateLangfuseUserRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowOrgCreation"] as? Bool {
+            self.allowOrgCreation = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -2790,6 +2799,8 @@ public class CreateLangfuseUserResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var allowOrgCreation: Bool?
+
         public var createdAt: String?
 
         public var email: String?
@@ -2813,6 +2824,9 @@ public class CreateLangfuseUserResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowOrgCreation != nil {
+                map["AllowOrgCreation"] = self.allowOrgCreation!
+            }
             if self.createdAt != nil {
                 map["CreatedAt"] = self.createdAt!
             }
@@ -2830,6 +2844,9 @@ public class CreateLangfuseUserResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllowOrgCreation"] as? Bool {
+                self.allowOrgCreation = value
+            }
             if let value = dict["CreatedAt"] as? String {
                 self.createdAt = value
             }
@@ -10239,6 +10256,8 @@ public class DescribeLangfuseUserResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var allowOrgCreation: Bool?
+
         public var createdAt: String?
 
         public var email: String?
@@ -10263,6 +10282,9 @@ public class DescribeLangfuseUserResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowOrgCreation != nil {
+                map["AllowOrgCreation"] = self.allowOrgCreation!
+            }
             if self.createdAt != nil {
                 map["CreatedAt"] = self.createdAt!
             }
@@ -10287,6 +10309,9 @@ public class DescribeLangfuseUserResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllowOrgCreation"] as? Bool {
+                self.allowOrgCreation = value
+            }
             if let value = dict["CreatedAt"] as? String {
                 self.createdAt = value
             }
@@ -10479,6 +10504,8 @@ public class DescribeLangfuseUsersRequest : Tea.TeaModel {
 public class DescribeLangfuseUsersResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Users : Tea.TeaModel {
+            public var allowOrgCreation: Bool?
+
             public var createdAt: String?
 
             public var email: String?
@@ -10499,6 +10526,9 @@ public class DescribeLangfuseUsersResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.allowOrgCreation != nil {
+                    map["AllowOrgCreation"] = self.allowOrgCreation!
+                }
                 if self.createdAt != nil {
                     map["CreatedAt"] = self.createdAt!
                 }
@@ -10513,6 +10543,9 @@ public class DescribeLangfuseUsersResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AllowOrgCreation"] as? Bool {
+                    self.allowOrgCreation = value
+                }
                 if let value = dict["CreatedAt"] as? String {
                     self.createdAt = value
                 }

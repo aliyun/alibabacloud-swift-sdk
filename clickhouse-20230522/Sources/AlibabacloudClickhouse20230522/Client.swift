@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "clickhouse"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "clickhouse.aliyuncs.com",
@@ -54,7 +58,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "rus-west-1-pop": "clickhouse.aliyuncs.com",
             "us-east-1": "clickhouse.aliyuncs.com",
             "us-west-1": "clickhouse.aliyuncs.com",
-            "ap-southeast-3": "clickhouse.aliyuncs.com"
+            "ap-southeast-3": "clickhouse.aliyuncs.com",
+            "ap-southeast-7": "clickhouse.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("clickhouse", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -559,6 +564,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createLangfuseUserWithOptions(_ request: CreateLangfuseUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLangfuseUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowOrgCreation)) {
+            query["AllowOrgCreation"] = request.allowOrgCreation!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
