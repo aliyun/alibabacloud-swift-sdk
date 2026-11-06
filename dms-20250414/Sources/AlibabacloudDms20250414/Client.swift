@@ -1793,6 +1793,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDataAgentSkillDownloadWithOptions(_ request: DescribeDataAgentSkillDownloadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDataAgentSkillDownloadResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.skillId)) {
+            query["SkillId"] = request.skillId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDataAgentSkillDownload",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDataAgentSkillDownloadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDataAgentSkillDownload(_ request: DescribeDataAgentSkillDownloadRequest) async throws -> DescribeDataAgentSkillDownloadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDataAgentSkillDownloadWithOptions(request as! DescribeDataAgentSkillDownloadRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDataAgentThemeWithOptions(_ request: DescribeDataAgentThemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDataAgentThemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
