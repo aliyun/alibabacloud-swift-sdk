@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "cloud-siem"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloud-siem", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -3200,6 +3204,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.detectionRuleIds)) {
             request.detectionRuleIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.detectionRuleIds, "DetectionRuleIds", "simple")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.logSchemaIds)) {
+            request.logSchemaIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.logSchemaIds, "LogSchemaIds", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.alertAttCk)) {
             body["AlertAttCk"] = request.alertAttCk ?? "";
@@ -3242,6 +3249,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.logSchemaId)) {
             body["LogSchemaId"] = request.logSchemaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logSchemaIdsShrink)) {
+            body["LogSchemaIds"] = request.logSchemaIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;

@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -17684,6 +17685,8 @@ public class ListDetectionRulesRequest : Tea.TeaModel {
 
     public var logSchemaId: String?
 
+    public var logSchemaIds: [String]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -17756,6 +17759,9 @@ public class ListDetectionRulesRequest : Tea.TeaModel {
         if self.logSchemaId != nil {
             map["LogSchemaId"] = self.logSchemaId!
         }
+        if self.logSchemaIds != nil {
+            map["LogSchemaIds"] = self.logSchemaIds!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -17827,6 +17833,9 @@ public class ListDetectionRulesRequest : Tea.TeaModel {
         if let value = dict["LogSchemaId"] as? String {
             self.logSchemaId = value
         }
+        if let value = dict["LogSchemaIds"] as? [String] {
+            self.logSchemaIds = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -17882,6 +17891,8 @@ public class ListDetectionRulesShrinkRequest : Tea.TeaModel {
     public var logCategoryId: String?
 
     public var logSchemaId: String?
+
+    public var logSchemaIdsShrink: String?
 
     public var maxResults: Int32?
 
@@ -17955,6 +17966,9 @@ public class ListDetectionRulesShrinkRequest : Tea.TeaModel {
         if self.logSchemaId != nil {
             map["LogSchemaId"] = self.logSchemaId!
         }
+        if self.logSchemaIdsShrink != nil {
+            map["LogSchemaIds"] = self.logSchemaIdsShrink!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -18025,6 +18039,9 @@ public class ListDetectionRulesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["LogSchemaId"] as? String {
             self.logSchemaId = value
+        }
+        if let value = dict["LogSchemaIds"] as? String {
+            self.logSchemaIdsShrink = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
