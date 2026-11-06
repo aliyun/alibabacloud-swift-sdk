@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -278,7 +279,11 @@ public class DistillationTemplate : Tea.TeaModel {
 
     public var presetConfig: [DistillationTemplate.PresetConfig]?
 
+    public var processorExampleUri: String?
+
     public var templateId: String?
+
+    public var templateKind: String?
 
     public var templateName: String?
 
@@ -352,8 +357,14 @@ public class DistillationTemplate : Tea.TeaModel {
             }
             map["PresetConfig"] = tmp
         }
+        if self.processorExampleUri != nil {
+            map["ProcessorExampleUri"] = self.processorExampleUri!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
+        }
+        if self.templateKind != nil {
+            map["TemplateKind"] = self.templateKind!
         }
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
@@ -442,8 +453,14 @@ public class DistillationTemplate : Tea.TeaModel {
             }
             self.presetConfig = tmp
         }
+        if let value = dict["ProcessorExampleUri"] as? String {
+            self.processorExampleUri = value
+        }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["TemplateKind"] as? String {
+            self.templateKind = value
         }
         if let value = dict["TemplateName"] as? String {
             self.templateName = value
@@ -571,6 +588,8 @@ public class DistillationTemplateSummary : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var templateKind: String?
+
     public var templateName: String?
 
     public var trainingOptions: [DistillationTemplateSummary.TrainingOptions]?
@@ -613,6 +632,9 @@ public class DistillationTemplateSummary : Tea.TeaModel {
         }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
+        }
+        if self.templateKind != nil {
+            map["TemplateKind"] = self.templateKind!
         }
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
@@ -659,6 +681,9 @@ public class DistillationTemplateSummary : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["TemplateKind"] as? String {
+            self.templateKind = value
         }
         if let value = dict["TemplateName"] as? String {
             self.templateName = value
@@ -2119,6 +2144,8 @@ public class ListDistillationTemplatesRequest : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var templateKind: String?
+
     public override init() {
         super.init()
     }
@@ -2148,6 +2175,9 @@ public class ListDistillationTemplatesRequest : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.templateKind != nil {
+            map["TemplateKind"] = self.templateKind!
+        }
         return map
     }
 
@@ -2167,6 +2197,9 @@ public class ListDistillationTemplatesRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["TemplateKind"] as? String {
+            self.templateKind = value
         }
     }
 }
