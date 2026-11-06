@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDtsAI20260401"
-  spec.version      = "1.1.2"
+  spec.version      = "1.1.3"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud DtsAI (20260401) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/dtsai-20260401" 
@@ -19,6 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.8'
+  spec.dependency 'AlibabacloudGatewayPOP',  '~> 0.0.1'
   spec.dependency 'DarabonbaXML',  '~> 1.0.1'
   spec.dependency 'AlibabaCloudCredentials',  '~> 1.0.1'
   spec.dependency 'TeaFileForm',  '~> 1.0.3'

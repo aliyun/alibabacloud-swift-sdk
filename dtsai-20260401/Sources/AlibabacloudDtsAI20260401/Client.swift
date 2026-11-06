@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import DarabonbaXML
 import AlibabaCloudCredentials
 import TeaFileForm
@@ -11,10 +12,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "DtsAI"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-beijing": "dtsai.cn-beijing.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dtsai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -173,6 +174,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.chunkSummary)) {
             query["ChunkSummary"] = request.chunkSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.documentStructure)) {
+            query["DocumentStructure"] = request.documentStructure!;
         }
         if (!TeaUtils.Client.isUnset(request.fileFormat)) {
             query["FileFormat"] = request.fileFormat ?? "";

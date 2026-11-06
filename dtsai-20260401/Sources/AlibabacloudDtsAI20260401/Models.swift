@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import DarabonbaXML
 import AlibabaCloudCredentials
 import TeaFileForm
@@ -319,6 +320,8 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
 
     public var chunkSummary: Bool?
 
+    public var documentStructure: Bool?
+
     public var fileFormat: String?
 
     public var fileName: String?
@@ -385,6 +388,9 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
         }
         if self.chunkSummary != nil {
             map["ChunkSummary"] = self.chunkSummary!
+        }
+        if self.documentStructure != nil {
+            map["DocumentStructure"] = self.documentStructure!
         }
         if self.fileFormat != nil {
             map["FileFormat"] = self.fileFormat!
@@ -463,6 +469,9 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
         if let value = dict["ChunkSummary"] as? Bool {
             self.chunkSummary = value
         }
+        if let value = dict["DocumentStructure"] as? Bool {
+            self.documentStructure = value
+        }
         if let value = dict["FileFormat"] as? String {
             self.fileFormat = value
         }
@@ -534,6 +543,8 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public var chunkSummary: Bool?
 
+    public var documentStructure: Bool?
+
     public var fileFormat: String?
 
     public var fileName: String?
@@ -600,6 +611,9 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if self.chunkSummary != nil {
             map["ChunkSummary"] = self.chunkSummary!
+        }
+        if self.documentStructure != nil {
+            map["DocumentStructure"] = self.documentStructure!
         }
         if self.fileFormat != nil {
             map["FileFormat"] = self.fileFormat!
@@ -677,6 +691,9 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["ChunkSummary"] as? Bool {
             self.chunkSummary = value
+        }
+        if let value = dict["DocumentStructure"] as? Bool {
+            self.documentStructure = value
         }
         if let value = dict["FileFormat"] as? String {
             self.fileFormat = value
