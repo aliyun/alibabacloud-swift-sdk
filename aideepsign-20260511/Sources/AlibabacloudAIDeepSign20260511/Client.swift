@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "AIDeepSign"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aideepsign", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -64,6 +68,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bucketRegionId)) {
             query["BucketRegionId"] = request.bucketRegionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customAssertions)) {
+            query["CustomAssertions"] = request.customAssertions ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.softwareAgent)) {
             query["SoftwareAgent"] = request.softwareAgent ?? "";
         }
@@ -101,6 +108,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createC2paSignTaskWithOptions(_ request: CreateC2paSignTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateC2paSignTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customAssertions)) {
+            query["CustomAssertions"] = request.customAssertions ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             query["FileUrl"] = request.fileUrl ?? "";
         }

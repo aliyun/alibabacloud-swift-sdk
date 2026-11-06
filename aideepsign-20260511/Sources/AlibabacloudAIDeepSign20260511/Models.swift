@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -170,6 +171,8 @@ public class CreateC2paBucketSignTaskRequest : Tea.TeaModel {
 
     public var bucketRegionId: String?
 
+    public var customAssertions: String?
+
     public var softwareAgent: String?
 
     public var sourcePrefix: String?
@@ -196,6 +199,9 @@ public class CreateC2paBucketSignTaskRequest : Tea.TeaModel {
         if self.bucketRegionId != nil {
             map["BucketRegionId"] = self.bucketRegionId!
         }
+        if self.customAssertions != nil {
+            map["CustomAssertions"] = self.customAssertions!
+        }
         if self.softwareAgent != nil {
             map["SoftwareAgent"] = self.softwareAgent!
         }
@@ -215,6 +221,9 @@ public class CreateC2paBucketSignTaskRequest : Tea.TeaModel {
         }
         if let value = dict["BucketRegionId"] as? String {
             self.bucketRegionId = value
+        }
+        if let value = dict["CustomAssertions"] as? String {
+            self.customAssertions = value
         }
         if let value = dict["SoftwareAgent"] as? String {
             self.softwareAgent = value
@@ -350,6 +359,8 @@ public class CreateC2paBucketSignTaskResponse : Tea.TeaModel {
 }
 
 public class CreateC2paSignTaskRequest : Tea.TeaModel {
+    public var customAssertions: String?
+
     public var fileUrl: String?
 
     public var softwareAgent: String?
@@ -370,6 +381,9 @@ public class CreateC2paSignTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customAssertions != nil {
+            map["CustomAssertions"] = self.customAssertions!
+        }
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
@@ -384,6 +398,9 @@ public class CreateC2paSignTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CustomAssertions"] as? String {
+            self.customAssertions = value
+        }
         if let value = dict["FileUrl"] as? String {
             self.fileUrl = value
         }
