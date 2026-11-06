@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -5677,6 +5678,8 @@ public class CloneDisksRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var destinationZoneId: String?
+
     public var diskCategory: String?
 
     public var diskName: String?
@@ -5733,6 +5736,9 @@ public class CloneDisksRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.destinationZoneId != nil {
+            map["DestinationZoneId"] = self.destinationZoneId!
         }
         if self.diskCategory != nil {
             map["DiskCategory"] = self.diskCategory!
@@ -5806,6 +5812,9 @@ public class CloneDisksRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DestinationZoneId"] as? String {
+            self.destinationZoneId = value
         }
         if let value = dict["DiskCategory"] as? String {
             self.diskCategory = value
