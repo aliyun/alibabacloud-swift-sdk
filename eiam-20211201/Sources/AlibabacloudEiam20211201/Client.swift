@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Eiam"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eiam", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -21,6 +25,43 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activateCloudAccountPrivilegeWithOptions(_ request: ActivateCloudAccountPrivilegeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ActivateCloudAccountPrivilegeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ActivateCloudAccountPrivilege",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ActivateCloudAccountPrivilegeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activateCloudAccountPrivilege(_ request: ActivateCloudAccountPrivilegeRequest) async throws -> ActivateCloudAccountPrivilegeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await activateCloudAccountPrivilegeWithOptions(request as! ActivateCloudAccountPrivilegeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1312,6 +1353,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudPermissionTemplateWithOptions(_ request: CreateCloudPermissionTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudPermissionTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowRequest)) {
+            query["AllowRequest"] = request.allowRequest!;
+        }
+        if (!TeaUtils.Client.isUnset(request.applicableScope)) {
+            query["ApplicableScope"] = request.applicableScope!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountResources)) {
+            query["CloudAccountResources"] = request.cloudAccountResources ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateName)) {
+            query["CloudPermissionTemplateName"] = request.cloudPermissionTemplateName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateUsageType)) {
+            query["CloudPermissionTemplateUsageType"] = request.cloudPermissionTemplateUsageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCloudPermissionTemplate",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCloudPermissionTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudPermissionTemplate(_ request: CreateCloudPermissionTemplateRequest) async throws -> CreateCloudPermissionTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCloudPermissionTemplateWithOptions(request as! CreateCloudPermissionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createConditionalAccessPolicyWithOptions(_ request: CreateConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateConditionalAccessPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2255,6 +2351,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deactivateCloudAccountPrivilegeWithOptions(_ request: DeactivateCloudAccountPrivilegeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeactivateCloudAccountPrivilegeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeactivateCloudAccountPrivilege",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeactivateCloudAccountPrivilegeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deactivateCloudAccountPrivilege(_ request: DeactivateCloudAccountPrivilegeRequest) async throws -> DeactivateCloudAccountPrivilegeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deactivateCloudAccountPrivilegeWithOptions(request as! DeactivateCloudAccountPrivilegeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteApplicationWithOptions(_ request: DeleteApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteApplicationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2647,6 +2780,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCloudAccountRole(_ request: DeleteCloudAccountRoleRequest) async throws -> DeleteCloudAccountRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteCloudAccountRoleWithOptions(request as! DeleteCloudAccountRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudPermissionTemplateWithOptions(_ request: DeleteCloudPermissionTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudPermissionTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateId)) {
+            query["CloudPermissionTemplateId"] = request.cloudPermissionTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCloudPermissionTemplate",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCloudPermissionTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudPermissionTemplate(_ request: DeleteCloudPermissionTemplateRequest) async throws -> DeleteCloudPermissionTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCloudPermissionTemplateWithOptions(request as! DeleteCloudPermissionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3767,6 +3937,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableCloudAccountPrivilegeWithOptions(_ request: DisableCloudAccountPrivilegeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableCloudAccountPrivilegeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableCloudAccountPrivilege",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisableCloudAccountPrivilegeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableCloudAccountPrivilege(_ request: DisableCloudAccountPrivilegeRequest) async throws -> DisableCloudAccountPrivilegeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disableCloudAccountPrivilegeWithOptions(request as! DisableCloudAccountPrivilegeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func disableCloudAccountRoleWithOptions(_ request: DisableCloudAccountRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableCloudAccountRoleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3804,6 +4011,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disableCloudAccountRole(_ request: DisableCloudAccountRoleRequest) async throws -> DisableCloudAccountRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await disableCloudAccountRoleWithOptions(request as! DisableCloudAccountRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableCloudPermissionTemplateWithOptions(_ request: DisableCloudPermissionTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableCloudPermissionTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateId)) {
+            query["CloudPermissionTemplateId"] = request.cloudPermissionTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableCloudPermissionTemplate",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisableCloudPermissionTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableCloudPermissionTemplate(_ request: DisableCloudPermissionTemplateRequest) async throws -> DisableCloudPermissionTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disableCloudPermissionTemplateWithOptions(request as! DisableCloudPermissionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4748,6 +4992,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableCloudAccountPrivilegeWithOptions(_ request: EnableCloudAccountPrivilegeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableCloudAccountPrivilegeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableCloudAccountPrivilege",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableCloudAccountPrivilegeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableCloudAccountPrivilege(_ request: EnableCloudAccountPrivilegeRequest) async throws -> EnableCloudAccountPrivilegeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableCloudAccountPrivilegeWithOptions(request as! EnableCloudAccountPrivilegeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enableCloudAccountRoleWithOptions(_ request: EnableCloudAccountRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableCloudAccountRoleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4785,6 +5066,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enableCloudAccountRole(_ request: EnableCloudAccountRoleRequest) async throws -> EnableCloudAccountRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await enableCloudAccountRoleWithOptions(request as! EnableCloudAccountRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableCloudPermissionTemplateWithOptions(_ request: EnableCloudPermissionTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableCloudPermissionTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateId)) {
+            query["CloudPermissionTemplateId"] = request.cloudPermissionTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableCloudPermissionTemplate",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableCloudPermissionTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableCloudPermissionTemplate(_ request: EnableCloudPermissionTemplateRequest) async throws -> EnableCloudPermissionTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableCloudPermissionTemplateWithOptions(request as! EnableCloudPermissionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6168,6 +6486,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCloudPermissionTemplateWithOptions(_ request: GetCloudPermissionTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCloudPermissionTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateId)) {
+            query["CloudPermissionTemplateId"] = request.cloudPermissionTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCloudPermissionTemplate",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCloudPermissionTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCloudPermissionTemplate(_ request: GetCloudPermissionTemplateRequest) async throws -> GetCloudPermissionTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCloudPermissionTemplateWithOptions(request as! GetCloudPermissionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getConditionalAccessPolicyWithOptions(_ request: GetConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConditionalAccessPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -6468,6 +6823,31 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getForgetPasswordConfiguration(_ request: GetForgetPasswordConfigurationRequest) async throws -> GetForgetPasswordConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getForgetPasswordConfigurationWithOptions(request as! GetForgetPasswordConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGlobalCloudAccountSystemRolePolicyWithOptions(_ request: GetGlobalCloudAccountSystemRolePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGlobalCloudAccountSystemRolePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGlobalCloudAccountSystemRolePolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGlobalCloudAccountSystemRolePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGlobalCloudAccountSystemRolePolicy(_ request: GetGlobalCloudAccountSystemRolePolicyRequest) async throws -> GetGlobalCloudAccountSystemRolePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGlobalCloudAccountSystemRolePolicyWithOptions(request as! GetGlobalCloudAccountSystemRolePolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8453,6 +8833,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCloudAccounts(_ request: ListCloudAccountsRequest) async throws -> ListCloudAccountsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listCloudAccountsWithOptions(request as! ListCloudAccountsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudPermissionTemplatesWithOptions(_ request: ListCloudPermissionTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudPermissionTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateNamePrefix)) {
+            query["CloudPermissionTemplateNamePrefix"] = request.cloudPermissionTemplateNamePrefix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateSharingMode)) {
+            query["CloudPermissionTemplateSharingMode"] = request.cloudPermissionTemplateSharingMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateUsageType)) {
+            query["CloudPermissionTemplateUsageType"] = request.cloudPermissionTemplateUsageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.creatorType)) {
+            query["CreatorType"] = request.creatorType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudPermissionTemplates",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudPermissionTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudPermissionTemplates(_ request: ListCloudPermissionTemplatesRequest) async throws -> ListCloudPermissionTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudPermissionTemplatesWithOptions(request as! ListCloudPermissionTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -12971,6 +13403,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCloudAccountRoleDescription(_ request: UpdateCloudAccountRoleDescriptionRequest) async throws -> UpdateCloudAccountRoleDescriptionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateCloudAccountRoleDescriptionWithOptions(request as! UpdateCloudAccountRoleDescriptionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudPermissionTemplateWithOptions(_ request: UpdateCloudPermissionTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudPermissionTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowRequest)) {
+            query["AllowRequest"] = request.allowRequest!;
+        }
+        if (!TeaUtils.Client.isUnset(request.applicableScope)) {
+            query["ApplicableScope"] = request.applicableScope!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountId)) {
+            query["CloudAccountId"] = request.cloudAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountResources)) {
+            query["CloudAccountResources"] = request.cloudAccountResources ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateId)) {
+            query["CloudPermissionTemplateId"] = request.cloudPermissionTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudPermissionTemplateName)) {
+            query["CloudPermissionTemplateName"] = request.cloudPermissionTemplateName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudPermissionTemplate",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudPermissionTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudPermissionTemplate(_ request: UpdateCloudPermissionTemplateRequest) async throws -> UpdateCloudPermissionTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudPermissionTemplateWithOptions(request as! UpdateCloudPermissionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

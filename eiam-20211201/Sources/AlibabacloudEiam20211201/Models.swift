@@ -1,9 +1,138 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
+
+public class ActivateCloudAccountPrivilegeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var cloudAccountId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class ActivateCloudAccountPrivilegeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ActivateCloudAccountPrivilegeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ActivateCloudAccountPrivilegeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ActivateCloudAccountPrivilegeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
 
 public class AddApplicationAccountToUserRequest : Tea.TeaModel {
     public var applicationId: String?
@@ -5308,6 +5437,291 @@ public class CreateCloudAccountRoleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateCloudAccountRoleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateCloudPermissionTemplateRequest : Tea.TeaModel {
+    public class ApplicableScope : Tea.TeaModel {
+        public var groupIds: [String]?
+
+        public var organizationalUnitIds: [String]?
+
+        public var scopeType: String?
+
+        public var userIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupIds != nil {
+                map["GroupIds"] = self.groupIds!
+            }
+            if self.organizationalUnitIds != nil {
+                map["OrganizationalUnitIds"] = self.organizationalUnitIds!
+            }
+            if self.scopeType != nil {
+                map["ScopeType"] = self.scopeType!
+            }
+            if self.userIds != nil {
+                map["UserIds"] = self.userIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GroupIds"] as? [String] {
+                self.groupIds = value
+            }
+            if let value = dict["OrganizationalUnitIds"] as? [String] {
+                self.organizationalUnitIds = value
+            }
+            if let value = dict["ScopeType"] as? String {
+                self.scopeType = value
+            }
+            if let value = dict["UserIds"] as? [String] {
+                self.userIds = value
+            }
+        }
+    }
+    public class CloudAccountResources : Tea.TeaModel {
+        public var cloudAccountResourceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cloudAccountResourceId != nil {
+                map["CloudAccountResourceId"] = self.cloudAccountResourceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CloudAccountResourceId"] as? String {
+                self.cloudAccountResourceId = value
+            }
+        }
+    }
+    public var allowRequest: Bool?
+
+    public var applicableScope: CreateCloudPermissionTemplateRequest.ApplicableScope?
+
+    public var clientToken: String?
+
+    public var cloudAccountId: String?
+
+    public var cloudAccountResources: [CreateCloudPermissionTemplateRequest.CloudAccountResources]?
+
+    public var cloudPermissionTemplateName: String?
+
+    public var cloudPermissionTemplateUsageType: String?
+
+    public var description_: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.applicableScope?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowRequest != nil {
+            map["AllowRequest"] = self.allowRequest!
+        }
+        if self.applicableScope != nil {
+            map["ApplicableScope"] = self.applicableScope?.toMap()
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudAccountResources != nil {
+            var tmp : [Any] = []
+            for k in self.cloudAccountResources! {
+                tmp.append(k.toMap())
+            }
+            map["CloudAccountResources"] = tmp
+        }
+        if self.cloudPermissionTemplateName != nil {
+            map["CloudPermissionTemplateName"] = self.cloudPermissionTemplateName!
+        }
+        if self.cloudPermissionTemplateUsageType != nil {
+            map["CloudPermissionTemplateUsageType"] = self.cloudPermissionTemplateUsageType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowRequest"] as? Bool {
+            self.allowRequest = value
+        }
+        if let value = dict["ApplicableScope"] as? [String: Any?] {
+            var model = CreateCloudPermissionTemplateRequest.ApplicableScope()
+            model.fromMap(value)
+            self.applicableScope = model
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudAccountResources"] as? [Any?] {
+            var tmp : [CreateCloudPermissionTemplateRequest.CloudAccountResources] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCloudPermissionTemplateRequest.CloudAccountResources()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cloudAccountResources = tmp
+        }
+        if let value = dict["CloudPermissionTemplateName"] as? String {
+            self.cloudPermissionTemplateName = value
+        }
+        if let value = dict["CloudPermissionTemplateUsageType"] as? String {
+            self.cloudPermissionTemplateUsageType = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class CreateCloudPermissionTemplateResponseBody : Tea.TeaModel {
+    public var cloudPermissionTemplateId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudPermissionTemplateId != nil {
+            map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudPermissionTemplateId"] as? String {
+            self.cloudPermissionTemplateId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateCloudPermissionTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateCloudPermissionTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateCloudPermissionTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -11041,6 +11455,134 @@ public class CreateUserResponse : Tea.TeaModel {
     }
 }
 
+public class DeactivateCloudAccountPrivilegeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var cloudAccountId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeactivateCloudAccountPrivilegeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeactivateCloudAccountPrivilegeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeactivateCloudAccountPrivilegeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeactivateCloudAccountPrivilegeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
@@ -12411,6 +12953,134 @@ public class DeleteCloudAccountRoleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteCloudAccountRoleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteCloudPermissionTemplateRequest : Tea.TeaModel {
+    public var cloudAccountId: String?
+
+    public var cloudPermissionTemplateId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudPermissionTemplateId != nil {
+            map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudPermissionTemplateId"] as? String {
+            self.cloudPermissionTemplateId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeleteCloudPermissionTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteCloudPermissionTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteCloudPermissionTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteCloudPermissionTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -16329,6 +16999,134 @@ public class DisableClientPublicKeyResponse : Tea.TeaModel {
     }
 }
 
+public class DisableCloudAccountPrivilegeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var cloudAccountId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DisableCloudAccountPrivilegeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DisableCloudAccountPrivilegeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableCloudAccountPrivilegeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableCloudAccountPrivilegeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DisableCloudAccountRoleRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -16459,6 +17257,134 @@ public class DisableCloudAccountRoleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DisableCloudAccountRoleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DisableCloudPermissionTemplateRequest : Tea.TeaModel {
+    public var cloudAccountId: String?
+
+    public var cloudPermissionTemplateId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudPermissionTemplateId != nil {
+            map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudPermissionTemplateId"] as? String {
+            self.cloudPermissionTemplateId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DisableCloudPermissionTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DisableCloudPermissionTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableCloudPermissionTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableCloudPermissionTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -19761,6 +20687,134 @@ public class EnableClientPublicKeyResponse : Tea.TeaModel {
     }
 }
 
+public class EnableCloudAccountPrivilegeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var cloudAccountId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class EnableCloudAccountPrivilegeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class EnableCloudAccountPrivilegeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableCloudAccountPrivilegeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableCloudAccountPrivilegeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EnableCloudAccountRoleRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -19891,6 +20945,134 @@ public class EnableCloudAccountRoleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = EnableCloudAccountRoleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnableCloudPermissionTemplateRequest : Tea.TeaModel {
+    public var cloudAccountId: String?
+
+    public var cloudPermissionTemplateId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudPermissionTemplateId != nil {
+            map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudPermissionTemplateId"] as? String {
+            self.cloudPermissionTemplateId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class EnableCloudPermissionTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class EnableCloudPermissionTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableCloudPermissionTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableCloudPermissionTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -28703,6 +29885,474 @@ public class GetCloudAccountRoleResponse : Tea.TeaModel {
     }
 }
 
+public class GetCloudPermissionTemplateRequest : Tea.TeaModel {
+    public var cloudAccountId: String?
+
+    public var cloudPermissionTemplateId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudPermissionTemplateId != nil {
+            map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudPermissionTemplateId"] as? String {
+            self.cloudPermissionTemplateId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetCloudPermissionTemplateResponseBody : Tea.TeaModel {
+    public class CloudPermissionTemplate : Tea.TeaModel {
+        public class ApplicableScope : Tea.TeaModel {
+            public var groupIds: [String]?
+
+            public var organizationalUnitIds: [String]?
+
+            public var scopeType: String?
+
+            public var userIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupIds != nil {
+                    map["GroupIds"] = self.groupIds!
+                }
+                if self.organizationalUnitIds != nil {
+                    map["OrganizationalUnitIds"] = self.organizationalUnitIds!
+                }
+                if self.scopeType != nil {
+                    map["ScopeType"] = self.scopeType!
+                }
+                if self.userIds != nil {
+                    map["UserIds"] = self.userIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GroupIds"] as? [String] {
+                    self.groupIds = value
+                }
+                if let value = dict["OrganizationalUnitIds"] as? [String] {
+                    self.organizationalUnitIds = value
+                }
+                if let value = dict["ScopeType"] as? String {
+                    self.scopeType = value
+                }
+                if let value = dict["UserIds"] as? [String] {
+                    self.userIds = value
+                }
+            }
+        }
+        public class CloudPermissionTemplateCreator : Tea.TeaModel {
+            public var creatorId: String?
+
+            public var creatorName: String?
+
+            public var creatorType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.creatorId != nil {
+                    map["CreatorId"] = self.creatorId!
+                }
+                if self.creatorName != nil {
+                    map["CreatorName"] = self.creatorName!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreatorId"] as? String {
+                    self.creatorId = value
+                }
+                if let value = dict["CreatorName"] as? String {
+                    self.creatorName = value
+                }
+                if let value = dict["CreatorType"] as? String {
+                    self.creatorType = value
+                }
+            }
+        }
+        public class CloudPermissionTemplateInitResult : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var result: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.result != nil {
+                    map["Result"] = self.result!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Result"] as? String {
+                    self.result = value
+                }
+            }
+        }
+        public var allowRequest: Bool?
+
+        public var applicableScope: GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate.ApplicableScope?
+
+        public var cloudAccountId: String?
+
+        public var cloudPermissionTemplateCreator: GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate.CloudPermissionTemplateCreator?
+
+        public var cloudPermissionTemplateId: String?
+
+        public var cloudPermissionTemplateInitResult: GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate.CloudPermissionTemplateInitResult?
+
+        public var cloudPermissionTemplateName: String?
+
+        public var cloudPermissionTemplateOwnerId: String?
+
+        public var cloudPermissionTemplateOwnerType: String?
+
+        public var cloudPermissionTemplateSharingMode: String?
+
+        public var cloudPermissionTemplateUsageType: String?
+
+        public var createTime: Int64?
+
+        public var description_: String?
+
+        public var instanceId: String?
+
+        public var permissionEntityExternalId: String?
+
+        public var permissionEntityId: String?
+
+        public var permissionEntityType: String?
+
+        public var status: String?
+
+        public var updateTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.applicableScope?.validate()
+            try self.cloudPermissionTemplateCreator?.validate()
+            try self.cloudPermissionTemplateInitResult?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowRequest != nil {
+                map["AllowRequest"] = self.allowRequest!
+            }
+            if self.applicableScope != nil {
+                map["ApplicableScope"] = self.applicableScope?.toMap()
+            }
+            if self.cloudAccountId != nil {
+                map["CloudAccountId"] = self.cloudAccountId!
+            }
+            if self.cloudPermissionTemplateCreator != nil {
+                map["CloudPermissionTemplateCreator"] = self.cloudPermissionTemplateCreator?.toMap()
+            }
+            if self.cloudPermissionTemplateId != nil {
+                map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+            }
+            if self.cloudPermissionTemplateInitResult != nil {
+                map["CloudPermissionTemplateInitResult"] = self.cloudPermissionTemplateInitResult?.toMap()
+            }
+            if self.cloudPermissionTemplateName != nil {
+                map["CloudPermissionTemplateName"] = self.cloudPermissionTemplateName!
+            }
+            if self.cloudPermissionTemplateOwnerId != nil {
+                map["CloudPermissionTemplateOwnerId"] = self.cloudPermissionTemplateOwnerId!
+            }
+            if self.cloudPermissionTemplateOwnerType != nil {
+                map["CloudPermissionTemplateOwnerType"] = self.cloudPermissionTemplateOwnerType!
+            }
+            if self.cloudPermissionTemplateSharingMode != nil {
+                map["CloudPermissionTemplateSharingMode"] = self.cloudPermissionTemplateSharingMode!
+            }
+            if self.cloudPermissionTemplateUsageType != nil {
+                map["CloudPermissionTemplateUsageType"] = self.cloudPermissionTemplateUsageType!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.permissionEntityExternalId != nil {
+                map["PermissionEntityExternalId"] = self.permissionEntityExternalId!
+            }
+            if self.permissionEntityId != nil {
+                map["PermissionEntityId"] = self.permissionEntityId!
+            }
+            if self.permissionEntityType != nil {
+                map["PermissionEntityType"] = self.permissionEntityType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowRequest"] as? Bool {
+                self.allowRequest = value
+            }
+            if let value = dict["ApplicableScope"] as? [String: Any?] {
+                var model = GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate.ApplicableScope()
+                model.fromMap(value)
+                self.applicableScope = model
+            }
+            if let value = dict["CloudAccountId"] as? String {
+                self.cloudAccountId = value
+            }
+            if let value = dict["CloudPermissionTemplateCreator"] as? [String: Any?] {
+                var model = GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate.CloudPermissionTemplateCreator()
+                model.fromMap(value)
+                self.cloudPermissionTemplateCreator = model
+            }
+            if let value = dict["CloudPermissionTemplateId"] as? String {
+                self.cloudPermissionTemplateId = value
+            }
+            if let value = dict["CloudPermissionTemplateInitResult"] as? [String: Any?] {
+                var model = GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate.CloudPermissionTemplateInitResult()
+                model.fromMap(value)
+                self.cloudPermissionTemplateInitResult = model
+            }
+            if let value = dict["CloudPermissionTemplateName"] as? String {
+                self.cloudPermissionTemplateName = value
+            }
+            if let value = dict["CloudPermissionTemplateOwnerId"] as? String {
+                self.cloudPermissionTemplateOwnerId = value
+            }
+            if let value = dict["CloudPermissionTemplateOwnerType"] as? String {
+                self.cloudPermissionTemplateOwnerType = value
+            }
+            if let value = dict["CloudPermissionTemplateSharingMode"] as? String {
+                self.cloudPermissionTemplateSharingMode = value
+            }
+            if let value = dict["CloudPermissionTemplateUsageType"] as? String {
+                self.cloudPermissionTemplateUsageType = value
+            }
+            if let value = dict["CreateTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["PermissionEntityExternalId"] as? String {
+                self.permissionEntityExternalId = value
+            }
+            if let value = dict["PermissionEntityId"] as? String {
+                self.permissionEntityId = value
+            }
+            if let value = dict["PermissionEntityType"] as? String {
+                self.permissionEntityType = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
+            }
+        }
+    }
+    public var cloudPermissionTemplate: GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.cloudPermissionTemplate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudPermissionTemplate != nil {
+            map["CloudPermissionTemplate"] = self.cloudPermissionTemplate?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudPermissionTemplate"] as? [String: Any?] {
+            var model = GetCloudPermissionTemplateResponseBody.CloudPermissionTemplate()
+            model.fromMap(value)
+            self.cloudPermissionTemplate = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetCloudPermissionTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCloudPermissionTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCloudPermissionTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetConditionalAccessPolicyRequest : Tea.TeaModel {
     public var conditionalAccessPolicyId: String?
 
@@ -32088,6 +33738,119 @@ public class GetForgetPasswordConfigurationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetForgetPasswordConfigurationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetGlobalCloudAccountSystemRolePolicyRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetGlobalCloudAccountSystemRolePolicyResponseBody : Tea.TeaModel {
+    public var policyDocument: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.policyDocument != nil {
+            map["PolicyDocument"] = self.policyDocument!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PolicyDocument"] as? String {
+            self.policyDocument = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetGlobalCloudAccountSystemRolePolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGlobalCloudAccountSystemRolePolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetGlobalCloudAccountSystemRolePolicyResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -50271,6 +52034,549 @@ public class ListCloudAccountsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListCloudAccountsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListCloudPermissionTemplatesRequest : Tea.TeaModel {
+    public var cloudAccountId: String?
+
+    public var cloudPermissionTemplateNamePrefix: String?
+
+    public var cloudPermissionTemplateSharingMode: String?
+
+    public var cloudPermissionTemplateUsageType: String?
+
+    public var creatorType: String?
+
+    public var instanceId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudPermissionTemplateNamePrefix != nil {
+            map["CloudPermissionTemplateNamePrefix"] = self.cloudPermissionTemplateNamePrefix!
+        }
+        if self.cloudPermissionTemplateSharingMode != nil {
+            map["CloudPermissionTemplateSharingMode"] = self.cloudPermissionTemplateSharingMode!
+        }
+        if self.cloudPermissionTemplateUsageType != nil {
+            map["CloudPermissionTemplateUsageType"] = self.cloudPermissionTemplateUsageType!
+        }
+        if self.creatorType != nil {
+            map["CreatorType"] = self.creatorType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudPermissionTemplateNamePrefix"] as? String {
+            self.cloudPermissionTemplateNamePrefix = value
+        }
+        if let value = dict["CloudPermissionTemplateSharingMode"] as? String {
+            self.cloudPermissionTemplateSharingMode = value
+        }
+        if let value = dict["CloudPermissionTemplateUsageType"] as? String {
+            self.cloudPermissionTemplateUsageType = value
+        }
+        if let value = dict["CreatorType"] as? String {
+            self.creatorType = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListCloudPermissionTemplatesResponseBody : Tea.TeaModel {
+    public class CloudPermissionTemplates : Tea.TeaModel {
+        public class ApplicableScope : Tea.TeaModel {
+            public var groupIds: [String]?
+
+            public var organizationalUnitIds: [String]?
+
+            public var scopeType: String?
+
+            public var userIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupIds != nil {
+                    map["GroupIds"] = self.groupIds!
+                }
+                if self.organizationalUnitIds != nil {
+                    map["OrganizationalUnitIds"] = self.organizationalUnitIds!
+                }
+                if self.scopeType != nil {
+                    map["ScopeType"] = self.scopeType!
+                }
+                if self.userIds != nil {
+                    map["UserIds"] = self.userIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GroupIds"] as? [String] {
+                    self.groupIds = value
+                }
+                if let value = dict["OrganizationalUnitIds"] as? [String] {
+                    self.organizationalUnitIds = value
+                }
+                if let value = dict["ScopeType"] as? String {
+                    self.scopeType = value
+                }
+                if let value = dict["UserIds"] as? [String] {
+                    self.userIds = value
+                }
+            }
+        }
+        public class CloudPermissionTemplateCreator : Tea.TeaModel {
+            public var creatorId: String?
+
+            public var creatorName: String?
+
+            public var creatorType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.creatorId != nil {
+                    map["CreatorId"] = self.creatorId!
+                }
+                if self.creatorName != nil {
+                    map["CreatorName"] = self.creatorName!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreatorId"] as? String {
+                    self.creatorId = value
+                }
+                if let value = dict["CreatorName"] as? String {
+                    self.creatorName = value
+                }
+                if let value = dict["CreatorType"] as? String {
+                    self.creatorType = value
+                }
+            }
+        }
+        public class CloudPermissionTemplateInitResult : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var result: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.result != nil {
+                    map["Result"] = self.result!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Result"] as? String {
+                    self.result = value
+                }
+            }
+        }
+        public var allowRequest: Bool?
+
+        public var applicableScope: ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates.ApplicableScope?
+
+        public var cloudAccountId: String?
+
+        public var cloudPermissionTemplateCreator: ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates.CloudPermissionTemplateCreator?
+
+        public var cloudPermissionTemplateId: String?
+
+        public var cloudPermissionTemplateInitResult: ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates.CloudPermissionTemplateInitResult?
+
+        public var cloudPermissionTemplateName: String?
+
+        public var cloudPermissionTemplateOwnerId: String?
+
+        public var cloudPermissionTemplateOwnerType: String?
+
+        public var cloudPermissionTemplateSharingMode: String?
+
+        public var cloudPermissionTemplateUsageType: String?
+
+        public var createTime: Int64?
+
+        public var description_: String?
+
+        public var instanceId: String?
+
+        public var permissionEntityExternalId: String?
+
+        public var permissionEntityId: String?
+
+        public var permissionEntityType: String?
+
+        public var status: String?
+
+        public var updateTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.applicableScope?.validate()
+            try self.cloudPermissionTemplateCreator?.validate()
+            try self.cloudPermissionTemplateInitResult?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowRequest != nil {
+                map["AllowRequest"] = self.allowRequest!
+            }
+            if self.applicableScope != nil {
+                map["ApplicableScope"] = self.applicableScope?.toMap()
+            }
+            if self.cloudAccountId != nil {
+                map["CloudAccountId"] = self.cloudAccountId!
+            }
+            if self.cloudPermissionTemplateCreator != nil {
+                map["CloudPermissionTemplateCreator"] = self.cloudPermissionTemplateCreator?.toMap()
+            }
+            if self.cloudPermissionTemplateId != nil {
+                map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+            }
+            if self.cloudPermissionTemplateInitResult != nil {
+                map["CloudPermissionTemplateInitResult"] = self.cloudPermissionTemplateInitResult?.toMap()
+            }
+            if self.cloudPermissionTemplateName != nil {
+                map["CloudPermissionTemplateName"] = self.cloudPermissionTemplateName!
+            }
+            if self.cloudPermissionTemplateOwnerId != nil {
+                map["CloudPermissionTemplateOwnerId"] = self.cloudPermissionTemplateOwnerId!
+            }
+            if self.cloudPermissionTemplateOwnerType != nil {
+                map["CloudPermissionTemplateOwnerType"] = self.cloudPermissionTemplateOwnerType!
+            }
+            if self.cloudPermissionTemplateSharingMode != nil {
+                map["CloudPermissionTemplateSharingMode"] = self.cloudPermissionTemplateSharingMode!
+            }
+            if self.cloudPermissionTemplateUsageType != nil {
+                map["CloudPermissionTemplateUsageType"] = self.cloudPermissionTemplateUsageType!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.permissionEntityExternalId != nil {
+                map["PermissionEntityExternalId"] = self.permissionEntityExternalId!
+            }
+            if self.permissionEntityId != nil {
+                map["PermissionEntityId"] = self.permissionEntityId!
+            }
+            if self.permissionEntityType != nil {
+                map["PermissionEntityType"] = self.permissionEntityType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowRequest"] as? Bool {
+                self.allowRequest = value
+            }
+            if let value = dict["ApplicableScope"] as? [String: Any?] {
+                var model = ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates.ApplicableScope()
+                model.fromMap(value)
+                self.applicableScope = model
+            }
+            if let value = dict["CloudAccountId"] as? String {
+                self.cloudAccountId = value
+            }
+            if let value = dict["CloudPermissionTemplateCreator"] as? [String: Any?] {
+                var model = ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates.CloudPermissionTemplateCreator()
+                model.fromMap(value)
+                self.cloudPermissionTemplateCreator = model
+            }
+            if let value = dict["CloudPermissionTemplateId"] as? String {
+                self.cloudPermissionTemplateId = value
+            }
+            if let value = dict["CloudPermissionTemplateInitResult"] as? [String: Any?] {
+                var model = ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates.CloudPermissionTemplateInitResult()
+                model.fromMap(value)
+                self.cloudPermissionTemplateInitResult = model
+            }
+            if let value = dict["CloudPermissionTemplateName"] as? String {
+                self.cloudPermissionTemplateName = value
+            }
+            if let value = dict["CloudPermissionTemplateOwnerId"] as? String {
+                self.cloudPermissionTemplateOwnerId = value
+            }
+            if let value = dict["CloudPermissionTemplateOwnerType"] as? String {
+                self.cloudPermissionTemplateOwnerType = value
+            }
+            if let value = dict["CloudPermissionTemplateSharingMode"] as? String {
+                self.cloudPermissionTemplateSharingMode = value
+            }
+            if let value = dict["CloudPermissionTemplateUsageType"] as? String {
+                self.cloudPermissionTemplateUsageType = value
+            }
+            if let value = dict["CreateTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["PermissionEntityExternalId"] as? String {
+                self.permissionEntityExternalId = value
+            }
+            if let value = dict["PermissionEntityId"] as? String {
+                self.permissionEntityId = value
+            }
+            if let value = dict["PermissionEntityType"] as? String {
+                self.permissionEntityType = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
+            }
+        }
+    }
+    public var cloudPermissionTemplates: [ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates]?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudPermissionTemplates != nil {
+            var tmp : [Any] = []
+            for k in self.cloudPermissionTemplates! {
+                tmp.append(k.toMap())
+            }
+            map["CloudPermissionTemplates"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CloudPermissionTemplates"] as? [Any?] {
+            var tmp : [ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates] = []
+            for v in value {
+                if v != nil {
+                    var model = ListCloudPermissionTemplatesResponseBody.CloudPermissionTemplates()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cloudPermissionTemplates = tmp
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListCloudPermissionTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCloudPermissionTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCloudPermissionTemplatesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -77950,6 +80256,283 @@ public class UpdateCloudAccountRoleDescriptionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateCloudAccountRoleDescriptionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateCloudPermissionTemplateRequest : Tea.TeaModel {
+    public class ApplicableScope : Tea.TeaModel {
+        public var groupIds: [String]?
+
+        public var organizationalUnitIds: [String]?
+
+        public var scopeType: String?
+
+        public var userIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupIds != nil {
+                map["GroupIds"] = self.groupIds!
+            }
+            if self.organizationalUnitIds != nil {
+                map["OrganizationalUnitIds"] = self.organizationalUnitIds!
+            }
+            if self.scopeType != nil {
+                map["ScopeType"] = self.scopeType!
+            }
+            if self.userIds != nil {
+                map["UserIds"] = self.userIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GroupIds"] as? [String] {
+                self.groupIds = value
+            }
+            if let value = dict["OrganizationalUnitIds"] as? [String] {
+                self.organizationalUnitIds = value
+            }
+            if let value = dict["ScopeType"] as? String {
+                self.scopeType = value
+            }
+            if let value = dict["UserIds"] as? [String] {
+                self.userIds = value
+            }
+        }
+    }
+    public class CloudAccountResources : Tea.TeaModel {
+        public var cloudAccountResourceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cloudAccountResourceId != nil {
+                map["CloudAccountResourceId"] = self.cloudAccountResourceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CloudAccountResourceId"] as? String {
+                self.cloudAccountResourceId = value
+            }
+        }
+    }
+    public var allowRequest: Bool?
+
+    public var applicableScope: UpdateCloudPermissionTemplateRequest.ApplicableScope?
+
+    public var clientToken: String?
+
+    public var cloudAccountId: String?
+
+    public var cloudAccountResources: [UpdateCloudPermissionTemplateRequest.CloudAccountResources]?
+
+    public var cloudPermissionTemplateId: String?
+
+    public var cloudPermissionTemplateName: String?
+
+    public var description_: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.applicableScope?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowRequest != nil {
+            map["AllowRequest"] = self.allowRequest!
+        }
+        if self.applicableScope != nil {
+            map["ApplicableScope"] = self.applicableScope?.toMap()
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloudAccountId != nil {
+            map["CloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudAccountResources != nil {
+            var tmp : [Any] = []
+            for k in self.cloudAccountResources! {
+                tmp.append(k.toMap())
+            }
+            map["CloudAccountResources"] = tmp
+        }
+        if self.cloudPermissionTemplateId != nil {
+            map["CloudPermissionTemplateId"] = self.cloudPermissionTemplateId!
+        }
+        if self.cloudPermissionTemplateName != nil {
+            map["CloudPermissionTemplateName"] = self.cloudPermissionTemplateName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowRequest"] as? Bool {
+            self.allowRequest = value
+        }
+        if let value = dict["ApplicableScope"] as? [String: Any?] {
+            var model = UpdateCloudPermissionTemplateRequest.ApplicableScope()
+            model.fromMap(value)
+            self.applicableScope = model
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["CloudAccountResources"] as? [Any?] {
+            var tmp : [UpdateCloudPermissionTemplateRequest.CloudAccountResources] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateCloudPermissionTemplateRequest.CloudAccountResources()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cloudAccountResources = tmp
+        }
+        if let value = dict["CloudPermissionTemplateId"] as? String {
+            self.cloudPermissionTemplateId = value
+        }
+        if let value = dict["CloudPermissionTemplateName"] as? String {
+            self.cloudPermissionTemplateName = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class UpdateCloudPermissionTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateCloudPermissionTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateCloudPermissionTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateCloudPermissionTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
