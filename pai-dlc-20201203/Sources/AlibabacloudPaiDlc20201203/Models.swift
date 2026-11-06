@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3502,6 +3503,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var enableErrorMonitoringInAIMaster: Bool?
 
+    public var enableIntraJobSSH: Bool?
+
     public var enableOssAppend: Bool?
 
     public var enableRDMA: Bool?
@@ -3581,6 +3584,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.enableErrorMonitoringInAIMaster != nil {
             map["EnableErrorMonitoringInAIMaster"] = self.enableErrorMonitoringInAIMaster!
+        }
+        if self.enableIntraJobSSH != nil {
+            map["EnableIntraJobSSH"] = self.enableIntraJobSSH!
         }
         if self.enableOssAppend != nil {
             map["EnableOssAppend"] = self.enableOssAppend!
@@ -3666,6 +3672,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if let value = dict["EnableErrorMonitoringInAIMaster"] as? Bool {
             self.enableErrorMonitoringInAIMaster = value
+        }
+        if let value = dict["EnableIntraJobSSH"] as? Bool {
+            self.enableIntraJobSSH = value
         }
         if let value = dict["EnableOssAppend"] as? Bool {
             self.enableOssAppend = value
@@ -14528,6 +14537,8 @@ public class GetTokenResponse : Tea.TeaModel {
 }
 
 public class GetWebTerminalRequest : Tea.TeaModel {
+    public var containerName: String?
+
     public var isShared: Bool?
 
     public var podUid: String?
@@ -14546,6 +14557,9 @@ public class GetWebTerminalRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.containerName != nil {
+            map["ContainerName"] = self.containerName!
+        }
         if self.isShared != nil {
             map["IsShared"] = self.isShared!
         }
@@ -14557,6 +14571,9 @@ public class GetWebTerminalRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ContainerName"] as? String {
+            self.containerName = value
+        }
         if let value = dict["IsShared"] as? Bool {
             self.isShared = value
         }
