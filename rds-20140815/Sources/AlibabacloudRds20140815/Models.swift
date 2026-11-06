@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -25489,6 +25490,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
     public var enableBackupLog: String?
 
+    public var enableImmutableBackup: Bool?
+
     public var enableIncrementDataBackup: Bool?
 
     public var enablePitrProtection: Bool?
@@ -25584,6 +25587,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if self.enableBackupLog != nil {
             map["EnableBackupLog"] = self.enableBackupLog!
+        }
+        if self.enableImmutableBackup != nil {
+            map["EnableImmutableBackup"] = self.enableImmutableBackup!
         }
         if self.enableIncrementDataBackup != nil {
             map["EnableIncrementDataBackup"] = self.enableIncrementDataBackup!
@@ -25692,6 +25698,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if let value = dict["EnableBackupLog"] as? String {
             self.enableBackupLog = value
+        }
+        if let value = dict["EnableImmutableBackup"] as? Bool {
+            self.enableImmutableBackup = value
         }
         if let value = dict["EnableIncrementDataBackup"] as? Bool {
             self.enableIncrementDataBackup = value
@@ -61502,6 +61511,8 @@ public class DescribeRCDisksResponse : Tea.TeaModel {
 }
 
 public class DescribeRCElasticScalingRequest : Tea.TeaModel {
+    public var acuType: String?
+
     public var instanceChargeType: String?
 
     public var instanceId: String?
@@ -61526,6 +61537,9 @@ public class DescribeRCElasticScalingRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acuType != nil {
+            map["AcuType"] = self.acuType!
+        }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
         }
@@ -61546,6 +61560,9 @@ public class DescribeRCElasticScalingRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AcuType"] as? String {
+            self.acuType = value
+        }
         if let value = dict["InstanceChargeType"] as? String {
             self.instanceChargeType = value
         }
@@ -61599,6 +61616,10 @@ public class DescribeRCElasticScalingResponseBody : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var maxAcu: Int32?
+
+    public var minAcu: Int32?
+
     public var requestId: String?
 
     public var scalingEnabled: Bool?
@@ -61632,6 +61653,12 @@ public class DescribeRCElasticScalingResponseBody : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.maxAcu != nil {
+            map["MaxAcu"] = self.maxAcu!
+        }
+        if self.minAcu != nil {
+            map["MinAcu"] = self.minAcu!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -61660,6 +61687,12 @@ public class DescribeRCElasticScalingResponseBody : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["MaxAcu"] as? Int32 {
+            self.maxAcu = value
+        }
+        if let value = dict["MinAcu"] as? Int32 {
+            self.minAcu = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -69664,6 +69697,8 @@ public class DescribeRCVClusterResponseBody : Tea.TeaModel {
     public class MysqlOperator : Tea.TeaModel {
         public var dashboardPublicEndpoint: String?
 
+        public var dashboardPublicEndpointExpireTime: String?
+
         public var dashboardUsername: String?
 
         public var dashboardVpcEndpoint: String?
@@ -69689,6 +69724,9 @@ public class DescribeRCVClusterResponseBody : Tea.TeaModel {
             if self.dashboardPublicEndpoint != nil {
                 map["DashboardPublicEndpoint"] = self.dashboardPublicEndpoint!
             }
+            if self.dashboardPublicEndpointExpireTime != nil {
+                map["DashboardPublicEndpointExpireTime"] = self.dashboardPublicEndpointExpireTime!
+            }
             if self.dashboardUsername != nil {
                 map["DashboardUsername"] = self.dashboardUsername!
             }
@@ -69708,6 +69746,9 @@ public class DescribeRCVClusterResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["DashboardPublicEndpoint"] as? String {
                 self.dashboardPublicEndpoint = value
+            }
+            if let value = dict["DashboardPublicEndpointExpireTime"] as? String {
+                self.dashboardPublicEndpointExpireTime = value
             }
             if let value = dict["DashboardUsername"] as? String {
                 self.dashboardUsername = value
@@ -82717,6 +82758,8 @@ public class ListRCVClustersResponseBody : Tea.TeaModel {
         public class MysqlOperator : Tea.TeaModel {
             public var dashboardPublicEndpoint: String?
 
+            public var dashboardPublicEndpointExpireTime: String?
+
             public var dashboardUsername: String?
 
             public var dashboardVpcEndpoint: String?
@@ -82742,6 +82785,9 @@ public class ListRCVClustersResponseBody : Tea.TeaModel {
                 if self.dashboardPublicEndpoint != nil {
                     map["DashboardPublicEndpoint"] = self.dashboardPublicEndpoint!
                 }
+                if self.dashboardPublicEndpointExpireTime != nil {
+                    map["DashboardPublicEndpointExpireTime"] = self.dashboardPublicEndpointExpireTime!
+                }
                 if self.dashboardUsername != nil {
                     map["DashboardUsername"] = self.dashboardUsername!
                 }
@@ -82761,6 +82807,9 @@ public class ListRCVClustersResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["DashboardPublicEndpoint"] as? String {
                     self.dashboardPublicEndpoint = value
+                }
+                if let value = dict["DashboardPublicEndpointExpireTime"] as? String {
+                    self.dashboardPublicEndpointExpireTime = value
                 }
                 if let value = dict["DashboardUsername"] as? String {
                     self.dashboardUsername = value
@@ -86483,6 +86532,8 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
 
     public var enableBackupLog: String?
 
+    public var enableImmutableBackup: Bool?
+
     public var enableIncrementDataBackup: Bool?
 
     public var enablePitrProtection: Bool?
@@ -86584,6 +86635,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         }
         if self.enableBackupLog != nil {
             map["EnableBackupLog"] = self.enableBackupLog!
+        }
+        if self.enableImmutableBackup != nil {
+            map["EnableImmutableBackup"] = self.enableImmutableBackup!
         }
         if self.enableIncrementDataBackup != nil {
             map["EnableIncrementDataBackup"] = self.enableIncrementDataBackup!
@@ -86705,6 +86759,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["EnableBackupLog"] as? String {
             self.enableBackupLog = value
+        }
+        if let value = dict["EnableImmutableBackup"] as? Bool {
+            self.enableImmutableBackup = value
         }
         if let value = dict["EnableIncrementDataBackup"] as? Bool {
             self.enableIncrementDataBackup = value

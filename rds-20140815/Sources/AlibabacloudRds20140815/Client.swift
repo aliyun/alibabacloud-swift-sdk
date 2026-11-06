@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Rds"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-qingdao": "rds.aliyuncs.com",
@@ -10887,6 +10891,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeRCElasticScalingWithOptions(_ request: DescribeRCElasticScalingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRCElasticScalingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acuType)) {
+            query["AcuType"] = request.acuType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
             query["InstanceChargeType"] = request.instanceChargeType ?? "";
         }
@@ -14771,6 +14778,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableBackupLog)) {
             query["EnableBackupLog"] = request.enableBackupLog ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableImmutableBackup)) {
+            query["EnableImmutableBackup"] = request.enableImmutableBackup!;
         }
         if (!TeaUtils.Client.isUnset(request.enableIncrementDataBackup)) {
             query["EnableIncrementDataBackup"] = request.enableIncrementDataBackup!;
