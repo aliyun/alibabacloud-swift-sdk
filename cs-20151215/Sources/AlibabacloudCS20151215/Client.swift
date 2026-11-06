@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "CS"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "cs.aliyuncs.com",
@@ -1413,6 +1417,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.drainNode)) {
             body["drain_node"] = request.drainNode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.drainTimeoutSeconds)) {
+            body["drain_timeout_seconds"] = request.drainTimeoutSeconds!;
         }
         if (!TeaUtils.Client.isUnset(request.nodes)) {
             body["nodes"] = request.nodes ?? [];
@@ -4725,6 +4732,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.drainNode)) {
             query["drain_node"] = request.drainNode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.drainTimeoutSeconds)) {
+            query["drain_timeout_seconds"] = request.drainTimeoutSeconds!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
             query["instance_ids"] = request.instanceIdsShrink ?? "";

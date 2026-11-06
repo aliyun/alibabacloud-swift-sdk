@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -10475,6 +10476,8 @@ public class DeleteClusterNodepoolResponse : Tea.TeaModel {
 public class DeleteClusterNodesRequest : Tea.TeaModel {
     public var drainNode: Bool?
 
+    public var drainTimeoutSeconds: Int64?
+
     public var nodes: [String]?
 
     public var releaseNode: Bool?
@@ -10496,6 +10499,9 @@ public class DeleteClusterNodesRequest : Tea.TeaModel {
         if self.drainNode != nil {
             map["drain_node"] = self.drainNode!
         }
+        if self.drainTimeoutSeconds != nil {
+            map["drain_timeout_seconds"] = self.drainTimeoutSeconds!
+        }
         if self.nodes != nil {
             map["nodes"] = self.nodes!
         }
@@ -10509,6 +10515,9 @@ public class DeleteClusterNodesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["drain_node"] as? Bool {
             self.drainNode = value
+        }
+        if let value = dict["drain_timeout_seconds"] as? Int64 {
+            self.drainTimeoutSeconds = value
         }
         if let value = dict["nodes"] as? [String] {
             self.nodes = value
@@ -36534,6 +36543,8 @@ public class RemoveNodePoolNodesRequest : Tea.TeaModel {
 
     public var drainNode: Bool?
 
+    public var drainTimeoutSeconds: Int64?
+
     public var instanceIds: [String]?
 
     public var nodes: [String]?
@@ -36560,6 +36571,9 @@ public class RemoveNodePoolNodesRequest : Tea.TeaModel {
         if self.drainNode != nil {
             map["drain_node"] = self.drainNode!
         }
+        if self.drainTimeoutSeconds != nil {
+            map["drain_timeout_seconds"] = self.drainTimeoutSeconds!
+        }
         if self.instanceIds != nil {
             map["instance_ids"] = self.instanceIds!
         }
@@ -36580,6 +36594,9 @@ public class RemoveNodePoolNodesRequest : Tea.TeaModel {
         if let value = dict["drain_node"] as? Bool {
             self.drainNode = value
         }
+        if let value = dict["drain_timeout_seconds"] as? Int64 {
+            self.drainTimeoutSeconds = value
+        }
         if let value = dict["instance_ids"] as? [String] {
             self.instanceIds = value
         }
@@ -36596,6 +36613,8 @@ public class RemoveNodePoolNodesShrinkRequest : Tea.TeaModel {
     public var concurrency: Bool?
 
     public var drainNode: Bool?
+
+    public var drainTimeoutSeconds: Int64?
 
     public var instanceIdsShrink: String?
 
@@ -36623,6 +36642,9 @@ public class RemoveNodePoolNodesShrinkRequest : Tea.TeaModel {
         if self.drainNode != nil {
             map["drain_node"] = self.drainNode!
         }
+        if self.drainTimeoutSeconds != nil {
+            map["drain_timeout_seconds"] = self.drainTimeoutSeconds!
+        }
         if self.instanceIdsShrink != nil {
             map["instance_ids"] = self.instanceIdsShrink!
         }
@@ -36642,6 +36664,9 @@ public class RemoveNodePoolNodesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["drain_node"] as? Bool {
             self.drainNode = value
+        }
+        if let value = dict["drain_timeout_seconds"] as? Int64 {
+            self.drainTimeoutSeconds = value
         }
         if let value = dict["instance_ids"] as? String {
             self.instanceIdsShrink = value
