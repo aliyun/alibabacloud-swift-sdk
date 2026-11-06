@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -7647,6 +7648,36 @@ public class HttpApiDeployConfig : Tea.TeaModel {
             }
         }
     }
+    public class DfpConfig : Tea.TeaModel {
+        public var serviceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.serviceId != nil {
+                map["serviceId"] = self.serviceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["serviceId"] as? String {
+                self.serviceId = value
+            }
+        }
+    }
     public class EnvDomainInfos : Tea.TeaModel {
         public var domainId: String?
 
@@ -7943,6 +7974,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
     public var customDomainInfos: [HttpApiDeployConfig.CustomDomainInfos]?
 
+    public var dfpConfig: HttpApiDeployConfig.DfpConfig?
+
     public var enableSystemModels: Bool?
 
     public var envDomainIds: [String]?
@@ -7981,6 +8014,7 @@ public class HttpApiDeployConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dfpConfig?.validate()
         try self.gatewayInfo?.validate()
         try self.mock?.validate()
         try self.routeBackend?.validate()
@@ -8006,6 +8040,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["customDomainInfos"] = tmp
+        }
+        if self.dfpConfig != nil {
+            map["dfpConfig"] = self.dfpConfig?.toMap()
         }
         if self.enableSystemModels != nil {
             map["enableSystemModels"] = self.enableSystemModels!
@@ -8094,6 +8131,11 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
             self.customDomainInfos = tmp
+        }
+        if let value = dict["dfpConfig"] as? [String: Any?] {
+            var model = HttpApiDeployConfig.DfpConfig()
+            model.fromMap(value)
+            self.dfpConfig = model
         }
         if let value = dict["enableSystemModels"] as? Bool {
             self.enableSystemModels = value
@@ -10302,6 +10344,36 @@ public class HttpDubboTranscoder : Tea.TeaModel {
 }
 
 public class HttpRoute : Tea.TeaModel {
+    public class DfpConfig : Tea.TeaModel {
+        public var serviceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.serviceId != nil {
+                map["serviceId"] = self.serviceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["serviceId"] as? String {
+                self.serviceId = value
+            }
+        }
+    }
     public class DomainInfos : Tea.TeaModel {
         public var domainId: String?
 
@@ -10648,6 +10720,8 @@ public class HttpRoute : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dfpConfig: HttpRoute.DfpConfig?
+
     public var domainInfos: [HttpRoute.DomainInfos]?
 
     public var environmentInfo: HttpRoute.EnvironmentInfo?
@@ -10675,6 +10749,7 @@ public class HttpRoute : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.backend?.validate()
+        try self.dfpConfig?.validate()
         try self.environmentInfo?.validate()
         try self.match?.validate()
         try self.mcpServerInfo?.validate()
@@ -10696,6 +10771,9 @@ public class HttpRoute : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.dfpConfig != nil {
+            map["dfpConfig"] = self.dfpConfig?.toMap()
         }
         if self.domainInfos != nil {
             var tmp : [Any] = []
@@ -10746,6 +10824,11 @@ public class HttpRoute : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["dfpConfig"] as? [String: Any?] {
+            var model = HttpRoute.DfpConfig()
+            model.fromMap(value)
+            self.dfpConfig = model
         }
         if let value = dict["domainInfos"] as? [Any?] {
             var tmp : [HttpRoute.DomainInfos] = []
@@ -12340,6 +12423,44 @@ public class Service : Tea.TeaModel {
             }
         }
     }
+    public class ServiceMetaData : Tea.TeaModel {
+        public var dfpReferenced: Bool?
+
+        public var extProc: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dfpReferenced != nil {
+                map["dfpReferenced"] = self.dfpReferenced!
+            }
+            if self.extProc != nil {
+                map["extProc"] = self.extProc!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["dfpReferenced"] as? Bool {
+                self.dfpReferenced = value
+            }
+            if let value = dict["extProc"] as? Bool {
+                self.extProc = value
+            }
+        }
+    }
     public class Versions : Tea.TeaModel {
         public class Labels : Tea.TeaModel {
             public var key: String?
@@ -12478,6 +12599,8 @@ public class Service : Tea.TeaModel {
 
     public var serviceId: String?
 
+    public var serviceMetaData: Service.ServiceMetaData?
+
     public var sourceType: String?
 
     public var unhealthyEndpoints: [String]?
@@ -12500,6 +12623,7 @@ public class Service : Tea.TeaModel {
         try self.aiServiceConfig?.validate()
         try self.healthCheck?.validate()
         try self.outlierDetection?.validate()
+        try self.serviceMetaData?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -12583,6 +12707,9 @@ public class Service : Tea.TeaModel {
         }
         if self.serviceId != nil {
             map["serviceId"] = self.serviceId!
+        }
+        if self.serviceMetaData != nil {
+            map["serviceMetaData"] = self.serviceMetaData?.toMap()
         }
         if self.sourceType != nil {
             map["sourceType"] = self.sourceType!
@@ -12704,6 +12831,11 @@ public class Service : Tea.TeaModel {
         }
         if let value = dict["serviceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["serviceMetaData"] as? [String: Any?] {
+            var model = Service.ServiceMetaData()
+            model.fromMap(value)
+            self.serviceMetaData = model
         }
         if let value = dict["sourceType"] as? String {
             self.sourceType = value
@@ -20679,6 +20811,36 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
             }
         }
     }
+    public class DfpConfig : Tea.TeaModel {
+        public var serviceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.serviceId != nil {
+                map["serviceId"] = self.serviceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["serviceId"] as? String {
+                self.serviceId = value
+            }
+        }
+    }
     public class McpRouteConfig : Tea.TeaModel {
         public var exposedUriPath: String?
 
@@ -20731,6 +20893,8 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dfpConfig: CreateHttpApiRouteRequest.DfpConfig?
+
     public var domainIds: [String]?
 
     public var environmentId: String?
@@ -20754,6 +20918,7 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.backendConfig?.validate()
+        try self.dfpConfig?.validate()
         try self.match?.validate()
         try self.mcpRouteConfig?.validate()
     }
@@ -20772,6 +20937,9 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.dfpConfig != nil {
+            map["dfpConfig"] = self.dfpConfig?.toMap()
         }
         if self.domainIds != nil {
             map["domainIds"] = self.domainIds!
@@ -20820,6 +20988,11 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["dfpConfig"] as? [String: Any?] {
+            var model = CreateHttpApiRouteRequest.DfpConfig()
+            model.fromMap(value)
+            self.dfpConfig = model
         }
         if let value = dict["domainIds"] as? [String] {
             self.domainIds = value
@@ -35559,6 +35732,184 @@ public class GetGatewayResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetGatewayResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetGatewayDfpExtProcServiceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetGatewayDfpExtProcServiceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var bound: Bool?
+
+        public var serviceId: String?
+
+        public var servicePort: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bound != nil {
+                map["bound"] = self.bound!
+            }
+            if self.serviceId != nil {
+                map["serviceId"] = self.serviceId!
+            }
+            if self.servicePort != nil {
+                map["servicePort"] = self.servicePort!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["bound"] as? Bool {
+                self.bound = value
+            }
+            if let value = dict["serviceId"] as? String {
+                self.serviceId = value
+            }
+            if let value = dict["servicePort"] as? Int32 {
+                self.servicePort = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetGatewayDfpExtProcServiceResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetGatewayDfpExtProcServiceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetGatewayDfpExtProcServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGatewayDfpExtProcServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetGatewayDfpExtProcServiceResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -73197,6 +73548,36 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
             }
         }
     }
+    public class DfpConfig : Tea.TeaModel {
+        public var serviceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.serviceId != nil {
+                map["serviceId"] = self.serviceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["serviceId"] as? String {
+                self.serviceId = value
+            }
+        }
+    }
     public class McpRouteConfig : Tea.TeaModel {
         public var exposedUriPath: String?
 
@@ -73247,6 +73628,8 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dfpConfig: UpdateHttpApiRouteRequest.DfpConfig?
+
     public var domainIds: [String]?
 
     public var environmentId: String?
@@ -73268,6 +73651,7 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.backendConfig?.validate()
+        try self.dfpConfig?.validate()
         try self.match?.validate()
         try self.mcpRouteConfig?.validate()
     }
@@ -73279,6 +73663,9 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.dfpConfig != nil {
+            map["dfpConfig"] = self.dfpConfig?.toMap()
         }
         if self.domainIds != nil {
             map["domainIds"] = self.domainIds!
@@ -73311,6 +73698,11 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["dfpConfig"] as? [String: Any?] {
+            var model = UpdateHttpApiRouteRequest.DfpConfig()
+            model.fromMap(value)
+            self.dfpConfig = model
         }
         if let value = dict["domainIds"] as? [String] {
             self.domainIds = value
