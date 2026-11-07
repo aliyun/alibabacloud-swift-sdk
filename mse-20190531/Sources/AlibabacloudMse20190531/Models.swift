@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -29309,6 +29310,8 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
 
         public var logFilterConfig: String?
 
+        public var logRequestResponseConfig: String?
+
         public var noSupportedConfigList: String?
 
         public var pathWithEscapedSlashes: String?
@@ -29414,6 +29417,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if self.logFilterConfig != nil {
                 map["LogFilterConfig"] = self.logFilterConfig!
+            }
+            if self.logRequestResponseConfig != nil {
+                map["LogRequestResponseConfig"] = self.logRequestResponseConfig!
             }
             if self.noSupportedConfigList != nil {
                 map["NoSupportedConfigList"] = self.noSupportedConfigList!
@@ -29522,6 +29528,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["LogFilterConfig"] as? String {
                 self.logFilterConfig = value
+            }
+            if let value = dict["LogRequestResponseConfig"] as? String {
+                self.logRequestResponseConfig = value
             }
             if let value = dict["NoSupportedConfigList"] as? String {
                 self.noSupportedConfigList = value
@@ -29810,6 +29819,8 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
 
         public var commonName: String?
 
+        public var enableWaf: Bool?
+
         public var gatewayId: Int64?
 
         public var gatewayUniqueId: String?
@@ -29839,6 +29850,8 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
         public var protocol_: String?
 
         public var sans: String?
+
+        public var supportWaf: Bool?
 
         public var tlsCipherSuitesConfig: GetGatewayDomainDetailResponseBody.Data.TlsCipherSuitesConfig?
 
@@ -29881,6 +29894,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.commonName != nil {
                 map["CommonName"] = self.commonName!
+            }
+            if self.enableWaf != nil {
+                map["EnableWaf"] = self.enableWaf!
             }
             if self.gatewayId != nil {
                 map["GatewayId"] = self.gatewayId!
@@ -29927,6 +29943,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             if self.sans != nil {
                 map["Sans"] = self.sans!
             }
+            if self.supportWaf != nil {
+                map["SupportWaf"] = self.supportWaf!
+            }
             if self.tlsCipherSuitesConfig != nil {
                 map["TlsCipherSuitesConfig"] = self.tlsCipherSuitesConfig?.toMap()
             }
@@ -29961,6 +29980,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["CommonName"] as? String {
                 self.commonName = value
+            }
+            if let value = dict["EnableWaf"] as? Bool {
+                self.enableWaf = value
             }
             if let value = dict["GatewayId"] as? Int64 {
                 self.gatewayId = value
@@ -30006,6 +30028,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["Sans"] as? String {
                 self.sans = value
+            }
+            if let value = dict["SupportWaf"] as? Bool {
+                self.supportWaf = value
             }
             if let value = dict["TlsCipherSuitesConfig"] as? [String: Any?] {
                 var model = GetGatewayDomainDetailResponseBody.Data.TlsCipherSuitesConfig()
@@ -51442,6 +51467,8 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
 
         public var comment: ListGatewayDomainResponseBody.Data.Comment?
 
+        public var enableWaf: Bool?
+
         public var gatewayId: Int64?
 
         public var gmtCreate: String?
@@ -51461,6 +51488,8 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
         public var protocol_: String?
 
         public var status: Int32?
+
+        public var supportWaf: Bool?
 
         public var tlsCipherSuitesConfig: ListGatewayDomainResponseBody.Data.TlsCipherSuitesConfig?
 
@@ -51495,6 +51524,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             if self.comment != nil {
                 map["Comment"] = self.comment?.toMap()
             }
+            if self.enableWaf != nil {
+                map["EnableWaf"] = self.enableWaf!
+            }
             if self.gatewayId != nil {
                 map["GatewayId"] = self.gatewayId!
             }
@@ -51525,6 +51557,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.supportWaf != nil {
+                map["SupportWaf"] = self.supportWaf!
+            }
             if self.tlsCipherSuitesConfig != nil {
                 map["TlsCipherSuitesConfig"] = self.tlsCipherSuitesConfig?.toMap()
             }
@@ -51552,6 +51587,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
                 var model = ListGatewayDomainResponseBody.Data.Comment()
                 model.fromMap(value)
                 self.comment = model
+            }
+            if let value = dict["EnableWaf"] as? Bool {
+                self.enableWaf = value
             }
             if let value = dict["GatewayId"] as? Int64 {
                 self.gatewayId = value
@@ -51582,6 +51620,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
+            }
+            if let value = dict["SupportWaf"] as? Bool {
+                self.supportWaf = value
             }
             if let value = dict["TlsCipherSuitesConfig"] as? [String: Any?] {
                 var model = ListGatewayDomainResponseBody.Data.TlsCipherSuitesConfig()
@@ -77241,6 +77282,8 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
 
     public var certIdentifier: String?
 
+    public var enableWaf: Bool?
+
     public var gatewayUniqueId: String?
 
     public var http2: String?
@@ -77283,6 +77326,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
+        if self.enableWaf != nil {
+            map["EnableWaf"] = self.enableWaf!
+        }
         if self.gatewayUniqueId != nil {
             map["GatewayUniqueId"] = self.gatewayUniqueId!
         }
@@ -77324,6 +77370,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
         }
+        if let value = dict["EnableWaf"] as? Bool {
+            self.enableWaf = value
+        }
         if let value = dict["GatewayUniqueId"] as? String {
             self.gatewayUniqueId = value
         }
@@ -77362,6 +77411,8 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
     public var caCertIdentifier: String?
 
     public var certIdentifier: String?
+
+    public var enableWaf: Bool?
 
     public var gatewayUniqueId: String?
 
@@ -77404,6 +77455,9 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
+        if self.enableWaf != nil {
+            map["EnableWaf"] = self.enableWaf!
+        }
         if self.gatewayUniqueId != nil {
             map["GatewayUniqueId"] = self.gatewayUniqueId!
         }
@@ -77444,6 +77498,9 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
+        }
+        if let value = dict["EnableWaf"] as? Bool {
+            self.enableWaf = value
         }
         if let value = dict["GatewayUniqueId"] as? String {
             self.gatewayUniqueId = value
