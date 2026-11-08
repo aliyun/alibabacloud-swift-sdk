@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Cms"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-beijing": "metrics.cn-beijing.aliyuncs.com",
@@ -108,6 +112,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.applyMode)) {
             query["ApplyMode"] = request.applyMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
@@ -240,6 +247,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDynamicTagGroupWithOptions(_ request: CreateDynamicTagGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDynamicTagGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contactGroupList)) {
             query["ContactGroupList"] = request.contactGroupList ?? [];
         }
@@ -792,6 +802,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMonitorGroupWithOptions(_ request: CreateMonitorGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMonitorGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contactGroups)) {
             query["ContactGroups"] = request.contactGroups ?? "";
         }
@@ -875,6 +888,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMonitorGroupInstancesWithOptions(_ request: CreateMonitorGroupInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMonitorGroupInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun ?? "";
         }
@@ -1683,6 +1699,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMetricRulesWithOptions(_ request: DeleteMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -1717,6 +1736,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMonitorGroupWithOptions(_ request: DeleteMonitorGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMonitorGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -1787,6 +1809,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.category)) {
             query["Category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
@@ -5020,6 +5045,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disableMetricRulesWithOptions(_ request: DisableMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -5218,6 +5246,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enableMetricRulesWithOptions(_ request: EnableMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -5283,6 +5314,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func installMonitoringAgentWithOptions(_ request: InstallMonitoringAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallMonitoringAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -6268,6 +6302,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.category)) {
             query["Category"] = request.category ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contactGroups)) {
             query["ContactGroups"] = request.contactGroups ?? "";
         }
@@ -6491,6 +6528,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putMonitorGroupDynamicRuleWithOptions(_ request: PutMonitorGroupDynamicRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutMonitorGroupDynamicRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -6534,6 +6574,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoInstall)) {
             query["AutoInstall"] = request.autoInstall!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -6576,6 +6619,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.prometheusShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.prometheus, "Prometheus", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.compositeExpressionShrink)) {
             query["CompositeExpression"] = request.compositeExpressionShrink ?? "";
         }
@@ -6664,6 +6710,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putResourceMetricRulesWithOptions(_ request: PutResourceMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutResourceMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }

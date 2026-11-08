@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3555,6 +3556,8 @@ public class ApplyMetricRuleTemplateRequest : Tea.TeaModel {
 
     public var applyMode: String?
 
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var enableEndTime: Int64?
@@ -3591,6 +3594,9 @@ public class ApplyMetricRuleTemplateRequest : Tea.TeaModel {
         if self.applyMode != nil {
             map["ApplyMode"] = self.applyMode!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -3625,6 +3631,9 @@ public class ApplyMetricRuleTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["ApplyMode"] as? String {
             self.applyMode = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -4495,6 +4504,8 @@ public class CreateDynamicTagGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var contactGroupList: [String]?
 
     public var dryRun: Bool?
@@ -4529,6 +4540,9 @@ public class CreateDynamicTagGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.contactGroupList != nil {
             map["ContactGroupList"] = self.contactGroupList!
         }
@@ -4568,6 +4582,9 @@ public class CreateDynamicTagGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["ContactGroupList"] as? [String] {
             self.contactGroupList = value
         }
@@ -8879,6 +8896,8 @@ public class CreateMonitorAgentProcessResponse : Tea.TeaModel {
 }
 
 public class CreateMonitorGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var contactGroups: String?
 
     public var dryRun: Bool?
@@ -8901,6 +8920,9 @@ public class CreateMonitorGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.contactGroups != nil {
             map["ContactGroups"] = self.contactGroups!
         }
@@ -8918,6 +8940,9 @@ public class CreateMonitorGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["ContactGroups"] as? String {
             self.contactGroups = value
         }
@@ -9285,6 +9310,8 @@ public class CreateMonitorGroupInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var dryRun: String?
 
     public var groupId: String?
@@ -9307,6 +9334,9 @@ public class CreateMonitorGroupInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -9328,6 +9358,9 @@ public class CreateMonitorGroupInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? String {
             self.dryRun = value
         }
@@ -13278,6 +13311,8 @@ public class DeleteMetricRuleTemplateResponse : Tea.TeaModel {
 }
 
 public class DeleteMetricRulesRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var id: [String]?
@@ -13298,6 +13333,9 @@ public class DeleteMetricRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -13312,6 +13350,9 @@ public class DeleteMetricRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -13430,6 +13471,8 @@ public class DeleteMetricRulesResponse : Tea.TeaModel {
 }
 
 public class DeleteMonitorGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var groupId: Int64?
@@ -13450,6 +13493,9 @@ public class DeleteMonitorGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -13464,6 +13510,9 @@ public class DeleteMonitorGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -13862,6 +13911,8 @@ public class DeleteMonitorGroupDynamicRuleResponse : Tea.TeaModel {
 public class DeleteMonitorGroupInstancesRequest : Tea.TeaModel {
     public var category: String?
 
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var groupId: Int64?
@@ -13887,6 +13938,9 @@ public class DeleteMonitorGroupInstancesRequest : Tea.TeaModel {
         if self.category != nil {
             map["Category"] = self.category!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -13906,6 +13960,9 @@ public class DeleteMonitorGroupInstancesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Category"] as? String {
             self.category = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -45576,6 +45633,8 @@ public class DisableHostAvailabilityResponse : Tea.TeaModel {
 }
 
 public class DisableMetricRulesRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var regionId: String?
@@ -45596,6 +45655,9 @@ public class DisableMetricRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -45610,6 +45672,9 @@ public class DisableMetricRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -46521,6 +46586,8 @@ public class EnableMetricRuleBlackListResponse : Tea.TeaModel {
 }
 
 public class EnableMetricRulesRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var regionId: String?
@@ -46541,6 +46608,9 @@ public class EnableMetricRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -46555,6 +46625,9 @@ public class EnableMetricRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -46858,6 +46931,8 @@ public class EnableSiteMonitorsResponse : Tea.TeaModel {
 }
 
 public class InstallMonitoringAgentRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var force: Bool?
@@ -46882,6 +46957,9 @@ public class InstallMonitoringAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -46902,6 +46980,9 @@ public class InstallMonitoringAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -53566,6 +53647,8 @@ public class PutGroupMetricRuleRequest : Tea.TeaModel {
 
     public var category: String?
 
+    public var clientToken: String?
+
     public var contactGroups: String?
 
     public var dimensions: String?
@@ -53624,6 +53707,9 @@ public class PutGroupMetricRuleRequest : Tea.TeaModel {
         }
         if self.category != nil {
             map["Category"] = self.category!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.contactGroups != nil {
             map["ContactGroups"] = self.contactGroups!
@@ -53698,6 +53784,9 @@ public class PutGroupMetricRuleRequest : Tea.TeaModel {
         }
         if let value = dict["Category"] as? String {
             self.category = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["ContactGroups"] as? String {
             self.contactGroups = value
@@ -55112,6 +55201,8 @@ public class PutMonitorGroupDynamicRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var groupId: Int64?
@@ -55136,6 +55227,9 @@ public class PutMonitorGroupDynamicRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -55160,6 +55254,9 @@ public class PutMonitorGroupDynamicRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -55296,6 +55393,8 @@ public class PutMonitorGroupDynamicRuleResponse : Tea.TeaModel {
 public class PutMonitoringConfigRequest : Tea.TeaModel {
     public var autoInstall: Bool?
 
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var enableInstallAgentNewECS: Bool?
@@ -55319,6 +55418,9 @@ public class PutMonitoringConfigRequest : Tea.TeaModel {
         if self.autoInstall != nil {
             map["AutoInstall"] = self.autoInstall!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -55335,6 +55437,9 @@ public class PutMonitoringConfigRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoInstall"] as? Bool {
             self.autoInstall = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -55955,6 +56060,8 @@ public class PutResourceMetricRuleRequest : Tea.TeaModel {
     }
     public var escalations: PutResourceMetricRuleRequest.Escalations?
 
+    public var clientToken: String?
+
     public var compositeExpression: PutResourceMetricRuleRequest.CompositeExpression?
 
     public var contactGroups: String?
@@ -56012,6 +56119,9 @@ public class PutResourceMetricRuleRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.escalations != nil {
             map["Escalations"] = self.escalations?.toMap()
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.compositeExpression != nil {
             map["CompositeExpression"] = self.compositeExpression?.toMap()
@@ -56083,6 +56193,9 @@ public class PutResourceMetricRuleRequest : Tea.TeaModel {
             var model = PutResourceMetricRuleRequest.Escalations()
             model.fromMap(value)
             self.escalations = model
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["CompositeExpression"] as? [String: Any?] {
             var model = PutResourceMetricRuleRequest.CompositeExpression()
@@ -56416,6 +56529,8 @@ public class PutResourceMetricRuleShrinkRequest : Tea.TeaModel {
     }
     public var escalations: PutResourceMetricRuleShrinkRequest.Escalations?
 
+    public var clientToken: String?
+
     public var compositeExpressionShrink: String?
 
     public var contactGroups: String?
@@ -56471,6 +56586,9 @@ public class PutResourceMetricRuleShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.escalations != nil {
             map["Escalations"] = self.escalations?.toMap()
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.compositeExpressionShrink != nil {
             map["CompositeExpression"] = self.compositeExpressionShrink!
@@ -56542,6 +56660,9 @@ public class PutResourceMetricRuleShrinkRequest : Tea.TeaModel {
             var model = PutResourceMetricRuleShrinkRequest.Escalations()
             model.fromMap(value)
             self.escalations = model
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["CompositeExpression"] as? String {
             self.compositeExpressionShrink = value
@@ -57197,6 +57318,8 @@ public class PutResourceMetricRulesRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var rules: [PutResourceMetricRulesRequest.Rules]?
@@ -57215,6 +57338,9 @@ public class PutResourceMetricRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -57230,6 +57356,9 @@ public class PutResourceMetricRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
