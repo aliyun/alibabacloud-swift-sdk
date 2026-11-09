@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1147,11 +1148,15 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
 
         public var docType: String?
 
+        public var manualTaskId: String?
+
         public var pageResult: [DescribeFileModerationResultResponseBody.Data.PageResult]?
 
         public var pageSummary: DescribeFileModerationResultResponseBody.Data.PageSummary?
 
         public var riskLevel: String?
+
+        public var taskId: String?
 
         public var url: String?
 
@@ -1179,6 +1184,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
             if self.docType != nil {
                 map["DocType"] = self.docType!
             }
+            if self.manualTaskId != nil {
+                map["ManualTaskId"] = self.manualTaskId!
+            }
             if self.pageResult != nil {
                 var tmp : [Any] = []
                 for k in self.pageResult! {
@@ -1191,6 +1199,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
             }
             if self.riskLevel != nil {
                 map["RiskLevel"] = self.riskLevel!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
             }
             if self.url != nil {
                 map["Url"] = self.url!
@@ -1208,6 +1219,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["DocType"] as? String {
                 self.docType = value
+            }
+            if let value = dict["ManualTaskId"] as? String {
+                self.manualTaskId = value
             }
             if let value = dict["PageResult"] as? [Any?] {
                 var tmp : [DescribeFileModerationResultResponseBody.Data.PageResult] = []
@@ -1229,6 +1243,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["RiskLevel"] as? String {
                 self.riskLevel = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
             }
             if let value = dict["Url"] as? String {
                 self.url = value
