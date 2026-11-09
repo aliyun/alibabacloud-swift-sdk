@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Yike"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("yike", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -546,6 +550,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRemakeScriptJob(_ request: GetRemakeScriptJobRequest) async throws -> GetRemakeScriptJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getRemakeScriptJobWithOptions(request as! GetRemakeScriptJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoCreativeGenerationJobWithOptions(_ request: GetVideoCreativeGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoCreativeGenerationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoCreativeGenerationJob",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoCreativeGenerationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoCreativeGenerationJob(_ request: GetVideoCreativeGenerationJobRequest) async throws -> GetVideoCreativeGenerationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVideoCreativeGenerationJobWithOptions(request as! GetVideoCreativeGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1115,6 +1150,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitRemakeScriptJob(_ request: SubmitRemakeScriptJobRequest) async throws -> SubmitRemakeScriptJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitRemakeScriptJobWithOptions(request as! SubmitRemakeScriptJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoCreativeGenerationJobWithOptions(_ request: SubmitVideoCreativeGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoCreativeGenerationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aspectRatio)) {
+            query["AspectRatio"] = request.aspectRatio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.avatarData)) {
+            query["AvatarData"] = request.avatarData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobParams)) {
+            query["JobParams"] = request.jobParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputLanguages)) {
+            query["OutputLanguages"] = request.outputLanguages ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneType)) {
+            query["SceneType"] = request.sceneType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userMaterials)) {
+            query["UserMaterials"] = request.userMaterials ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withSubtitles)) {
+            query["WithSubtitles"] = request.withSubtitles!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitVideoCreativeGenerationJob",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitVideoCreativeGenerationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoCreativeGenerationJob(_ request: SubmitVideoCreativeGenerationJobRequest) async throws -> SubmitVideoCreativeGenerationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitVideoCreativeGenerationJobWithOptions(request as! SubmitVideoCreativeGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
