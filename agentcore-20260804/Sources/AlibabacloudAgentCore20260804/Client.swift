@@ -2888,6 +2888,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSandboxRebuildOperationWithOptions(_ workspaceId: String, _ agentId: String, _ sandboxId: String, _ operationId: String, _ request: GetSandboxRebuildOperationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSandboxRebuildOperationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serviceEndpointId)) {
+            query["serviceEndpointId"] = request.serviceEndpointId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSandboxRebuildOperation",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/managed-agents/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentId)) + "/sandboxes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sandboxId)) + "/rebuild-operations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(operationId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSandboxRebuildOperationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSandboxRebuildOperation(_ workspaceId: String, _ agentId: String, _ sandboxId: String, _ operationId: String, _ request: GetSandboxRebuildOperationRequest) async throws -> GetSandboxRebuildOperationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getSandboxRebuildOperationWithOptions(workspaceId as! String, agentId as! String, sandboxId as! String, operationId as! String, request as! GetSandboxRebuildOperationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getServiceEndpointWithOptions(_ workspaceId: String, _ serviceEndpointId: String, _ request: GetServiceEndpointRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetServiceEndpointResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -4961,6 +4994,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await publishSkillVersionWithOptions(workspaceId as! String, skillName as! String, skillVersion as! String, request as! PublishSkillVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func rebuildSandboxWithOptions(_ workspaceId: String, _ agentId: String, _ sandboxId: String, _ request: RebuildSandboxRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RebuildSandboxResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serviceEndpointId)) {
+            query["serviceEndpointId"] = request.serviceEndpointId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RebuildSandbox",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/managed-agents/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentId)) + "/sandboxes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sandboxId)) + "/rebuild",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RebuildSandboxResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func rebuildSandbox(_ workspaceId: String, _ agentId: String, _ sandboxId: String, _ request: RebuildSandboxRequest) async throws -> RebuildSandboxResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await rebuildSandboxWithOptions(workspaceId as! String, agentId as! String, sandboxId as! String, request as! RebuildSandboxRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

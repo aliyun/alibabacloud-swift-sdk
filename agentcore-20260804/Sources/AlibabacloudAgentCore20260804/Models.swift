@@ -11210,6 +11210,8 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
 
             public var quota: CreateManagedAgentRequest.Body.Model.Quota?
 
+            public var thinkingLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -11234,6 +11236,9 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
                 if self.quota != nil {
                     map["quota"] = self.quota?.toMap()
                 }
+                if self.thinkingLevel != nil {
+                    map["thinkingLevel"] = self.thinkingLevel!
+                }
                 return map
             }
 
@@ -11249,6 +11254,9 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
                     var model = CreateManagedAgentRequest.Body.Model.Quota()
                     model.fromMap(value)
                     self.quota = model
+                }
+                if let value = dict["thinkingLevel"] as? String {
+                    self.thinkingLevel = value
                 }
             }
         }
@@ -12608,7 +12616,11 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
             }
             public var configuration: CreateManagedAgentResponseBody.Data.Harness.Configuration?
 
+            public var outdatedInstanceCount: Int64?
+
             public var type: String?
+
+            public var version: String?
 
             public override init() {
                 super.init()
@@ -12628,8 +12640,14 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                 if self.configuration != nil {
                     map["configuration"] = self.configuration?.toMap()
                 }
+                if self.outdatedInstanceCount != nil {
+                    map["outdatedInstanceCount"] = self.outdatedInstanceCount!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
                 }
                 return map
             }
@@ -12641,8 +12659,14 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.configuration = model
                 }
+                if let value = dict["outdatedInstanceCount"] as? Int64 {
+                    self.outdatedInstanceCount = value
+                }
                 if let value = dict["type"] as? String {
                     self.type = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
                 }
             }
         }
@@ -12731,6 +12755,8 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
 
             public var quota: CreateManagedAgentResponseBody.Data.Model.Quota?
 
+            public var thinkingLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -12755,6 +12781,9 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                 if self.quota != nil {
                     map["quota"] = self.quota?.toMap()
                 }
+                if self.thinkingLevel != nil {
+                    map["thinkingLevel"] = self.thinkingLevel!
+                }
                 return map
             }
 
@@ -12770,6 +12799,9 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                     var model = CreateManagedAgentResponseBody.Data.Model.Quota()
                     model.fromMap(value)
                     self.quota = model
+                }
+                if let value = dict["thinkingLevel"] as? String {
+                    self.thinkingLevel = value
                 }
             }
         }
@@ -34907,7 +34939,11 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
             }
             public var configuration: GetManagedAgentResponseBody.Data.Harness.Configuration?
 
+            public var outdatedInstanceCount: Int64?
+
             public var type: String?
+
+            public var version: String?
 
             public override init() {
                 super.init()
@@ -34927,8 +34963,14 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                 if self.configuration != nil {
                     map["configuration"] = self.configuration?.toMap()
                 }
+                if self.outdatedInstanceCount != nil {
+                    map["outdatedInstanceCount"] = self.outdatedInstanceCount!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
                 }
                 return map
             }
@@ -34940,8 +34982,14 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.configuration = model
                 }
+                if let value = dict["outdatedInstanceCount"] as? Int64 {
+                    self.outdatedInstanceCount = value
+                }
                 if let value = dict["type"] as? String {
                     self.type = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
                 }
             }
         }
@@ -35030,6 +35078,8 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
 
             public var quota: GetManagedAgentResponseBody.Data.Model.Quota?
 
+            public var thinkingLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -35054,6 +35104,9 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                 if self.quota != nil {
                     map["quota"] = self.quota?.toMap()
                 }
+                if self.thinkingLevel != nil {
+                    map["thinkingLevel"] = self.thinkingLevel!
+                }
                 return map
             }
 
@@ -35069,6 +35122,9 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                     var model = GetManagedAgentResponseBody.Data.Model.Quota()
                     model.fromMap(value)
                     self.quota = model
+                }
+                if let value = dict["thinkingLevel"] as? String {
+                    self.thinkingLevel = value
                 }
             }
         }
@@ -40063,6 +40119,256 @@ public class GetModelConnectionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetModelConnectionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetSandboxRebuildOperationRequest : Tea.TeaModel {
+    public var serviceEndpointId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.serviceEndpointId != nil {
+            map["serviceEndpointId"] = self.serviceEndpointId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["serviceEndpointId"] as? String {
+            self.serviceEndpointId = value
+        }
+    }
+}
+
+public class GetSandboxRebuildOperationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Error : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public var error: GetSandboxRebuildOperationResponseBody.Data.Error?
+
+        public var operationId: String?
+
+        public var sandboxId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.error?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.error != nil {
+                map["error"] = self.error?.toMap()
+            }
+            if self.operationId != nil {
+                map["operationId"] = self.operationId!
+            }
+            if self.sandboxId != nil {
+                map["sandboxId"] = self.sandboxId!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["error"] as? [String: Any?] {
+                var model = GetSandboxRebuildOperationResponseBody.Data.Error()
+                model.fromMap(value)
+                self.error = model
+            }
+            if let value = dict["operationId"] as? String {
+                self.operationId = value
+            }
+            if let value = dict["sandboxId"] as? String {
+                self.sandboxId = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetSandboxRebuildOperationResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetSandboxRebuildOperationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetSandboxRebuildOperationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSandboxRebuildOperationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetSandboxRebuildOperationResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -52204,7 +52510,11 @@ public class ListManagedAgentsResponseBody : Tea.TeaModel {
             }
             public var configuration: ListManagedAgentsResponseBody.Items.Harness.Configuration?
 
+            public var outdatedInstanceCount: Int64?
+
             public var type: String?
+
+            public var version: String?
 
             public override init() {
                 super.init()
@@ -52224,8 +52534,14 @@ public class ListManagedAgentsResponseBody : Tea.TeaModel {
                 if self.configuration != nil {
                     map["configuration"] = self.configuration?.toMap()
                 }
+                if self.outdatedInstanceCount != nil {
+                    map["outdatedInstanceCount"] = self.outdatedInstanceCount!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
                 }
                 return map
             }
@@ -52237,8 +52553,14 @@ public class ListManagedAgentsResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.configuration = model
                 }
+                if let value = dict["outdatedInstanceCount"] as? Int64 {
+                    self.outdatedInstanceCount = value
+                }
                 if let value = dict["type"] as? String {
                     self.type = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
                 }
             }
         }
@@ -58113,15 +58435,23 @@ public class ListSandboxesResponseBody : Tea.TeaModel {
 
         public var createdAt: String?
 
+        public var harnessVersion: String?
+
         public var lastActiveAt: String?
 
         public var lastHeartbeatAt: String?
+
+        public var lastRebuildOperationId: String?
 
         public var maxConcurrentSessions: Int32?
 
         public var phase: String?
 
         public var sandboxId: String?
+
+        public var updateAvailable: Bool?
+
+        public var updateFailed: Bool?
 
         public override init() {
             super.init()
@@ -58143,11 +58473,17 @@ public class ListSandboxesResponseBody : Tea.TeaModel {
             if self.createdAt != nil {
                 map["createdAt"] = self.createdAt!
             }
+            if self.harnessVersion != nil {
+                map["harnessVersion"] = self.harnessVersion!
+            }
             if self.lastActiveAt != nil {
                 map["lastActiveAt"] = self.lastActiveAt!
             }
             if self.lastHeartbeatAt != nil {
                 map["lastHeartbeatAt"] = self.lastHeartbeatAt!
+            }
+            if self.lastRebuildOperationId != nil {
+                map["lastRebuildOperationId"] = self.lastRebuildOperationId!
             }
             if self.maxConcurrentSessions != nil {
                 map["maxConcurrentSessions"] = self.maxConcurrentSessions!
@@ -58157,6 +58493,12 @@ public class ListSandboxesResponseBody : Tea.TeaModel {
             }
             if self.sandboxId != nil {
                 map["sandboxId"] = self.sandboxId!
+            }
+            if self.updateAvailable != nil {
+                map["updateAvailable"] = self.updateAvailable!
+            }
+            if self.updateFailed != nil {
+                map["updateFailed"] = self.updateFailed!
             }
             return map
         }
@@ -58169,11 +58511,17 @@ public class ListSandboxesResponseBody : Tea.TeaModel {
             if let value = dict["createdAt"] as? String {
                 self.createdAt = value
             }
+            if let value = dict["harnessVersion"] as? String {
+                self.harnessVersion = value
+            }
             if let value = dict["lastActiveAt"] as? String {
                 self.lastActiveAt = value
             }
             if let value = dict["lastHeartbeatAt"] as? String {
                 self.lastHeartbeatAt = value
+            }
+            if let value = dict["lastRebuildOperationId"] as? String {
+                self.lastRebuildOperationId = value
             }
             if let value = dict["maxConcurrentSessions"] as? Int32 {
                 self.maxConcurrentSessions = value
@@ -58183,6 +58531,12 @@ public class ListSandboxesResponseBody : Tea.TeaModel {
             }
             if let value = dict["sandboxId"] as? String {
                 self.sandboxId = value
+            }
+            if let value = dict["updateAvailable"] as? Bool {
+                self.updateAvailable = value
+            }
+            if let value = dict["updateFailed"] as? Bool {
+                self.updateFailed = value
             }
         }
     }
@@ -61981,6 +62335,207 @@ public class PublishSkillVersionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = PublishSkillVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RebuildSandboxRequest : Tea.TeaModel {
+    public var serviceEndpointId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.serviceEndpointId != nil {
+            map["serviceEndpointId"] = self.serviceEndpointId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["serviceEndpointId"] as? String {
+            self.serviceEndpointId = value
+        }
+    }
+}
+
+public class RebuildSandboxResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var incarnation: Int64?
+
+        public var operationId: String?
+
+        public var sandboxId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.incarnation != nil {
+                map["incarnation"] = self.incarnation!
+            }
+            if self.operationId != nil {
+                map["operationId"] = self.operationId!
+            }
+            if self.sandboxId != nil {
+                map["sandboxId"] = self.sandboxId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["incarnation"] as? Int64 {
+                self.incarnation = value
+            }
+            if let value = dict["operationId"] as? String {
+                self.operationId = value
+            }
+            if let value = dict["sandboxId"] as? String {
+                self.sandboxId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: RebuildSandboxResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = RebuildSandboxResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class RebuildSandboxResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RebuildSandboxResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RebuildSandboxResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -72002,6 +72557,8 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
 
             public var quota: UpdateManagedAgentRequest.Body.Model.Quota?
 
+            public var thinkingLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -72026,6 +72583,9 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
                 if self.quota != nil {
                     map["quota"] = self.quota?.toMap()
                 }
+                if self.thinkingLevel != nil {
+                    map["thinkingLevel"] = self.thinkingLevel!
+                }
                 return map
             }
 
@@ -72041,6 +72601,9 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
                     var model = UpdateManagedAgentRequest.Body.Model.Quota()
                     model.fromMap(value)
                     self.quota = model
+                }
+                if let value = dict["thinkingLevel"] as? String {
+                    self.thinkingLevel = value
                 }
             }
         }
@@ -73400,7 +73963,11 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
             }
             public var configuration: UpdateManagedAgentResponseBody.Data.Harness.Configuration?
 
+            public var outdatedInstanceCount: Int64?
+
             public var type: String?
+
+            public var version: String?
 
             public override init() {
                 super.init()
@@ -73420,8 +73987,14 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                 if self.configuration != nil {
                     map["configuration"] = self.configuration?.toMap()
                 }
+                if self.outdatedInstanceCount != nil {
+                    map["outdatedInstanceCount"] = self.outdatedInstanceCount!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
                 }
                 return map
             }
@@ -73433,8 +74006,14 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.configuration = model
                 }
+                if let value = dict["outdatedInstanceCount"] as? Int64 {
+                    self.outdatedInstanceCount = value
+                }
                 if let value = dict["type"] as? String {
                     self.type = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
                 }
             }
         }
@@ -73523,6 +74102,8 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
 
             public var quota: UpdateManagedAgentResponseBody.Data.Model.Quota?
 
+            public var thinkingLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -73547,6 +74128,9 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                 if self.quota != nil {
                     map["quota"] = self.quota?.toMap()
                 }
+                if self.thinkingLevel != nil {
+                    map["thinkingLevel"] = self.thinkingLevel!
+                }
                 return map
             }
 
@@ -73562,6 +74146,9 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                     var model = UpdateManagedAgentResponseBody.Data.Model.Quota()
                     model.fromMap(value)
                     self.quota = model
+                }
+                if let value = dict["thinkingLevel"] as? String {
+                    self.thinkingLevel = value
                 }
             }
         }
