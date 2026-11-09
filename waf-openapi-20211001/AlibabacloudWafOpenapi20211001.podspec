@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudWafOpenapi20211001"
-  spec.version      = "8.8.7"
+  spec.version      = "8.8.8"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud waf-openapi (20211001) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/waf-openapi-20211001" 
@@ -19,6 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.8'
+  spec.dependency 'AlibabacloudGatewayPOP',  '~> 0.0.1'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.2'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'

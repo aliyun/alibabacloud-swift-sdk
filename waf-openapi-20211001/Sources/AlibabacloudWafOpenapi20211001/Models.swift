@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -16444,6 +16445,8 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
 
         public var usage: Int64?
 
+        public var usageDecimal: Double?
+
         public override init() {
             super.init()
         }
@@ -16464,6 +16467,9 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
             if self.usage != nil {
                 map["Usage"] = self.usage!
             }
+            if self.usageDecimal != nil {
+                map["UsageDecimal"] = self.usageDecimal!
+            }
             return map
         }
 
@@ -16474,6 +16480,9 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
             }
             if let value = dict["Usage"] as? Int64 {
                 self.usage = value
+            }
+            if let value = dict["UsageDecimal"] as? Double {
+                self.usageDecimal = value
             }
         }
     }
