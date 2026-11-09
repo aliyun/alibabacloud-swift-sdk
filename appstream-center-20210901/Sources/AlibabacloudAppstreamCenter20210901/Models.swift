@@ -13607,6 +13607,301 @@ public class GetModelProviderTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class GetMqttTicketRequest : Tea.TeaModel {
+    public var clientOS: String?
+
+    public var clientType: Int32?
+
+    public var clientVersion: String?
+
+    public var properties: [String: Any]?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientOS != nil {
+            map["ClientOS"] = self.clientOS!
+        }
+        if self.clientType != nil {
+            map["ClientType"] = self.clientType!
+        }
+        if self.clientVersion != nil {
+            map["ClientVersion"] = self.clientVersion!
+        }
+        if self.properties != nil {
+            map["Properties"] = self.properties!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientOS"] as? String {
+            self.clientOS = value
+        }
+        if let value = dict["ClientType"] as? Int32 {
+            self.clientType = value
+        }
+        if let value = dict["ClientVersion"] as? String {
+            self.clientVersion = value
+        }
+        if let value = dict["Properties"] as? [String: Any] {
+            self.properties = value
+        }
+        if let value = dict["Uuid"] as? String {
+            self.uuid = value
+        }
+    }
+}
+
+public class GetMqttTicketShrinkRequest : Tea.TeaModel {
+    public var clientOS: String?
+
+    public var clientType: Int32?
+
+    public var clientVersion: String?
+
+    public var propertiesShrink: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientOS != nil {
+            map["ClientOS"] = self.clientOS!
+        }
+        if self.clientType != nil {
+            map["ClientType"] = self.clientType!
+        }
+        if self.clientVersion != nil {
+            map["ClientVersion"] = self.clientVersion!
+        }
+        if self.propertiesShrink != nil {
+            map["Properties"] = self.propertiesShrink!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientOS"] as? String {
+            self.clientOS = value
+        }
+        if let value = dict["ClientType"] as? Int32 {
+            self.clientType = value
+        }
+        if let value = dict["ClientVersion"] as? String {
+            self.clientVersion = value
+        }
+        if let value = dict["Properties"] as? String {
+            self.propertiesShrink = value
+        }
+        if let value = dict["Uuid"] as? String {
+            self.uuid = value
+        }
+    }
+}
+
+public class GetMqttTicketResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var expireTimeStamp: String?
+
+    public var message: String?
+
+    public var mqttEndpoint: String?
+
+    public var mqttGroupId: String?
+
+    public var mqttInstanceId: String?
+
+    public var mqttPassword: String?
+
+    public var mqttUsername: String?
+
+    public var mqttVPCEndpoint: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public var topicList: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.expireTimeStamp != nil {
+            map["ExpireTimeStamp"] = self.expireTimeStamp!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.mqttEndpoint != nil {
+            map["MqttEndpoint"] = self.mqttEndpoint!
+        }
+        if self.mqttGroupId != nil {
+            map["MqttGroupId"] = self.mqttGroupId!
+        }
+        if self.mqttInstanceId != nil {
+            map["MqttInstanceId"] = self.mqttInstanceId!
+        }
+        if self.mqttPassword != nil {
+            map["MqttPassword"] = self.mqttPassword!
+        }
+        if self.mqttUsername != nil {
+            map["MqttUsername"] = self.mqttUsername!
+        }
+        if self.mqttVPCEndpoint != nil {
+            map["MqttVPCEndpoint"] = self.mqttVPCEndpoint!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.topicList != nil {
+            map["TopicList"] = self.topicList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["ExpireTimeStamp"] as? String {
+            self.expireTimeStamp = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["MqttEndpoint"] as? String {
+            self.mqttEndpoint = value
+        }
+        if let value = dict["MqttGroupId"] as? String {
+            self.mqttGroupId = value
+        }
+        if let value = dict["MqttInstanceId"] as? String {
+            self.mqttInstanceId = value
+        }
+        if let value = dict["MqttPassword"] as? String {
+            self.mqttPassword = value
+        }
+        if let value = dict["MqttUsername"] as? String {
+            self.mqttUsername = value
+        }
+        if let value = dict["MqttVPCEndpoint"] as? String {
+            self.mqttVPCEndpoint = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+        if let value = dict["TopicList"] as? String {
+            self.topicList = value
+        }
+    }
+}
+
+public class GetMqttTicketResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetMqttTicketResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetMqttTicketResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetOtaTaskByTaskIdRequest : Tea.TeaModel {
     public var taskId: String?
 

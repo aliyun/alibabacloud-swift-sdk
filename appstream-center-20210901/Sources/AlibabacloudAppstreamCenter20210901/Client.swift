@@ -2013,6 +2013,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMqttTicketWithOptions(_ tmpReq: GetMqttTicketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMqttTicketResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetMqttTicketShrinkRequest = GetMqttTicketShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.properties)) {
+            request.propertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.properties, "Properties", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientOS)) {
+            body["ClientOS"] = request.clientOS ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientType)) {
+            body["ClientType"] = request.clientType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVersion)) {
+            body["ClientVersion"] = request.clientVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertiesShrink)) {
+            body["Properties"] = request.propertiesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            body["Uuid"] = request.uuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMqttTicket",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMqttTicketResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMqttTicket(_ request: GetMqttTicketRequest) async throws -> GetMqttTicketResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMqttTicketWithOptions(request as! GetMqttTicketRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getOtaTaskByTaskIdWithOptions(_ request: GetOtaTaskByTaskIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOtaTaskByTaskIdResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
