@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -751,6 +752,8 @@ public class CancelShiftLoadBalancerZonesResponse : Tea.TeaModel {
 
 public class CreateListenerRequest : Tea.TeaModel {
     public class ProxyProtocolV2Config : Tea.TeaModel {
+        public var ppv2CnIdEnabled: Bool?
+
         public var ppv2PrivateLinkEpIdEnabled: Bool?
 
         public var ppv2PrivateLinkEpsIdEnabled: Bool?
@@ -771,6 +774,9 @@ public class CreateListenerRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ppv2CnIdEnabled != nil {
+                map["Ppv2CnIdEnabled"] = self.ppv2CnIdEnabled!
+            }
             if self.ppv2PrivateLinkEpIdEnabled != nil {
                 map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
             }
@@ -785,6 +791,9 @@ public class CreateListenerRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Ppv2CnIdEnabled"] as? Bool {
+                self.ppv2CnIdEnabled = value
+            }
             if let value = dict["Ppv2PrivateLinkEpIdEnabled"] as? Bool {
                 self.ppv2PrivateLinkEpIdEnabled = value
             }
@@ -4450,6 +4459,8 @@ public class GetListenerAttributeRequest : Tea.TeaModel {
 
 public class GetListenerAttributeResponseBody : Tea.TeaModel {
     public class ProxyProtocolV2Config : Tea.TeaModel {
+        public var ppv2CnIdEnabled: Bool?
+
         public var ppv2PrivateLinkEpIdEnabled: Bool?
 
         public var ppv2PrivateLinkEpsIdEnabled: Bool?
@@ -4470,6 +4481,9 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ppv2CnIdEnabled != nil {
+                map["Ppv2CnIdEnabled"] = self.ppv2CnIdEnabled!
+            }
             if self.ppv2PrivateLinkEpIdEnabled != nil {
                 map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
             }
@@ -4484,6 +4498,9 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Ppv2CnIdEnabled"] as? Bool {
+                self.ppv2CnIdEnabled = value
+            }
             if let value = dict["Ppv2PrivateLinkEpIdEnabled"] as? Bool {
                 self.ppv2PrivateLinkEpIdEnabled = value
             }
@@ -6516,6 +6533,8 @@ public class ListListenersRequest : Tea.TeaModel {
 public class ListListenersResponseBody : Tea.TeaModel {
     public class Listeners : Tea.TeaModel {
         public class ProxyProtocolV2Config : Tea.TeaModel {
+            public var ppv2CnIdEnabled: Bool?
+
             public var ppv2PrivateLinkEpIdEnabled: Bool?
 
             public var ppv2PrivateLinkEpsIdEnabled: Bool?
@@ -6536,6 +6555,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.ppv2CnIdEnabled != nil {
+                    map["Ppv2CnIdEnabled"] = self.ppv2CnIdEnabled!
+                }
                 if self.ppv2PrivateLinkEpIdEnabled != nil {
                     map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
                 }
@@ -6550,6 +6572,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Ppv2CnIdEnabled"] as? Bool {
+                    self.ppv2CnIdEnabled = value
+                }
                 if let value = dict["Ppv2PrivateLinkEpIdEnabled"] as? Bool {
                     self.ppv2PrivateLinkEpIdEnabled = value
                 }
@@ -11530,6 +11555,8 @@ public class UntagResourcesResponse : Tea.TeaModel {
 
 public class UpdateListenerAttributeRequest : Tea.TeaModel {
     public class ProxyProtocolV2Config : Tea.TeaModel {
+        public var ppv2CnIdEnabled: Bool?
+
         public var ppv2PrivateLinkEpIdEnabled: Bool?
 
         public var ppv2PrivateLinkEpsIdEnabled: Bool?
@@ -11550,6 +11577,9 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ppv2CnIdEnabled != nil {
+                map["Ppv2CnIdEnabled"] = self.ppv2CnIdEnabled!
+            }
             if self.ppv2PrivateLinkEpIdEnabled != nil {
                 map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
             }
@@ -11564,6 +11594,9 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Ppv2CnIdEnabled"] as? Bool {
+                self.ppv2CnIdEnabled = value
+            }
             if let value = dict["Ppv2PrivateLinkEpIdEnabled"] as? Bool {
                 self.ppv2PrivateLinkEpIdEnabled = value
             }
@@ -13103,6 +13136,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressIPVersion: String?
+
     public var clientToken: String?
 
     public var connectionDrainEnabled: Bool?
@@ -13140,6 +13175,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIPVersion != nil {
+            map["AddressIPVersion"] = self.addressIPVersion!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -13178,6 +13216,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddressIPVersion"] as? String {
+            self.addressIPVersion = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
