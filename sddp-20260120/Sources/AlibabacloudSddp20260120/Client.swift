@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Sddp"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hongkong": "sddp-api.cn-hongkong.aliyuncs.com"
@@ -327,6 +331,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.onlyColumnName)) {
+            query["OnlyColumnName"] = request.onlyColumnName!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;

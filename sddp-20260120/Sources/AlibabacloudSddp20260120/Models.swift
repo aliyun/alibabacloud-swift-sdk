@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1488,6 +1489,8 @@ public class ListColumnsRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var onlyColumnName: Int32?
+
     public var pageSize: Int32?
 
     public var productCode: String?
@@ -1535,6 +1538,9 @@ public class ListColumnsRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.onlyColumnName != nil {
+            map["OnlyColumnName"] = self.onlyColumnName!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -1578,6 +1584,9 @@ public class ListColumnsRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["OnlyColumnName"] as? Int32 {
+            self.onlyColumnName = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
