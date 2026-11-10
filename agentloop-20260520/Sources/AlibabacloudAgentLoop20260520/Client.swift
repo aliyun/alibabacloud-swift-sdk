@@ -113,6 +113,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mseNamespaceId)) {
             body["mseNamespaceId"] = request.mseNamespaceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.trajectoryEmbeddingEnabled)) {
+            body["trajectoryEmbeddingEnabled"] = request.trajectoryEmbeddingEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.trajectoryStoreEnabled)) {
             body["trajectoryStoreEnabled"] = request.trajectoryStoreEnabled!;
         }

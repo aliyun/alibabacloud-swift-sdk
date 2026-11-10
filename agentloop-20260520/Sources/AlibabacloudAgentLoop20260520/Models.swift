@@ -1262,15 +1262,120 @@ public class IndexKey : Tea.TeaModel {
 }
 
 public class ModelParameters : Tea.TeaModel {
+    public class ResponseFormat : Tea.TeaModel {
+        public class JsonSchema : Tea.TeaModel {
+            public var name: String?
+
+            public var schema: String?
+
+            public var strict: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.schema != nil {
+                    map["schema"] = self.schema!
+                }
+                if self.strict != nil {
+                    map["strict"] = self.strict!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["schema"] as? String {
+                    self.schema = value
+                }
+                if let value = dict["strict"] as? Bool {
+                    self.strict = value
+                }
+            }
+        }
+        public var jsonSchema: ModelParameters.ResponseFormat.JsonSchema?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.jsonSchema?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jsonSchema != nil {
+                map["jsonSchema"] = self.jsonSchema?.toMap()
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["jsonSchema"] as? [String: Any?] {
+                var model = ModelParameters.ResponseFormat.JsonSchema()
+                model.fromMap(value)
+                self.jsonSchema = model
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var enableCacheControl: Bool?
+
+    public var enableThinking: Bool?
+
+    public var extraBody: String?
+
     public var frequencyPenalty: Double?
+
+    public var maxCompletionTokens: Int32?
 
     public var maxTokens: Int64?
 
     public var presencePenalty: Double?
 
+    public var reasoningEffort: String?
+
+    public var repetitionPenalty: Double?
+
+    public var responseFormat: ModelParameters.ResponseFormat?
+
+    public var seed: Int32?
+
     public var stopSequences: [String]?
 
     public var temperature: Double?
+
+    public var thinkingBudget: Int32?
 
     public var topK: Int32?
 
@@ -1286,12 +1391,25 @@ public class ModelParameters : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.responseFormat?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableCacheControl != nil {
+            map["enableCacheControl"] = self.enableCacheControl!
+        }
+        if self.enableThinking != nil {
+            map["enableThinking"] = self.enableThinking!
+        }
+        if self.extraBody != nil {
+            map["extraBody"] = self.extraBody!
+        }
         if self.frequencyPenalty != nil {
             map["frequencyPenalty"] = self.frequencyPenalty!
+        }
+        if self.maxCompletionTokens != nil {
+            map["maxCompletionTokens"] = self.maxCompletionTokens!
         }
         if self.maxTokens != nil {
             map["maxTokens"] = self.maxTokens!
@@ -1299,11 +1417,26 @@ public class ModelParameters : Tea.TeaModel {
         if self.presencePenalty != nil {
             map["presencePenalty"] = self.presencePenalty!
         }
+        if self.reasoningEffort != nil {
+            map["reasoningEffort"] = self.reasoningEffort!
+        }
+        if self.repetitionPenalty != nil {
+            map["repetitionPenalty"] = self.repetitionPenalty!
+        }
+        if self.responseFormat != nil {
+            map["responseFormat"] = self.responseFormat?.toMap()
+        }
+        if self.seed != nil {
+            map["seed"] = self.seed!
+        }
         if self.stopSequences != nil {
             map["stopSequences"] = self.stopSequences!
         }
         if self.temperature != nil {
             map["temperature"] = self.temperature!
+        }
+        if self.thinkingBudget != nil {
+            map["thinkingBudget"] = self.thinkingBudget!
         }
         if self.topK != nil {
             map["topK"] = self.topK!
@@ -1316,8 +1449,20 @@ public class ModelParameters : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["enableCacheControl"] as? Bool {
+            self.enableCacheControl = value
+        }
+        if let value = dict["enableThinking"] as? Bool {
+            self.enableThinking = value
+        }
+        if let value = dict["extraBody"] as? String {
+            self.extraBody = value
+        }
         if let value = dict["frequencyPenalty"] as? Double {
             self.frequencyPenalty = value
+        }
+        if let value = dict["maxCompletionTokens"] as? Int32 {
+            self.maxCompletionTokens = value
         }
         if let value = dict["maxTokens"] as? Int64 {
             self.maxTokens = value
@@ -1325,11 +1470,28 @@ public class ModelParameters : Tea.TeaModel {
         if let value = dict["presencePenalty"] as? Double {
             self.presencePenalty = value
         }
+        if let value = dict["reasoningEffort"] as? String {
+            self.reasoningEffort = value
+        }
+        if let value = dict["repetitionPenalty"] as? Double {
+            self.repetitionPenalty = value
+        }
+        if let value = dict["responseFormat"] as? [String: Any?] {
+            var model = ModelParameters.ResponseFormat()
+            model.fromMap(value)
+            self.responseFormat = model
+        }
+        if let value = dict["seed"] as? Int32 {
+            self.seed = value
+        }
         if let value = dict["stopSequences"] as? [String] {
             self.stopSequences = value
         }
         if let value = dict["temperature"] as? Double {
             self.temperature = value
+        }
+        if let value = dict["thinkingBudget"] as? Int32 {
+            self.thinkingBudget = value
         }
         if let value = dict["topK"] as? Int32 {
             self.topK = value
@@ -1815,6 +1977,8 @@ public class CreateAgentSpaceRequest : Tea.TeaModel {
 
     public var mseNamespaceId: String?
 
+    public var trajectoryEmbeddingEnabled: Bool?
+
     public var trajectoryStoreEnabled: Bool?
 
     public var clientToken: String?
@@ -1845,6 +2009,9 @@ public class CreateAgentSpaceRequest : Tea.TeaModel {
         if self.mseNamespaceId != nil {
             map["mseNamespaceId"] = self.mseNamespaceId!
         }
+        if self.trajectoryEmbeddingEnabled != nil {
+            map["trajectoryEmbeddingEnabled"] = self.trajectoryEmbeddingEnabled!
+        }
         if self.trajectoryStoreEnabled != nil {
             map["trajectoryStoreEnabled"] = self.trajectoryStoreEnabled!
         }
@@ -1867,6 +2034,9 @@ public class CreateAgentSpaceRequest : Tea.TeaModel {
         }
         if let value = dict["mseNamespaceId"] as? String {
             self.mseNamespaceId = value
+        }
+        if let value = dict["trajectoryEmbeddingEnabled"] as? Bool {
+            self.trajectoryEmbeddingEnabled = value
         }
         if let value = dict["trajectoryStoreEnabled"] as? Bool {
             self.trajectoryStoreEnabled = value
@@ -2693,6 +2863,8 @@ public class CreateContextStoreRequest : Tea.TeaModel {
 
                 public var scopeMapping: CreateContextStoreRequest.Config.Source.Trajectory.ScopeMapping?
 
+                public var scopeMappingVersion: Int32?
+
                 public var startTime: String?
 
                 public override init() {
@@ -2723,6 +2895,9 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                     if self.scopeMapping != nil {
                         map["scopeMapping"] = self.scopeMapping?.toMap()
                     }
+                    if self.scopeMappingVersion != nil {
+                        map["scopeMappingVersion"] = self.scopeMappingVersion!
+                    }
                     if self.startTime != nil {
                         map["startTime"] = self.startTime!
                     }
@@ -2746,6 +2921,9 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                         var model = CreateContextStoreRequest.Config.Source.Trajectory.ScopeMapping()
                         model.fromMap(value)
                         self.scopeMapping = model
+                    }
+                    if let value = dict["scopeMappingVersion"] as? Int32 {
+                        self.scopeMappingVersion = value
                     }
                     if let value = dict["startTime"] as? String {
                         self.startTime = value
@@ -9137,6 +9315,8 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
 
                 public var scopeMapping: GetContextStoreResponseBody.Config.Source.Trajectory.ScopeMapping?
 
+                public var scopeMappingVersion: Int32?
+
                 public var startTime: String?
 
                 public override init() {
@@ -9167,6 +9347,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                     if self.scopeMapping != nil {
                         map["scopeMapping"] = self.scopeMapping?.toMap()
                     }
+                    if self.scopeMappingVersion != nil {
+                        map["scopeMappingVersion"] = self.scopeMappingVersion!
+                    }
                     if self.startTime != nil {
                         map["startTime"] = self.startTime!
                     }
@@ -9190,6 +9373,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                         var model = GetContextStoreResponseBody.Config.Source.Trajectory.ScopeMapping()
                         model.fromMap(value)
                         self.scopeMapping = model
+                    }
+                    if let value = dict["scopeMappingVersion"] as? Int32 {
+                        self.scopeMappingVersion = value
                     }
                     if let value = dict["startTime"] as? String {
                         self.startTime = value
@@ -21356,6 +21542,8 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
                 public var scopeMapping: UpdateContextStoreRequest.Config.Source.Trajectory.ScopeMapping?
 
+                public var scopeMappingVersion: Int32?
+
                 public override init() {
                     super.init()
                 }
@@ -21384,6 +21572,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                     if self.scopeMapping != nil {
                         map["scopeMapping"] = self.scopeMapping?.toMap()
                     }
+                    if self.scopeMappingVersion != nil {
+                        map["scopeMappingVersion"] = self.scopeMappingVersion!
+                    }
                     return map
                 }
 
@@ -21404,6 +21595,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                         var model = UpdateContextStoreRequest.Config.Source.Trajectory.ScopeMapping()
                         model.fromMap(value)
                         self.scopeMapping = model
+                    }
+                    if let value = dict["scopeMappingVersion"] as? Int32 {
+                        self.scopeMappingVersion = value
                     }
                 }
             }
