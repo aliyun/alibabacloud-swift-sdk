@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import DarabonbaXML
 import AlibabaCloudCredentials
 import TeaFileForm
@@ -11,6 +12,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "IaCService"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-zhangjiakou": "iac.cn-zhangjiakou.aliyuncs.com"
@@ -826,6 +830,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ramRole)) {
             body["ramRole"] = request.ramRole ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skipPropertyValidation)) {
+            body["skipPropertyValidation"] = request.skipPropertyValidation!;
         }
         if (!TeaUtils.Client.isUnset(request.source)) {
             body["source"] = request.source ?? "";
@@ -4132,6 +4139,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ramRole)) {
             body["ramRole"] = request.ramRole ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skipPropertyValidation)) {
+            body["skipPropertyValidation"] = request.skipPropertyValidation!;
         }
         if (!TeaUtils.Client.isUnset(request.sourcePath)) {
             body["sourcePath"] = request.sourcePath ?? "";

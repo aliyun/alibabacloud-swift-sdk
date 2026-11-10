@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import DarabonbaXML
 import AlibabaCloudCredentials
 import TeaFileForm
@@ -2911,6 +2912,8 @@ public class CreateStackRequest : Tea.TeaModel {
 
     public var ramRole: String?
 
+    public var skipPropertyValidation: Bool?
+
     public var source: String?
 
     public var sourcePath: String?
@@ -2946,6 +2949,9 @@ public class CreateStackRequest : Tea.TeaModel {
         if self.ramRole != nil {
             map["ramRole"] = self.ramRole!
         }
+        if self.skipPropertyValidation != nil {
+            map["skipPropertyValidation"] = self.skipPropertyValidation!
+        }
         if self.source != nil {
             map["source"] = self.source!
         }
@@ -2974,6 +2980,9 @@ public class CreateStackRequest : Tea.TeaModel {
         }
         if let value = dict["ramRole"] as? String {
             self.ramRole = value
+        }
+        if let value = dict["skipPropertyValidation"] as? Bool {
+            self.skipPropertyValidation = value
         }
         if let value = dict["source"] as? String {
             self.source = value
@@ -10414,6 +10423,8 @@ public class GetStackResponseBody : Tea.TeaModel {
 
         public var ramRole: String?
 
+        public var skipPropertyValidation: Bool?
+
         public var source: String?
 
         public var sourcePath: String?
@@ -10459,6 +10470,9 @@ public class GetStackResponseBody : Tea.TeaModel {
             if self.ramRole != nil {
                 map["ramRole"] = self.ramRole!
             }
+            if self.skipPropertyValidation != nil {
+                map["skipPropertyValidation"] = self.skipPropertyValidation!
+            }
             if self.source != nil {
                 map["source"] = self.source!
             }
@@ -10501,6 +10515,9 @@ public class GetStackResponseBody : Tea.TeaModel {
             }
             if let value = dict["ramRole"] as? String {
                 self.ramRole = value
+            }
+            if let value = dict["skipPropertyValidation"] as? Bool {
+                self.skipPropertyValidation = value
             }
             if let value = dict["source"] as? String {
                 self.source = value
@@ -24338,6 +24355,8 @@ public class UpdateStackRequest : Tea.TeaModel {
 
     public var ramRole: String?
 
+    public var skipPropertyValidation: Bool?
+
     public var sourcePath: String?
 
     public var workingDirectory: String?
@@ -24368,6 +24387,9 @@ public class UpdateStackRequest : Tea.TeaModel {
         if self.ramRole != nil {
             map["ramRole"] = self.ramRole!
         }
+        if self.skipPropertyValidation != nil {
+            map["skipPropertyValidation"] = self.skipPropertyValidation!
+        }
         if self.sourcePath != nil {
             map["sourcePath"] = self.sourcePath!
         }
@@ -24390,6 +24412,9 @@ public class UpdateStackRequest : Tea.TeaModel {
         }
         if let value = dict["ramRole"] as? String {
             self.ramRole = value
+        }
+        if let value = dict["skipPropertyValidation"] as? Bool {
+            self.skipPropertyValidation = value
         }
         if let value = dict["sourcePath"] as? String {
             self.sourcePath = value
