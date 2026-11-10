@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -344,6 +345,10 @@ public class PushTask : Tea.TeaModel {
 
                     public var receiptId: String?
 
+                    public var templateId: String?
+
+                    public var templateParams: String?
+
                     public override init() {
                         super.init()
                     }
@@ -373,6 +378,12 @@ public class PushTask : Tea.TeaModel {
                         if self.receiptId != nil {
                             map["ReceiptId"] = self.receiptId!
                         }
+                        if self.templateId != nil {
+                            map["TemplateId"] = self.templateId!
+                        }
+                        if self.templateParams != nil {
+                            map["TemplateParams"] = self.templateParams!
+                        }
                         return map
                     }
 
@@ -392,6 +403,12 @@ public class PushTask : Tea.TeaModel {
                         }
                         if let value = dict["ReceiptId"] as? String {
                             self.receiptId = value
+                        }
+                        if let value = dict["TemplateId"] as? String {
+                            self.templateId = value
+                        }
+                        if let value = dict["TemplateParams"] as? String {
+                            self.templateParams = value
                         }
                     }
                 }
@@ -3237,6 +3254,10 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidVivoReceiptId: String?
 
+        public var androidVivoTemplateId: String?
+
+        public var androidVivoTemplateParams: String?
+
         public var androidXiaoMiActivity: String?
 
         public var androidXiaoMiNotifyBody: String?
@@ -3528,6 +3549,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidVivoReceiptId != nil {
                 map["AndroidVivoReceiptId"] = self.androidVivoReceiptId!
+            }
+            if self.androidVivoTemplateId != nil {
+                map["AndroidVivoTemplateId"] = self.androidVivoTemplateId!
+            }
+            if self.androidVivoTemplateParams != nil {
+                map["AndroidVivoTemplateParams"] = self.androidVivoTemplateParams!
             }
             if self.androidXiaoMiActivity != nil {
                 map["AndroidXiaoMiActivity"] = self.androidXiaoMiActivity!
@@ -3875,6 +3902,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidVivoReceiptId"] as? String {
                 self.androidVivoReceiptId = value
+            }
+            if let value = dict["AndroidVivoTemplateId"] as? String {
+                self.androidVivoTemplateId = value
+            }
+            if let value = dict["AndroidVivoTemplateParams"] as? String {
+                self.androidVivoTemplateParams = value
             }
             if let value = dict["AndroidXiaoMiActivity"] as? String {
                 self.androidXiaoMiActivity = value
@@ -4550,6 +4583,10 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidVivoReceiptId: String?
 
+    public var androidVivoTemplateId: String?
+
+    public var androidVivoTemplateParams: String?
+
     public var androidXiaoMiActivity: String?
 
     public var androidXiaoMiNotifyBody: String?
@@ -4855,6 +4892,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidVivoReceiptId != nil {
             map["AndroidVivoReceiptId"] = self.androidVivoReceiptId!
+        }
+        if self.androidVivoTemplateId != nil {
+            map["AndroidVivoTemplateId"] = self.androidVivoTemplateId!
+        }
+        if self.androidVivoTemplateParams != nil {
+            map["AndroidVivoTemplateParams"] = self.androidVivoTemplateParams!
         }
         if self.androidXiaoMiActivity != nil {
             map["AndroidXiaoMiActivity"] = self.androidXiaoMiActivity!
@@ -5224,6 +5267,12 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidVivoReceiptId"] as? String {
             self.androidVivoReceiptId = value
         }
+        if let value = dict["AndroidVivoTemplateId"] as? String {
+            self.androidVivoTemplateId = value
+        }
+        if let value = dict["AndroidVivoTemplateParams"] as? String {
+            self.androidVivoTemplateParams = value
+        }
         if let value = dict["AndroidXiaoMiActivity"] as? String {
             self.androidXiaoMiActivity = value
         }
@@ -5541,6 +5590,10 @@ public class PushShrinkRequest : Tea.TeaModel {
 
     public var androidVivoReceiptId: String?
 
+    public var androidVivoTemplateId: String?
+
+    public var androidVivoTemplateParams: String?
+
     public var androidXiaoMiActivity: String?
 
     public var androidXiaoMiNotifyBody: String?
@@ -5846,6 +5899,12 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidVivoReceiptId != nil {
             map["AndroidVivoReceiptId"] = self.androidVivoReceiptId!
+        }
+        if self.androidVivoTemplateId != nil {
+            map["AndroidVivoTemplateId"] = self.androidVivoTemplateId!
+        }
+        if self.androidVivoTemplateParams != nil {
+            map["AndroidVivoTemplateParams"] = self.androidVivoTemplateParams!
         }
         if self.androidXiaoMiActivity != nil {
             map["AndroidXiaoMiActivity"] = self.androidXiaoMiActivity!
@@ -6214,6 +6273,12 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AndroidVivoReceiptId"] as? String {
             self.androidVivoReceiptId = value
+        }
+        if let value = dict["AndroidVivoTemplateId"] as? String {
+            self.androidVivoTemplateId = value
+        }
+        if let value = dict["AndroidVivoTemplateParams"] as? String {
+            self.androidVivoTemplateParams = value
         }
         if let value = dict["AndroidXiaoMiActivity"] as? String {
             self.androidXiaoMiActivity = value

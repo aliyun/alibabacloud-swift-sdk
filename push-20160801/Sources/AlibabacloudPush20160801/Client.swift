@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Push"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-1": "cloudpush.aliyuncs.com",
@@ -697,6 +701,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.androidVivoReceiptId)) {
             query["AndroidVivoReceiptId"] = request.androidVivoReceiptId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidVivoTemplateId)) {
+            query["AndroidVivoTemplateId"] = request.androidVivoTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidVivoTemplateParams)) {
+            query["AndroidVivoTemplateParams"] = request.androidVivoTemplateParams ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.androidXiaoMiActivity)) {
             query["AndroidXiaoMiActivity"] = request.androidXiaoMiActivity ?? "";
