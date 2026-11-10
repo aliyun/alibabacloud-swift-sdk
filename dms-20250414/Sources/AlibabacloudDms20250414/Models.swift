@@ -41658,6 +41658,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var webReportTheme: String?
 
+        public var workMode: String?
+
         public override init() {
             super.init()
         }
@@ -41721,6 +41723,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.webReportTheme != nil {
                 map["WebReportTheme"] = self.webReportTheme!
             }
+            if self.workMode != nil {
+                map["WorkMode"] = self.workMode!
+            }
             return map
         }
 
@@ -41775,6 +41780,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["WebReportTheme"] as? String {
                 self.webReportTheme = value
+            }
+            if let value = dict["WorkMode"] as? String {
+                self.workMode = value
             }
         }
     }
