@@ -1046,6 +1046,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayQuotaRuleSubjectUsageExportTaskWithOptions(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ request: CreateGatewayQuotaRuleSubjectUsageExportTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayQuotaRuleSubjectUsageExportTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["clientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filterFailedRequests)) {
+            body["filterFailedRequests"] = request.filterFailedRequests!;
+        }
+        if (!TeaUtils.Client.isUnset(request.format)) {
+            body["format"] = request.format ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGatewayQuotaRuleSubjectUsageExportTask",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)) + "/subjects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(subjectId)) + "/usage/export-tasks",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGatewayQuotaRuleSubjectUsageExportTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayQuotaRuleSubjectUsageExportTask(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ request: CreateGatewayQuotaRuleSubjectUsageExportTaskRequest) async throws -> CreateGatewayQuotaRuleSubjectUsageExportTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatewayId as! String, ruleId as! String, subjectId as! String, request as! CreateGatewayQuotaRuleSubjectUsageExportTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createHttpApiWithOptions(_ request: CreateHttpApiRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHttpApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3523,6 +3568,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getGatewayQuotaRuleSubjectUsageWithOptions(gatewayId as! String, ruleId as! String, subjectId as! String, request as! GetGatewayQuotaRuleSubjectUsageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayQuotaRuleSubjectUsageExportTaskWithOptions(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ taskId: String, _ request: GetGatewayQuotaRuleSubjectUsageExportTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayQuotaRuleSubjectUsageExportTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGatewayQuotaRuleSubjectUsageExportTask",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)) + "/subjects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(subjectId)) + "/usage/export-tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGatewayQuotaRuleSubjectUsageExportTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayQuotaRuleSubjectUsageExportTask(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ taskId: String, _ request: GetGatewayQuotaRuleSubjectUsageExportTaskRequest) async throws -> GetGatewayQuotaRuleSubjectUsageExportTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatewayId as! String, ruleId as! String, subjectId as! String, taskId as! String, request as! GetGatewayQuotaRuleSubjectUsageExportTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

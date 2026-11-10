@@ -20004,6 +20004,215 @@ public class CreateGatewayResponse : Tea.TeaModel {
     }
 }
 
+public class CreateGatewayQuotaRuleSubjectUsageExportTaskRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var endTime: Int64?
+
+    public var filterFailedRequests: Bool?
+
+    public var format: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.filterFailedRequests != nil {
+            map["filterFailedRequests"] = self.filterFailedRequests!
+        }
+        if self.format != nil {
+            map["format"] = self.format!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["filterFailedRequests"] as? Bool {
+            self.filterFailedRequests = value
+        }
+        if let value = dict["format"] as? String {
+            self.format = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
+        }
+    }
+}
+
+public class CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var status: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["taskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["taskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateGatewayQuotaRuleSubjectUsageExportTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateGatewayQuotaRuleSubjectUsageExportTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateHttpApiRequest : Tea.TeaModel {
     public class IngressConfig : Tea.TeaModel {
         public var clusterId: String?
@@ -37252,6 +37461,369 @@ public class GetGatewayQuotaRuleSubjectUsageResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetGatewayQuotaRuleSubjectUsageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetGatewayQuotaRuleSubjectUsageExportTaskRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var downloadUrl: String?
+
+            public var downloadUrlExpiredAt: Int64?
+
+            public var effectiveWindowStart: Int64?
+
+            public var fileExpired: Bool?
+
+            public var fileExpiredAt: Int64?
+
+            public var fileSize: Int64?
+
+            public var filterFailedRequests: Bool?
+
+            public var format: String?
+
+            public var queryWindowEnd: Int64?
+
+            public var queryWindowStart: Int64?
+
+            public var quotaDimension: String?
+
+            public var rowCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.downloadUrl != nil {
+                    map["downloadUrl"] = self.downloadUrl!
+                }
+                if self.downloadUrlExpiredAt != nil {
+                    map["downloadUrlExpiredAt"] = self.downloadUrlExpiredAt!
+                }
+                if self.effectiveWindowStart != nil {
+                    map["effectiveWindowStart"] = self.effectiveWindowStart!
+                }
+                if self.fileExpired != nil {
+                    map["fileExpired"] = self.fileExpired!
+                }
+                if self.fileExpiredAt != nil {
+                    map["fileExpiredAt"] = self.fileExpiredAt!
+                }
+                if self.fileSize != nil {
+                    map["fileSize"] = self.fileSize!
+                }
+                if self.filterFailedRequests != nil {
+                    map["filterFailedRequests"] = self.filterFailedRequests!
+                }
+                if self.format != nil {
+                    map["format"] = self.format!
+                }
+                if self.queryWindowEnd != nil {
+                    map["queryWindowEnd"] = self.queryWindowEnd!
+                }
+                if self.queryWindowStart != nil {
+                    map["queryWindowStart"] = self.queryWindowStart!
+                }
+                if self.quotaDimension != nil {
+                    map["quotaDimension"] = self.quotaDimension!
+                }
+                if self.rowCount != nil {
+                    map["rowCount"] = self.rowCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["downloadUrl"] as? String {
+                    self.downloadUrl = value
+                }
+                if let value = dict["downloadUrlExpiredAt"] as? Int64 {
+                    self.downloadUrlExpiredAt = value
+                }
+                if let value = dict["effectiveWindowStart"] as? Int64 {
+                    self.effectiveWindowStart = value
+                }
+                if let value = dict["fileExpired"] as? Bool {
+                    self.fileExpired = value
+                }
+                if let value = dict["fileExpiredAt"] as? Int64 {
+                    self.fileExpiredAt = value
+                }
+                if let value = dict["fileSize"] as? Int64 {
+                    self.fileSize = value
+                }
+                if let value = dict["filterFailedRequests"] as? Bool {
+                    self.filterFailedRequests = value
+                }
+                if let value = dict["format"] as? String {
+                    self.format = value
+                }
+                if let value = dict["queryWindowEnd"] as? Int64 {
+                    self.queryWindowEnd = value
+                }
+                if let value = dict["queryWindowStart"] as? Int64 {
+                    self.queryWindowStart = value
+                }
+                if let value = dict["quotaDimension"] as? String {
+                    self.quotaDimension = value
+                }
+                if let value = dict["rowCount"] as? Int64 {
+                    self.rowCount = value
+                }
+            }
+        }
+        public var errorMessage: String?
+
+        public var gatewayId: String?
+
+        public var processedCount: Int32?
+
+        public var result: GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody.Data.Result?
+
+        public var ruleId: String?
+
+        public var status: String?
+
+        public var subjectId: String?
+
+        public var subjectName: String?
+
+        public var taskId: String?
+
+        public var taskType: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorMessage != nil {
+                map["errorMessage"] = self.errorMessage!
+            }
+            if self.gatewayId != nil {
+                map["gatewayId"] = self.gatewayId!
+            }
+            if self.processedCount != nil {
+                map["processedCount"] = self.processedCount!
+            }
+            if self.result != nil {
+                map["result"] = self.result?.toMap()
+            }
+            if self.ruleId != nil {
+                map["ruleId"] = self.ruleId!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.subjectId != nil {
+                map["subjectId"] = self.subjectId!
+            }
+            if self.subjectName != nil {
+                map["subjectName"] = self.subjectName!
+            }
+            if self.taskId != nil {
+                map["taskId"] = self.taskId!
+            }
+            if self.taskType != nil {
+                map["taskType"] = self.taskType!
+            }
+            if self.totalCount != nil {
+                map["totalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["errorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["gatewayId"] as? String {
+                self.gatewayId = value
+            }
+            if let value = dict["processedCount"] as? Int32 {
+                self.processedCount = value
+            }
+            if let value = dict["result"] as? [String: Any?] {
+                var model = GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody.Data.Result()
+                model.fromMap(value)
+                self.result = model
+            }
+            if let value = dict["ruleId"] as? String {
+                self.ruleId = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["subjectId"] as? String {
+                self.subjectId = value
+            }
+            if let value = dict["subjectName"] as? String {
+                self.subjectName = value
+            }
+            if let value = dict["taskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["taskType"] as? String {
+                self.taskType = value
+            }
+            if let value = dict["totalCount"] as? Int32 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetGatewayQuotaRuleSubjectUsageExportTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetGatewayQuotaRuleSubjectUsageExportTaskResponseBody()
             model.fromMap(value)
             self.body = model
         }
