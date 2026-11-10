@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1384,6 +1385,8 @@ public class CreateFullBackupSetDownloadResponse : Tea.TeaModel {
 public class CreateGetDBListFromAgentTaskRequest : Tea.TeaModel {
     public var backupGatewayId: Int64?
 
+    public var backupGatewayIdentifier: String?
+
     public var clientToken: String?
 
     public var databaseType: String?
@@ -1413,6 +1416,9 @@ public class CreateGetDBListFromAgentTaskRequest : Tea.TeaModel {
         if self.backupGatewayId != nil {
             map["BackupGatewayId"] = self.backupGatewayId!
         }
+        if self.backupGatewayIdentifier != nil {
+            map["BackupGatewayIdentifier"] = self.backupGatewayIdentifier!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -1438,6 +1444,9 @@ public class CreateGetDBListFromAgentTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupGatewayId"] as? Int64 {
             self.backupGatewayId = value
+        }
+        if let value = dict["BackupGatewayIdentifier"] as? String {
+            self.backupGatewayIdentifier = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -7626,6 +7635,8 @@ public class EnableBackupLogResponse : Tea.TeaModel {
 public class GetDBListFromAgentRequest : Tea.TeaModel {
     public var backupGatewayId: Int64?
 
+    public var backupGatewayIdentifier: String?
+
     public var clientToken: String?
 
     public var ownerId: String?
@@ -7651,6 +7662,9 @@ public class GetDBListFromAgentRequest : Tea.TeaModel {
         if self.backupGatewayId != nil {
             map["BackupGatewayId"] = self.backupGatewayId!
         }
+        if self.backupGatewayIdentifier != nil {
+            map["BackupGatewayIdentifier"] = self.backupGatewayIdentifier!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -7670,6 +7684,9 @@ public class GetDBListFromAgentRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupGatewayId"] as? Int64 {
             self.backupGatewayId = value
+        }
+        if let value = dict["BackupGatewayIdentifier"] as? String {
+            self.backupGatewayIdentifier = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value

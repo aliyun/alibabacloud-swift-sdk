@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Dbs"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-qingdao": "dbs-api.cn-hangzhou.aliyuncs.com",
@@ -32,7 +36,9 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shenzhen-finance-1": "dbs-api.cn-hangzhou.aliyuncs.com",
             "ap-south-1": "dbs-api.ap-south-1.aliyuncs.com",
             "eu-west-1": "dbs-api.eu-west-1.aliyuncs.com",
-            "me-east-1": "dbs-api.me-east-1.aliyuncs.com"
+            "me-east-1": "dbs-api.me-east-1.aliyuncs.com",
+            "cn-wulanchabu": "dbs-api.cn-wulanchabu.aliyuncs.com",
+            "cn-guangzhou": "dbs-api.cn-guangzhou.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dbs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -457,6 +463,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.backupGatewayId)) {
             query["BackupGatewayId"] = request.backupGatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.backupGatewayIdentifier)) {
+            query["BackupGatewayIdentifier"] = request.backupGatewayIdentifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
@@ -1357,6 +1366,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.backupGatewayId)) {
             query["BackupGatewayId"] = request.backupGatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.backupGatewayIdentifier)) {
+            query["BackupGatewayIdentifier"] = request.backupGatewayIdentifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
