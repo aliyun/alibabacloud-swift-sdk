@@ -101456,6 +101456,54 @@ public class ModifySecurityGroupConfigurationResponse : Tea.TeaModel {
 }
 
 public class ModifySecurityIpsRequest : Tea.TeaModel {
+    public class GroupItems : Tea.TeaModel {
+        public var groupName: String?
+
+        public var groupTag: String?
+
+        public var securityIPList: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            if self.groupTag != nil {
+                map["GroupTag"] = self.groupTag!
+            }
+            if self.securityIPList != nil {
+                map["SecurityIPList"] = self.securityIPList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GroupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["GroupTag"] as? String {
+                self.groupTag = value
+            }
+            if let value = dict["SecurityIPList"] as? String {
+                self.securityIPList = value
+            }
+        }
+    }
+    public var batchMode: Bool?
+
     public var DBInstanceIPArrayAttribute: String?
 
     public var DBInstanceIPArrayName: String?
@@ -101463,6 +101511,8 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
     public var freshWhiteListReadins: String?
+
+    public var groupItems: [ModifySecurityIpsRequest.GroupItems]?
 
     public var modifyMode: String?
 
@@ -101488,6 +101538,9 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.batchMode != nil {
+            map["BatchMode"] = self.batchMode!
+        }
         if self.DBInstanceIPArrayAttribute != nil {
             map["DBInstanceIPArrayAttribute"] = self.DBInstanceIPArrayAttribute!
         }
@@ -101499,6 +101552,13 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
         }
         if self.freshWhiteListReadins != nil {
             map["FreshWhiteListReadins"] = self.freshWhiteListReadins!
+        }
+        if self.groupItems != nil {
+            var tmp : [Any] = []
+            for k in self.groupItems! {
+                tmp.append(k.toMap())
+            }
+            map["GroupItems"] = tmp
         }
         if self.modifyMode != nil {
             map["ModifyMode"] = self.modifyMode!
@@ -101520,6 +101580,9 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BatchMode"] as? Bool {
+            self.batchMode = value
+        }
         if let value = dict["DBInstanceIPArrayAttribute"] as? String {
             self.DBInstanceIPArrayAttribute = value
         }
@@ -101531,6 +101594,19 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
         }
         if let value = dict["FreshWhiteListReadins"] as? String {
             self.freshWhiteListReadins = value
+        }
+        if let value = dict["GroupItems"] as? [Any?] {
+            var tmp : [ModifySecurityIpsRequest.GroupItems] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifySecurityIpsRequest.GroupItems()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.groupItems = tmp
         }
         if let value = dict["ModifyMode"] as? String {
             self.modifyMode = value

@@ -18646,6 +18646,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifySecurityIpsWithOptions(_ request: ModifySecurityIpsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySecurityIpsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchMode)) {
+            query["BatchMode"] = request.batchMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceIPArrayAttribute)) {
             query["DBInstanceIPArrayAttribute"] = request.DBInstanceIPArrayAttribute ?? "";
         }
@@ -18657,6 +18660,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.freshWhiteListReadins)) {
             query["FreshWhiteListReadins"] = request.freshWhiteListReadins ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupItems)) {
+            query["GroupItems"] = request.groupItems ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.modifyMode)) {
             query["ModifyMode"] = request.modifyMode ?? "";
