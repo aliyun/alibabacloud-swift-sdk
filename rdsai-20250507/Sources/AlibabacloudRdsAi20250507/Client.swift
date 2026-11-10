@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "RdsAi"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-wulanchabu": "rdsai.aliyuncs.com",
@@ -608,8 +612,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createContextDatabaseWorkspaceWithOptions(_ request: CreateContextDatabaseWorkspaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateContextDatabaseWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.generateInitialKey)) {
+            query["GenerateInitialKey"] = request.generateInitialKey!;
+        }
         if (!TeaUtils.Client.isUnset(request.memberName)) {
             query["MemberName"] = request.memberName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.permissionMode)) {
+            query["PermissionMode"] = request.permissionMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceName)) {
             query["WorkspaceName"] = request.workspaceName ?? "";

@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3573,7 +3574,13 @@ public class CreateContextDatabaseSyncSourceResponse : Tea.TeaModel {
 }
 
 public class CreateContextDatabaseWorkspaceRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var generateInitialKey: Bool?
+
     public var memberName: String?
+
+    public var permissionMode: String?
 
     public var workspaceName: String?
 
@@ -3591,8 +3598,17 @@ public class CreateContextDatabaseWorkspaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.generateInitialKey != nil {
+            map["GenerateInitialKey"] = self.generateInitialKey!
+        }
         if self.memberName != nil {
             map["MemberName"] = self.memberName!
+        }
+        if self.permissionMode != nil {
+            map["PermissionMode"] = self.permissionMode!
         }
         if self.workspaceName != nil {
             map["WorkspaceName"] = self.workspaceName!
@@ -3602,8 +3618,17 @@ public class CreateContextDatabaseWorkspaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["GenerateInitialKey"] as? Bool {
+            self.generateInitialKey = value
+        }
         if let value = dict["MemberName"] as? String {
             self.memberName = value
+        }
+        if let value = dict["PermissionMode"] as? String {
+            self.permissionMode = value
         }
         if let value = dict["WorkspaceName"] as? String {
             self.workspaceName = value
@@ -3612,15 +3637,123 @@ public class CreateContextDatabaseWorkspaceRequest : Tea.TeaModel {
 }
 
 public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
+    public class Capabilities : Tea.TeaModel {
+        public var executableActions: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.executableActions != nil {
+                map["ExecutableActions"] = self.executableActions!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExecutableActions"] as? [String] {
+                self.executableActions = value
+            }
+        }
+    }
+    public class Viewer : Tea.TeaModel {
+        public var boundMemberId: String?
+
+        public var boundMemberRole: String?
+
+        public var boundMemberStatus: String?
+
+        public var callerType: String?
+
+        public var identityMode: String?
+
+        public var selectedMemberId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.boundMemberId != nil {
+                map["BoundMemberId"] = self.boundMemberId!
+            }
+            if self.boundMemberRole != nil {
+                map["BoundMemberRole"] = self.boundMemberRole!
+            }
+            if self.boundMemberStatus != nil {
+                map["BoundMemberStatus"] = self.boundMemberStatus!
+            }
+            if self.callerType != nil {
+                map["CallerType"] = self.callerType!
+            }
+            if self.identityMode != nil {
+                map["IdentityMode"] = self.identityMode!
+            }
+            if self.selectedMemberId != nil {
+                map["SelectedMemberId"] = self.selectedMemberId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BoundMemberId"] as? String {
+                self.boundMemberId = value
+            }
+            if let value = dict["BoundMemberRole"] as? String {
+                self.boundMemberRole = value
+            }
+            if let value = dict["BoundMemberStatus"] as? String {
+                self.boundMemberStatus = value
+            }
+            if let value = dict["CallerType"] as? String {
+                self.callerType = value
+            }
+            if let value = dict["IdentityMode"] as? String {
+                self.identityMode = value
+            }
+            if let value = dict["SelectedMemberId"] as? String {
+                self.selectedMemberId = value
+            }
+        }
+    }
     public var apiKey: String?
 
     public var apiKeyName: String?
+
+    public var capabilities: CreateContextDatabaseWorkspaceResponseBody.Capabilities?
+
+    public var clusterId: String?
+
+    public var consolePermissionMode: String?
 
     public var createdAt: String?
 
     public var memberId: String?
 
     public var memberName: String?
+
+    public var permissionMode: String?
 
     public var requestId: String?
 
@@ -3629,6 +3762,8 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
     public var status: String?
 
     public var type: String?
+
+    public var viewer: CreateContextDatabaseWorkspaceResponseBody.Viewer?
 
     public var workspaceId: String?
 
@@ -3644,6 +3779,8 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.capabilities?.validate()
+        try self.viewer?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3654,6 +3791,15 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         if self.apiKeyName != nil {
             map["ApiKeyName"] = self.apiKeyName!
         }
+        if self.capabilities != nil {
+            map["Capabilities"] = self.capabilities?.toMap()
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.consolePermissionMode != nil {
+            map["ConsolePermissionMode"] = self.consolePermissionMode!
+        }
         if self.createdAt != nil {
             map["CreatedAt"] = self.createdAt!
         }
@@ -3662,6 +3808,9 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if self.memberName != nil {
             map["MemberName"] = self.memberName!
+        }
+        if self.permissionMode != nil {
+            map["PermissionMode"] = self.permissionMode!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -3674,6 +3823,9 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.viewer != nil {
+            map["Viewer"] = self.viewer?.toMap()
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -3692,6 +3844,17 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         if let value = dict["ApiKeyName"] as? String {
             self.apiKeyName = value
         }
+        if let value = dict["Capabilities"] as? [String: Any?] {
+            var model = CreateContextDatabaseWorkspaceResponseBody.Capabilities()
+            model.fromMap(value)
+            self.capabilities = model
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["ConsolePermissionMode"] as? String {
+            self.consolePermissionMode = value
+        }
         if let value = dict["CreatedAt"] as? String {
             self.createdAt = value
         }
@@ -3700,6 +3863,9 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if let value = dict["MemberName"] as? String {
             self.memberName = value
+        }
+        if let value = dict["PermissionMode"] as? String {
+            self.permissionMode = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -3712,6 +3878,11 @@ public class CreateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["Viewer"] as? [String: Any?] {
+            var model = CreateContextDatabaseWorkspaceResponseBody.Viewer()
+            model.fromMap(value)
+            self.viewer = model
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -7001,13 +7172,123 @@ public class DeleteContextDatabaseWorkspaceRequest : Tea.TeaModel {
 }
 
 public class DeleteContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
+    public class Capabilities : Tea.TeaModel {
+        public var executableActions: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.executableActions != nil {
+                map["ExecutableActions"] = self.executableActions!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExecutableActions"] as? [String] {
+                self.executableActions = value
+            }
+        }
+    }
+    public class Viewer : Tea.TeaModel {
+        public var boundMemberId: String?
+
+        public var boundMemberRole: String?
+
+        public var boundMemberStatus: String?
+
+        public var callerType: String?
+
+        public var identityMode: String?
+
+        public var selectedMemberId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.boundMemberId != nil {
+                map["BoundMemberId"] = self.boundMemberId!
+            }
+            if self.boundMemberRole != nil {
+                map["BoundMemberRole"] = self.boundMemberRole!
+            }
+            if self.boundMemberStatus != nil {
+                map["BoundMemberStatus"] = self.boundMemberStatus!
+            }
+            if self.callerType != nil {
+                map["CallerType"] = self.callerType!
+            }
+            if self.identityMode != nil {
+                map["IdentityMode"] = self.identityMode!
+            }
+            if self.selectedMemberId != nil {
+                map["SelectedMemberId"] = self.selectedMemberId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BoundMemberId"] as? String {
+                self.boundMemberId = value
+            }
+            if let value = dict["BoundMemberRole"] as? String {
+                self.boundMemberRole = value
+            }
+            if let value = dict["BoundMemberStatus"] as? String {
+                self.boundMemberStatus = value
+            }
+            if let value = dict["CallerType"] as? String {
+                self.callerType = value
+            }
+            if let value = dict["IdentityMode"] as? String {
+                self.identityMode = value
+            }
+            if let value = dict["SelectedMemberId"] as? String {
+                self.selectedMemberId = value
+            }
+        }
+    }
+    public var capabilities: DeleteContextDatabaseWorkspaceResponseBody.Capabilities?
+
+    public var clusterId: String?
+
+    public var consolePermissionMode: String?
+
     public var createdAt: String?
+
+    public var permissionMode: String?
 
     public var requestId: String?
 
     public var status: String?
 
     public var type: String?
+
+    public var viewer: DeleteContextDatabaseWorkspaceResponseBody.Viewer?
 
     public var workspaceId: String?
 
@@ -7023,12 +7304,26 @@ public class DeleteContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.capabilities?.validate()
+        try self.viewer?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.capabilities != nil {
+            map["Capabilities"] = self.capabilities?.toMap()
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.consolePermissionMode != nil {
+            map["ConsolePermissionMode"] = self.consolePermissionMode!
+        }
         if self.createdAt != nil {
             map["CreatedAt"] = self.createdAt!
+        }
+        if self.permissionMode != nil {
+            map["PermissionMode"] = self.permissionMode!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -7038,6 +7333,9 @@ public class DeleteContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.viewer != nil {
+            map["Viewer"] = self.viewer?.toMap()
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -7050,8 +7348,22 @@ public class DeleteContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Capabilities"] as? [String: Any?] {
+            var model = DeleteContextDatabaseWorkspaceResponseBody.Capabilities()
+            model.fromMap(value)
+            self.capabilities = model
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["ConsolePermissionMode"] as? String {
+            self.consolePermissionMode = value
+        }
         if let value = dict["CreatedAt"] as? String {
             self.createdAt = value
+        }
+        if let value = dict["PermissionMode"] as? String {
+            self.permissionMode = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -7061,6 +7373,11 @@ public class DeleteContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["Viewer"] as? [String: Any?] {
+            var model = DeleteContextDatabaseWorkspaceResponseBody.Viewer()
+            model.fromMap(value)
+            self.viewer = model
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -32902,13 +33219,123 @@ public class UpdateContextDatabaseWorkspaceRequest : Tea.TeaModel {
 }
 
 public class UpdateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
+    public class Capabilities : Tea.TeaModel {
+        public var executableActions: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.executableActions != nil {
+                map["ExecutableActions"] = self.executableActions!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExecutableActions"] as? [String] {
+                self.executableActions = value
+            }
+        }
+    }
+    public class Viewer : Tea.TeaModel {
+        public var boundMemberId: String?
+
+        public var boundMemberRole: String?
+
+        public var boundMemberStatus: String?
+
+        public var callerType: String?
+
+        public var identityMode: String?
+
+        public var selectedMemberId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.boundMemberId != nil {
+                map["BoundMemberId"] = self.boundMemberId!
+            }
+            if self.boundMemberRole != nil {
+                map["BoundMemberRole"] = self.boundMemberRole!
+            }
+            if self.boundMemberStatus != nil {
+                map["BoundMemberStatus"] = self.boundMemberStatus!
+            }
+            if self.callerType != nil {
+                map["CallerType"] = self.callerType!
+            }
+            if self.identityMode != nil {
+                map["IdentityMode"] = self.identityMode!
+            }
+            if self.selectedMemberId != nil {
+                map["SelectedMemberId"] = self.selectedMemberId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BoundMemberId"] as? String {
+                self.boundMemberId = value
+            }
+            if let value = dict["BoundMemberRole"] as? String {
+                self.boundMemberRole = value
+            }
+            if let value = dict["BoundMemberStatus"] as? String {
+                self.boundMemberStatus = value
+            }
+            if let value = dict["CallerType"] as? String {
+                self.callerType = value
+            }
+            if let value = dict["IdentityMode"] as? String {
+                self.identityMode = value
+            }
+            if let value = dict["SelectedMemberId"] as? String {
+                self.selectedMemberId = value
+            }
+        }
+    }
+    public var capabilities: UpdateContextDatabaseWorkspaceResponseBody.Capabilities?
+
+    public var clusterId: String?
+
+    public var consolePermissionMode: String?
+
     public var createdAt: String?
+
+    public var permissionMode: String?
 
     public var requestId: String?
 
     public var status: String?
 
     public var type: String?
+
+    public var viewer: UpdateContextDatabaseWorkspaceResponseBody.Viewer?
 
     public var workspaceId: String?
 
@@ -32924,12 +33351,26 @@ public class UpdateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.capabilities?.validate()
+        try self.viewer?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.capabilities != nil {
+            map["Capabilities"] = self.capabilities?.toMap()
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.consolePermissionMode != nil {
+            map["ConsolePermissionMode"] = self.consolePermissionMode!
+        }
         if self.createdAt != nil {
             map["CreatedAt"] = self.createdAt!
+        }
+        if self.permissionMode != nil {
+            map["PermissionMode"] = self.permissionMode!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -32939,6 +33380,9 @@ public class UpdateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.viewer != nil {
+            map["Viewer"] = self.viewer?.toMap()
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -32951,8 +33395,22 @@ public class UpdateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Capabilities"] as? [String: Any?] {
+            var model = UpdateContextDatabaseWorkspaceResponseBody.Capabilities()
+            model.fromMap(value)
+            self.capabilities = model
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["ConsolePermissionMode"] as? String {
+            self.consolePermissionMode = value
+        }
         if let value = dict["CreatedAt"] as? String {
             self.createdAt = value
+        }
+        if let value = dict["PermissionMode"] as? String {
+            self.permissionMode = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -32962,6 +33420,11 @@ public class UpdateContextDatabaseWorkspaceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["Viewer"] as? [String: Any?] {
+            var model = UpdateContextDatabaseWorkspaceResponseBody.Viewer()
+            model.fromMap(value)
+            self.viewer = model
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
