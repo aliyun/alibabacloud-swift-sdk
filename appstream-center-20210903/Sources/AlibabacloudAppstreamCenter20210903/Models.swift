@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -2514,6 +2515,8 @@ public class UnbindRequest : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var sessionToken: String?
+
     public var tenantId: Int64?
 
     public override init() {
@@ -2569,6 +2572,9 @@ public class UnbindRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.sessionToken != nil {
+            map["SessionToken"] = self.sessionToken!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -2615,6 +2621,9 @@ public class UnbindRequest : Tea.TeaModel {
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["SessionToken"] as? String {
+            self.sessionToken = value
         }
         if let value = dict["TenantId"] as? Int64 {
             self.tenantId = value
