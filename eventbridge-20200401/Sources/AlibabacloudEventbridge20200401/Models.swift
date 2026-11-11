@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8575,9 +8576,51 @@ public class CreateConnectionResponse : Tea.TeaModel {
 }
 
 public class CreateEventBusRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var description_: String?
 
     public var eventBusName: String?
+
+    public var resourceGroupId: String?
+
+    public var tags: [CreateEventBusRequest.Tags]?
 
     public override init() {
         super.init()
@@ -8599,6 +8642,16 @@ public class CreateEventBusRequest : Tea.TeaModel {
         if self.eventBusName != nil {
             map["EventBusName"] = self.eventBusName!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -8609,6 +8662,22 @@ public class CreateEventBusRequest : Tea.TeaModel {
         }
         if let value = dict["EventBusName"] as? String {
             self.eventBusName = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateEventBusRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateEventBusRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
@@ -19571,6 +19640,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
     public var metadata: String?
 
+    public var resourceGroupId: String?
+
     public var runOptions: CreateEventStreamingRequest.RunOptions?
 
     public var sink: CreateEventStreamingRequest.Sink?
@@ -19609,6 +19680,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
         }
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.runOptions != nil {
             map["RunOptions"] = self.runOptions?.toMap()
@@ -19649,6 +19723,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
         }
         if let value = dict["Metadata"] as? String {
             self.metadata = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RunOptions"] as? [String: Any?] {
             var model = CreateEventStreamingRequest.RunOptions()
@@ -19741,6 +19818,8 @@ public class CreateEventStreamingShrinkRequest : Tea.TeaModel {
 
     public var metadata: String?
 
+    public var resourceGroupId: String?
+
     public var runOptionsShrink: String?
 
     public var sinkShrink: String?
@@ -19777,6 +19856,9 @@ public class CreateEventStreamingShrinkRequest : Tea.TeaModel {
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.runOptionsShrink != nil {
             map["RunOptions"] = self.runOptionsShrink!
         }
@@ -19812,6 +19894,9 @@ public class CreateEventStreamingShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Metadata"] as? String {
             self.metadata = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RunOptions"] as? String {
             self.runOptionsShrink = value
@@ -27999,6 +28084,44 @@ public class GetEventBusRequest : Tea.TeaModel {
 
 public class GetEventBusResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var createTimestamp: Int64?
 
         public var description_: String?
@@ -28006,6 +28129,10 @@ public class GetEventBusResponseBody : Tea.TeaModel {
         public var eventBusARN: String?
 
         public var eventBusName: String?
+
+        public var resourceGroupId: String?
+
+        public var tags: [GetEventBusResponseBody.Data.Tags]?
 
         public override init() {
             super.init()
@@ -28033,6 +28160,16 @@ public class GetEventBusResponseBody : Tea.TeaModel {
             if self.eventBusName != nil {
                 map["EventBusName"] = self.eventBusName!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -28049,6 +28186,22 @@ public class GetEventBusResponseBody : Tea.TeaModel {
             }
             if let value = dict["EventBusName"] as? String {
                 self.eventBusName = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [GetEventBusResponseBody.Data.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEventBusResponseBody.Data.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
         }
     }
@@ -37058,6 +37211,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
         public var metadata: String?
 
+        public var resourceGroupId: String?
+
         public var runOptions: GetEventStreamingResponseBody.Data.RunOptions?
 
         public var sink: GetEventStreamingResponseBody.Data.Sink?
@@ -37101,6 +37256,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
             if self.metadata != nil {
                 map["Metadata"] = self.metadata!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.runOptions != nil {
                 map["RunOptions"] = self.runOptions?.toMap()
             }
@@ -37141,6 +37299,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
             }
             if let value = dict["Metadata"] as? String {
                 self.metadata = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["RunOptions"] as? [String: Any?] {
                 var model = GetEventStreamingResponseBody.Data.RunOptions()
@@ -42344,6 +42505,8 @@ public class ListEventBusesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -42367,6 +42530,9 @@ public class ListEventBusesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -42381,12 +42547,53 @@ public class ListEventBusesRequest : Tea.TeaModel {
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
     }
 }
 
 public class ListEventBusesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class EventBuses : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var createTimestamp: Int64?
 
             public var description_: String?
@@ -42394,6 +42601,10 @@ public class ListEventBusesResponseBody : Tea.TeaModel {
             public var eventBusARN: String?
 
             public var eventBusName: String?
+
+            public var resourceGroupId: String?
+
+            public var tags: [ListEventBusesResponseBody.Data.EventBuses.Tags]?
 
             public override init() {
                 super.init()
@@ -42421,6 +42632,16 @@ public class ListEventBusesResponseBody : Tea.TeaModel {
                 if self.eventBusName != nil {
                     map["EventBusName"] = self.eventBusName!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
                 return map
             }
 
@@ -42437,6 +42658,22 @@ public class ListEventBusesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EventBusName"] as? String {
                     self.eventBusName = value
+                }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
+                }
+                if let value = dict["Tags"] as? [Any?] {
+                    var tmp : [ListEventBusesResponseBody.Data.EventBuses.Tags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListEventBusesResponseBody.Data.EventBuses.Tags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tags = tmp
                 }
             }
         }
@@ -50864,6 +51101,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
             public var metadata: String?
 
+            public var resourceGroupId: String?
+
             public var runOptions: ListEventStreamingsResponseBody.Data.EventStreamings.RunOptions?
 
             public var sink: ListEventStreamingsResponseBody.Data.EventStreamings.Sink?
@@ -50903,6 +51142,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                 if self.metadata != nil {
                     map["Metadata"] = self.metadata!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.runOptions != nil {
                     map["RunOptions"] = self.runOptions?.toMap()
                 }
@@ -50938,6 +51180,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Metadata"] as? String {
                     self.metadata = value
+                }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
                 }
                 if let value = dict["RunOptions"] as? [String: Any?] {
                     var model = ListEventStreamingsResponseBody.Data.EventStreamings.RunOptions()
@@ -61373,9 +61618,49 @@ public class UpdateConnectionResponse : Tea.TeaModel {
 }
 
 public class UpdateEventBusRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var description_: String?
 
     public var eventBusName: String?
+
+    public var tags: [UpdateEventBusRequest.Tags]?
 
     public override init() {
         super.init()
@@ -61397,6 +61682,13 @@ public class UpdateEventBusRequest : Tea.TeaModel {
         if self.eventBusName != nil {
             map["EventBusName"] = self.eventBusName!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -61407,6 +61699,19 @@ public class UpdateEventBusRequest : Tea.TeaModel {
         }
         if let value = dict["EventBusName"] as? String {
             self.eventBusName = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [UpdateEventBusRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateEventBusRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
