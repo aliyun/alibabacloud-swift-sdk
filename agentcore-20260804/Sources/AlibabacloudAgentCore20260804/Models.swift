@@ -40485,9 +40485,7 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public class ElasticityPolicy : Tea.TeaModel {
-            public var enabled: Bool?
-
+        public class EffectiveCapacity : Tea.TeaModel {
             public var maxSandboxCount: Int32?
 
             public var minSandboxCount: Int32?
@@ -40506,6 +40504,266 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.maxSandboxCount != nil {
+                    map["maxSandboxCount"] = self.maxSandboxCount!
+                }
+                if self.minSandboxCount != nil {
+                    map["minSandboxCount"] = self.minSandboxCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["maxSandboxCount"] as? Int32 {
+                    self.maxSandboxCount = value
+                }
+                if let value = dict["minSandboxCount"] as? Int32 {
+                    self.minSandboxCount = value
+                }
+            }
+        }
+        public class ElasticityPolicy : Tea.TeaModel {
+            public class DynamicPolicy : Tea.TeaModel {
+                public class Policies : Tea.TeaModel {
+                    public class TimePoints : Tea.TeaModel {
+                        public var maxInstances: Int32?
+
+                        public var minInstances: Int32?
+
+                        public var monthDays: [Int32]?
+
+                        public var time: String?
+
+                        public var weekdays: [Int32]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.maxInstances != nil {
+                                map["maxInstances"] = self.maxInstances!
+                            }
+                            if self.minInstances != nil {
+                                map["minInstances"] = self.minInstances!
+                            }
+                            if self.monthDays != nil {
+                                map["monthDays"] = self.monthDays!
+                            }
+                            if self.time != nil {
+                                map["time"] = self.time!
+                            }
+                            if self.weekdays != nil {
+                                map["weekdays"] = self.weekdays!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["maxInstances"] as? Int32 {
+                                self.maxInstances = value
+                            }
+                            if let value = dict["minInstances"] as? Int32 {
+                                self.minInstances = value
+                            }
+                            if let value = dict["monthDays"] as? [Int32] {
+                                self.monthDays = value
+                            }
+                            if let value = dict["time"] as? String {
+                                self.time = value
+                            }
+                            if let value = dict["weekdays"] as? [Int32] {
+                                self.weekdays = value
+                            }
+                        }
+                    }
+                    public var endTime: String?
+
+                    public var id: String?
+
+                    public var priority: Int32?
+
+                    public var repeat_: String?
+
+                    public var startTime: String?
+
+                    public var timePoints: [GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy.Policies.TimePoints]?
+
+                    public var timeZone: String?
+
+                    public var validity: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.endTime != nil {
+                            map["endTime"] = self.endTime!
+                        }
+                        if self.id != nil {
+                            map["id"] = self.id!
+                        }
+                        if self.priority != nil {
+                            map["priority"] = self.priority!
+                        }
+                        if self.repeat_ != nil {
+                            map["repeat"] = self.repeat_!
+                        }
+                        if self.startTime != nil {
+                            map["startTime"] = self.startTime!
+                        }
+                        if self.timePoints != nil {
+                            var tmp : [Any] = []
+                            for k in self.timePoints! {
+                                tmp.append(k.toMap())
+                            }
+                            map["timePoints"] = tmp
+                        }
+                        if self.timeZone != nil {
+                            map["timeZone"] = self.timeZone!
+                        }
+                        if self.validity != nil {
+                            map["validity"] = self.validity!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["endTime"] as? String {
+                            self.endTime = value
+                        }
+                        if let value = dict["id"] as? String {
+                            self.id = value
+                        }
+                        if let value = dict["priority"] as? Int32 {
+                            self.priority = value
+                        }
+                        if let value = dict["repeat"] as? String {
+                            self.repeat_ = value
+                        }
+                        if let value = dict["startTime"] as? String {
+                            self.startTime = value
+                        }
+                        if let value = dict["timePoints"] as? [Any?] {
+                            var tmp : [GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy.Policies.TimePoints] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy.Policies.TimePoints()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.timePoints = tmp
+                        }
+                        if let value = dict["timeZone"] as? String {
+                            self.timeZone = value
+                        }
+                        if let value = dict["validity"] as? String {
+                            self.validity = value
+                        }
+                    }
+                }
+                public var enabled: Bool?
+
+                public var policies: [GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy.Policies]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.policies != nil {
+                        var tmp : [Any] = []
+                        for k in self.policies! {
+                            tmp.append(k.toMap())
+                        }
+                        map["policies"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["policies"] as? [Any?] {
+                        var tmp : [GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy.Policies] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy.Policies()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.policies = tmp
+                    }
+                }
+            }
+            public var dynamicPolicy: GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy?
+
+            public var enabled: Bool?
+
+            public var maxSandboxCount: Int32?
+
+            public var minSandboxCount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.dynamicPolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dynamicPolicy != nil {
+                    map["dynamicPolicy"] = self.dynamicPolicy?.toMap()
+                }
                 if self.enabled != nil {
                     map["enabled"] = self.enabled!
                 }
@@ -40520,6 +40778,11 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["dynamicPolicy"] as? [String: Any?] {
+                    var model = GetServiceEndpointResponseBody.Data.ElasticityPolicy.DynamicPolicy()
+                    model.fromMap(value)
+                    self.dynamicPolicy = model
+                }
                 if let value = dict["enabled"] as? Bool {
                     self.enabled = value
                 }
@@ -40599,6 +40862,10 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
 
         public var createdAt: String?
 
+        public var currentInstances: Int32?
+
+        public var effectiveCapacity: GetServiceEndpointResponseBody.Data.EffectiveCapacity?
+
         public var effectivePublicAccessEnabled: Bool?
 
         public var elasticityPolicy: GetServiceEndpointResponseBody.Data.ElasticityPolicy?
@@ -40634,6 +40901,7 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.authentication?.validate()
+            try self.effectiveCapacity?.validate()
             try self.elasticityPolicy?.validate()
             try self.target?.validate()
         }
@@ -40652,6 +40920,12 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
             }
             if self.createdAt != nil {
                 map["createdAt"] = self.createdAt!
+            }
+            if self.currentInstances != nil {
+                map["currentInstances"] = self.currentInstances!
+            }
+            if self.effectiveCapacity != nil {
+                map["effectiveCapacity"] = self.effectiveCapacity?.toMap()
             }
             if self.effectivePublicAccessEnabled != nil {
                 map["effectivePublicAccessEnabled"] = self.effectivePublicAccessEnabled!
@@ -40714,6 +40988,14 @@ public class GetServiceEndpointResponseBody : Tea.TeaModel {
             }
             if let value = dict["createdAt"] as? String {
                 self.createdAt = value
+            }
+            if let value = dict["currentInstances"] as? Int32 {
+                self.currentInstances = value
+            }
+            if let value = dict["effectiveCapacity"] as? [String: Any?] {
+                var model = GetServiceEndpointResponseBody.Data.EffectiveCapacity()
+                model.fromMap(value)
+                self.effectiveCapacity = model
             }
             if let value = dict["effectivePublicAccessEnabled"] as? Bool {
                 self.effectivePublicAccessEnabled = value
@@ -58872,6 +59154,222 @@ public class ListServiceEndpointsResponseBody : Tea.TeaModel {
             }
         }
         public class ElasticityPolicy : Tea.TeaModel {
+            public class DynamicPolicy : Tea.TeaModel {
+                public class Policies : Tea.TeaModel {
+                    public class TimePoints : Tea.TeaModel {
+                        public var maxInstances: Int32?
+
+                        public var minInstances: Int32?
+
+                        public var monthDays: [Int32]?
+
+                        public var time: String?
+
+                        public var weekdays: [Int32]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.maxInstances != nil {
+                                map["maxInstances"] = self.maxInstances!
+                            }
+                            if self.minInstances != nil {
+                                map["minInstances"] = self.minInstances!
+                            }
+                            if self.monthDays != nil {
+                                map["monthDays"] = self.monthDays!
+                            }
+                            if self.time != nil {
+                                map["time"] = self.time!
+                            }
+                            if self.weekdays != nil {
+                                map["weekdays"] = self.weekdays!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["maxInstances"] as? Int32 {
+                                self.maxInstances = value
+                            }
+                            if let value = dict["minInstances"] as? Int32 {
+                                self.minInstances = value
+                            }
+                            if let value = dict["monthDays"] as? [Int32] {
+                                self.monthDays = value
+                            }
+                            if let value = dict["time"] as? String {
+                                self.time = value
+                            }
+                            if let value = dict["weekdays"] as? [Int32] {
+                                self.weekdays = value
+                            }
+                        }
+                    }
+                    public var endTime: String?
+
+                    public var id: String?
+
+                    public var priority: Int32?
+
+                    public var repeat_: String?
+
+                    public var startTime: String?
+
+                    public var timePoints: [ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy.Policies.TimePoints]?
+
+                    public var timeZone: String?
+
+                    public var validity: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.endTime != nil {
+                            map["endTime"] = self.endTime!
+                        }
+                        if self.id != nil {
+                            map["id"] = self.id!
+                        }
+                        if self.priority != nil {
+                            map["priority"] = self.priority!
+                        }
+                        if self.repeat_ != nil {
+                            map["repeat"] = self.repeat_!
+                        }
+                        if self.startTime != nil {
+                            map["startTime"] = self.startTime!
+                        }
+                        if self.timePoints != nil {
+                            var tmp : [Any] = []
+                            for k in self.timePoints! {
+                                tmp.append(k.toMap())
+                            }
+                            map["timePoints"] = tmp
+                        }
+                        if self.timeZone != nil {
+                            map["timeZone"] = self.timeZone!
+                        }
+                        if self.validity != nil {
+                            map["validity"] = self.validity!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["endTime"] as? String {
+                            self.endTime = value
+                        }
+                        if let value = dict["id"] as? String {
+                            self.id = value
+                        }
+                        if let value = dict["priority"] as? Int32 {
+                            self.priority = value
+                        }
+                        if let value = dict["repeat"] as? String {
+                            self.repeat_ = value
+                        }
+                        if let value = dict["startTime"] as? String {
+                            self.startTime = value
+                        }
+                        if let value = dict["timePoints"] as? [Any?] {
+                            var tmp : [ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy.Policies.TimePoints] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy.Policies.TimePoints()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.timePoints = tmp
+                        }
+                        if let value = dict["timeZone"] as? String {
+                            self.timeZone = value
+                        }
+                        if let value = dict["validity"] as? String {
+                            self.validity = value
+                        }
+                    }
+                }
+                public var enabled: Bool?
+
+                public var policies: [ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy.Policies]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.policies != nil {
+                        var tmp : [Any] = []
+                        for k in self.policies! {
+                            tmp.append(k.toMap())
+                        }
+                        map["policies"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["policies"] as? [Any?] {
+                        var tmp : [ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy.Policies] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy.Policies()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.policies = tmp
+                    }
+                }
+            }
+            public var dynamicPolicy: ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy?
+
             public var enabled: Bool?
 
             public var maxSandboxCount: Int32?
@@ -58888,10 +59386,14 @@ public class ListServiceEndpointsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.dynamicPolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dynamicPolicy != nil {
+                    map["dynamicPolicy"] = self.dynamicPolicy?.toMap()
+                }
                 if self.enabled != nil {
                     map["enabled"] = self.enabled!
                 }
@@ -58906,6 +59408,11 @@ public class ListServiceEndpointsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["dynamicPolicy"] as? [String: Any?] {
+                    var model = ListServiceEndpointsResponseBody.Items.ElasticityPolicy.DynamicPolicy()
+                    model.fromMap(value)
+                    self.dynamicPolicy = model
+                }
                 if let value = dict["enabled"] as? Bool {
                     self.enabled = value
                 }
@@ -58985,6 +59492,8 @@ public class ListServiceEndpointsResponseBody : Tea.TeaModel {
 
         public var createdAt: String?
 
+        public var currentInstances: Int32?
+
         public var effectivePublicAccessEnabled: Bool?
 
         public var elasticityPolicy: ListServiceEndpointsResponseBody.Items.ElasticityPolicy?
@@ -59038,6 +59547,9 @@ public class ListServiceEndpointsResponseBody : Tea.TeaModel {
             }
             if self.createdAt != nil {
                 map["createdAt"] = self.createdAt!
+            }
+            if self.currentInstances != nil {
+                map["currentInstances"] = self.currentInstances!
             }
             if self.effectivePublicAccessEnabled != nil {
                 map["effectivePublicAccessEnabled"] = self.effectivePublicAccessEnabled!
@@ -59100,6 +59612,9 @@ public class ListServiceEndpointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["createdAt"] as? String {
                 self.createdAt = value
+            }
+            if let value = dict["currentInstances"] as? Int32 {
+                self.currentInstances = value
             }
             if let value = dict["effectivePublicAccessEnabled"] as? Bool {
                 self.effectivePublicAccessEnabled = value
