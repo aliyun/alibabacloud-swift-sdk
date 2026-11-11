@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "WebsiteBuild"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-zhangjiakou": "websitebuild.aliyuncs.com",
@@ -2319,6 +2323,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAppPluginConfigForAdminWithOptions(_ request: GetAppPluginConfigForAdminRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAppPluginConfigForAdminResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            body["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginId)) {
+            body["PluginId"] = request.pluginId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAppPluginConfigForAdmin",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAppPluginConfigForAdminResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAppPluginConfigForAdmin(_ request: GetAppPluginConfigForAdminRequest) async throws -> GetAppPluginConfigForAdminResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAppPluginConfigForAdminWithOptions(request as! GetAppPluginConfigForAdminRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAppPublishStatusWithOptions(_ request: GetAppPublishStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAppPublishStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3048,11 +3086,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTempDownloadUrlWithOptions(_ request: GetTempDownloadUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTempDownloadUrlResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ossKey)) {
             body["OssKey"] = request.ossKey ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -3691,6 +3734,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.statusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statusList, "StatusList", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationType)) {
+            query["ApplicationType"] = request.applicationType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
