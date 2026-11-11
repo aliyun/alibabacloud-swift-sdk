@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -14009,6 +14010,52 @@ public class DescribeUserSiemOrderStatusRequest : Tea.TeaModel {
 
 public class DescribeUserSiemOrderStatusResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class CreditsPostpaidInfo : Tea.TeaModel {
+            public var billingStatus: Int32?
+
+            public var instanceSource: String?
+
+            public var userSwitchStatus: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.billingStatus != nil {
+                    map["BillingStatus"] = self.billingStatus!
+                }
+                if self.instanceSource != nil {
+                    map["InstanceSource"] = self.instanceSource!
+                }
+                if self.userSwitchStatus != nil {
+                    map["UserSwitchStatus"] = self.userSwitchStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BillingStatus"] as? Int32 {
+                    self.billingStatus = value
+                }
+                if let value = dict["InstanceSource"] as? String {
+                    self.instanceSource = value
+                }
+                if let value = dict["UserSwitchStatus"] as? Int32 {
+                    self.userSwitchStatus = value
+                }
+            }
+        }
         public var asocInstanceId: String?
 
         public var asocSubscriptionInstanceEndTime: Int64?
@@ -14020,6 +14067,8 @@ public class DescribeUserSiemOrderStatusResponseBody : Tea.TeaModel {
         public var capacity: Int32?
 
         public var capacityOrderFrom: String?
+
+        public var creditsPostpaidInfo: DescribeUserSiemOrderStatusResponseBody.Data.CreditsPostpaidInfo?
 
         public var deliveryCapacity: Int32?
 
@@ -14057,6 +14106,7 @@ public class DescribeUserSiemOrderStatusResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.creditsPostpaidInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -14078,6 +14128,9 @@ public class DescribeUserSiemOrderStatusResponseBody : Tea.TeaModel {
             }
             if self.capacityOrderFrom != nil {
                 map["CapacityOrderFrom"] = self.capacityOrderFrom!
+            }
+            if self.creditsPostpaidInfo != nil {
+                map["CreditsPostpaidInfo"] = self.creditsPostpaidInfo?.toMap()
             }
             if self.deliveryCapacity != nil {
                 map["DeliveryCapacity"] = self.deliveryCapacity!
@@ -14140,6 +14193,11 @@ public class DescribeUserSiemOrderStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["CapacityOrderFrom"] as? String {
                 self.capacityOrderFrom = value
+            }
+            if let value = dict["CreditsPostpaidInfo"] as? [String: Any?] {
+                var model = DescribeUserSiemOrderStatusResponseBody.Data.CreditsPostpaidInfo()
+                model.fromMap(value)
+                self.creditsPostpaidInfo = model
             }
             if let value = dict["DeliveryCapacity"] as? Int32 {
                 self.deliveryCapacity = value
