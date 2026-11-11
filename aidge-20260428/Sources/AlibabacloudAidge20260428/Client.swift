@@ -76,11 +76,26 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clothType)) {
             query["ClothType"] = request.clothType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mode)) {
+            query["Mode"] = request.mode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelImageUrl)) {
             query["ModelImageUrl"] = request.modelImageUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelTemplateUrl)) {
+            query["ModelTemplateUrl"] = request.modelTemplateUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.poseTemplateUrl)) {
+            query["PoseTemplateUrl"] = request.poseTemplateUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ratio)) {
+            query["Ratio"] = request.ratio ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resolution)) {
             query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tryonType)) {
+            query["TryonType"] = request.tryonType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1899,6 +1914,57 @@ open class Client : AlibabacloudOpenApi.Client {
     public func productHotspotDetection(_ request: ProductHotspotDetectionRequest) async throws -> ProductHotspotDetectionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await productHotspotDetectionWithOptions(request as! ProductHotspotDetectionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func productVideoGenerationWithOptions(_ tmpReq: ProductVideoGenerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ProductVideoGenerationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ProductVideoGenerationShrinkRequest = ProductVideoGenerationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.productImages)) {
+            request.productImagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.productImages, "product_images", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aspectRatio)) {
+            query["aspect_ratio"] = request.aspectRatio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.duration)) {
+            query["duration"] = request.duration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productImagesShrink)) {
+            query["product_images"] = request.productImagesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productTitle)) {
+            query["product_title"] = request.productTitle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.script)) {
+            query["script"] = request.script ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ProductVideoGeneration",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ProductVideoGenerationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func productVideoGeneration(_ request: ProductVideoGenerationRequest) async throws -> ProductVideoGenerationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await productVideoGenerationWithOptions(request as! ProductVideoGenerationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
