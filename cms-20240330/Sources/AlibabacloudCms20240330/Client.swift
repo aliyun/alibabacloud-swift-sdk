@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Cms"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-beijing": "metrics.cn-beijing.aliyuncs.com",
@@ -1302,6 +1306,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.authFreeWritePolicy)) {
             body["authFreeWritePolicy"] = request.authFreeWritePolicy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryrun)) {
+            body["dryrun"] = request.dryrun!;
         }
         if (!TeaUtils.Client.isUnset(request.enableAuthFreeRead)) {
             body["enableAuthFreeRead"] = request.enableAuthFreeRead!;
@@ -3199,6 +3206,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await enableSubscriptionWithOptions(subscriptionId as! String, request as! EnableSubscriptionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ensureSharedPrometheusInstanceWithOptions(_ request: EnsureSharedPrometheusInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EnsureSharedPrometheusInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            query["aliyunLang"] = request.aliyunLang ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.shareScope)) {
+            body["shareScope"] = request.shareScope ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnsureSharedPrometheusInstance",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/shared-prometheus-instances",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnsureSharedPrometheusInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ensureSharedPrometheusInstance(_ request: EnsureSharedPrometheusInstanceRequest) async throws -> EnsureSharedPrometheusInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ensureSharedPrometheusInstanceWithOptions(request as! EnsureSharedPrometheusInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6563,6 +6611,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.bodyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.body, "body", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.callSource)) {
             query["callSource"] = request.callSource ?? "";
         }
@@ -8068,6 +8119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.authFreeWritePolicy)) {
             body["authFreeWritePolicy"] = request.authFreeWritePolicy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryrun)) {
+            body["dryrun"] = request.dryrun!;
         }
         if (!TeaUtils.Client.isUnset(request.enableAuthFreeRead)) {
             body["enableAuthFreeRead"] = request.enableAuthFreeRead!;
