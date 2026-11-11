@@ -5059,6 +5059,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.transitRouterId)) {
             query["TransitRouterId"] = request.transitRouterId ?? "";
         }

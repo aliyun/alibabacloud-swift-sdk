@@ -7016,6 +7016,9 @@ public class CreateTransitRouterPolicyBasedRouteResponse : Tea.TeaModel {
 
 public class CreateTransitRouterPolicyTableRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
 
         public override init() {
             super.init()
@@ -7031,11 +7034,23 @@ public class CreateTransitRouterPolicyTableRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
         }
     }
     public var clientToken: String?
@@ -24443,11 +24458,51 @@ public class DescribeTransitRouterPolicyTablesRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var filter: [DescribeTransitRouterPolicyTablesRequest.Filter]?
 
     public var maxResults: Int32?
 
     public var nextToken: String?
+
+    public var tag: [DescribeTransitRouterPolicyTablesRequest.Tag]?
 
     public var transitRouterId: String?
 
@@ -24478,6 +24533,13 @@ public class DescribeTransitRouterPolicyTablesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
         }
@@ -24504,6 +24566,19 @@ public class DescribeTransitRouterPolicyTablesRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [DescribeTransitRouterPolicyTablesRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeTransitRouterPolicyTablesRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
         if let value = dict["TransitRouterId"] as? String {
             self.transitRouterId = value
