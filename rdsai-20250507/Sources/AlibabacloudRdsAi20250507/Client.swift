@@ -3619,6 +3619,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.migrationMode)) {
+            query["MigrationMode"] = request.migrationMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }

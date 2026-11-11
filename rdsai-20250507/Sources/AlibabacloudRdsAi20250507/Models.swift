@@ -25746,6 +25746,8 @@ public class ModifyAppInstanceRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var migrationMode: String?
+
     public var regionId: String?
 
     public override init() {
@@ -25784,6 +25786,9 @@ public class ModifyAppInstanceRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.migrationMode != nil {
+            map["MigrationMode"] = self.migrationMode!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -25820,6 +25825,9 @@ public class ModifyAppInstanceRequest : Tea.TeaModel {
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
+        if let value = dict["MigrationMode"] as? String {
+            self.migrationMode = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -25838,6 +25846,8 @@ public class ModifyAppInstanceShrinkRequest : Tea.TeaModel {
     public var instanceClass: String?
 
     public var instanceName: String?
+
+    public var migrationMode: String?
 
     public var regionId: String?
 
@@ -25873,6 +25883,9 @@ public class ModifyAppInstanceShrinkRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.migrationMode != nil {
+            map["MigrationMode"] = self.migrationMode!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -25898,6 +25911,9 @@ public class ModifyAppInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["MigrationMode"] as? String {
+            self.migrationMode = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -25952,6 +25968,8 @@ public class ModifyAppInstanceResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var targetInstanceName: String?
+
     public override init() {
         super.init()
     }
@@ -25982,6 +26000,9 @@ public class ModifyAppInstanceResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.targetInstanceName != nil {
+            map["TargetInstanceName"] = self.targetInstanceName!
+        }
         return map
     }
 
@@ -26008,6 +26029,9 @@ public class ModifyAppInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TargetInstanceName"] as? String {
+            self.targetInstanceName = value
         }
     }
 }
