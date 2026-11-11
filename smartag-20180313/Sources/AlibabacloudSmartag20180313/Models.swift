@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -45923,6 +45924,8 @@ public class UpgradeSmartAccessGatewayRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var restoreTime: String?
+
     public var smartAGId: String?
 
     public override init() {
@@ -45960,6 +45963,9 @@ public class UpgradeSmartAccessGatewayRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.restoreTime != nil {
+            map["RestoreTime"] = self.restoreTime!
+        }
         if self.smartAGId != nil {
             map["SmartAGId"] = self.smartAGId!
         }
@@ -45988,6 +45994,9 @@ public class UpgradeSmartAccessGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["RestoreTime"] as? String {
+            self.restoreTime = value
         }
         if let value = dict["SmartAGId"] as? String {
             self.smartAGId = value
