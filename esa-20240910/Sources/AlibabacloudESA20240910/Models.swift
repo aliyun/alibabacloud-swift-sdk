@@ -2678,6 +2678,8 @@ public class FieldContentValue : Tea.TeaModel {
 
         public var isDefault: Bool?
 
+        public var isSupported: Bool?
+
         public override init() {
             super.init()
         }
@@ -2713,6 +2715,9 @@ public class FieldContentValue : Tea.TeaModel {
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
             }
+            if self.isSupported != nil {
+                map["IsSupported"] = self.isSupported!
+            }
             return map
         }
 
@@ -2738,6 +2743,9 @@ public class FieldContentValue : Tea.TeaModel {
             }
             if let value = dict["IsDefault"] as? Bool {
                 self.isDefault = value
+            }
+            if let value = dict["IsSupported"] as? Bool {
+                self.isSupported = value
             }
         }
     }
@@ -55510,6 +55518,8 @@ public class GetPurgeQuotaResponse : Tea.TeaModel {
 public class GetRealtimeDeliveryFieldRequest : Tea.TeaModel {
     public var businessType: String?
 
+    public var siteId: String?
+
     public override init() {
         super.init()
     }
@@ -55527,6 +55537,9 @@ public class GetRealtimeDeliveryFieldRequest : Tea.TeaModel {
         if self.businessType != nil {
             map["BusinessType"] = self.businessType!
         }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
         return map
     }
 
@@ -55534,6 +55547,9 @@ public class GetRealtimeDeliveryFieldRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BusinessType"] as? String {
             self.businessType = value
+        }
+        if let value = dict["SiteId"] as? String {
+            self.siteId = value
         }
     }
 }
