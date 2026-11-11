@@ -1382,6 +1382,8 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
 
         public var items: [String]?
 
+        public var levels: [String]?
+
         public override init() {
             super.init()
         }
@@ -1405,6 +1407,9 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
             if self.items != nil {
                 map["items"] = self.items!
             }
+            if self.levels != nil {
+                map["levels"] = self.levels!
+            }
             return map
         }
 
@@ -1418,6 +1423,9 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
             }
             if let value = dict["items"] as? [String] {
                 self.items = value
+            }
+            if let value = dict["levels"] as? [String] {
+                self.levels = value
             }
         }
     }
@@ -5681,6 +5689,8 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
 
             public var items: Any?
 
+            public var levels: [String]?
+
             public override init() {
                 super.init()
             }
@@ -5704,6 +5714,9 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
                 if self.items != nil {
                     map["items"] = self.items!
                 }
+                if self.levels != nil {
+                    map["levels"] = self.levels!
+                }
                 return map
             }
 
@@ -5717,6 +5730,9 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["items"] as? Any {
                     self.items = value
+                }
+                if let value = dict["levels"] as? [String] {
+                    self.levels = value
                 }
             }
         }
@@ -15638,6 +15654,8 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
 
             public var items: [String]?
 
+            public var levels: [String]?
+
             public override init() {
                 super.init()
             }
@@ -15661,6 +15679,9 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
                 if self.items != nil {
                     map["items"] = self.items!
                 }
+                if self.levels != nil {
+                    map["levels"] = self.levels!
+                }
                 return map
             }
 
@@ -15674,6 +15695,9 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["items"] as? [String] {
                     self.items = value
+                }
+                if let value = dict["levels"] as? [String] {
+                    self.levels = value
                 }
             }
         }
@@ -23689,6 +23713,8 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
 
         public var items: [String]?
 
+        public var levels: [String]?
+
         public override init() {
             super.init()
         }
@@ -23712,6 +23738,9 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
             if self.items != nil {
                 map["items"] = self.items!
             }
+            if self.levels != nil {
+                map["levels"] = self.levels!
+            }
             return map
         }
 
@@ -23725,6 +23754,9 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
             }
             if let value = dict["items"] as? [String] {
                 self.items = value
+            }
+            if let value = dict["levels"] as? [String] {
+                self.levels = value
             }
         }
     }
