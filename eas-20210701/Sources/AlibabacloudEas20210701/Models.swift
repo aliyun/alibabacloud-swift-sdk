@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -2746,6 +2747,10 @@ public class CreateAclPolicyResponse : Tea.TeaModel {
 }
 
 public class CreateAppServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var quotaId: String?
 
     public var workspaceId: String?
@@ -2776,6 +2781,12 @@ public class CreateAppServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.quotaId != nil {
             map["QuotaId"] = self.quotaId!
         }
@@ -2805,6 +2816,12 @@ public class CreateAppServiceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["QuotaId"] as? String {
             self.quotaId = value
         }
@@ -4811,7 +4828,11 @@ public class CreateResourceLogResponse : Tea.TeaModel {
 }
 
 public class CreateServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var develop: String?
+
+    public var dryRun: Bool?
 
     public var labels: [String: String]?
 
@@ -4833,8 +4854,14 @@ public class CreateServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.develop != nil {
             map["Develop"] = self.develop!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.labels != nil {
             map["Labels"] = self.labels!
@@ -4850,8 +4877,14 @@ public class CreateServiceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Develop"] as? String {
             self.develop = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Labels"] as? [String: String] {
             self.labels = value
@@ -4866,7 +4899,11 @@ public class CreateServiceRequest : Tea.TeaModel {
 }
 
 public class CreateServiceShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var develop: String?
+
+    public var dryRun: Bool?
 
     public var labelsShrink: String?
 
@@ -4888,8 +4925,14 @@ public class CreateServiceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.develop != nil {
             map["Develop"] = self.develop!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.labelsShrink != nil {
             map["Labels"] = self.labelsShrink!
@@ -4905,8 +4948,14 @@ public class CreateServiceShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Develop"] as? String {
             self.develop = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Labels"] as? String {
             self.labelsShrink = value
@@ -8311,6 +8360,9 @@ public class DeleteResourceLogResponse : Tea.TeaModel {
 }
 
 public class DeleteServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -8326,11 +8378,23 @@ public class DeleteServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -18539,6 +18603,8 @@ public class ListServiceVersionsResponseBody : Tea.TeaModel {
 
         public var message: String?
 
+        public var remark: String?
+
         public var serviceConfig: String?
 
         public var serviceRunnable: String?
@@ -18569,6 +18635,9 @@ public class ListServiceVersionsResponseBody : Tea.TeaModel {
             if self.message != nil {
                 map["Message"] = self.message!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             if self.serviceConfig != nil {
                 map["ServiceConfig"] = self.serviceConfig!
             }
@@ -18591,6 +18660,9 @@ public class ListServiceVersionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Message"] as? String {
                 self.message = value
+            }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
             if let value = dict["ServiceConfig"] as? String {
                 self.serviceConfig = value
@@ -20118,6 +20190,9 @@ public class ReleaseServiceResponse : Tea.TeaModel {
 }
 
 public class RestartServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -20133,11 +20208,23 @@ public class RestartServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -20472,6 +20559,9 @@ public class StartBenchmarkTaskResponse : Tea.TeaModel {
 }
 
 public class StartServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -20487,11 +20577,23 @@ public class StartServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -20698,6 +20800,9 @@ public class StopBenchmarkTaskResponse : Tea.TeaModel {
 }
 
 public class StopServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -20713,11 +20818,23 @@ public class StopServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -22456,6 +22573,10 @@ public class UpdateResourceInstanceLabelResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var memberToUpdate: String?
 
     public var updateType: String?
@@ -22476,6 +22597,12 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.memberToUpdate != nil {
             map["MemberToUpdate"] = self.memberToUpdate!
         }
@@ -22490,6 +22617,12 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["MemberToUpdate"] as? String {
             self.memberToUpdate = value
         }
@@ -23983,6 +24116,126 @@ public class UpdateServiceVersionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateServiceVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateServiceVersionRemarkRequest : Tea.TeaModel {
+    public var remark: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+    }
+}
+
+public class UpdateServiceVersionRemarkResponseBody : Tea.TeaModel {
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateServiceVersionRemarkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateServiceVersionRemarkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateServiceVersionRemarkResponseBody()
             model.fromMap(value)
             self.body = model
         }

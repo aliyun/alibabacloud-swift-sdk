@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "eas"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-beijing": "pai-eas.cn-beijing.aliyuncs.com",
@@ -25,19 +29,19 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shanghai-finance-1": "pai-eas.cn-shanghai-finance-1.aliyuncs.com",
             "cn-north-2-gov-1": "pai-eas.cn-north-2-gov-1.aliyuncs.com",
             "cn-chengdu": "pai-eas.cn-chengdu.aliyuncs.com",
-            "us-southeast-1": "pai-eas.us-southeast-1.aliyuncs.com",
-            "na-south-1": "pai-eas.na-south-1.aliyuncs.com",
-            "me-east-1": "pai-eas.me-east-1.aliyuncs.com",
-            "me-central-1": "pai-eas.me-central-1.aliyuncs.com",
             "cn-zhongwei": "pai-eas.cn-zhongwei.aliyuncs.com",
             "cn-wulanchabu": "pai-eas.cn-wulanchabu.aliyuncs.com",
             "cn-heyuan": "pai-eas.cn-heyuan.aliyuncs.com",
-            "cn-guangzhou": "pai-eas.cn-guangzhou.aliyuncs.com",
-            "ap-southeast-8": "pai-eas.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "pai-eas.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-3": "pai-eas.ap-southeast-3.aliyuncs.com",
             "ap-northeast-2": "pai-eas.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "pai-eas.ap-northeast-1.aliyuncs.com"
+            "ap-northeast-1": "pai-eas.ap-northeast-1.aliyuncs.com",
+            "cn-guangzhou": "pai-eas.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-3": "pai-eas.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-7": "pai-eas.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-8": "pai-eas.ap-southeast-8.aliyuncs.com",
+            "us-southeast-1": "pai-eas.us-southeast-1.aliyuncs.com",
+            "na-south-1": "pai-eas.na-south-1.aliyuncs.com",
+            "me-east-1": "pai-eas.me-east-1.aliyuncs.com",
+            "me-central-1": "pai-eas.me-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eas", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -203,6 +207,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAppServiceWithOptions(_ request: CreateAppServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.quotaId)) {
             query["QuotaId"] = request.quotaId ?? "";
         }
@@ -699,8 +709,14 @@ open class Client : AlibabacloudOpenApi.Client {
             request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.develop)) {
             query["Develop"] = request.develop ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
             query["Labels"] = request.labelsShrink ?? "";
@@ -1440,8 +1456,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: DeleteServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DeleteService",
@@ -3586,8 +3610,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func restartServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: RestartServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "RestartService",
@@ -3678,8 +3710,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: StartServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "StartService",
@@ -3734,8 +3774,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: StopServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "StopService",
@@ -4170,6 +4218,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.memberToUpdate)) {
             query["MemberToUpdate"] = request.memberToUpdate ?? "";
         }
@@ -4497,6 +4551,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateServiceVersionWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceVersionRemarkWithOptions(_ ClusterId: String, _ ServiceName: String, _ Version: String, _ request: UpdateServiceVersionRemarkRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceVersionRemarkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            body["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateServiceVersionRemark",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/version/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(Version)) + "/remark",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateServiceVersionRemarkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceVersionRemark(_ ClusterId: String, _ ServiceName: String, _ Version: String, _ request: UpdateServiceVersionRemarkRequest) async throws -> UpdateServiceVersionRemarkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateServiceVersionRemarkWithOptions(ClusterId as! String, ServiceName as! String, Version as! String, request as! UpdateServiceVersionRemarkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
