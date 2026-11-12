@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -13232,6 +13233,8 @@ public class ListExecutorGroupRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var timeType: [Int32]?
+
     public var workerType: String?
 
     public override init() {
@@ -13266,6 +13269,9 @@ public class ListExecutorGroupRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.timeType != nil {
+            map["TimeType"] = self.timeType!
+        }
         if self.workerType != nil {
             map["WorkerType"] = self.workerType!
         }
@@ -13291,6 +13297,9 @@ public class ListExecutorGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["TimeType"] as? [Int32] {
+            self.timeType = value
         }
         if let value = dict["WorkerType"] as? String {
             self.workerType = value
@@ -14839,6 +14848,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var timeType: [Int32]?
+
     public var workflowId: Int64?
 
     public override init() {
@@ -14885,6 +14896,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.timeType != nil {
+            map["TimeType"] = self.timeType!
+        }
         if self.workflowId != nil {
             map["WorkflowId"] = self.workflowId!
         }
@@ -14922,6 +14936,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["TimeType"] as? [Int32] {
+            self.timeType = value
         }
         if let value = dict["WorkflowId"] as? Int64 {
             self.workflowId = value
