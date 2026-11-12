@@ -1148,6 +1148,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             query["ProjectId"] = request.projectId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.subjectType)) {
+            query["SubjectType"] = request.subjectType ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";

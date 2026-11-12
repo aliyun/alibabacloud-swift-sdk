@@ -4674,6 +4674,8 @@ public class CreateAuthorizationRuleRequest : Tea.TeaModel {
 
     public var projectId: String?
 
+    public var subjectType: String?
+
     public override init() {
         super.init()
     }
@@ -4709,6 +4711,9 @@ public class CreateAuthorizationRuleRequest : Tea.TeaModel {
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
+        if self.subjectType != nil {
+            map["SubjectType"] = self.subjectType!
+        }
         return map
     }
 
@@ -4734,6 +4739,9 @@ public class CreateAuthorizationRuleRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
+        }
+        if let value = dict["SubjectType"] as? String {
+            self.subjectType = value
         }
     }
 }
