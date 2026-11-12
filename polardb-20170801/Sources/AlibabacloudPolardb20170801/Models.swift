@@ -7967,6 +7967,8 @@ public class CreateAgenticDBProjectRequest : Tea.TeaModel {
 
     public var tenantId: String?
 
+    public var zoneId: String?
+
     public override init() {
         super.init()
     }
@@ -8002,6 +8004,9 @@ public class CreateAgenticDBProjectRequest : Tea.TeaModel {
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
@@ -8027,6 +8032,9 @@ public class CreateAgenticDBProjectRequest : Tea.TeaModel {
         }
         if let value = dict["TenantId"] as? String {
             self.tenantId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
         }
     }
 }
@@ -58847,9 +58855,109 @@ public class DescribeDBClusterAccessWhitelistResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ProjectItems : Tea.TeaModel {
+        public class DBClusterProjectIPArray : Tea.TeaModel {
+            public var defaultOpen: Bool?
+
+            public var projectId: String?
+
+            public var revision: Int64?
+
+            public var securityIps: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultOpen != nil {
+                    map["DefaultOpen"] = self.defaultOpen!
+                }
+                if self.projectId != nil {
+                    map["ProjectId"] = self.projectId!
+                }
+                if self.revision != nil {
+                    map["Revision"] = self.revision!
+                }
+                if self.securityIps != nil {
+                    map["SecurityIps"] = self.securityIps!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DefaultOpen"] as? Bool {
+                    self.defaultOpen = value
+                }
+                if let value = dict["ProjectId"] as? String {
+                    self.projectId = value
+                }
+                if let value = dict["Revision"] as? Int64 {
+                    self.revision = value
+                }
+                if let value = dict["SecurityIps"] as? String {
+                    self.securityIps = value
+                }
+            }
+        }
+        public var DBClusterProjectIPArray: [DescribeDBClusterAccessWhitelistResponseBody.ProjectItems.DBClusterProjectIPArray]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.DBClusterProjectIPArray != nil {
+                var tmp : [Any] = []
+                for k in self.DBClusterProjectIPArray! {
+                    tmp.append(k.toMap())
+                }
+                map["DBClusterProjectIPArray"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DBClusterProjectIPArray"] as? [Any?] {
+                var tmp : [DescribeDBClusterAccessWhitelistResponseBody.ProjectItems.DBClusterProjectIPArray] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDBClusterAccessWhitelistResponseBody.ProjectItems.DBClusterProjectIPArray()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.DBClusterProjectIPArray = tmp
+            }
+        }
+    }
     public var DBClusterSecurityGroups: DescribeDBClusterAccessWhitelistResponseBody.DBClusterSecurityGroups?
 
     public var items: DescribeDBClusterAccessWhitelistResponseBody.Items?
+
+    public var projectItems: DescribeDBClusterAccessWhitelistResponseBody.ProjectItems?
 
     public var requestId: String?
 
@@ -58865,6 +58973,7 @@ public class DescribeDBClusterAccessWhitelistResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.DBClusterSecurityGroups?.validate()
         try self.items?.validate()
+        try self.projectItems?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -58874,6 +58983,9 @@ public class DescribeDBClusterAccessWhitelistResponseBody : Tea.TeaModel {
         }
         if self.items != nil {
             map["Items"] = self.items?.toMap()
+        }
+        if self.projectItems != nil {
+            map["ProjectItems"] = self.projectItems?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -58892,6 +59004,11 @@ public class DescribeDBClusterAccessWhitelistResponseBody : Tea.TeaModel {
             var model = DescribeDBClusterAccessWhitelistResponseBody.Items()
             model.fromMap(value)
             self.items = model
+        }
+        if let value = dict["ProjectItems"] as? [String: Any?] {
+            var model = DescribeDBClusterAccessWhitelistResponseBody.ProjectItems()
+            model.fromMap(value)
+            self.projectItems = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -119729,6 +119846,150 @@ public class ModifyApplicationPromptResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyApplicationSSLRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var caPem: String?
+
+    public var certPem: String?
+
+    public var keyPem: String?
+
+    public var sslEnabled: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.caPem != nil {
+            map["CaPem"] = self.caPem!
+        }
+        if self.certPem != nil {
+            map["CertPem"] = self.certPem!
+        }
+        if self.keyPem != nil {
+            map["KeyPem"] = self.keyPem!
+        }
+        if self.sslEnabled != nil {
+            map["SslEnabled"] = self.sslEnabled!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["CaPem"] as? String {
+            self.caPem = value
+        }
+        if let value = dict["CertPem"] as? String {
+            self.certPem = value
+        }
+        if let value = dict["KeyPem"] as? String {
+            self.keyPem = value
+        }
+        if let value = dict["SslEnabled"] as? Bool {
+            self.sslEnabled = value
+        }
+    }
+}
+
+public class ModifyApplicationSSLResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyApplicationSSLResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyApplicationSSLResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyApplicationSSLResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyApplicationServerlessConfRequest : Tea.TeaModel {
     public class ServerlessConfList : Tea.TeaModel {
         public var componentType: String?
@@ -122111,6 +122372,8 @@ public class ModifyDBClusterAccessWhitelistRequest : Tea.TeaModel {
 
     public var pfsInstanceId: String?
 
+    public var projectId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -122156,6 +122419,9 @@ public class ModifyDBClusterAccessWhitelistRequest : Tea.TeaModel {
         if self.pfsInstanceId != nil {
             map["PfsInstanceId"] = self.pfsInstanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -122196,6 +122462,9 @@ public class ModifyDBClusterAccessWhitelistRequest : Tea.TeaModel {
         }
         if let value = dict["PfsInstanceId"] as? String {
             self.pfsInstanceId = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -139545,6 +139814,8 @@ public class SearchMemoriesRequest : Tea.TeaModel {
 
     public var memoryAgentId: String?
 
+    public var memoryId: String?
+
     public var memoryUserId: String?
 
     public var page: Int32?
@@ -139581,6 +139852,9 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if self.memoryAgentId != nil {
             map["MemoryAgentId"] = self.memoryAgentId!
         }
+        if self.memoryId != nil {
+            map["MemoryId"] = self.memoryId!
+        }
         if self.memoryUserId != nil {
             map["MemoryUserId"] = self.memoryUserId!
         }
@@ -139613,6 +139887,9 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if let value = dict["MemoryAgentId"] as? String {
             self.memoryAgentId = value
         }
+        if let value = dict["MemoryId"] as? String {
+            self.memoryId = value
+        }
         if let value = dict["MemoryUserId"] as? String {
             self.memoryUserId = value
         }
@@ -139635,17 +139912,29 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
     public class Results : Tea.TeaModel {
         public var createTime: String?
 
+        public var event: String?
+
         public var id: String?
+
+        public var input: [Any]?
 
         public var memory: String?
 
         public var memoryAgentId: String?
 
+        public var memoryId: String?
+
         public var memoryUserId: String?
 
         public var metadata: String?
 
+        public var newMemory: String?
+
+        public var oldMemory: String?
+
         public var score: String?
+
+        public var updateCount: Int32?
 
         public var updateTime: String?
 
@@ -139666,8 +139955,14 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.event != nil {
+                map["Event"] = self.event!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
+            }
+            if self.input != nil {
+                map["Input"] = self.input!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -139675,14 +139970,26 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             if self.memoryAgentId != nil {
                 map["MemoryAgentId"] = self.memoryAgentId!
             }
+            if self.memoryId != nil {
+                map["MemoryId"] = self.memoryId!
+            }
             if self.memoryUserId != nil {
                 map["MemoryUserId"] = self.memoryUserId!
             }
             if self.metadata != nil {
                 map["Metadata"] = self.metadata!
             }
+            if self.newMemory != nil {
+                map["NewMemory"] = self.newMemory!
+            }
+            if self.oldMemory != nil {
+                map["OldMemory"] = self.oldMemory!
+            }
             if self.score != nil {
                 map["Score"] = self.score!
+            }
+            if self.updateCount != nil {
+                map["UpdateCount"] = self.updateCount!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
@@ -139695,8 +140002,14 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
+            if let value = dict["Event"] as? String {
+                self.event = value
+            }
             if let value = dict["Id"] as? String {
                 self.id = value
+            }
+            if let value = dict["Input"] as? [Any] {
+                self.input = value
             }
             if let value = dict["Memory"] as? String {
                 self.memory = value
@@ -139704,14 +140017,26 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             if let value = dict["MemoryAgentId"] as? String {
                 self.memoryAgentId = value
             }
+            if let value = dict["MemoryId"] as? String {
+                self.memoryId = value
+            }
             if let value = dict["MemoryUserId"] as? String {
                 self.memoryUserId = value
             }
             if let value = dict["Metadata"] as? String {
                 self.metadata = value
             }
+            if let value = dict["NewMemory"] as? String {
+                self.newMemory = value
+            }
+            if let value = dict["OldMemory"] as? String {
+                self.oldMemory = value
+            }
             if let value = dict["Score"] as? String {
                 self.score = value
+            }
+            if let value = dict["UpdateCount"] as? Int32 {
+                self.updateCount = value
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value

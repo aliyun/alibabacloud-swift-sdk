@@ -2139,6 +2139,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["TenantId"] = request.tenantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -20597,6 +20600,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyApplicationSSLWithOptions(_ request: ModifyApplicationSSLRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyApplicationSSLResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.caPem)) {
+            query["CaPem"] = request.caPem ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certPem)) {
+            query["CertPem"] = request.certPem ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyPem)) {
+            query["KeyPem"] = request.keyPem ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sslEnabled)) {
+            query["SslEnabled"] = request.sslEnabled!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyApplicationSSL",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyApplicationSSLResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyApplicationSSL(_ request: ModifyApplicationSSLRequest) async throws -> ModifyApplicationSSLResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyApplicationSSLWithOptions(request as! ModifyApplicationSSLRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyApplicationServerlessConfWithOptions(_ request: ModifyApplicationServerlessConfRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyApplicationServerlessConfResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -21223,6 +21269,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pfsInstanceId)) {
             query["PfsInstanceId"] = request.pfsInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            query["ProjectId"] = request.projectId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -25970,6 +26019,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.memoryAgentId)) {
             query["MemoryAgentId"] = request.memoryAgentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryId)) {
+            query["MemoryId"] = request.memoryId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.memoryUserId)) {
             query["MemoryUserId"] = request.memoryUserId ?? "";
