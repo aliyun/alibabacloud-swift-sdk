@@ -9905,6 +9905,8 @@ public class CreateModelOperatorApiKeyResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -9925,6 +9927,9 @@ public class CreateModelOperatorApiKeyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -9935,6 +9940,9 @@ public class CreateModelOperatorApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -21412,6 +21420,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var deployMode: String?
 
+            public var diskNotifyThreshold: String?
+
             public var encryptionKey: String?
 
             public var encryptionType: String?
@@ -21432,6 +21442,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var instanceSpec: String?
 
+            public var instanceType: String?
+
             public var lockMode: String?
 
             public var lockReason: String?
@@ -21443,6 +21455,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var masterAISpec: String?
 
             public var masterCU: Int32?
+
+            public var masterDiskLockThreshold: String?
 
             public var masterNodeNum: Int32?
 
@@ -21459,6 +21473,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var payType: String?
 
             public var port: String?
+
+            public var primaryDBInstanceId: String?
 
             public var prodType: String?
 
@@ -21479,6 +21495,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var segmentAISpec: String?
 
             public var segmentCounts: Int32?
+
+            public var segmentDiskLockThreshold: String?
 
             public var serverlessMode: String?
 
@@ -21589,6 +21607,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.deployMode != nil {
                     map["DeployMode"] = self.deployMode!
                 }
+                if self.diskNotifyThreshold != nil {
+                    map["DiskNotifyThreshold"] = self.diskNotifyThreshold!
+                }
                 if self.encryptionKey != nil {
                     map["EncryptionKey"] = self.encryptionKey!
                 }
@@ -21619,6 +21640,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.instanceSpec != nil {
                     map["InstanceSpec"] = self.instanceSpec!
                 }
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
                 }
@@ -21636,6 +21660,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.masterCU != nil {
                     map["MasterCU"] = self.masterCU!
+                }
+                if self.masterDiskLockThreshold != nil {
+                    map["MasterDiskLockThreshold"] = self.masterDiskLockThreshold!
                 }
                 if self.masterNodeNum != nil {
                     map["MasterNodeNum"] = self.masterNodeNum!
@@ -21660,6 +21687,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.port != nil {
                     map["Port"] = self.port!
+                }
+                if self.primaryDBInstanceId != nil {
+                    map["PrimaryDBInstanceId"] = self.primaryDBInstanceId!
                 }
                 if self.prodType != nil {
                     map["ProdType"] = self.prodType!
@@ -21690,6 +21720,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.segmentCounts != nil {
                     map["SegmentCounts"] = self.segmentCounts!
+                }
+                if self.segmentDiskLockThreshold != nil {
+                    map["SegmentDiskLockThreshold"] = self.segmentDiskLockThreshold!
                 }
                 if self.serverlessMode != nil {
                     map["ServerlessMode"] = self.serverlessMode!
@@ -21804,6 +21837,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if let value = dict["DeployMode"] as? String {
                     self.deployMode = value
                 }
+                if let value = dict["DiskNotifyThreshold"] as? String {
+                    self.diskNotifyThreshold = value
+                }
                 if let value = dict["EncryptionKey"] as? String {
                     self.encryptionKey = value
                 }
@@ -21834,6 +21870,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if let value = dict["InstanceSpec"] as? String {
                     self.instanceSpec = value
                 }
+                if let value = dict["InstanceType"] as? String {
+                    self.instanceType = value
+                }
                 if let value = dict["LockMode"] as? String {
                     self.lockMode = value
                 }
@@ -21851,6 +21890,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MasterCU"] as? Int32 {
                     self.masterCU = value
+                }
+                if let value = dict["MasterDiskLockThreshold"] as? String {
+                    self.masterDiskLockThreshold = value
                 }
                 if let value = dict["MasterNodeNum"] as? Int32 {
                     self.masterNodeNum = value
@@ -21875,6 +21917,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Port"] as? String {
                     self.port = value
+                }
+                if let value = dict["PrimaryDBInstanceId"] as? String {
+                    self.primaryDBInstanceId = value
                 }
                 if let value = dict["ProdType"] as? String {
                     self.prodType = value
@@ -21905,6 +21950,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SegmentCounts"] as? Int32 {
                     self.segmentCounts = value
+                }
+                if let value = dict["SegmentDiskLockThreshold"] as? String {
+                    self.segmentDiskLockThreshold = value
                 }
                 if let value = dict["ServerlessMode"] as? String {
                     self.serverlessMode = value
@@ -32474,6 +32522,8 @@ public class DescribeModelOperatorApiKeyResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -32506,6 +32556,9 @@ public class DescribeModelOperatorApiKeyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -32528,6 +32581,9 @@ public class DescribeModelOperatorApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -50799,6 +50855,8 @@ public class ListModelOperatorApiKeysResponseBody : Tea.TeaModel {
 
         public var endpoint: String?
 
+        public var status: String?
+
         public override init() {
             super.init()
         }
@@ -50825,6 +50883,9 @@ public class ListModelOperatorApiKeysResponseBody : Tea.TeaModel {
             if self.endpoint != nil {
                 map["Endpoint"] = self.endpoint!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             return map
         }
 
@@ -50841,6 +50902,9 @@ public class ListModelOperatorApiKeysResponseBody : Tea.TeaModel {
             }
             if let value = dict["Endpoint"] as? String {
                 self.endpoint = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
         }
     }
@@ -51013,6 +51077,8 @@ public class ListModelOperatorServicesResponseBody : Tea.TeaModel {
     public class Services : Tea.TeaModel {
         public var serviceId: String?
 
+        public var status: String?
+
         public override init() {
             super.init()
         }
@@ -51030,6 +51096,9 @@ public class ListModelOperatorServicesResponseBody : Tea.TeaModel {
             if self.serviceId != nil {
                 map["ServiceId"] = self.serviceId!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             return map
         }
 
@@ -51037,6 +51106,9 @@ public class ListModelOperatorServicesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ServiceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
         }
     }
