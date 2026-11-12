@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -2686,6 +2687,60 @@ public class SendMessageHeaders : Tea.TeaModel {
 }
 
 public class SendMessageRequest : Tea.TeaModel {
+    public class Attachments : Tea.TeaModel {
+        public var fileExtension: String?
+
+        public var fileId: String?
+
+        public var sourceName: String?
+
+        public var workspacePath: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileExtension != nil {
+                map["fileExtension"] = self.fileExtension!
+            }
+            if self.fileId != nil {
+                map["fileId"] = self.fileId!
+            }
+            if self.sourceName != nil {
+                map["sourceName"] = self.sourceName!
+            }
+            if self.workspacePath != nil {
+                map["workspacePath"] = self.workspacePath!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["fileExtension"] as? String {
+                self.fileExtension = value
+            }
+            if let value = dict["fileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["sourceName"] as? String {
+                self.sourceName = value
+            }
+            if let value = dict["workspacePath"] as? String {
+                self.workspacePath = value
+            }
+        }
+    }
     public class Resume : Tea.TeaModel {
         public var interruptId: String?
 
@@ -2732,6 +2787,8 @@ public class SendMessageRequest : Tea.TeaModel {
             }
         }
     }
+    public var attachments: [SendMessageRequest.Attachments]?
+
     public var content: String?
 
     public var resume: [SendMessageRequest.Resume]?
@@ -2754,6 +2811,13 @@ public class SendMessageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attachments != nil {
+            var tmp : [Any] = []
+            for k in self.attachments! {
+                tmp.append(k.toMap())
+            }
+            map["attachments"] = tmp
+        }
         if self.content != nil {
             map["content"] = self.content!
         }
@@ -2775,6 +2839,19 @@ public class SendMessageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attachments"] as? [Any?] {
+            var tmp : [SendMessageRequest.Attachments] = []
+            for v in value {
+                if v != nil {
+                    var model = SendMessageRequest.Attachments()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.attachments = tmp
+        }
         if let value = dict["content"] as? String {
             self.content = value
         }
