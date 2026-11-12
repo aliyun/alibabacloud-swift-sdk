@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Ens"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-beijing": "ens.aliyuncs.com",
@@ -12595,6 +12599,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setLoadBalancerTCPListenerAttributeWithOptions(_ request: SetLoadBalancerTCPListenerAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetLoadBalancerTCPListenerAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backendServerPort)) {
+            query["BackendServerPort"] = request.backendServerPort!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -12671,6 +12678,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setLoadBalancerUDPListenerAttributeWithOptions(_ request: SetLoadBalancerUDPListenerAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetLoadBalancerUDPListenerAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backendServerPort)) {
+            query["BackendServerPort"] = request.backendServerPort!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }

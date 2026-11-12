@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -82349,6 +82350,8 @@ public class SetLoadBalancerStatusResponse : Tea.TeaModel {
 }
 
 public class SetLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
+    public var backendServerPort: Int32?
+
     public var description_: String?
 
     public var eipTransmit: String?
@@ -82395,6 +82398,9 @@ public class SetLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backendServerPort != nil {
+            map["BackendServerPort"] = self.backendServerPort!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -82448,6 +82454,9 @@ public class SetLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BackendServerPort"] as? Int32 {
+            self.backendServerPort = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -82581,6 +82590,8 @@ public class SetLoadBalancerTCPListenerAttributeResponse : Tea.TeaModel {
 }
 
 public class SetLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
+    public var backendServerPort: Int32?
+
     public var description_: String?
 
     public var eipTransmit: String?
@@ -82621,6 +82632,9 @@ public class SetLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backendServerPort != nil {
+            map["BackendServerPort"] = self.backendServerPort!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -82665,6 +82679,9 @@ public class SetLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BackendServerPort"] as? Int32 {
+            self.backendServerPort = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
