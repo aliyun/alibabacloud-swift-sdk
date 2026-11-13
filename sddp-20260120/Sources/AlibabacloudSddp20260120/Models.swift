@@ -3127,6 +3127,8 @@ public class ListDataMaskingInstancesRequest : Tea.TeaModel {
 
 public class ListDataMaskingInstancesResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public var description_: String?
+
         public var encryptionAlgorithm: String?
 
         public var encryptionKeyId: String?
@@ -3159,6 +3161,9 @@ public class ListDataMaskingInstancesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.encryptionAlgorithm != nil {
                 map["EncryptionAlgorithm"] = self.encryptionAlgorithm!
             }
@@ -3191,6 +3196,9 @@ public class ListDataMaskingInstancesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
             if let value = dict["EncryptionAlgorithm"] as? String {
                 self.encryptionAlgorithm = value
             }
