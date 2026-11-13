@@ -35168,6 +35168,8 @@ public class ListAppInstancesRequest : Tea.TeaModel {
 
     public var bizIds: [String]?
 
+    public var domain: String?
+
     public var endTimeBegin: String?
 
     public var endTimeEnd: String?
@@ -35214,6 +35216,9 @@ public class ListAppInstancesRequest : Tea.TeaModel {
         }
         if self.bizIds != nil {
             map["BizIds"] = self.bizIds!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
         }
         if self.endTimeBegin != nil {
             map["EndTimeBegin"] = self.endTimeBegin!
@@ -35265,6 +35270,9 @@ public class ListAppInstancesRequest : Tea.TeaModel {
         if let value = dict["BizIds"] as? [String] {
             self.bizIds = value
         }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
+        }
         if let value = dict["EndTimeBegin"] as? String {
             self.endTimeBegin = value
         }
@@ -35310,6 +35318,8 @@ public class ListAppInstancesShrinkRequest : Tea.TeaModel {
     public var bizId: String?
 
     public var bizIdsShrink: String?
+
+    public var domain: String?
 
     public var endTimeBegin: String?
 
@@ -35357,6 +35367,9 @@ public class ListAppInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.bizIdsShrink != nil {
             map["BizIds"] = self.bizIdsShrink!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
         }
         if self.endTimeBegin != nil {
             map["EndTimeBegin"] = self.endTimeBegin!
@@ -35407,6 +35420,9 @@ public class ListAppInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["BizIds"] as? String {
             self.bizIdsShrink = value
+        }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
         }
         if let value = dict["EndTimeBegin"] as? String {
             self.endTimeBegin = value
