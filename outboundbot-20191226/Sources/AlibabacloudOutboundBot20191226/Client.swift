@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "OutboundBot"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("outboundbot", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1807,6 +1811,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteNotificationRegistrationWithOptions(_ request: DeleteNotificationRegistrationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteNotificationRegistrationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteNotificationRegistration",
+            "version": "2019-12-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteNotificationRegistrationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteNotificationRegistration(_ request: DeleteNotificationRegistrationRequest) async throws -> DeleteNotificationRegistrationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteNotificationRegistrationWithOptions(request as! DeleteNotificationRegistrationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteOutboundCallNumberWithOptions(_ request: DeleteOutboundCallNumberRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOutboundCallNumberResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3416,6 +3451,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getMaxAttemptsPerDay(_ request: GetMaxAttemptsPerDayRequest) async throws -> GetMaxAttemptsPerDayResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getMaxAttemptsPerDayWithOptions(request as! GetMaxAttemptsPerDayRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNotificationRegistrationWithOptions(_ request: GetNotificationRegistrationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNotificationRegistrationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetNotificationRegistration",
+            "version": "2019-12-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetNotificationRegistrationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNotificationRegistration(_ request: GetNotificationRegistrationRequest) async throws -> GetNotificationRegistrationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getNotificationRegistrationWithOptions(request as! GetNotificationRegistrationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6571,6 +6637,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func saveMaxAttemptsPerDay(_ request: SaveMaxAttemptsPerDayRequest) async throws -> SaveMaxAttemptsPerDayResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await saveMaxAttemptsPerDayWithOptions(request as! SaveMaxAttemptsPerDayRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveNotificationRegistrationWithOptions(_ request: SaveNotificationRegistrationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveNotificationRegistrationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessKey)) {
+            body["AccessKey"] = request.accessKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessPoint)) {
+            body["AccessPoint"] = request.accessPoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessPointType)) {
+            body["AccessPointType"] = request.accessPointType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            body["AuthType"] = request.authType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mqInstanceId)) {
+            body["MqInstanceId"] = request.mqInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mqType)) {
+            body["MqType"] = request.mqType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            body["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secretKey)) {
+            body["SecretKey"] = request.secretKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topic)) {
+            body["Topic"] = request.topic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            body["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveNotificationRegistration",
+            "version": "2019-12-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveNotificationRegistrationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveNotificationRegistration(_ request: SaveNotificationRegistrationRequest) async throws -> SaveNotificationRegistrationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveNotificationRegistrationWithOptions(request as! SaveNotificationRegistrationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
