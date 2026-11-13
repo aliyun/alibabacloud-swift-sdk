@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudInternetBankOpen20240612"
-  spec.version      = "1.1.1"
+  spec.version      = "1.1.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud InternetBankOpen (20240612) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/internetbankopen-20240612" 
