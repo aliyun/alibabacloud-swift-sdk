@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -461,6 +462,354 @@ public class StageWithWeight : Tea.TeaModel {
         }
         if let value = dict["Weight"] as? Int32 {
             self.weight = value
+        }
+    }
+}
+
+public class TokenUsageDetailDTO : Tea.TeaModel {
+    public class BizObjects : Tea.TeaModel {
+        public var id: String?
+
+        public var kind: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.kind != nil {
+                map["Kind"] = self.kind!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Kind"] as? String {
+                self.kind = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+        }
+    }
+    public class ScopeConfig : Tea.TeaModel {
+        public var deploymentIds: [String]?
+
+        public var tags: [String: [String]]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deploymentIds != nil {
+                map["DeploymentIds"] = self.deploymentIds!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DeploymentIds"] as? [String] {
+                self.deploymentIds = value
+            }
+            if let value = dict["Tags"] as? [String: [String]] {
+                self.tags = value
+            }
+        }
+    }
+    public var bizObjects: [TokenUsageDetailDTO.BizObjects]?
+
+    public var namespace: String?
+
+    public var occurredAt: Int64?
+
+    public var scopeConfig: TokenUsageDetailDTO.ScopeConfig?
+
+    public var scopeType: String?
+
+    public var sessionId: String?
+
+    public var status: String?
+
+    public var totalJobs: Int32?
+
+    public var totalTokens: Int64?
+
+    public var triggerSource: String?
+
+    public var usageType: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.scopeConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizObjects != nil {
+            var tmp : [Any] = []
+            for k in self.bizObjects! {
+                tmp.append(k.toMap())
+            }
+            map["BizObjects"] = tmp
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.occurredAt != nil {
+            map["OccurredAt"] = self.occurredAt!
+        }
+        if self.scopeConfig != nil {
+            map["ScopeConfig"] = self.scopeConfig?.toMap()
+        }
+        if self.scopeType != nil {
+            map["ScopeType"] = self.scopeType!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.totalJobs != nil {
+            map["TotalJobs"] = self.totalJobs!
+        }
+        if self.totalTokens != nil {
+            map["TotalTokens"] = self.totalTokens!
+        }
+        if self.triggerSource != nil {
+            map["TriggerSource"] = self.triggerSource!
+        }
+        if self.usageType != nil {
+            map["UsageType"] = self.usageType!
+        }
+        if self.workspace != nil {
+            map["Workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizObjects"] as? [Any?] {
+            var tmp : [TokenUsageDetailDTO.BizObjects] = []
+            for v in value {
+                if v != nil {
+                    var model = TokenUsageDetailDTO.BizObjects()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.bizObjects = tmp
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["OccurredAt"] as? Int64 {
+            self.occurredAt = value
+        }
+        if let value = dict["ScopeConfig"] as? [String: Any?] {
+            var model = TokenUsageDetailDTO.ScopeConfig()
+            model.fromMap(value)
+            self.scopeConfig = model
+        }
+        if let value = dict["ScopeType"] as? String {
+            self.scopeType = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TotalJobs"] as? Int32 {
+            self.totalJobs = value
+        }
+        if let value = dict["TotalTokens"] as? Int64 {
+            self.totalTokens = value
+        }
+        if let value = dict["TriggerSource"] as? String {
+            self.triggerSource = value
+        }
+        if let value = dict["UsageType"] as? String {
+            self.usageType = value
+        }
+        if let value = dict["Workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class ChangeResourceGroupRequest : Tea.TeaModel {
+    public var resourceGroupId: String?
+
+    public var resourceId: String?
+
+    public var resourceRegionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
+        }
+    }
+}
+
+public class ChangeResourceGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ChangeResourceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeResourceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChangeResourceGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
         }
     }
 }
