@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -20975,6 +20976,8 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
 
         public var displayReleaseVersion: String?
 
+        public var flameGraphEnabled: Bool?
+
         public var fusion: Bool?
 
         public var gmtCreate: Int64?
@@ -21014,6 +21017,9 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
             if self.displayReleaseVersion != nil {
                 map["displayReleaseVersion"] = self.displayReleaseVersion!
             }
+            if self.flameGraphEnabled != nil {
+                map["flameGraphEnabled"] = self.flameGraphEnabled!
+            }
             if self.fusion != nil {
                 map["fusion"] = self.fusion!
             }
@@ -21051,6 +21057,9 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["displayReleaseVersion"] as? String {
                 self.displayReleaseVersion = value
+            }
+            if let value = dict["flameGraphEnabled"] as? Bool {
+                self.flameGraphEnabled = value
             }
             if let value = dict["fusion"] as? Bool {
                 self.fusion = value
