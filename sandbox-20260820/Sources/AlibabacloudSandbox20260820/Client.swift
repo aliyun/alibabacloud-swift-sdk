@@ -173,6 +173,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWarmPoolWithOptions(_ teamID: String, _ request: CreateWarmPoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWarmPoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWarmPool",
+            "version": "2026-08-20",
+            "protocol": "HTTPS",
+            "pathname": "/pop/2026-08-20/teams/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(teamID)) + "/warmPools",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWarmPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWarmPool(_ teamID: String, _ request: CreateWarmPoolRequest) async throws -> CreateWarmPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createWarmPoolWithOptions(teamID as! String, request as! CreateWarmPoolRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteApiKeyWithOptions(_ apiKeyID: String, _ request: DeleteApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteApiKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -361,6 +390,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWarmPoolWithOptions(_ teamID: String, _ templateID: String, _ request: DeleteWarmPoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWarmPoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWarmPool",
+            "version": "2026-08-20",
+            "protocol": "HTTPS",
+            "pathname": "/pop/2026-08-20/teams/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(teamID)) + "/warmPools/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(templateID)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWarmPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWarmPool(_ teamID: String, _ templateID: String, _ request: DeleteWarmPoolRequest) async throws -> DeleteWarmPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteWarmPoolWithOptions(teamID as! String, templateID as! String, request as! DeleteWarmPoolRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeApiKeyWithOptions(_ apiKeyID: String, _ request: DescribeApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeApiKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -452,6 +509,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await describeTemplateCacheWithOptions(templateID as! String, request as! DescribeTemplateCacheRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeWarmPoolWithOptions(_ teamID: String, _ templateID: String, _ request: DescribeWarmPoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeWarmPoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeWarmPool",
+            "version": "2026-08-20",
+            "protocol": "HTTPS",
+            "pathname": "/pop/2026-08-20/teams/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(teamID)) + "/warmPools/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(templateID)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeWarmPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeWarmPool(_ teamID: String, _ templateID: String, _ request: DescribeWarmPoolRequest) async throws -> DescribeWarmPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await describeWarmPoolWithOptions(teamID as! String, templateID as! String, request as! DescribeWarmPoolRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -957,6 +1042,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWarmPoolsWithOptions(_ teamID: String, _ request: ListWarmPoolsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWarmPoolsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListWarmPools",
+            "version": "2026-08-20",
+            "protocol": "HTTPS",
+            "pathname": "/pop/2026-08-20/teams/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(teamID)) + "/warmPools",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListWarmPoolsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWarmPools(_ teamID: String, _ request: ListWarmPoolsRequest) async throws -> ListWarmPoolsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listWarmPoolsWithOptions(teamID as! String, request as! ListWarmPoolsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func resetApiKeyWithOptions(_ apiKeyID: String, _ request: ResetApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetApiKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -1137,5 +1258,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateVolumeWithOptions(volumeID as! String, request as! UpdateVolumeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWarmPoolWithOptions(_ teamID: String, _ templateID: String, _ request: UpdateWarmPoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWarmPoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateWarmPool",
+            "version": "2026-08-20",
+            "protocol": "HTTPS",
+            "pathname": "/pop/2026-08-20/teams/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(teamID)) + "/warmPools/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(templateID)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateWarmPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWarmPool(_ teamID: String, _ templateID: String, _ request: UpdateWarmPoolRequest) async throws -> UpdateWarmPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateWarmPoolWithOptions(teamID as! String, templateID as! String, request as! UpdateWarmPoolRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
