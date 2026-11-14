@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Yundun-bastionhost"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-qingdao": "yundun-bastionhost.aliyuncs.com",
@@ -4242,6 +4246,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listApproveCommandsWithOptions(_ request: ListApproveCommandsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApproveCommandsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.approvalStatus)) {
+            query["ApprovalStatus"] = request.approvalStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.approveCommandId)) {
+            query["ApproveCommandId"] = request.approveCommandId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -5671,11 +5681,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listOperationTicketsWithOptions(_ request: ListOperationTicketsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOperationTicketsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.approvalStatus)) {
+            query["ApprovalStatus"] = request.approvalStatus!;
+        }
         if (!TeaUtils.Client.isUnset(request.assetAddress)) {
             query["AssetAddress"] = request.assetAddress ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationTicketId)) {
+            query["OperationTicketId"] = request.operationTicketId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber ?? "";

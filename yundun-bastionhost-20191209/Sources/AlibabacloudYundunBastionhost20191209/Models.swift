@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -21808,6 +21809,10 @@ public class ImportKMSSecretsForHostResponse : Tea.TeaModel {
 }
 
 public class ListApproveCommandsRequest : Tea.TeaModel {
+    public var approvalStatus: Int32?
+
+    public var approveCommandId: String?
+
     public var instanceId: String?
 
     public var pageNumber: String?
@@ -21832,6 +21837,12 @@ public class ListApproveCommandsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.approvalStatus != nil {
+            map["ApprovalStatus"] = self.approvalStatus!
+        }
+        if self.approveCommandId != nil {
+            map["ApproveCommandId"] = self.approveCommandId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -21852,6 +21863,12 @@ public class ListApproveCommandsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApprovalStatus"] as? Int32 {
+            self.approvalStatus = value
+        }
+        if let value = dict["ApproveCommandId"] as? String {
+            self.approveCommandId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -21872,6 +21889,8 @@ public class ListApproveCommandsRequest : Tea.TeaModel {
 
 public class ListApproveCommandsResponseBody : Tea.TeaModel {
     public class ApproveCommands : Tea.TeaModel {
+        public var approvalStatus: Int32?
+
         public var approveCommandId: String?
 
         public var assetAccountName: String?
@@ -21908,6 +21927,9 @@ public class ListApproveCommandsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.approvalStatus != nil {
+                map["ApprovalStatus"] = self.approvalStatus!
+            }
             if self.approveCommandId != nil {
                 map["ApproveCommandId"] = self.approveCommandId!
             }
@@ -21946,6 +21968,9 @@ public class ListApproveCommandsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApprovalStatus"] as? Int32 {
+                self.approvalStatus = value
+            }
             if let value = dict["ApproveCommandId"] as? String {
                 self.approveCommandId = value
             }
@@ -29405,9 +29430,13 @@ public class ListOperationHostsResponse : Tea.TeaModel {
 }
 
 public class ListOperationTicketsRequest : Tea.TeaModel {
+    public var approvalStatus: Int32?
+
     public var assetAddress: String?
 
     public var instanceId: String?
+
+    public var operationTicketId: String?
 
     public var pageNumber: String?
 
@@ -29431,11 +29460,17 @@ public class ListOperationTicketsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.approvalStatus != nil {
+            map["ApprovalStatus"] = self.approvalStatus!
+        }
         if self.assetAddress != nil {
             map["AssetAddress"] = self.assetAddress!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.operationTicketId != nil {
+            map["OperationTicketId"] = self.operationTicketId!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -29454,11 +29489,17 @@ public class ListOperationTicketsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApprovalStatus"] as? Int32 {
+            self.approvalStatus = value
+        }
         if let value = dict["AssetAddress"] as? String {
             self.assetAddress = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["OperationTicketId"] as? String {
+            self.operationTicketId = value
         }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
@@ -29480,6 +29521,8 @@ public class ListOperationTicketsResponseBody : Tea.TeaModel {
         public var applyUserId: String?
 
         public var applyUsername: String?
+
+        public var approvalStatus: Int32?
 
         public var approveComment: String?
 
@@ -29534,6 +29577,9 @@ public class ListOperationTicketsResponseBody : Tea.TeaModel {
             }
             if self.applyUsername != nil {
                 map["ApplyUsername"] = self.applyUsername!
+            }
+            if self.approvalStatus != nil {
+                map["ApprovalStatus"] = self.approvalStatus!
             }
             if self.approveComment != nil {
                 map["ApproveComment"] = self.approveComment!
@@ -29596,6 +29642,9 @@ public class ListOperationTicketsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ApplyUsername"] as? String {
                 self.applyUsername = value
+            }
+            if let value = dict["ApprovalStatus"] as? Int32 {
+                self.approvalStatus = value
             }
             if let value = dict["ApproveComment"] as? String {
                 self.approveComment = value
