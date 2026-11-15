@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -903,6 +904,8 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
     public class RetrievalConfig : Tea.TeaModel {
         public var candidateCount: Int32?
 
+        public var enableEvidenceCompletion: Bool?
+
         public var enableQueryExpansion: Bool?
 
         public var minScore: Double?
@@ -928,6 +931,9 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
             if self.candidateCount != nil {
                 map["candidateCount"] = self.candidateCount!
             }
+            if self.enableEvidenceCompletion != nil {
+                map["enableEvidenceCompletion"] = self.enableEvidenceCompletion!
+            }
             if self.enableQueryExpansion != nil {
                 map["enableQueryExpansion"] = self.enableQueryExpansion!
             }
@@ -947,6 +953,9 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["candidateCount"] as? Int32 {
                 self.candidateCount = value
+            }
+            if let value = dict["enableEvidenceCompletion"] as? Bool {
+                self.enableEvidenceCompletion = value
             }
             if let value = dict["enableQueryExpansion"] as? Bool {
                 self.enableQueryExpansion = value
