@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "BssOpenApi"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "business.aliyuncs.com",
@@ -595,13 +599,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createReportDefinitionWithOptions(_ tmpReq: CreateReportDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateReportDefinitionResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: CreateReportDefinitionShrinkRequest = CreateReportDefinitionShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.selectedFields)) {
-            request.selectedFieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.selectedFields, "SelectedFields", "json")
-        }
+    public func createReportDefinitionWithOptions(_ request: CreateReportDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateReportDefinitionResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.beginBillingCycle)) {
             query["BeginBillingCycle"] = request.beginBillingCycle ?? "";
@@ -626,9 +625,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.reportType)) {
             query["ReportType"] = request.reportType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.selectedFieldsShrink)) {
-            query["SelectedFields"] = request.selectedFieldsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sendWithAttach)) {
             query["SendWithAttach"] = request.sendWithAttach ?? "";
@@ -1674,6 +1670,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumeSummaryWithOptions(_ tmpReq: ListConsumeSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumeSummaryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListConsumeSummaryShrinkRequest = ListConsumeSummaryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.commonFilters)) {
+            request.commonFiltersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commonFilters, "CommonFilters", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.ecIdAccountIds)) {
+            request.ecIdAccountIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ecIdAccountIds, "EcIdAccountIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.period)) {
+            request.periodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.period, "Period", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commonFiltersShrink)) {
+            query["CommonFilters"] = request.commonFiltersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dimensionType)) {
+            query["DimensionType"] = request.dimensionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ecIdAccountIdsShrink)) {
+            query["EcIdAccountIds"] = request.ecIdAccountIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.periodShrink)) {
+            query["Period"] = request.periodShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConsumeSummary",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListConsumeSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumeSummary(_ request: ListConsumeSummaryRequest) async throws -> ListConsumeSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listConsumeSummaryWithOptions(request as! ListConsumeSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listCouponDeductTagWithOptions(_ tmpReq: ListCouponDeductTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCouponDeductTagResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListCouponDeductTagShrinkRequest = ListCouponDeductTagShrinkRequest([:])
@@ -1933,6 +1986,72 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listReportDefinitions(_ request: ListReportDefinitionsRequest) async throws -> ListReportDefinitionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listReportDefinitionsWithOptions(request as! ListReportDefinitionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSplitSummaryWithOptions(_ tmpReq: ListSplitSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSplitSummaryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListSplitSummaryShrinkRequest = ListSplitSummaryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.commonFilters)) {
+            request.commonFiltersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commonFilters, "CommonFilters", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.costCategoriesFilters)) {
+            request.costCategoriesFiltersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.costCategoriesFilters, "CostCategoriesFilters", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.ecIdAccountIds)) {
+            request.ecIdAccountIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ecIdAccountIds, "EcIdAccountIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.period)) {
+            request.periodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.period, "Period", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tagFilters)) {
+            request.tagFiltersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagFilters, "TagFilters", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commonFiltersShrink)) {
+            query["CommonFilters"] = request.commonFiltersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.costCategoriesFiltersShrink)) {
+            query["CostCategoriesFilters"] = request.costCategoriesFiltersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ecIdAccountIdsShrink)) {
+            query["EcIdAccountIds"] = request.ecIdAccountIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.periodShrink)) {
+            query["Period"] = request.periodShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagFiltersShrink)) {
+            query["TagFilters"] = request.tagFiltersShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSplitSummary",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSplitSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSplitSummary(_ request: ListSplitSummaryRequest) async throws -> ListSplitSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listSplitSummaryWithOptions(request as! ListSplitSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
