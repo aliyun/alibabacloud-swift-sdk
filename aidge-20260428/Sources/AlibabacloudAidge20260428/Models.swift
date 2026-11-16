@@ -4252,6 +4252,8 @@ public class GenerateProductContentRequest : Tea.TeaModel {
 
     public var productCategory: String?
 
+    public var prompt: String?
+
     public var sourceLanguage: String?
 
     public var sourceText: String?
@@ -4299,6 +4301,9 @@ public class GenerateProductContentRequest : Tea.TeaModel {
         if self.productCategory != nil {
             map["ProductCategory"] = self.productCategory!
         }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.sourceLanguage != nil {
             map["SourceLanguage"] = self.sourceLanguage!
         }
@@ -4339,6 +4344,9 @@ public class GenerateProductContentRequest : Tea.TeaModel {
         }
         if let value = dict["ProductCategory"] as? String {
             self.productCategory = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
         }
         if let value = dict["SourceLanguage"] as? String {
             self.sourceLanguage = value

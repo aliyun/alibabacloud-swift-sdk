@@ -613,6 +613,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.productCategory)) {
             query["ProductCategory"] = request.productCategory ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            query["Prompt"] = request.prompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
             query["SourceLanguage"] = request.sourceLanguage ?? "";
         }
