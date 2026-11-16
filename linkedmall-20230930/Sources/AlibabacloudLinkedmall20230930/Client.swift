@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "linkedmall"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "linkedmall.aliyuncs.com",
@@ -527,6 +531,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSelectionProductsWithOptions(_ request: ListSelectionProductsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSelectionProductsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cursor)) {
+            query["cursor"] = request.cursor ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
@@ -722,6 +729,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.createStartTime)) {
             body["createStartTime"] = request.createStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cursor)) {
+            body["cursor"] = request.cursor ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.distributionHighPrice)) {
             body["distributionHighPrice"] = request.distributionHighPrice!;

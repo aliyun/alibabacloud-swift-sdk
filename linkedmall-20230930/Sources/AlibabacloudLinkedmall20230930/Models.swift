@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3395,6 +3396,8 @@ public class ProductExtendProperty : Tea.TeaModel {
 }
 
 public class ProductPageResult : Tea.TeaModel {
+    public var nextCursor: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -3419,6 +3422,9 @@ public class ProductPageResult : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nextCursor != nil {
+            map["nextCursor"] = self.nextCursor!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -3443,6 +3449,9 @@ public class ProductPageResult : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["nextCursor"] as? String {
+            self.nextCursor = value
+        }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -5906,6 +5915,124 @@ public class SkuSpec : Tea.TeaModel {
     }
 }
 
+public class StopDistributionChannelCommand : Tea.TeaModel {
+    public var channelCodes: [String]?
+
+    public var lmShopId: String?
+
+    public var productId: String?
+
+    public var requestId: String?
+
+    public var requestTime: String?
+
+    public var requestUser: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.channelCodes != nil {
+            map["channelCodes"] = self.channelCodes!
+        }
+        if self.lmShopId != nil {
+            map["lmShopId"] = self.lmShopId!
+        }
+        if self.productId != nil {
+            map["productId"] = self.productId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.requestTime != nil {
+            map["requestTime"] = self.requestTime!
+        }
+        if self.requestUser != nil {
+            map["requestUser"] = self.requestUser!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["channelCodes"] as? [String] {
+            self.channelCodes = value
+        }
+        if let value = dict["lmShopId"] as? String {
+            self.lmShopId = value
+        }
+        if let value = dict["productId"] as? String {
+            self.productId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["requestTime"] as? String {
+            self.requestTime = value
+        }
+        if let value = dict["requestUser"] as? String {
+            self.requestUser = value
+        }
+    }
+}
+
+public class StopDistributionChannelResult : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
 public class StopDistributionCommand : Tea.TeaModel {
     public var lmShopId: String?
 
@@ -7110,6 +7237,8 @@ public class ListSelectionProductSaleInfosResponse : Tea.TeaModel {
 }
 
 public class ListSelectionProductsRequest : Tea.TeaModel {
+    public var cursor: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -7130,6 +7259,9 @@ public class ListSelectionProductsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cursor != nil {
+            map["cursor"] = self.cursor!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -7144,6 +7276,9 @@ public class ListSelectionProductsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["cursor"] as? String {
+            self.cursor = value
+        }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -7635,6 +7770,8 @@ public class SearchProductsRequest : Tea.TeaModel {
 
     public var createStartTime: String?
 
+    public var cursor: String?
+
     public var distributionHighPrice: Int64?
 
     public var distributionHighPriceRatio: Int64?
@@ -7712,6 +7849,9 @@ public class SearchProductsRequest : Tea.TeaModel {
         }
         if self.createStartTime != nil {
             map["createStartTime"] = self.createStartTime!
+        }
+        if self.cursor != nil {
+            map["cursor"] = self.cursor!
         }
         if self.distributionHighPrice != nil {
             map["distributionHighPrice"] = self.distributionHighPrice!
@@ -7807,6 +7947,9 @@ public class SearchProductsRequest : Tea.TeaModel {
         }
         if let value = dict["createStartTime"] as? String {
             self.createStartTime = value
+        }
+        if let value = dict["cursor"] as? String {
+            self.cursor = value
         }
         if let value = dict["distributionHighPrice"] as? Int64 {
             self.distributionHighPrice = value
@@ -8196,6 +8339,8 @@ public class SearchProductsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var nextCursor: String?
+
     public var products: [SearchProductsResponseBody.Products]?
 
     public var total: Int32?
@@ -8214,6 +8359,9 @@ public class SearchProductsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nextCursor != nil {
+            map["nextCursor"] = self.nextCursor!
+        }
         if self.products != nil {
             var tmp : [Any] = []
             for k in self.products! {
@@ -8229,6 +8377,9 @@ public class SearchProductsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["nextCursor"] as? String {
+            self.nextCursor = value
+        }
         if let value = dict["products"] as? [Any?] {
             var tmp : [SearchProductsResponseBody.Products] = []
             for v in value {
