@@ -108,17 +108,38 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createC2paSignTaskWithOptions(_ request: CreateC2paSignTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateC2paSignTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowOverwrite)) {
+            query["AllowOverwrite"] = request.allowOverwrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["BucketName"] = request.bucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bucketRegionId)) {
+            query["BucketRegionId"] = request.bucketRegionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customAssertions)) {
             query["CustomAssertions"] = request.customAssertions ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             query["FileUrl"] = request.fileUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.objectKey)) {
+            query["ObjectKey"] = request.objectKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.softwareAgent)) {
             query["SoftwareAgent"] = request.softwareAgent ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceType)) {
             query["SourceType"] = request.sourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetBucketName)) {
+            query["TargetBucketName"] = request.targetBucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetBucketRegion)) {
+            query["TargetBucketRegion"] = request.targetBucketRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetObjectKey)) {
+            query["TargetObjectKey"] = request.targetObjectKey ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -486,6 +507,73 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWatermarkSignTaskWithOptions(_ request: CreateWatermarkSignTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWatermarkSignTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowOverwrite)) {
+            query["AllowOverwrite"] = request.allowOverwrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customAssertions)) {
+            query["CustomAssertions"] = request.customAssertions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileType)) {
+            query["FileType"] = request.fileType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            query["FileUrl"] = request.fileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.level)) {
+            query["Level"] = request.level ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reserved)) {
+            query["Reserved"] = request.reserved ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.softwareAgent)) {
+            query["SoftwareAgent"] = request.softwareAgent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceType)) {
+            query["SourceType"] = request.sourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetBucketName)) {
+            query["TargetBucketName"] = request.targetBucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetBucketRegion)) {
+            query["TargetBucketRegion"] = request.targetBucketRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetObjectKey)) {
+            query["TargetObjectKey"] = request.targetObjectKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.watermarkContent)) {
+            query["WatermarkContent"] = request.watermarkContent ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWatermarkSignTask",
+            "version": "2026-05-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWatermarkSignTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWatermarkSignTask(_ request: CreateWatermarkSignTaskRequest) async throws -> CreateWatermarkSignTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWatermarkSignTaskWithOptions(request as! CreateWatermarkSignTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func detectAigcImageWithOptions(_ request: DetectAigcImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetectAigcImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -839,6 +927,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWatermarkExtractTaskResult(_ request: GetWatermarkExtractTaskResultRequest) async throws -> GetWatermarkExtractTaskResultResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getWatermarkExtractTaskResultWithOptions(request as! GetWatermarkExtractTaskResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWatermarkSignTaskResultWithOptions(_ request: GetWatermarkSignTaskResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWatermarkSignTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWatermarkSignTaskResult",
+            "version": "2026-05-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWatermarkSignTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWatermarkSignTaskResult(_ request: GetWatermarkSignTaskResultRequest) async throws -> GetWatermarkSignTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWatermarkSignTaskResultWithOptions(request as! GetWatermarkSignTaskResultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

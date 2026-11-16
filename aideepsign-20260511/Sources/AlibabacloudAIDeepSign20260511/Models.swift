@@ -359,13 +359,27 @@ public class CreateC2paBucketSignTaskResponse : Tea.TeaModel {
 }
 
 public class CreateC2paSignTaskRequest : Tea.TeaModel {
+    public var allowOverwrite: Bool?
+
+    public var bucketName: String?
+
+    public var bucketRegionId: String?
+
     public var customAssertions: String?
 
     public var fileUrl: String?
 
+    public var objectKey: String?
+
     public var softwareAgent: String?
 
     public var sourceType: String?
+
+    public var targetBucketName: String?
+
+    public var targetBucketRegion: String?
+
+    public var targetObjectKey: String?
 
     public override init() {
         super.init()
@@ -381,11 +395,23 @@ public class CreateC2paSignTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowOverwrite != nil {
+            map["AllowOverwrite"] = self.allowOverwrite!
+        }
+        if self.bucketName != nil {
+            map["BucketName"] = self.bucketName!
+        }
+        if self.bucketRegionId != nil {
+            map["BucketRegionId"] = self.bucketRegionId!
+        }
         if self.customAssertions != nil {
             map["CustomAssertions"] = self.customAssertions!
         }
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
+        }
+        if self.objectKey != nil {
+            map["ObjectKey"] = self.objectKey!
         }
         if self.softwareAgent != nil {
             map["SoftwareAgent"] = self.softwareAgent!
@@ -393,22 +419,52 @@ public class CreateC2paSignTaskRequest : Tea.TeaModel {
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
+        if self.targetBucketName != nil {
+            map["TargetBucketName"] = self.targetBucketName!
+        }
+        if self.targetBucketRegion != nil {
+            map["TargetBucketRegion"] = self.targetBucketRegion!
+        }
+        if self.targetObjectKey != nil {
+            map["TargetObjectKey"] = self.targetObjectKey!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowOverwrite"] as? Bool {
+            self.allowOverwrite = value
+        }
+        if let value = dict["BucketName"] as? String {
+            self.bucketName = value
+        }
+        if let value = dict["BucketRegionId"] as? String {
+            self.bucketRegionId = value
+        }
         if let value = dict["CustomAssertions"] as? String {
             self.customAssertions = value
         }
         if let value = dict["FileUrl"] as? String {
             self.fileUrl = value
         }
+        if let value = dict["ObjectKey"] as? String {
+            self.objectKey = value
+        }
         if let value = dict["SoftwareAgent"] as? String {
             self.softwareAgent = value
         }
         if let value = dict["SourceType"] as? String {
             self.sourceType = value
+        }
+        if let value = dict["TargetBucketName"] as? String {
+            self.targetBucketName = value
+        }
+        if let value = dict["TargetBucketRegion"] as? String {
+            self.targetBucketRegion = value
+        }
+        if let value = dict["TargetObjectKey"] as? String {
+            self.targetObjectKey = value
         }
     }
 }
@@ -2050,6 +2106,254 @@ public class CreateWatermarkExtractTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateWatermarkSignTaskRequest : Tea.TeaModel {
+    public var allowOverwrite: Bool?
+
+    public var clientToken: String?
+
+    public var customAssertions: String?
+
+    public var fileType: String?
+
+    public var fileUrl: String?
+
+    public var level: String?
+
+    public var reserved: String?
+
+    public var softwareAgent: String?
+
+    public var sourceType: String?
+
+    public var targetBucketName: String?
+
+    public var targetBucketRegion: String?
+
+    public var targetObjectKey: String?
+
+    public var watermarkContent: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowOverwrite != nil {
+            map["AllowOverwrite"] = self.allowOverwrite!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.customAssertions != nil {
+            map["CustomAssertions"] = self.customAssertions!
+        }
+        if self.fileType != nil {
+            map["FileType"] = self.fileType!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.level != nil {
+            map["Level"] = self.level!
+        }
+        if self.reserved != nil {
+            map["Reserved"] = self.reserved!
+        }
+        if self.softwareAgent != nil {
+            map["SoftwareAgent"] = self.softwareAgent!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        if self.targetBucketName != nil {
+            map["TargetBucketName"] = self.targetBucketName!
+        }
+        if self.targetBucketRegion != nil {
+            map["TargetBucketRegion"] = self.targetBucketRegion!
+        }
+        if self.targetObjectKey != nil {
+            map["TargetObjectKey"] = self.targetObjectKey!
+        }
+        if self.watermarkContent != nil {
+            map["WatermarkContent"] = self.watermarkContent!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowOverwrite"] as? Bool {
+            self.allowOverwrite = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CustomAssertions"] as? String {
+            self.customAssertions = value
+        }
+        if let value = dict["FileType"] as? String {
+            self.fileType = value
+        }
+        if let value = dict["FileUrl"] as? String {
+            self.fileUrl = value
+        }
+        if let value = dict["Level"] as? String {
+            self.level = value
+        }
+        if let value = dict["Reserved"] as? String {
+            self.reserved = value
+        }
+        if let value = dict["SoftwareAgent"] as? String {
+            self.softwareAgent = value
+        }
+        if let value = dict["SourceType"] as? String {
+            self.sourceType = value
+        }
+        if let value = dict["TargetBucketName"] as? String {
+            self.targetBucketName = value
+        }
+        if let value = dict["TargetBucketRegion"] as? String {
+            self.targetBucketRegion = value
+        }
+        if let value = dict["TargetObjectKey"] as? String {
+            self.targetObjectKey = value
+        }
+        if let value = dict["WatermarkContent"] as? String {
+            self.watermarkContent = value
+        }
+    }
+}
+
+public class CreateWatermarkSignTaskResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["HttpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class CreateWatermarkSignTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWatermarkSignTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateWatermarkSignTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DetectAigcImageRequest : Tea.TeaModel {
     public var imageUrl: String?
 
@@ -2474,6 +2778,8 @@ public class GetC2paSignResultResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var objectKey: String?
+
     public var reportFileUrl: String?
 
     public var reportObjectKey: String?
@@ -2525,6 +2831,9 @@ public class GetC2paSignResultResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.objectKey != nil {
+            map["ObjectKey"] = self.objectKey!
         }
         if self.reportFileUrl != nil {
             map["ReportFileUrl"] = self.reportFileUrl!
@@ -2578,6 +2887,9 @@ public class GetC2paSignResultResponseBody : Tea.TeaModel {
         }
         if let value = dict["Message"] as? String {
             self.message = value
+        }
+        if let value = dict["ObjectKey"] as? String {
+            self.objectKey = value
         }
         if let value = dict["ReportFileUrl"] as? String {
             self.reportFileUrl = value
@@ -4940,6 +5252,214 @@ public class GetWatermarkExtractTaskResultResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetWatermarkExtractTaskResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetWatermarkSignTaskResultRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class GetWatermarkSignTaskResultResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var objectKey: String?
+
+    public var requestId: String?
+
+    public var signedFileUrl: String?
+
+    public var stage: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.objectKey != nil {
+            map["ObjectKey"] = self.objectKey!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.signedFileUrl != nil {
+            map["SignedFileUrl"] = self.signedFileUrl!
+        }
+        if self.stage != nil {
+            map["Stage"] = self.stage!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["ObjectKey"] as? String {
+            self.objectKey = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SignedFileUrl"] as? String {
+            self.signedFileUrl = value
+        }
+        if let value = dict["Stage"] as? String {
+            self.stage = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class GetWatermarkSignTaskResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetWatermarkSignTaskResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetWatermarkSignTaskResultResponseBody()
             model.fromMap(value)
             self.body = model
         }
