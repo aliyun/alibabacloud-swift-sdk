@@ -10791,6 +10791,8 @@ public class GetEvaluationRunResponseBody : Tea.TeaModel {
 
     public var failedCount: Int32?
 
+    public var qualityMetrics: [String: Any]?
+
     public var requestId: String?
 
     public var runId: String?
@@ -10844,6 +10846,9 @@ public class GetEvaluationRunResponseBody : Tea.TeaModel {
         }
         if self.failedCount != nil {
             map["failedCount"] = self.failedCount!
+        }
+        if self.qualityMetrics != nil {
+            map["qualityMetrics"] = self.qualityMetrics!
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -10904,6 +10909,9 @@ public class GetEvaluationRunResponseBody : Tea.TeaModel {
         }
         if let value = dict["failedCount"] as? Int32 {
             self.failedCount = value
+        }
+        if let value = dict["qualityMetrics"] as? [String: Any] {
+            self.qualityMetrics = value
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
@@ -11026,6 +11034,8 @@ public class GetEvaluationTaskResponseBody : Tea.TeaModel {
 
     public var evaluators: [Evaluator]?
 
+    public var qualityMetrics: [String: Any]?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -11086,6 +11096,9 @@ public class GetEvaluationTaskResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["evaluators"] = tmp
+        }
+        if self.qualityMetrics != nil {
+            map["qualityMetrics"] = self.qualityMetrics!
         }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
@@ -11152,6 +11165,9 @@ public class GetEvaluationTaskResponseBody : Tea.TeaModel {
                 }
             }
             self.evaluators = tmp
+        }
+        if let value = dict["qualityMetrics"] as? [String: Any] {
+            self.qualityMetrics = value
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
