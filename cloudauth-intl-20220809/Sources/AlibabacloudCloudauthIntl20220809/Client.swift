@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import DarabonbaXML
 import AlibabaCloudCredentials
 import TeaFileForm
@@ -11,6 +12,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Cloudauth-intl"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudauth-intl", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -3418,6 +3422,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.idThreshold)) {
             query["IdThreshold"] = request.idThreshold ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isForceFaceCentered)) {
+            query["IsForceFaceCentered"] = request.isForceFaceCentered ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.languageConfig)) {
             query["LanguageConfig"] = request.languageConfig ?? "";
         }
@@ -3635,6 +3642,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.idThreshold)) {
             query["IdThreshold"] = request.idThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isForceFaceCentered)) {
+            query["IsForceFaceCentered"] = request.isForceFaceCentered ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.languageConfig)) {
             query["LanguageConfig"] = request.languageConfig ?? "";

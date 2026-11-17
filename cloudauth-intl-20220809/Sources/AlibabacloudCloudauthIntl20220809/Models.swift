@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import DarabonbaXML
 import AlibabaCloudCredentials
 import TeaFileForm
@@ -11817,6 +11818,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var idThreshold: String?
 
+    public var isForceFaceCentered: String?
+
     public var languageConfig: String?
 
     public var MRTDInput: String?
@@ -11979,6 +11982,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
+        }
+        if self.isForceFaceCentered != nil {
+            map["IsForceFaceCentered"] = self.isForceFaceCentered!
         }
         if self.languageConfig != nil {
             map["LanguageConfig"] = self.languageConfig!
@@ -12165,6 +12171,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
         }
+        if let value = dict["IsForceFaceCentered"] as? String {
+            self.isForceFaceCentered = value
+        }
         if let value = dict["LanguageConfig"] as? String {
             self.languageConfig = value
         }
@@ -12319,6 +12328,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var idSpoof: String?
 
     public var idThreshold: String?
+
+    public var isForceFaceCentered: String?
 
     public var languageConfig: String?
 
@@ -12482,6 +12493,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
+        }
+        if self.isForceFaceCentered != nil {
+            map["IsForceFaceCentered"] = self.isForceFaceCentered!
         }
         if self.languageConfig != nil {
             map["LanguageConfig"] = self.languageConfig!
@@ -12667,6 +12681,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
+        }
+        if let value = dict["IsForceFaceCentered"] as? String {
+            self.isForceFaceCentered = value
         }
         if let value = dict["LanguageConfig"] as? String {
             self.languageConfig = value
@@ -12987,6 +13004,8 @@ public class InitializeV2Request : Tea.TeaModel {
 
     public var idThreshold: String?
 
+    public var isForceFaceCentered: String?
+
     public var languageConfig: String?
 
     public var MRTDInput: String?
@@ -13154,6 +13173,9 @@ public class InitializeV2Request : Tea.TeaModel {
         }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
+        }
+        if self.isForceFaceCentered != nil {
+            map["IsForceFaceCentered"] = self.isForceFaceCentered!
         }
         if self.languageConfig != nil {
             map["LanguageConfig"] = self.languageConfig!
@@ -13346,6 +13368,9 @@ public class InitializeV2Request : Tea.TeaModel {
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
         }
+        if let value = dict["IsForceFaceCentered"] as? String {
+            self.isForceFaceCentered = value
+        }
         if let value = dict["LanguageConfig"] as? String {
             self.languageConfig = value
         }
@@ -13505,6 +13530,8 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
     public var idSpoof: String?
 
     public var idThreshold: String?
+
+    public var isForceFaceCentered: String?
 
     public var languageConfig: String?
 
@@ -13673,6 +13700,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
+        }
+        if self.isForceFaceCentered != nil {
+            map["IsForceFaceCentered"] = self.isForceFaceCentered!
         }
         if self.languageConfig != nil {
             map["LanguageConfig"] = self.languageConfig!
@@ -13865,6 +13895,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
         }
+        if let value = dict["IsForceFaceCentered"] as? String {
+            self.isForceFaceCentered = value
+        }
         if let value = dict["LanguageConfig"] as? String {
             self.languageConfig = value
         }
@@ -14024,6 +14057,8 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
     public var idSpoof: String?
 
     public var idThreshold: String?
+
+    public var isForceFaceCentered: String?
 
     public var languageConfig: String?
 
@@ -14192,6 +14227,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
+        }
+        if self.isForceFaceCentered != nil {
+            map["IsForceFaceCentered"] = self.isForceFaceCentered!
         }
         if self.languageConfig != nil {
             map["LanguageConfig"] = self.languageConfig!
@@ -14383,6 +14421,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
+        }
+        if let value = dict["IsForceFaceCentered"] as? String {
+            self.isForceFaceCentered = value
         }
         if let value = dict["LanguageConfig"] as? String {
             self.languageConfig = value
