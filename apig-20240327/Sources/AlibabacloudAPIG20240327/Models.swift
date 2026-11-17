@@ -13655,6 +13655,45 @@ public class ModelSelection : Tea.TeaModel {
     }
 }
 
+public class ModelSelectionDelta : Tea.TeaModel {
+    public var addModelCardIds: [String]?
+
+    public var removeModelCardIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addModelCardIds != nil {
+            map["addModelCardIds"] = self.addModelCardIds!
+        }
+        if self.removeModelCardIds != nil {
+            map["removeModelCardIds"] = self.removeModelCardIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["addModelCardIds"] as? [String] {
+            self.addModelCardIds = value
+        }
+        if let value = dict["removeModelCardIds"] as? [String] {
+            self.removeModelCardIds = value
+        }
+    }
+}
+
 public class ParentResourceInfo : Tea.TeaModel {
     public var apiInfo: HttpApiApiInfo?
 
@@ -21352,6 +21391,8 @@ public class CreateConsumerRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var expireAt: Int64?
+
     public var gatewayType: String?
 
     public var jwtIdentityConfig: JwtIdentityConfig?
@@ -21393,6 +21434,9 @@ public class CreateConsumerRequest : Tea.TeaModel {
         }
         if self.enable != nil {
             map["enable"] = self.enable!
+        }
+        if self.expireAt != nil {
+            map["expireAt"] = self.expireAt!
         }
         if self.gatewayType != nil {
             map["gatewayType"] = self.gatewayType!
@@ -21437,6 +21481,9 @@ public class CreateConsumerRequest : Tea.TeaModel {
         }
         if let value = dict["enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["expireAt"] as? Int64 {
+            self.expireAt = value
         }
         if let value = dict["gatewayType"] as? String {
             self.gatewayType = value
@@ -26482,6 +26529,8 @@ public class CreateMcpServerRequest : Tea.TeaModel {
 
     public var grayMcpServerConfigs: [CreateMcpServerRequest.GrayMcpServerConfigs]?
 
+    public var instructions: String?
+
     public var match: HttpRouteMatch?
 
     public var mcpServerConfig: CreateMcpServerRequest.McpServerConfig?
@@ -26542,6 +26591,9 @@ public class CreateMcpServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["grayMcpServerConfigs"] = tmp
+        }
+        if self.instructions != nil {
+            map["instructions"] = self.instructions!
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
@@ -26611,6 +26663,9 @@ public class CreateMcpServerRequest : Tea.TeaModel {
                 }
             }
             self.grayMcpServerConfigs = tmp
+        }
+        if let value = dict["instructions"] as? String {
+            self.instructions = value
         }
         if let value = dict["match"] as? [String: Any?] {
             var model = HttpRouteMatch()
@@ -39678,6 +39733,10 @@ public class GetConsumerResponseBody : Tea.TeaModel {
 
         public var enable: Bool?
 
+        public var expireAt: Int64?
+
+        public var expireStatus: String?
+
         public var jwtIdentityConfig: JwtIdentityConfig?
 
         public var name: String?
@@ -39731,6 +39790,12 @@ public class GetConsumerResponseBody : Tea.TeaModel {
             }
             if self.enable != nil {
                 map["enable"] = self.enable!
+            }
+            if self.expireAt != nil {
+                map["expireAt"] = self.expireAt!
+            }
+            if self.expireStatus != nil {
+                map["expireStatus"] = self.expireStatus!
             }
             if self.jwtIdentityConfig != nil {
                 map["jwtIdentityConfig"] = self.jwtIdentityConfig?.toMap()
@@ -39791,6 +39856,12 @@ public class GetConsumerResponseBody : Tea.TeaModel {
             }
             if let value = dict["enable"] as? Bool {
                 self.enable = value
+            }
+            if let value = dict["expireAt"] as? Int64 {
+                self.expireAt = value
+            }
+            if let value = dict["expireStatus"] as? String {
+                self.expireStatus = value
             }
             if let value = dict["jwtIdentityConfig"] as? [String: Any?] {
                 var model = JwtIdentityConfig()
@@ -48824,6 +48895,8 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
 
         public var grayMcpServerConfigs: [GetMcpServerResponseBody.Data.GrayMcpServerConfigs]?
 
+        public var instructions: String?
+
         public var match: HttpRouteMatch?
 
         public var mcpServerConfig: String?
@@ -48910,6 +48983,9 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["grayMcpServerConfigs"] = tmp
+            }
+            if self.instructions != nil {
+                map["instructions"] = self.instructions!
             }
             if self.match != nil {
                 map["match"] = self.match?.toMap()
@@ -49016,6 +49092,9 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
                     }
                 }
                 self.grayMcpServerConfigs = tmp
+            }
+            if let value = dict["instructions"] as? String {
+                self.instructions = value
             }
             if let value = dict["match"] as? [String: Any?] {
                 var model = HttpRouteMatch()
@@ -60970,13 +61049,19 @@ public class ListConsumerQuotaRulesResponse : Tea.TeaModel {
 }
 
 public class ListConsumersRequest : Tea.TeaModel {
+    public var expireStatus: String?
+
     public var gatewayType: String?
+
+    public var includeExpirationSummary: Bool?
 
     public var nameLike: String?
 
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -60992,8 +61077,14 @@ public class ListConsumersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.expireStatus != nil {
+            map["expireStatus"] = self.expireStatus!
+        }
         if self.gatewayType != nil {
             map["gatewayType"] = self.gatewayType!
+        }
+        if self.includeExpirationSummary != nil {
+            map["includeExpirationSummary"] = self.includeExpirationSummary!
         }
         if self.nameLike != nil {
             map["nameLike"] = self.nameLike!
@@ -61004,13 +61095,22 @@ public class ListConsumersRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["expireStatus"] as? String {
+            self.expireStatus = value
+        }
         if let value = dict["gatewayType"] as? String {
             self.gatewayType = value
+        }
+        if let value = dict["includeExpirationSummary"] as? Bool {
+            self.includeExpirationSummary = value
         }
         if let value = dict["nameLike"] as? String {
             self.nameLike = value
@@ -61021,11 +61121,52 @@ public class ListConsumersRequest : Tea.TeaModel {
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
     }
 }
 
 public class ListConsumersResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class ExpirationSummary : Tea.TeaModel {
+            public var aboutToExpire: Int64?
+
+            public var expired: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aboutToExpire != nil {
+                    map["aboutToExpire"] = self.aboutToExpire!
+                }
+                if self.expired != nil {
+                    map["expired"] = self.expired!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["aboutToExpire"] as? Int64 {
+                    self.aboutToExpire = value
+                }
+                if let value = dict["expired"] as? Int64 {
+                    self.expired = value
+                }
+            }
+        }
         public class Items : Tea.TeaModel {
             public var consumerId: String?
 
@@ -61036,6 +61177,10 @@ public class ListConsumersResponseBody : Tea.TeaModel {
             public var description_: String?
 
             public var enable: Bool?
+
+            public var expireAt: Int64?
+
+            public var expireStatus: String?
 
             public var name: String?
 
@@ -61070,6 +61215,12 @@ public class ListConsumersResponseBody : Tea.TeaModel {
                 if self.enable != nil {
                     map["enable"] = self.enable!
                 }
+                if self.expireAt != nil {
+                    map["expireAt"] = self.expireAt!
+                }
+                if self.expireStatus != nil {
+                    map["expireStatus"] = self.expireStatus!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
@@ -61096,6 +61247,12 @@ public class ListConsumersResponseBody : Tea.TeaModel {
                 if let value = dict["enable"] as? Bool {
                     self.enable = value
                 }
+                if let value = dict["expireAt"] as? Int64 {
+                    self.expireAt = value
+                }
+                if let value = dict["expireStatus"] as? String {
+                    self.expireStatus = value
+                }
                 if let value = dict["name"] as? String {
                     self.name = value
                 }
@@ -61104,6 +61261,8 @@ public class ListConsumersResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var expirationSummary: ListConsumersResponseBody.Data.ExpirationSummary?
+
         public var items: [ListConsumersResponseBody.Data.Items]?
 
         public var pageNumber: Int32?
@@ -61122,10 +61281,14 @@ public class ListConsumersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.expirationSummary?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.expirationSummary != nil {
+                map["expirationSummary"] = self.expirationSummary?.toMap()
+            }
             if self.items != nil {
                 var tmp : [Any] = []
                 for k in self.items! {
@@ -61147,6 +61310,11 @@ public class ListConsumersResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["expirationSummary"] as? [String: Any?] {
+                var model = ListConsumersResponseBody.Data.ExpirationSummary()
+                model.fromMap(value)
+                self.expirationSummary = model
+            }
             if let value = dict["items"] as? [Any?] {
                 var tmp : [ListConsumersResponseBody.Data.Items] = []
                 for v in value {
@@ -69633,6 +69801,8 @@ public class ListMcpServersResponseBody : Tea.TeaModel {
 
             public var gatewayId: String?
 
+            public var instructions: String?
+
             public var match: HttpRouteMatch?
 
             public var mcpServerConfig: String?
@@ -69710,6 +69880,9 @@ public class ListMcpServersResponseBody : Tea.TeaModel {
                 }
                 if self.gatewayId != nil {
                     map["gatewayId"] = self.gatewayId!
+                }
+                if self.instructions != nil {
+                    map["instructions"] = self.instructions!
                 }
                 if self.match != nil {
                     map["match"] = self.match?.toMap()
@@ -69800,6 +69973,9 @@ public class ListMcpServersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["gatewayId"] as? String {
                     self.gatewayId = value
+                }
+                if let value = dict["instructions"] as? String {
+                    self.instructions = value
                 }
                 if let value = dict["match"] as? [String: Any?] {
                     var model = HttpRouteMatch()
@@ -86511,11 +86687,19 @@ public class UpdateConsumerRequest : Tea.TeaModel {
 
     public var apikeyIdentityConfig: ApiKeyIdentityConfig?
 
+    public var clearExpireAt: Bool?
+
     public var description_: String?
 
     public var enable: Bool?
 
+    public var enableAfterRenewal: Bool?
+
+    public var expireAt: Int64?
+
     public var jwtIdentityConfig: JwtIdentityConfig?
+
+    public var renew: Bool?
 
     public override init() {
         super.init()
@@ -86543,14 +86727,26 @@ public class UpdateConsumerRequest : Tea.TeaModel {
         if self.apikeyIdentityConfig != nil {
             map["apikeyIdentityConfig"] = self.apikeyIdentityConfig?.toMap()
         }
+        if self.clearExpireAt != nil {
+            map["clearExpireAt"] = self.clearExpireAt!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
         if self.enable != nil {
             map["enable"] = self.enable!
         }
+        if self.enableAfterRenewal != nil {
+            map["enableAfterRenewal"] = self.enableAfterRenewal!
+        }
+        if self.expireAt != nil {
+            map["expireAt"] = self.expireAt!
+        }
         if self.jwtIdentityConfig != nil {
             map["jwtIdentityConfig"] = self.jwtIdentityConfig?.toMap()
+        }
+        if self.renew != nil {
+            map["renew"] = self.renew!
         }
         return map
     }
@@ -86575,16 +86771,28 @@ public class UpdateConsumerRequest : Tea.TeaModel {
             model.fromMap(value)
             self.apikeyIdentityConfig = model
         }
+        if let value = dict["clearExpireAt"] as? Bool {
+            self.clearExpireAt = value
+        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
         if let value = dict["enable"] as? Bool {
             self.enable = value
         }
+        if let value = dict["enableAfterRenewal"] as? Bool {
+            self.enableAfterRenewal = value
+        }
+        if let value = dict["expireAt"] as? Int64 {
+            self.expireAt = value
+        }
         if let value = dict["jwtIdentityConfig"] as? [String: Any?] {
             var model = JwtIdentityConfig()
             model.fromMap(value)
             self.jwtIdentityConfig = model
+        }
+        if let value = dict["renew"] as? Bool {
+            self.renew = value
         }
     }
 }
@@ -91697,6 +91905,8 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
 
     public var grayMcpServerConfigs: [UpdateMcpServerRequest.GrayMcpServerConfigs]?
 
+    public var instructions: String?
+
     public var match: HttpRouteMatch?
 
     public var mcpServerConfig: UpdateMcpServerRequest.McpServerConfig?
@@ -91752,6 +91962,9 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["grayMcpServerConfigs"] = tmp
+        }
+        if self.instructions != nil {
+            map["instructions"] = self.instructions!
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
@@ -91815,6 +92028,9 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
                 }
             }
             self.grayMcpServerConfigs = tmp
+        }
+        if let value = dict["instructions"] as? String {
+            self.instructions = value
         }
         if let value = dict["match"] as? [String: Any?] {
             var model = HttpRouteMatch()
@@ -92202,6 +92418,8 @@ public class UpdateModelApiRequest : Tea.TeaModel {
 
     public var modelSelection: ModelSelection?
 
+    public var modelSelectionDelta: ModelSelectionDelta?
+
     public var name: String?
 
     public var policyConfigs: [ModelApiPolicyConfig]?
@@ -92217,6 +92435,7 @@ public class UpdateModelApiRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.modelSelection?.validate()
+        try self.modelSelectionDelta?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -92241,6 +92460,9 @@ public class UpdateModelApiRequest : Tea.TeaModel {
         }
         if self.modelSelection != nil {
             map["modelSelection"] = self.modelSelection?.toMap()
+        }
+        if self.modelSelectionDelta != nil {
+            map["modelSelectionDelta"] = self.modelSelectionDelta?.toMap()
         }
         if self.name != nil {
             map["name"] = self.name!
@@ -92279,6 +92501,11 @@ public class UpdateModelApiRequest : Tea.TeaModel {
             var model = ModelSelection()
             model.fromMap(value)
             self.modelSelection = model
+        }
+        if let value = dict["modelSelectionDelta"] as? [String: Any?] {
+            var model = ModelSelectionDelta()
+            model.fromMap(value)
+            self.modelSelectionDelta = model
         }
         if let value = dict["name"] as? String {
             self.name = value
