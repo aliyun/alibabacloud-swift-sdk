@@ -120,6 +120,180 @@ public class Artifact : Tea.TeaModel {
     }
 }
 
+public class BatchEditQueueSpec : Tea.TeaModel {
+    public var description_: String?
+
+    public var environments: [String]?
+
+    public var gpuSpec: [String]?
+
+    public var resourceSpec: ResourceSpec?
+
+    public var workspaceQueueName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resourceSpec?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.environments != nil {
+            map["environments"] = self.environments!
+        }
+        if self.gpuSpec != nil {
+            map["gpuSpec"] = self.gpuSpec!
+        }
+        if self.resourceSpec != nil {
+            map["resourceSpec"] = self.resourceSpec?.toMap()
+        }
+        if self.workspaceQueueName != nil {
+            map["workspaceQueueName"] = self.workspaceQueueName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["environments"] as? [String] {
+            self.environments = value
+        }
+        if let value = dict["gpuSpec"] as? [String] {
+            self.gpuSpec = value
+        }
+        if let value = dict["resourceSpec"] as? [String: Any?] {
+            var model = ResourceSpec()
+            model.fromMap(value)
+            self.resourceSpec = model
+        }
+        if let value = dict["workspaceQueueName"] as? String {
+            self.workspaceQueueName = value
+        }
+    }
+}
+
+public class BatchEditWorkspaceQueuesBody : Tea.TeaModel {
+    public var queues: [BatchEditQueueSpec]?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.queues != nil {
+            var tmp : [Any] = []
+            for k in self.queues! {
+                tmp.append(k.toMap())
+            }
+            map["queues"] = tmp
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["queues"] as? [Any?] {
+            var tmp : [BatchEditQueueSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchEditQueueSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.queues = tmp
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class BatchEditWorkspaceQueuesReceipt : Tea.TeaModel {
+    public var acceptedQueues: [String]?
+
+    public var skippedQueues: [String]?
+
+    public var workflowInstanceId: Int64?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptedQueues != nil {
+            map["acceptedQueues"] = self.acceptedQueues!
+        }
+        if self.skippedQueues != nil {
+            map["skippedQueues"] = self.skippedQueues!
+        }
+        if self.workflowInstanceId != nil {
+            map["workflowInstanceId"] = self.workflowInstanceId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["acceptedQueues"] as? [String] {
+            self.acceptedQueues = value
+        }
+        if let value = dict["skippedQueues"] as? [String] {
+            self.skippedQueues = value
+        }
+        if let value = dict["workflowInstanceId"] as? Int64 {
+            self.workflowInstanceId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
 public class CacheCluster : Tea.TeaModel {
     public class Cachesets : Tea.TeaModel {
         public var name: String?
@@ -1218,6 +1392,69 @@ public class ReleaseVersionImage : Tea.TeaModel {
         }
         if let value = dict["runtimeEngineType"] as? String {
             self.runtimeEngineType = value
+        }
+    }
+}
+
+public class ResourceSpec : Tea.TeaModel {
+    public var cu: Int32?
+
+    public var gpu: Int32?
+
+    public var gpuMachineNum: Int32?
+
+    public var instanceTypeId: String?
+
+    public var maxCu: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cu != nil {
+            map["cu"] = self.cu!
+        }
+        if self.gpu != nil {
+            map["gpu"] = self.gpu!
+        }
+        if self.gpuMachineNum != nil {
+            map["gpuMachineNum"] = self.gpuMachineNum!
+        }
+        if self.instanceTypeId != nil {
+            map["instanceTypeId"] = self.instanceTypeId!
+        }
+        if self.maxCu != nil {
+            map["maxCu"] = self.maxCu!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cu"] as? Int32 {
+            self.cu = value
+        }
+        if let value = dict["gpu"] as? Int32 {
+            self.gpu = value
+        }
+        if let value = dict["gpuMachineNum"] as? Int32 {
+            self.gpuMachineNum = value
+        }
+        if let value = dict["instanceTypeId"] as? String {
+            self.instanceTypeId = value
+        }
+        if let value = dict["maxCu"] as? Int32 {
+            self.maxCu = value
         }
     }
 }
@@ -4081,6 +4318,8 @@ public class CreateLivyComputeRequest : Tea.TeaModel {
 
     public var fusion: Bool?
 
+    public var livyReleaseVersion: String?
+
     public var livyServerConf: String?
 
     public var livyVersion: String?
@@ -4136,6 +4375,9 @@ public class CreateLivyComputeRequest : Tea.TeaModel {
         }
         if self.fusion != nil {
             map["fusion"] = self.fusion!
+        }
+        if self.livyReleaseVersion != nil {
+            map["livyReleaseVersion"] = self.livyReleaseVersion!
         }
         if self.livyServerConf != nil {
             map["livyServerConf"] = self.livyServerConf!
@@ -4193,6 +4435,9 @@ public class CreateLivyComputeRequest : Tea.TeaModel {
         }
         if let value = dict["fusion"] as? Bool {
             self.fusion = value
+        }
+        if let value = dict["livyReleaseVersion"] as? String {
+            self.livyReleaseVersion = value
         }
         if let value = dict["livyServerConf"] as? String {
             self.livyServerConf = value
@@ -5907,6 +6152,8 @@ public class CreateRayClusterRequest : Tea.TeaModel {
 
         public var gftEnabled: Bool?
 
+        public var gpuDriverVersion: String?
+
         public var gpuSpec: String?
 
         public var idleTimeoutSeconds: Int32?
@@ -5950,6 +6197,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if self.gftEnabled != nil {
                 map["gftEnabled"] = self.gftEnabled!
             }
+            if self.gpuDriverVersion != nil {
+                map["gpuDriverVersion"] = self.gpuDriverVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -5990,6 +6240,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if let value = dict["gftEnabled"] as? Bool {
                 self.gftEnabled = value
             }
+            if let value = dict["gpuDriverVersion"] as? String {
+                self.gpuDriverVersion = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
@@ -6013,6 +6266,8 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         public var displayReleaseVersion: String?
 
         public var env: String?
+
+        public var gpuDriverVersion: String?
 
         public var gpuSpec: String?
 
@@ -6055,6 +6310,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if self.env != nil {
                 map["env"] = self.env!
             }
+            if self.gpuDriverVersion != nil {
+                map["gpuDriverVersion"] = self.gpuDriverVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -6096,6 +6354,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if let value = dict["env"] as? String {
                 self.env = value
             }
+            if let value = dict["gpuDriverVersion"] as? String {
+                self.gpuDriverVersion = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
@@ -6129,6 +6390,8 @@ public class CreateRayClusterRequest : Tea.TeaModel {
 
     public var displayReleaseVersion: String?
 
+    public var enableMetricsUpload: Bool?
+
     public var extraParam: String?
 
     public var headSpec: CreateRayClusterRequest.HeadSpec?
@@ -6136,6 +6399,10 @@ public class CreateRayClusterRequest : Tea.TeaModel {
     public var name: String?
 
     public var networkServiceName: String?
+
+    public var slsLogStore: String?
+
+    public var slsProject: String?
 
     public var volumeIds: [String]?
 
@@ -6162,6 +6429,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         if self.displayReleaseVersion != nil {
             map["displayReleaseVersion"] = self.displayReleaseVersion!
         }
+        if self.enableMetricsUpload != nil {
+            map["enableMetricsUpload"] = self.enableMetricsUpload!
+        }
         if self.extraParam != nil {
             map["extraParam"] = self.extraParam!
         }
@@ -6173,6 +6443,12 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         }
         if self.networkServiceName != nil {
             map["networkServiceName"] = self.networkServiceName!
+        }
+        if self.slsLogStore != nil {
+            map["slsLogStore"] = self.slsLogStore!
+        }
+        if self.slsProject != nil {
+            map["slsProject"] = self.slsProject!
         }
         if self.volumeIds != nil {
             map["volumeIds"] = self.volumeIds!
@@ -6195,6 +6471,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         if let value = dict["displayReleaseVersion"] as? String {
             self.displayReleaseVersion = value
         }
+        if let value = dict["enableMetricsUpload"] as? Bool {
+            self.enableMetricsUpload = value
+        }
         if let value = dict["extraParam"] as? String {
             self.extraParam = value
         }
@@ -6208,6 +6487,12 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         }
         if let value = dict["networkServiceName"] as? String {
             self.networkServiceName = value
+        }
+        if let value = dict["slsLogStore"] as? String {
+            self.slsLogStore = value
+        }
+        if let value = dict["slsProject"] as? String {
+            self.slsProject = value
         }
         if let value = dict["volumeIds"] as? [String] {
             self.volumeIds = value
@@ -6969,6 +7254,8 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var promotionOptionNo: String?
+
     public var ramRoleName: String?
 
     public var releaseType: String?
@@ -7033,6 +7320,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
         }
         if self.paymentType != nil {
             map["paymentType"] = self.paymentType!
+        }
+        if self.promotionOptionNo != nil {
+            map["promotionOptionNo"] = self.promotionOptionNo!
         }
         if self.ramRoleName != nil {
             map["ramRoleName"] = self.ramRoleName!
@@ -7099,6 +7389,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
         }
         if let value = dict["paymentType"] as? String {
             self.paymentType = value
+        }
+        if let value = dict["promotionOptionNo"] as? String {
+            self.promotionOptionNo = value
         }
         if let value = dict["ramRoleName"] as? String {
             self.ramRoleName = value
@@ -9280,6 +9573,8 @@ public class GetJobRunResponseBody : Tea.TeaModel {
 
         public var executionTimeoutSeconds: Int32?
 
+        public var firstReportTime: Int64?
+
         public var fusion: Bool?
 
         public var jobDriver: JobDriver?
@@ -9299,6 +9594,10 @@ public class GetJobRunResponseBody : Tea.TeaModel {
         public var resourceOwnerId: String?
 
         public var resourceQueueId: String?
+
+        public var resourceStartupDurationMs: Int64?
+
+        public var runDurationMs: Int64?
 
         public var state: String?
 
@@ -9352,6 +9651,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             if self.executionTimeoutSeconds != nil {
                 map["executionTimeoutSeconds"] = self.executionTimeoutSeconds!
             }
+            if self.firstReportTime != nil {
+                map["firstReportTime"] = self.firstReportTime!
+            }
             if self.fusion != nil {
                 map["fusion"] = self.fusion!
             }
@@ -9381,6 +9683,12 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             }
             if self.resourceQueueId != nil {
                 map["resourceQueueId"] = self.resourceQueueId!
+            }
+            if self.resourceStartupDurationMs != nil {
+                map["resourceStartupDurationMs"] = self.resourceStartupDurationMs!
+            }
+            if self.runDurationMs != nil {
+                map["runDurationMs"] = self.runDurationMs!
             }
             if self.state != nil {
                 map["state"] = self.state!
@@ -9439,6 +9747,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             if let value = dict["executionTimeoutSeconds"] as? Int32 {
                 self.executionTimeoutSeconds = value
             }
+            if let value = dict["firstReportTime"] as? Int64 {
+                self.firstReportTime = value
+            }
             if let value = dict["fusion"] as? Bool {
                 self.fusion = value
             }
@@ -9472,6 +9783,12 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceQueueId"] as? String {
                 self.resourceQueueId = value
+            }
+            if let value = dict["resourceStartupDurationMs"] as? Int64 {
+                self.resourceStartupDurationMs = value
+            }
+            if let value = dict["runDurationMs"] as? Int64 {
+                self.runDurationMs = value
             }
             if let value = dict["state"] as? String {
                 self.state = value
@@ -9616,6 +9933,8 @@ public class GetKyuubiServiceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var computeInstance: String?
 
+        public var configRefreshRequired: Bool?
+
         public var createTime: String?
 
         public var creator: String?
@@ -9635,6 +9954,8 @@ public class GetKyuubiServiceResponseBody : Tea.TeaModel {
         public var publicEndpointEnabled: Bool?
 
         public var queue: String?
+
+        public var readyReplicas: Int32?
 
         public var releaseVersion: String?
 
@@ -9662,6 +9983,9 @@ public class GetKyuubiServiceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.computeInstance != nil {
                 map["computeInstance"] = self.computeInstance!
+            }
+            if self.configRefreshRequired != nil {
+                map["configRefreshRequired"] = self.configRefreshRequired!
             }
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
@@ -9693,6 +10017,9 @@ public class GetKyuubiServiceResponseBody : Tea.TeaModel {
             if self.queue != nil {
                 map["queue"] = self.queue!
             }
+            if self.readyReplicas != nil {
+                map["readyReplicas"] = self.readyReplicas!
+            }
             if self.releaseVersion != nil {
                 map["releaseVersion"] = self.releaseVersion!
             }
@@ -9715,6 +10042,9 @@ public class GetKyuubiServiceResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["computeInstance"] as? String {
                 self.computeInstance = value
+            }
+            if let value = dict["configRefreshRequired"] as? Bool {
+                self.configRefreshRequired = value
             }
             if let value = dict["createTime"] as? String {
                 self.createTime = value
@@ -9745,6 +10075,9 @@ public class GetKyuubiServiceResponseBody : Tea.TeaModel {
             }
             if let value = dict["queue"] as? String {
                 self.queue = value
+            }
+            if let value = dict["readyReplicas"] as? Int32 {
+                self.readyReplicas = value
             }
             if let value = dict["releaseVersion"] as? String {
                 self.releaseVersion = value
@@ -10215,11 +10548,15 @@ public class GetLivyComputeResponseBody : Tea.TeaModel {
 
         public var gmtCreate: Int64?
 
+        public var livyReleaseVersion: String?
+
         public var livyServerConf: String?
 
         public var livyVersion: String?
 
         public var memoryLimit: String?
+
+        public var meta: String?
 
         public var name: String?
 
@@ -10286,6 +10623,9 @@ public class GetLivyComputeResponseBody : Tea.TeaModel {
             if self.gmtCreate != nil {
                 map["gmtCreate"] = self.gmtCreate!
             }
+            if self.livyReleaseVersion != nil {
+                map["livyReleaseVersion"] = self.livyReleaseVersion!
+            }
             if self.livyServerConf != nil {
                 map["livyServerConf"] = self.livyServerConf!
             }
@@ -10294,6 +10634,9 @@ public class GetLivyComputeResponseBody : Tea.TeaModel {
             }
             if self.memoryLimit != nil {
                 map["memoryLimit"] = self.memoryLimit!
+            }
+            if self.meta != nil {
+                map["meta"] = self.meta!
             }
             if self.name != nil {
                 map["name"] = self.name!
@@ -10359,6 +10702,9 @@ public class GetLivyComputeResponseBody : Tea.TeaModel {
             if let value = dict["gmtCreate"] as? Int64 {
                 self.gmtCreate = value
             }
+            if let value = dict["livyReleaseVersion"] as? String {
+                self.livyReleaseVersion = value
+            }
             if let value = dict["livyServerConf"] as? String {
                 self.livyServerConf = value
             }
@@ -10367,6 +10713,9 @@ public class GetLivyComputeResponseBody : Tea.TeaModel {
             }
             if let value = dict["memoryLimit"] as? String {
                 self.memoryLimit = value
+            }
+            if let value = dict["meta"] as? String {
+                self.meta = value
             }
             if let value = dict["name"] as? String {
                 self.name = value
@@ -10824,6 +11173,8 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
 
         public var gftEnabled: Bool?
 
+        public var gpuDriverVersion: String?
+
         public var gpuSpec: String?
 
         public var idleTimeoutSeconds: Int32?
@@ -10869,6 +11220,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if self.gftEnabled != nil {
                 map["gftEnabled"] = self.gftEnabled!
             }
+            if self.gpuDriverVersion != nil {
+                map["gpuDriverVersion"] = self.gpuDriverVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -10911,6 +11265,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             }
             if let value = dict["gftEnabled"] as? Bool {
                 self.gftEnabled = value
+            }
+            if let value = dict["gpuDriverVersion"] as? String {
+                self.gpuDriverVersion = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -11049,9 +11406,13 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
 
         public var env: String?
 
+        public var gpuDriverVersion: String?
+
         public var gpuSpec: String?
 
         public var groupName: String?
+
+        public var kubernetesGroupName: String?
 
         public var maxReplica: Int32?
 
@@ -11090,11 +11451,17 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if self.env != nil {
                 map["env"] = self.env!
             }
+            if self.gpuDriverVersion != nil {
+                map["gpuDriverVersion"] = self.gpuDriverVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
             if self.groupName != nil {
                 map["groupName"] = self.groupName!
+            }
+            if self.kubernetesGroupName != nil {
+                map["kubernetesGroupName"] = self.kubernetesGroupName!
             }
             if self.maxReplica != nil {
                 map["maxReplica"] = self.maxReplica!
@@ -11131,11 +11498,17 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if let value = dict["env"] as? String {
                 self.env = value
             }
+            if let value = dict["gpuDriverVersion"] as? String {
+                self.gpuDriverVersion = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
             if let value = dict["groupName"] as? String {
                 self.groupName = value
+            }
+            if let value = dict["kubernetesGroupName"] as? String {
+                self.kubernetesGroupName = value
             }
             if let value = dict["maxReplica"] as? Int32 {
                 self.maxReplica = value
@@ -11174,6 +11547,8 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
 
     public var displayReleaseVersion: String?
 
+    public var enableMetricsUpload: Bool?
+
     public var extraParam: String?
 
     public var grpcEndpoint: String?
@@ -11203,6 +11578,10 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
     public var networkServiceName: String?
 
     public var requestId: String?
+
+    public var slsLogStore: String?
+
+    public var slsProject: String?
 
     public var startTime: Int64?
 
@@ -11251,6 +11630,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         }
         if self.displayReleaseVersion != nil {
             map["displayReleaseVersion"] = self.displayReleaseVersion!
+        }
+        if self.enableMetricsUpload != nil {
+            map["enableMetricsUpload"] = self.enableMetricsUpload!
         }
         if self.extraParam != nil {
             map["extraParam"] = self.extraParam!
@@ -11301,6 +11683,12 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.slsLogStore != nil {
+            map["slsLogStore"] = self.slsLogStore!
+        }
+        if self.slsProject != nil {
+            map["slsProject"] = self.slsProject!
+        }
         if self.startTime != nil {
             map["startTime"] = self.startTime!
         }
@@ -11348,6 +11736,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         }
         if let value = dict["displayReleaseVersion"] as? String {
             self.displayReleaseVersion = value
+        }
+        if let value = dict["enableMetricsUpload"] as? Bool {
+            self.enableMetricsUpload = value
         }
         if let value = dict["extraParam"] as? String {
             self.extraParam = value
@@ -11405,6 +11796,12 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["slsLogStore"] as? String {
+            self.slsLogStore = value
+        }
+        if let value = dict["slsProject"] as? String {
+            self.slsProject = value
         }
         if let value = dict["startTime"] as? Int64 {
             self.startTime = value
@@ -13578,6 +13975,36 @@ public class GetWorkspaceRequest : Tea.TeaModel {
 
 public class GetWorkspaceResponseBody : Tea.TeaModel {
     public class Workspace : Tea.TeaModel {
+        public class Features : Tea.TeaModel {
+            public var fineGrainedAuthz: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fineGrainedAuthz != nil {
+                    map["fineGrainedAuthz"] = self.fineGrainedAuthz!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["fineGrainedAuthz"] as? Bool {
+                    self.fineGrainedAuthz = value
+                }
+            }
+        }
         public class PrePaidQuota : Tea.TeaModel {
             public var allocatedResource: String?
 
@@ -13908,6 +14335,8 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
 
         public var failReason: String?
 
+        public var features: GetWorkspaceResponseBody.Workspace.Features?
+
         public var gpuSpec: [String]?
 
         public var ipWhiteList: [String]?
@@ -13956,6 +14385,7 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.features?.validate()
             try self.prePaidQuota?.validate()
             try self.stateChangeReason?.validate()
         }
@@ -13988,6 +14418,9 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
             }
             if self.failReason != nil {
                 map["failReason"] = self.failReason!
+            }
+            if self.features != nil {
+                map["features"] = self.features?.toMap()
             }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
@@ -14085,6 +14518,11 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
             }
             if let value = dict["failReason"] as? String {
                 self.failReason = value
+            }
+            if let value = dict["features"] as? [String: Any?] {
+                var model = GetWorkspaceResponseBody.Workspace.Features()
+                model.fromMap(value)
+                self.features = model
             }
             if let value = dict["gpuSpec"] as? [String] {
                 self.gpuSpec = value
@@ -15830,6 +16268,8 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
 
         public var executionTimeoutSeconds: Int32?
 
+        public var firstReportTime: Int64?
+
         public var fusion: Bool?
 
         public var jobDriver: JobDriver?
@@ -15847,6 +16287,10 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
         public var releaseVersion: String?
 
         public var resourceQueueId: String?
+
+        public var resourceStartupDurationMs: Int64?
+
+        public var runDurationMs: Int64?
 
         public var state: String?
 
@@ -15901,6 +16345,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             if self.executionTimeoutSeconds != nil {
                 map["executionTimeoutSeconds"] = self.executionTimeoutSeconds!
             }
+            if self.firstReportTime != nil {
+                map["firstReportTime"] = self.firstReportTime!
+            }
             if self.fusion != nil {
                 map["fusion"] = self.fusion!
             }
@@ -15927,6 +16374,12 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             }
             if self.resourceQueueId != nil {
                 map["resourceQueueId"] = self.resourceQueueId!
+            }
+            if self.resourceStartupDurationMs != nil {
+                map["resourceStartupDurationMs"] = self.resourceStartupDurationMs!
+            }
+            if self.runDurationMs != nil {
+                map["runDurationMs"] = self.runDurationMs!
             }
             if self.state != nil {
                 map["state"] = self.state!
@@ -15981,6 +16434,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             if let value = dict["executionTimeoutSeconds"] as? Int32 {
                 self.executionTimeoutSeconds = value
             }
+            if let value = dict["firstReportTime"] as? Int64 {
+                self.firstReportTime = value
+            }
             if let value = dict["fusion"] as? Bool {
                 self.fusion = value
             }
@@ -16011,6 +16467,12 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceQueueId"] as? String {
                 self.resourceQueueId = value
+            }
+            if let value = dict["resourceStartupDurationMs"] as? Int64 {
+                self.resourceStartupDurationMs = value
+            }
+            if let value = dict["runDurationMs"] as? Int64 {
+                self.runDurationMs = value
             }
             if let value = dict["state"] as? String {
                 self.state = value
@@ -16217,6 +16679,8 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
         public class KyuubiServices : Tea.TeaModel {
             public var computeInstance: String?
 
+            public var configRefreshRequired: Bool?
+
             public var createTime: String?
 
             public var creator: String?
@@ -16263,6 +16727,9 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.computeInstance != nil {
                     map["computeInstance"] = self.computeInstance!
+                }
+                if self.configRefreshRequired != nil {
+                    map["configRefreshRequired"] = self.configRefreshRequired!
                 }
                 if self.createTime != nil {
                     map["createTime"] = self.createTime!
@@ -16316,6 +16783,9 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["computeInstance"] as? String {
                     self.computeInstance = value
+                }
+                if let value = dict["configRefreshRequired"] as? Bool {
+                    self.configRefreshRequired = value
                 }
                 if let value = dict["createTime"] as? String {
                     self.createTime = value
@@ -16599,6 +17069,8 @@ public class ListKyuubiSparkApplicationsRequest : Tea.TeaModel {
 
     public var states: String?
 
+    public var userName: String?
+
     public override init() {
         super.init()
     }
@@ -16651,6 +17123,9 @@ public class ListKyuubiSparkApplicationsRequest : Tea.TeaModel {
         if self.states != nil {
             map["states"] = self.states!
         }
+        if self.userName != nil {
+            map["userName"] = self.userName!
+        }
         return map
     }
 
@@ -16696,6 +17171,9 @@ public class ListKyuubiSparkApplicationsRequest : Tea.TeaModel {
         if let value = dict["states"] as? String {
             self.states = value
         }
+        if let value = dict["userName"] as? String {
+            self.userName = value
+        }
     }
 }
 
@@ -16723,6 +17201,8 @@ public class ListKyuubiSparkApplicationsShrinkRequest : Tea.TeaModel {
     public var startTimeShrink: String?
 
     public var states: String?
+
+    public var userName: String?
 
     public override init() {
         super.init()
@@ -16774,6 +17254,9 @@ public class ListKyuubiSparkApplicationsShrinkRequest : Tea.TeaModel {
         if self.states != nil {
             map["states"] = self.states!
         }
+        if self.userName != nil {
+            map["userName"] = self.userName!
+        }
         return map
     }
 
@@ -16815,6 +17298,9 @@ public class ListKyuubiSparkApplicationsShrinkRequest : Tea.TeaModel {
         if let value = dict["states"] as? String {
             self.states = value
         }
+        if let value = dict["userName"] as? String {
+            self.userName = value
+        }
     }
 }
 
@@ -16847,6 +17333,8 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
         public var state: String?
 
         public var tags: [Tag]?
+
+        public var userName: String?
 
         public var vcoreSeconds: Int64?
 
@@ -16913,6 +17401,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
                 }
                 map["tags"] = tmp
             }
+            if self.userName != nil {
+                map["userName"] = self.userName!
+            }
             if self.vcoreSeconds != nil {
                 map["vcoreSeconds"] = self.vcoreSeconds!
             }
@@ -16977,6 +17468,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["userName"] as? String {
+                self.userName = value
             }
             if let value = dict["vcoreSeconds"] as? Int64 {
                 self.vcoreSeconds = value
@@ -20897,6 +21391,210 @@ public class ListRayLogsResponse : Tea.TeaModel {
     }
 }
 
+public class ListRegionsRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ListRegionsResponseBody : Tea.TeaModel {
+    public class Regions : Tea.TeaModel {
+        public var enName: String?
+
+        public var localName: String?
+
+        public var regionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enName != nil {
+                map["enName"] = self.enName!
+            }
+            if self.localName != nil {
+                map["localName"] = self.localName!
+            }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enName"] as? String {
+                self.enName = value
+            }
+            if let value = dict["localName"] as? String {
+                self.localName = value
+            }
+            if let value = dict["regionId"] as? String {
+                self.regionId = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regions: [ListRegionsResponseBody.Regions]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.regions != nil {
+            var tmp : [Any] = []
+            for k in self.regions! {
+                tmp.append(k.toMap())
+            }
+            map["regions"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["regions"] as? [Any?] {
+            var tmp : [ListRegionsResponseBody.Regions] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRegionsResponseBody.Regions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.regions = tmp
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRegionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListReleaseVersionsRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -22803,6 +23501,36 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
 
 public class ListWorkspacesResponseBody : Tea.TeaModel {
     public class Workspaces : Tea.TeaModel {
+        public class Features : Tea.TeaModel {
+            public var fineGrainedAuthz: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fineGrainedAuthz != nil {
+                    map["fineGrainedAuthz"] = self.fineGrainedAuthz!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["fineGrainedAuthz"] as? Bool {
+                    self.fineGrainedAuthz = value
+                }
+            }
+        }
         public class PrePaidQuota : Tea.TeaModel {
             public var allocatedResource: String?
 
@@ -23133,6 +23861,8 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
         public var failReason: String?
 
+        public var features: ListWorkspacesResponseBody.Workspaces.Features?
+
         public var gpuSpec: [String]?
 
         public var ipWhiteList: [String]?
@@ -23177,6 +23907,7 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.features?.validate()
             try self.prePaidQuota?.validate()
             try self.stateChangeReason?.validate()
         }
@@ -23209,6 +23940,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if self.failReason != nil {
                 map["failReason"] = self.failReason!
+            }
+            if self.features != nil {
+                map["features"] = self.features?.toMap()
             }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
@@ -23300,6 +24034,11 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if let value = dict["failReason"] as? String {
                 self.failReason = value
+            }
+            if let value = dict["features"] as? [String: Any?] {
+                var model = ListWorkspacesResponseBody.Workspaces.Features()
+                model.fromMap(value)
+                self.features = model
             }
             if let value = dict["gpuSpec"] as? [String] {
                 self.gpuSpec = value
@@ -26494,6 +27233,8 @@ public class TerminateSqlStatementResponse : Tea.TeaModel {
 public class UpdateKyuubiServiceRequest : Tea.TeaModel {
     public var computeInstance: String?
 
+    public var expectedReplica: Int32?
+
     public var kyuubiConfigs: String?
 
     public var kyuubiReleaseVersion: String?
@@ -26504,11 +27245,15 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
 
     public var queue: String?
 
+    public var refresh: Bool?
+
     public var releaseVersion: String?
 
     public var replica: Int32?
 
     public var restart: Bool?
+
+    public var scale: Bool?
 
     public var sparkConfigs: String?
 
@@ -26529,6 +27274,9 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
         if self.computeInstance != nil {
             map["computeInstance"] = self.computeInstance!
         }
+        if self.expectedReplica != nil {
+            map["expectedReplica"] = self.expectedReplica!
+        }
         if self.kyuubiConfigs != nil {
             map["kyuubiConfigs"] = self.kyuubiConfigs!
         }
@@ -26544,6 +27292,9 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
         if self.queue != nil {
             map["queue"] = self.queue!
         }
+        if self.refresh != nil {
+            map["refresh"] = self.refresh!
+        }
         if self.releaseVersion != nil {
             map["releaseVersion"] = self.releaseVersion!
         }
@@ -26552,6 +27303,9 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
         }
         if self.restart != nil {
             map["restart"] = self.restart!
+        }
+        if self.scale != nil {
+            map["scale"] = self.scale!
         }
         if self.sparkConfigs != nil {
             map["sparkConfigs"] = self.sparkConfigs!
@@ -26563,6 +27317,9 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["computeInstance"] as? String {
             self.computeInstance = value
+        }
+        if let value = dict["expectedReplica"] as? Int32 {
+            self.expectedReplica = value
         }
         if let value = dict["kyuubiConfigs"] as? String {
             self.kyuubiConfigs = value
@@ -26579,6 +27336,9 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
         if let value = dict["queue"] as? String {
             self.queue = value
         }
+        if let value = dict["refresh"] as? Bool {
+            self.refresh = value
+        }
         if let value = dict["releaseVersion"] as? String {
             self.releaseVersion = value
         }
@@ -26587,6 +27347,9 @@ public class UpdateKyuubiServiceRequest : Tea.TeaModel {
         }
         if let value = dict["restart"] as? Bool {
             self.restart = value
+        }
+        if let value = dict["scale"] as? Bool {
+            self.scale = value
         }
         if let value = dict["sparkConfigs"] as? String {
             self.sparkConfigs = value
@@ -26961,6 +27724,8 @@ public class UpdateLivyComputeRequest : Tea.TeaModel {
 
     public var fusion: Bool?
 
+    public var livyReleaseVersion: String?
+
     public var livyServerConf: String?
 
     public var livyVersion: String?
@@ -27016,6 +27781,9 @@ public class UpdateLivyComputeRequest : Tea.TeaModel {
         }
         if self.fusion != nil {
             map["fusion"] = self.fusion!
+        }
+        if self.livyReleaseVersion != nil {
+            map["livyReleaseVersion"] = self.livyReleaseVersion!
         }
         if self.livyServerConf != nil {
             map["livyServerConf"] = self.livyServerConf!
@@ -27073,6 +27841,9 @@ public class UpdateLivyComputeRequest : Tea.TeaModel {
         }
         if let value = dict["fusion"] as? Bool {
             self.fusion = value
+        }
+        if let value = dict["livyReleaseVersion"] as? String {
+            self.livyReleaseVersion = value
         }
         if let value = dict["livyServerConf"] as? String {
             self.livyServerConf = value
@@ -28496,6 +29267,8 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
 
         public var gftEnabled: Bool?
 
+        public var gpuDriverVersion: String?
+
         public var gpuSpec: String?
 
         public var idleTimeoutSeconds: Int32?
@@ -28539,6 +29312,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if self.gftEnabled != nil {
                 map["gftEnabled"] = self.gftEnabled!
             }
+            if self.gpuDriverVersion != nil {
+                map["gpuDriverVersion"] = self.gpuDriverVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -28579,6 +29355,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if let value = dict["gftEnabled"] as? Bool {
                 self.gftEnabled = value
             }
+            if let value = dict["gpuDriverVersion"] as? String {
+                self.gpuDriverVersion = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
@@ -28602,6 +29381,8 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         public var displayReleaseVersion: String?
 
         public var env: String?
+
+        public var gpuDriverVersion: String?
 
         public var gpuSpec: String?
 
@@ -28644,6 +29425,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if self.env != nil {
                 map["env"] = self.env!
             }
+            if self.gpuDriverVersion != nil {
+                map["gpuDriverVersion"] = self.gpuDriverVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -28685,6 +29469,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if let value = dict["env"] as? String {
                 self.env = value
             }
+            if let value = dict["gpuDriverVersion"] as? String {
+                self.gpuDriverVersion = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
@@ -28718,6 +29505,8 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
 
     public var displayReleaseVersion: String?
 
+    public var enableMetricsUpload: Bool?
+
     public var extraParam: String?
 
     public var headSpec: UpdateRayClusterRequest.HeadSpec?
@@ -28725,6 +29514,10 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
     public var name: String?
 
     public var networkServiceName: String?
+
+    public var slsLogStore: String?
+
+    public var slsProject: String?
 
     public var volumeIds: [String]?
 
@@ -28751,6 +29544,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         if self.displayReleaseVersion != nil {
             map["displayReleaseVersion"] = self.displayReleaseVersion!
         }
+        if self.enableMetricsUpload != nil {
+            map["enableMetricsUpload"] = self.enableMetricsUpload!
+        }
         if self.extraParam != nil {
             map["extraParam"] = self.extraParam!
         }
@@ -28762,6 +29558,12 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         }
         if self.networkServiceName != nil {
             map["networkServiceName"] = self.networkServiceName!
+        }
+        if self.slsLogStore != nil {
+            map["slsLogStore"] = self.slsLogStore!
+        }
+        if self.slsProject != nil {
+            map["slsProject"] = self.slsProject!
         }
         if self.volumeIds != nil {
             map["volumeIds"] = self.volumeIds!
@@ -28784,6 +29586,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         if let value = dict["displayReleaseVersion"] as? String {
             self.displayReleaseVersion = value
         }
+        if let value = dict["enableMetricsUpload"] as? Bool {
+            self.enableMetricsUpload = value
+        }
         if let value = dict["extraParam"] as? String {
             self.extraParam = value
         }
@@ -28797,6 +29602,12 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         }
         if let value = dict["networkServiceName"] as? String {
             self.networkServiceName = value
+        }
+        if let value = dict["slsLogStore"] as? String {
+            self.slsLogStore = value
+        }
+        if let value = dict["slsProject"] as? String {
+            self.slsProject = value
         }
         if let value = dict["volumeIds"] as? [String] {
             self.volumeIds = value
@@ -28922,6 +29733,8 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
 
         public var paymentDurationUnit: String?
 
+        public var promotionOptionNo: String?
+
         public override init() {
             super.init()
         }
@@ -28957,6 +29770,9 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
             if self.paymentDurationUnit != nil {
                 map["paymentDurationUnit"] = self.paymentDurationUnit!
             }
+            if self.promotionOptionNo != nil {
+                map["promotionOptionNo"] = self.promotionOptionNo!
+            }
             return map
         }
 
@@ -28983,6 +29799,9 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
             if let value = dict["paymentDurationUnit"] as? String {
                 self.paymentDurationUnit = value
             }
+            if let value = dict["promotionOptionNo"] as? String {
+                self.promotionOptionNo = value
+            }
         }
     }
     public class Subscription : Tea.TeaModel {
@@ -28997,6 +29816,8 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
         public var duration: String?
 
         public var paymentDurationUnit: String?
+
+        public var promotionOptionNo: String?
 
         public var queue: [String]?
 
@@ -29032,6 +29853,9 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
             if self.paymentDurationUnit != nil {
                 map["paymentDurationUnit"] = self.paymentDurationUnit!
             }
+            if self.promotionOptionNo != nil {
+                map["promotionOptionNo"] = self.promotionOptionNo!
+            }
             if self.queue != nil {
                 map["queue"] = self.queue!
             }
@@ -29057,6 +29881,9 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
             }
             if let value = dict["paymentDurationUnit"] as? String {
                 self.paymentDurationUnit = value
+            }
+            if let value = dict["promotionOptionNo"] as? String {
+                self.promotionOptionNo = value
             }
             if let value = dict["queue"] as? [String] {
                 self.queue = value
