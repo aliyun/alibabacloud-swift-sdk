@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -2748,7 +2749,11 @@ public class ListScanTasksByTargetResponseBody : Tea.TeaModel {
 
         public var executeCaseCount: Int64?
 
+        public var reportLanguage: String?
+
         public var riskLevel: String?
+
+        public var sampleLanguage: String?
 
         public var sampleLevel: Int64?
 
@@ -2759,6 +2764,8 @@ public class ListScanTasksByTargetResponseBody : Tea.TeaModel {
         public var scannerTaskMessage: String?
 
         public var scannerTaskStatus: String?
+
+        public var scannerType: String?
 
         public var startTime: Int64?
 
@@ -2789,8 +2796,14 @@ public class ListScanTasksByTargetResponseBody : Tea.TeaModel {
             if self.executeCaseCount != nil {
                 map["ExecuteCaseCount"] = self.executeCaseCount!
             }
+            if self.reportLanguage != nil {
+                map["ReportLanguage"] = self.reportLanguage!
+            }
             if self.riskLevel != nil {
                 map["RiskLevel"] = self.riskLevel!
+            }
+            if self.sampleLanguage != nil {
+                map["SampleLanguage"] = self.sampleLanguage!
             }
             if self.sampleLevel != nil {
                 map["SampleLevel"] = self.sampleLevel!
@@ -2806,6 +2819,9 @@ public class ListScanTasksByTargetResponseBody : Tea.TeaModel {
             }
             if self.scannerTaskStatus != nil {
                 map["ScannerTaskStatus"] = self.scannerTaskStatus!
+            }
+            if self.scannerType != nil {
+                map["ScannerType"] = self.scannerType!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -2830,8 +2846,14 @@ public class ListScanTasksByTargetResponseBody : Tea.TeaModel {
             if let value = dict["ExecuteCaseCount"] as? Int64 {
                 self.executeCaseCount = value
             }
+            if let value = dict["ReportLanguage"] as? String {
+                self.reportLanguage = value
+            }
             if let value = dict["RiskLevel"] as? String {
                 self.riskLevel = value
+            }
+            if let value = dict["SampleLanguage"] as? String {
+                self.sampleLanguage = value
             }
             if let value = dict["SampleLevel"] as? Int64 {
                 self.sampleLevel = value
@@ -2847,6 +2869,9 @@ public class ListScanTasksByTargetResponseBody : Tea.TeaModel {
             }
             if let value = dict["ScannerTaskStatus"] as? String {
                 self.scannerTaskStatus = value
+            }
+            if let value = dict["ScannerType"] as? String {
+                self.scannerType = value
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
