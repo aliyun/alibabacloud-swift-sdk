@@ -15655,6 +15655,8 @@ public class CreateRoutineBuildResponseBody : Tea.TeaModel {
 
     public var routineBuildId: Int64?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -15678,6 +15680,9 @@ public class CreateRoutineBuildResponseBody : Tea.TeaModel {
         if self.routineBuildId != nil {
             map["RoutineBuildId"] = self.routineBuildId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -15691,6 +15696,9 @@ public class CreateRoutineBuildResponseBody : Tea.TeaModel {
         }
         if let value = dict["RoutineBuildId"] as? Int64 {
             self.routineBuildId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -57193,6 +57201,8 @@ public class GetRoutineBuildResponseBody : Tea.TeaModel {
 
     public var environmentVariables: [String: String]?
 
+    public var fileName: String?
+
     public var gitAccountId: Int64?
 
     public var id: Int64?
@@ -57259,6 +57269,9 @@ public class GetRoutineBuildResponseBody : Tea.TeaModel {
         }
         if self.environmentVariables != nil {
             map["EnvironmentVariables"] = self.environmentVariables!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
         }
         if self.gitAccountId != nil {
             map["GitAccountId"] = self.gitAccountId!
@@ -57333,6 +57346,9 @@ public class GetRoutineBuildResponseBody : Tea.TeaModel {
         }
         if let value = dict["EnvironmentVariables"] as? [String: String] {
             self.environmentVariables = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
         }
         if let value = dict["GitAccountId"] as? Int64 {
             self.gitAccountId = value
@@ -83324,6 +83340,8 @@ public class ListRoutineBuildsResponseBody : Tea.TeaModel {
 
         public var environmentVariables: [String: String]?
 
+        public var fileName: String?
+
         public var gitAccountId: Int64?
 
         public var gitAccountName: String?
@@ -83392,6 +83410,9 @@ public class ListRoutineBuildsResponseBody : Tea.TeaModel {
             }
             if self.environmentVariables != nil {
                 map["EnvironmentVariables"] = self.environmentVariables!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
             }
             if self.gitAccountId != nil {
                 map["GitAccountId"] = self.gitAccountId!
@@ -83469,6 +83490,9 @@ public class ListRoutineBuildsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnvironmentVariables"] as? [String: String] {
                 self.environmentVariables = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
             }
             if let value = dict["GitAccountId"] as? Int64 {
                 self.gitAccountId = value
@@ -99944,6 +99968,8 @@ public class ReDoRoutineBuildResponseBody : Tea.TeaModel {
 
     public var routineBuildId: Int64?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -99967,6 +99993,9 @@ public class ReDoRoutineBuildResponseBody : Tea.TeaModel {
         if self.routineBuildId != nil {
             map["RoutineBuildId"] = self.routineBuildId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -99980,6 +100009,9 @@ public class ReDoRoutineBuildResponseBody : Tea.TeaModel {
         }
         if let value = dict["RoutineBuildId"] as? Int64 {
             self.routineBuildId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
