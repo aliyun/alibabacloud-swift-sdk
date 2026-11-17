@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "MaasQIService"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("maasqiservice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -82,6 +86,125 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cameraChatCompletionStreamWithOptions(_ request: CameraChatCompletionStreamRequest, _ headers: CameraChatCompletionStreamHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CameraChatCompletionStreamResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["messages"] = request.messages ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            body["sceneId"] = request.sceneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIAgentApiKey)) {
+            realHeaders["X-QI-Agent-Api-Key"] = TeaUtils.Client.toJSONString(headers.xQIAgentApiKey);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIRequestId)) {
+            realHeaders["X-QI-Request-Id"] = TeaUtils.Client.toJSONString(headers.xQIRequestId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQISessionId)) {
+            realHeaders["X-QI-Session-Id"] = TeaUtils.Client.toJSONString(headers.xQISessionId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIInstanceId)) {
+            realHeaders["x-QI-Instance-Id"] = TeaUtils.Client.toJSONString(headers.xQIInstanceId);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CameraChatCompletionStream",
+            "version": "2026-08-31",
+            "protocol": "HTTPS",
+            "pathname": "/camera/v1/chat/completions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "string"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CameraChatCompletionStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cameraChatCompletionStream(_ request: CameraChatCompletionStreamRequest) async throws -> CameraChatCompletionStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CameraChatCompletionStreamHeaders = CameraChatCompletionStreamHeaders([:])
+        return try await cameraChatCompletionStreamWithOptions(request as! CameraChatCompletionStreamRequest, headers as! CameraChatCompletionStreamHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cameraConsoleDebugStreamWithOptions(_ request: CameraConsoleDebugStreamRequest, _ headers: CameraConsoleDebugStreamHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CameraConsoleDebugStreamResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            body["config"] = request.config!;
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            body["input"] = request.input!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["instanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            body["parameters"] = request.parameters!;
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["sessionId"] = request.sessionId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIInstanceId)) {
+            realHeaders["X-QI-Instance-Id"] = TeaUtils.Client.toJSONString(headers.xQIInstanceId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIRequestId)) {
+            realHeaders["X-QI-Request-Id"] = TeaUtils.Client.toJSONString(headers.xQIRequestId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQISessionId)) {
+            realHeaders["X-QI-Session-Id"] = TeaUtils.Client.toJSONString(headers.xQISessionId);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CameraConsoleDebugStream",
+            "version": "2026-08-31",
+            "protocol": "HTTPS",
+            "pathname": "/api/console/camera/agents/debug",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "string"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CameraConsoleDebugStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cameraConsoleDebugStream(_ request: CameraConsoleDebugStreamRequest) async throws -> CameraConsoleDebugStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CameraConsoleDebugStreamHeaders = CameraConsoleDebugStreamHeaders([:])
+        return try await cameraConsoleDebugStreamWithOptions(request as! CameraConsoleDebugStreamRequest, headers as! CameraConsoleDebugStreamHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cuaChatCompletionStreamWithOptions(_ request: CuaChatCompletionStreamRequest, _ headers: CuaChatCompletionStreamHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CuaChatCompletionStreamResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -112,6 +235,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(headers.xQIInstanceId)) {
             realHeaders["X-QI-Instance-Id"] = TeaUtils.Client.toJSONString(headers.xQIInstanceId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIRequestId)) {
+            realHeaders["X-QI-Request-Id"] = TeaUtils.Client.toJSONString(headers.xQIRequestId);
         }
         if (!TeaUtils.Client.isUnset(headers.xQISessionId)) {
             realHeaders["X-QI-Session-Id"] = TeaUtils.Client.toJSONString(headers.xQISessionId);

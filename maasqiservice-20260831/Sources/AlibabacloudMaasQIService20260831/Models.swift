@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -529,12 +530,985 @@ public class AigcChatCompletionStreamResponse : Tea.TeaModel {
     }
 }
 
+public class CameraChatCompletionStreamHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xQIAgentApiKey: String?
+
+    public var xQIRequestId: String?
+
+    public var xQISessionId: String?
+
+    public var xQIInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xQIAgentApiKey != nil {
+            map["X-QI-Agent-Api-Key"] = self.xQIAgentApiKey!
+        }
+        if self.xQIRequestId != nil {
+            map["X-QI-Request-Id"] = self.xQIRequestId!
+        }
+        if self.xQISessionId != nil {
+            map["X-QI-Session-Id"] = self.xQISessionId!
+        }
+        if self.xQIInstanceId != nil {
+            map["x-QI-Instance-Id"] = self.xQIInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["X-QI-Agent-Api-Key"] as? String {
+            self.xQIAgentApiKey = value
+        }
+        if let value = dict["X-QI-Request-Id"] as? String {
+            self.xQIRequestId = value
+        }
+        if let value = dict["X-QI-Session-Id"] as? String {
+            self.xQISessionId = value
+        }
+        if let value = dict["x-QI-Instance-Id"] as? String {
+            self.xQIInstanceId = value
+        }
+    }
+}
+
+public class CameraChatCompletionStreamRequest : Tea.TeaModel {
+    public class Messages : Tea.TeaModel {
+        public class Content : Tea.TeaModel {
+            public class ImageUrl : Tea.TeaModel {
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.url != nil {
+                        map["url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["url"] as? String {
+                        self.url = value
+                    }
+                }
+            }
+            public var imageUrl: CameraChatCompletionStreamRequest.Messages.Content.ImageUrl?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.imageUrl?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageUrl != nil {
+                    map["imageUrl"] = self.imageUrl?.toMap()
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["imageUrl"] as? [String: Any?] {
+                    var model = CameraChatCompletionStreamRequest.Messages.Content.ImageUrl()
+                    model.fromMap(value)
+                    self.imageUrl = model
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var content: [CameraChatCompletionStreamRequest.Messages.Content]?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                var tmp : [Any] = []
+                for k in self.content! {
+                    tmp.append(k.toMap())
+                }
+                map["content"] = tmp
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["content"] as? [Any?] {
+                var tmp : [CameraChatCompletionStreamRequest.Messages.Content] = []
+                for v in value {
+                    if v != nil {
+                        var model = CameraChatCompletionStreamRequest.Messages.Content()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.content = tmp
+            }
+            if let value = dict["role"] as? String {
+                self.role = value
+            }
+        }
+    }
+    public var messages: [CameraChatCompletionStreamRequest.Messages]?
+
+    public var sceneId: String?
+
+    public var stream: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.messages != nil {
+            var tmp : [Any] = []
+            for k in self.messages! {
+                tmp.append(k.toMap())
+            }
+            map["messages"] = tmp
+        }
+        if self.sceneId != nil {
+            map["sceneId"] = self.sceneId!
+        }
+        if self.stream != nil {
+            map["stream"] = self.stream!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["messages"] as? [Any?] {
+            var tmp : [CameraChatCompletionStreamRequest.Messages] = []
+            for v in value {
+                if v != nil {
+                    var model = CameraChatCompletionStreamRequest.Messages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.messages = tmp
+        }
+        if let value = dict["sceneId"] as? String {
+            self.sceneId = value
+        }
+        if let value = dict["stream"] as? Bool {
+            self.stream = value
+        }
+    }
+}
+
+public class CameraChatCompletionStreamResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? String {
+            self.body = value
+        }
+    }
+}
+
+public class CameraConsoleDebugStreamHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xQIInstanceId: String?
+
+    public var xQIRequestId: String?
+
+    public var xQISessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xQIInstanceId != nil {
+            map["X-QI-Instance-Id"] = self.xQIInstanceId!
+        }
+        if self.xQIRequestId != nil {
+            map["X-QI-Request-Id"] = self.xQIRequestId!
+        }
+        if self.xQISessionId != nil {
+            map["X-QI-Session-Id"] = self.xQISessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["X-QI-Instance-Id"] as? String {
+            self.xQIInstanceId = value
+        }
+        if let value = dict["X-QI-Request-Id"] as? String {
+            self.xQIRequestId = value
+        }
+        if let value = dict["X-QI-Session-Id"] as? String {
+            self.xQISessionId = value
+        }
+    }
+}
+
+public class CameraConsoleDebugStreamRequest : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public class ExtensionConfig : Tea.TeaModel {
+            public class Camera : Tea.TeaModel {
+                public var headMaxHeightRatio: Double?
+
+                public var headMinHeightRatio: Double?
+
+                public var minConfidence: Double?
+
+                public var scenario: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.headMaxHeightRatio != nil {
+                        map["headMaxHeightRatio"] = self.headMaxHeightRatio!
+                    }
+                    if self.headMinHeightRatio != nil {
+                        map["headMinHeightRatio"] = self.headMinHeightRatio!
+                    }
+                    if self.minConfidence != nil {
+                        map["minConfidence"] = self.minConfidence!
+                    }
+                    if self.scenario != nil {
+                        map["scenario"] = self.scenario!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["headMaxHeightRatio"] as? Double {
+                        self.headMaxHeightRatio = value
+                    }
+                    if let value = dict["headMinHeightRatio"] as? Double {
+                        self.headMinHeightRatio = value
+                    }
+                    if let value = dict["minConfidence"] as? Double {
+                        self.minConfidence = value
+                    }
+                    if let value = dict["scenario"] as? String {
+                        self.scenario = value
+                    }
+                }
+            }
+            public class PersonScan : Tea.TeaModel {
+                public var maxHeightRatio: Double?
+
+                public var minHeightRatio: Double?
+
+                public var minScore: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.maxHeightRatio != nil {
+                        map["maxHeightRatio"] = self.maxHeightRatio!
+                    }
+                    if self.minHeightRatio != nil {
+                        map["minHeightRatio"] = self.minHeightRatio!
+                    }
+                    if self.minScore != nil {
+                        map["minScore"] = self.minScore!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["maxHeightRatio"] as? Double {
+                        self.maxHeightRatio = value
+                    }
+                    if let value = dict["minHeightRatio"] as? Double {
+                        self.minHeightRatio = value
+                    }
+                    if let value = dict["minScore"] as? Double {
+                        self.minScore = value
+                    }
+                }
+            }
+            public var camera: CameraConsoleDebugStreamRequest.Config.ExtensionConfig.Camera?
+
+            public var personScan: CameraConsoleDebugStreamRequest.Config.ExtensionConfig.PersonScan?
+
+            public var scenario: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.camera?.validate()
+                try self.personScan?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.camera != nil {
+                    map["camera"] = self.camera?.toMap()
+                }
+                if self.personScan != nil {
+                    map["personScan"] = self.personScan?.toMap()
+                }
+                if self.scenario != nil {
+                    map["scenario"] = self.scenario!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["camera"] as? [String: Any?] {
+                    var model = CameraConsoleDebugStreamRequest.Config.ExtensionConfig.Camera()
+                    model.fromMap(value)
+                    self.camera = model
+                }
+                if let value = dict["personScan"] as? [String: Any?] {
+                    var model = CameraConsoleDebugStreamRequest.Config.ExtensionConfig.PersonScan()
+                    model.fromMap(value)
+                    self.personScan = model
+                }
+                if let value = dict["scenario"] as? String {
+                    self.scenario = value
+                }
+            }
+        }
+        public class Model : Tea.TeaModel {
+            public var catalogModelId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.catalogModelId != nil {
+                    map["catalogModelId"] = self.catalogModelId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["catalogModelId"] as? String {
+                    self.catalogModelId = value
+                }
+            }
+        }
+        public var agentType: String?
+
+        public var apiName: String?
+
+        public var extensionConfig: CameraConsoleDebugStreamRequest.Config.ExtensionConfig?
+
+        public var instructions: String?
+
+        public var maxIterations: Int32?
+
+        public var model: CameraConsoleDebugStreamRequest.Config.Model?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.extensionConfig?.validate()
+            try self.model?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentType != nil {
+                map["agentType"] = self.agentType!
+            }
+            if self.apiName != nil {
+                map["apiName"] = self.apiName!
+            }
+            if self.extensionConfig != nil {
+                map["extensionConfig"] = self.extensionConfig?.toMap()
+            }
+            if self.instructions != nil {
+                map["instructions"] = self.instructions!
+            }
+            if self.maxIterations != nil {
+                map["maxIterations"] = self.maxIterations!
+            }
+            if self.model != nil {
+                map["model"] = self.model?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["agentType"] as? String {
+                self.agentType = value
+            }
+            if let value = dict["apiName"] as? String {
+                self.apiName = value
+            }
+            if let value = dict["extensionConfig"] as? [String: Any?] {
+                var model = CameraConsoleDebugStreamRequest.Config.ExtensionConfig()
+                model.fromMap(value)
+                self.extensionConfig = model
+            }
+            if let value = dict["instructions"] as? String {
+                self.instructions = value
+            }
+            if let value = dict["maxIterations"] as? Int32 {
+                self.maxIterations = value
+            }
+            if let value = dict["model"] as? [String: Any?] {
+                var model = CameraConsoleDebugStreamRequest.Config.Model()
+                model.fromMap(value)
+                self.model = model
+            }
+        }
+    }
+    public class Input : Tea.TeaModel {
+        public class Messages : Tea.TeaModel {
+            public class Content : Tea.TeaModel {
+                public class ImageUrl : Tea.TeaModel {
+                    public var url: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.url != nil {
+                            map["url"] = self.url!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["url"] as? String {
+                            self.url = value
+                        }
+                    }
+                }
+                public var imageUrl: CameraConsoleDebugStreamRequest.Input.Messages.Content.ImageUrl?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.imageUrl?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.imageUrl != nil {
+                        map["imageUrl"] = self.imageUrl?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["imageUrl"] as? [String: Any?] {
+                        var model = CameraConsoleDebugStreamRequest.Input.Messages.Content.ImageUrl()
+                        model.fromMap(value)
+                        self.imageUrl = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var content: [CameraConsoleDebugStreamRequest.Input.Messages.Content]?
+
+            public var role: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    var tmp : [Any] = []
+                    for k in self.content! {
+                        tmp.append(k.toMap())
+                    }
+                    map["content"] = tmp
+                }
+                if self.role != nil {
+                    map["role"] = self.role!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? [Any?] {
+                    var tmp : [CameraConsoleDebugStreamRequest.Input.Messages.Content] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CameraConsoleDebugStreamRequest.Input.Messages.Content()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.content = tmp
+                }
+                if let value = dict["role"] as? String {
+                    self.role = value
+                }
+            }
+        }
+        public var messages: [CameraConsoleDebugStreamRequest.Input.Messages]?
+
+        public var sceneId: String?
+
+        public var stream: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.messages != nil {
+                var tmp : [Any] = []
+                for k in self.messages! {
+                    tmp.append(k.toMap())
+                }
+                map["messages"] = tmp
+            }
+            if self.sceneId != nil {
+                map["sceneId"] = self.sceneId!
+            }
+            if self.stream != nil {
+                map["stream"] = self.stream!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["messages"] as? [Any?] {
+                var tmp : [CameraConsoleDebugStreamRequest.Input.Messages] = []
+                for v in value {
+                    if v != nil {
+                        var model = CameraConsoleDebugStreamRequest.Input.Messages()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.messages = tmp
+            }
+            if let value = dict["sceneId"] as? String {
+                self.sceneId = value
+            }
+            if let value = dict["stream"] as? Bool {
+                self.stream = value
+            }
+        }
+    }
+    public class Parameters : Tea.TeaModel {
+        public var maxHeightRatio: Double?
+
+        public var minHeightRatio: Double?
+
+        public var minScore: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxHeightRatio != nil {
+                map["maxHeightRatio"] = self.maxHeightRatio!
+            }
+            if self.minHeightRatio != nil {
+                map["minHeightRatio"] = self.minHeightRatio!
+            }
+            if self.minScore != nil {
+                map["minScore"] = self.minScore!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["maxHeightRatio"] as? Double {
+                self.maxHeightRatio = value
+            }
+            if let value = dict["minHeightRatio"] as? Double {
+                self.minHeightRatio = value
+            }
+            if let value = dict["minScore"] as? Double {
+                self.minScore = value
+            }
+        }
+    }
+    public var config: CameraConsoleDebugStreamRequest.Config?
+
+    public var input: CameraConsoleDebugStreamRequest.Input?
+
+    public var instanceId: String?
+
+    public var parameters: CameraConsoleDebugStreamRequest.Parameters?
+
+    public var requestId: String?
+
+    public var scenario: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.config?.validate()
+        try self.input?.validate()
+        try self.parameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.config != nil {
+            map["config"] = self.config?.toMap()
+        }
+        if self.input != nil {
+            map["input"] = self.input?.toMap()
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.parameters != nil {
+            map["parameters"] = self.parameters?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.scenario != nil {
+            map["scenario"] = self.scenario!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["config"] as? [String: Any?] {
+            var model = CameraConsoleDebugStreamRequest.Config()
+            model.fromMap(value)
+            self.config = model
+        }
+        if let value = dict["input"] as? [String: Any?] {
+            var model = CameraConsoleDebugStreamRequest.Input()
+            model.fromMap(value)
+            self.input = model
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["parameters"] as? [String: Any?] {
+            var model = CameraConsoleDebugStreamRequest.Parameters()
+            model.fromMap(value)
+            self.parameters = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["scenario"] as? String {
+            self.scenario = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class CameraConsoleDebugStreamResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? String {
+            self.body = value
+        }
+    }
+}
+
 public class CuaChatCompletionStreamHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
     public var xQIAgentApiKey: String?
 
     public var xQIInstanceId: String?
+
+    public var xQIRequestId: String?
 
     public var xQISessionId: String?
 
@@ -561,6 +1535,9 @@ public class CuaChatCompletionStreamHeaders : Tea.TeaModel {
         if self.xQIInstanceId != nil {
             map["X-QI-Instance-Id"] = self.xQIInstanceId!
         }
+        if self.xQIRequestId != nil {
+            map["X-QI-Request-Id"] = self.xQIRequestId!
+        }
         if self.xQISessionId != nil {
             map["X-QI-Session-Id"] = self.xQISessionId!
         }
@@ -577,6 +1554,9 @@ public class CuaChatCompletionStreamHeaders : Tea.TeaModel {
         }
         if let value = dict["X-QI-Instance-Id"] as? String {
             self.xQIInstanceId = value
+        }
+        if let value = dict["X-QI-Request-Id"] as? String {
+            self.xQIRequestId = value
         }
         if let value = dict["X-QI-Session-Id"] as? String {
             self.xQISessionId = value
@@ -733,6 +1713,8 @@ public class CuaChatCompletionStreamRequest : Tea.TeaModel {
         }
     }
     public class Metadata : Tea.TeaModel {
+        public var actionMode: String?
+
         public var screenHeight: Int?
 
         public var screenWidth: Int?
@@ -751,6 +1733,9 @@ public class CuaChatCompletionStreamRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.actionMode != nil {
+                map["actionMode"] = self.actionMode!
+            }
             if self.screenHeight != nil {
                 map["screenHeight"] = self.screenHeight!
             }
@@ -762,6 +1747,9 @@ public class CuaChatCompletionStreamRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["actionMode"] as? String {
+                self.actionMode = value
+            }
             if let value = dict["screenHeight"] as? Int {
                 self.screenHeight = value
             }
