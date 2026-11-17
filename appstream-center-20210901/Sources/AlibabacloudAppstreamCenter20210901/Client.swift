@@ -6399,6 +6399,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func restartWuyingServerWithOptions(_ request: RestartWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartWuyingServerResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableRestartRetry)) {
+            query["EnableRestartRetry"] = request.enableRestartRetry!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.productType)) {
             body["ProductType"] = request.productType ?? "";
@@ -6409,6 +6413,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

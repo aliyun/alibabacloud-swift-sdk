@@ -46015,6 +46015,8 @@ public class RenewWuyingServerResponse : Tea.TeaModel {
 }
 
 public class RestartWuyingServerRequest : Tea.TeaModel {
+    public var enableRestartRetry: Bool?
+
     public var productType: String?
 
     public var wuyingServerIdList: [String]?
@@ -46033,6 +46035,9 @@ public class RestartWuyingServerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableRestartRetry != nil {
+            map["EnableRestartRetry"] = self.enableRestartRetry!
+        }
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
@@ -46044,6 +46049,9 @@ public class RestartWuyingServerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableRestartRetry"] as? Bool {
+            self.enableRestartRetry = value
+        }
         if let value = dict["ProductType"] as? String {
             self.productType = value
         }
