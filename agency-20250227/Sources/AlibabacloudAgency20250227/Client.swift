@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Agency"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-1": "agency.aliyuncs.com",
@@ -65,8 +69,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "me-east-1": "agency.aliyuncs.com",
             "rus-west-1-pop": "agency.aliyuncs.com",
             "us-east-1": "agency.aliyuncs.com",
-            "us-west-1": "agency.aliyuncs.com",
-            "ap-southeast-1": "agency.ap-southeast-1.aliyuncs.com"
+            "us-west-1": "agency.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("agency", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -399,6 +402,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ramAccountForCustomerManager)) {
             query["RamAccountForCustomerManager"] = request.ramAccountForCustomerManager ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rebateType)) {
+            query["RebateType"] = request.rebateType!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

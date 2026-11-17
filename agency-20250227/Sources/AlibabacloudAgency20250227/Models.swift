@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1846,6 +1847,8 @@ public class GetCustomerOrderListRequest : Tea.TeaModel {
 
     public var ramAccountForCustomerManager: String?
 
+    public var rebateType: Int32?
+
     public override init() {
         super.init()
     }
@@ -1914,6 +1917,9 @@ public class GetCustomerOrderListRequest : Tea.TeaModel {
         if self.ramAccountForCustomerManager != nil {
             map["RamAccountForCustomerManager"] = self.ramAccountForCustomerManager!
         }
+        if self.rebateType != nil {
+            map["RebateType"] = self.rebateType!
+        }
         return map
     }
 
@@ -1973,6 +1979,9 @@ public class GetCustomerOrderListRequest : Tea.TeaModel {
         if let value = dict["RamAccountForCustomerManager"] as? String {
             self.ramAccountForCustomerManager = value
         }
+        if let value = dict["RebateType"] as? Int32 {
+            self.rebateType = value
+        }
     }
 }
 
@@ -2012,6 +2021,8 @@ public class GetCustomerOrderListShrinkRequest : Tea.TeaModel {
     public var projectId: Int64?
 
     public var ramAccountForCustomerManager: String?
+
+    public var rebateType: Int32?
 
     public override init() {
         super.init()
@@ -2081,6 +2092,9 @@ public class GetCustomerOrderListShrinkRequest : Tea.TeaModel {
         if self.ramAccountForCustomerManager != nil {
             map["RamAccountForCustomerManager"] = self.ramAccountForCustomerManager!
         }
+        if self.rebateType != nil {
+            map["RebateType"] = self.rebateType!
+        }
         return map
     }
 
@@ -2140,6 +2154,9 @@ public class GetCustomerOrderListShrinkRequest : Tea.TeaModel {
         if let value = dict["RamAccountForCustomerManager"] as? String {
             self.ramAccountForCustomerManager = value
         }
+        if let value = dict["RebateType"] as? Int32 {
+            self.rebateType = value
+        }
     }
 }
 
@@ -2180,6 +2197,8 @@ public class GetCustomerOrderListResponseBody : Tea.TeaModel {
         public var projectId: Int64?
 
         public var ramAccountForCustomerManagers: [String]?
+
+        public var rebateType: Int32?
 
         public override init() {
             super.init()
@@ -2249,6 +2268,9 @@ public class GetCustomerOrderListResponseBody : Tea.TeaModel {
             if self.ramAccountForCustomerManagers != nil {
                 map["RamAccountForCustomerManagers"] = self.ramAccountForCustomerManagers!
             }
+            if self.rebateType != nil {
+                map["RebateType"] = self.rebateType!
+            }
             return map
         }
 
@@ -2307,6 +2329,9 @@ public class GetCustomerOrderListResponseBody : Tea.TeaModel {
             }
             if let value = dict["RamAccountForCustomerManagers"] as? [String] {
                 self.ramAccountForCustomerManagers = value
+            }
+            if let value = dict["RebateType"] as? Int32 {
+                self.rebateType = value
             }
         }
     }
