@@ -1,9 +1,57 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
+
+public class AutoPassPolicy : Tea.TeaModel {
+    public var commandPrefix: [String]?
+
+    public var fullCommand: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commandPrefix != nil {
+            map["commandPrefix"] = self.commandPrefix!
+        }
+        if self.fullCommand != nil {
+            map["fullCommand"] = self.fullCommand!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commandPrefix"] as? [String] {
+            self.commandPrefix = value
+        }
+        if let value = dict["fullCommand"] as? String {
+            self.fullCommand = value
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
+    }
+}
 
 public class ConnectorAuthentication : Tea.TeaModel {
     public class Basic : Tea.TeaModel {
@@ -1134,6 +1182,10 @@ public class ConnectorInfo : Tea.TeaModel {
 }
 
 public class ConnectorRuntime : Tea.TeaModel {
+    public var capabilityId: String?
+
+    public var extensionName: String?
+
     public var mode: String?
 
     public var pluginId: String?
@@ -1154,6 +1206,12 @@ public class ConnectorRuntime : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.capabilityId != nil {
+            map["capabilityId"] = self.capabilityId!
+        }
+        if self.extensionName != nil {
+            map["extensionName"] = self.extensionName!
+        }
         if self.mode != nil {
             map["mode"] = self.mode!
         }
@@ -1168,6 +1226,12 @@ public class ConnectorRuntime : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["capabilityId"] as? String {
+            self.capabilityId = value
+        }
+        if let value = dict["extensionName"] as? String {
+            self.extensionName = value
+        }
         if let value = dict["mode"] as? String {
             self.mode = value
         }
@@ -1277,6 +1341,158 @@ public class ConnectorUpdateInput : Tea.TeaModel {
         }
         if let value = dict["target"] as? [String: Any] {
             self.target = value
+        }
+    }
+}
+
+public class Hook : Tea.TeaModel {
+    public class Execution : Tea.TeaModel {
+        public var failResult: String?
+
+        public var instruction: String?
+
+        public var maxRetry: Int64?
+
+        public var timeoutSeconds: Int64?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.failResult != nil {
+                map["failResult"] = self.failResult!
+            }
+            if self.instruction != nil {
+                map["instruction"] = self.instruction!
+            }
+            if self.maxRetry != nil {
+                map["maxRetry"] = self.maxRetry!
+            }
+            if self.timeoutSeconds != nil {
+                map["timeoutSeconds"] = self.timeoutSeconds!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["failResult"] as? String {
+                self.failResult = value
+            }
+            if let value = dict["instruction"] as? String {
+                self.instruction = value
+            }
+            if let value = dict["maxRetry"] as? Int64 {
+                self.maxRetry = value
+            }
+            if let value = dict["timeoutSeconds"] as? Int64 {
+                self.timeoutSeconds = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var description_: String?
+
+    public var enable: Bool?
+
+    public var event: String?
+
+    public var execution: Hook.Execution?
+
+    public var match: [String]?
+
+    public var name: String?
+
+    public var schemaVersion: String?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.execution?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.enable != nil {
+            map["enable"] = self.enable!
+        }
+        if self.event != nil {
+            map["event"] = self.event!
+        }
+        if self.execution != nil {
+            map["execution"] = self.execution?.toMap()
+        }
+        if self.match != nil {
+            map["match"] = self.match!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.schemaVersion != nil {
+            map["schemaVersion"] = self.schemaVersion!
+        }
+        if self.scope != nil {
+            map["scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["event"] as? String {
+            self.event = value
+        }
+        if let value = dict["execution"] as? [String: Any?] {
+            var model = Hook.Execution()
+            model.fromMap(value)
+            self.execution = model
+        }
+        if let value = dict["match"] as? [String] {
+            self.match = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["schemaVersion"] as? String {
+            self.schemaVersion = value
+        }
+        if let value = dict["scope"] as? String {
+            self.scope = value
         }
     }
 }
@@ -2200,7 +2416,55 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Global : Tea.TeaModel {
+            public var autoPassPolicy: [AutoPassPolicy]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoPassPolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.autoPassPolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["autoPassPolicy"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["autoPassPolicy"] as? [Any?] {
+                    var tmp : [AutoPassPolicy] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AutoPassPolicy()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.autoPassPolicy = tmp
+                }
+            }
+        }
         public var aliyun: CreateDigitalEmployeeRequest.ToolPolicy.Aliyun?
+
+        public var global: CreateDigitalEmployeeRequest.ToolPolicy.Global?
+
+        public var hooks: [Hook]?
 
         public override init() {
             super.init()
@@ -2213,12 +2477,23 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.aliyun?.validate()
+            try self.global?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.aliyun != nil {
                 map["aliyun"] = self.aliyun?.toMap()
+            }
+            if self.global != nil {
+                map["global"] = self.global?.toMap()
+            }
+            if self.hooks != nil {
+                var tmp : [Any] = []
+                for k in self.hooks! {
+                    tmp.append(k.toMap())
+                }
+                map["hooks"] = tmp
             }
             return map
         }
@@ -2229,6 +2504,24 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                 var model = CreateDigitalEmployeeRequest.ToolPolicy.Aliyun()
                 model.fromMap(value)
                 self.aliyun = model
+            }
+            if let value = dict["global"] as? [String: Any?] {
+                var model = CreateDigitalEmployeeRequest.ToolPolicy.Global()
+                model.fromMap(value)
+                self.global = model
+            }
+            if let value = dict["hooks"] as? [Any?] {
+                var tmp : [Hook] = []
+                for v in value {
+                    if v != nil {
+                        var model = Hook()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hooks = tmp
             }
         }
     }
@@ -4844,7 +5137,55 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Global : Tea.TeaModel {
+            public var autoPassPolicy: [AutoPassPolicy]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoPassPolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.autoPassPolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["autoPassPolicy"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["autoPassPolicy"] as? [Any?] {
+                    var tmp : [AutoPassPolicy] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AutoPassPolicy()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.autoPassPolicy = tmp
+                }
+            }
+        }
         public var aliyun: GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun?
+
+        public var global: GetDigitalEmployeeResponseBody.ToolPolicy.Global?
+
+        public var hooks: [Hook]?
 
         public override init() {
             super.init()
@@ -4857,12 +5198,23 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.aliyun?.validate()
+            try self.global?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.aliyun != nil {
                 map["aliyun"] = self.aliyun?.toMap()
+            }
+            if self.global != nil {
+                map["global"] = self.global?.toMap()
+            }
+            if self.hooks != nil {
+                var tmp : [Any] = []
+                for k in self.hooks! {
+                    tmp.append(k.toMap())
+                }
+                map["hooks"] = tmp
             }
             return map
         }
@@ -4873,6 +5225,24 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                 var model = GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun()
                 model.fromMap(value)
                 self.aliyun = model
+            }
+            if let value = dict["global"] as? [String: Any?] {
+                var model = GetDigitalEmployeeResponseBody.ToolPolicy.Global()
+                model.fromMap(value)
+                self.global = model
+            }
+            if let value = dict["hooks"] as? [Any?] {
+                var tmp : [Hook] = []
+                for v in value {
+                    if v != nil {
+                        var model = Hook()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hooks = tmp
             }
         }
     }
@@ -9525,7 +9895,55 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Global : Tea.TeaModel {
+            public var autoPassPolicy: [AutoPassPolicy]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoPassPolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.autoPassPolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["autoPassPolicy"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["autoPassPolicy"] as? [Any?] {
+                    var tmp : [AutoPassPolicy] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AutoPassPolicy()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.autoPassPolicy = tmp
+                }
+            }
+        }
         public var aliyun: UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun?
+
+        public var global: UpdateDigitalEmployeeRequest.ToolPolicy.Global?
+
+        public var hooks: [Hook]?
 
         public override init() {
             super.init()
@@ -9538,12 +9956,23 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.aliyun?.validate()
+            try self.global?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.aliyun != nil {
                 map["aliyun"] = self.aliyun?.toMap()
+            }
+            if self.global != nil {
+                map["global"] = self.global?.toMap()
+            }
+            if self.hooks != nil {
+                var tmp : [Any] = []
+                for k in self.hooks! {
+                    tmp.append(k.toMap())
+                }
+                map["hooks"] = tmp
             }
             return map
         }
@@ -9554,6 +9983,24 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
                 var model = UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun()
                 model.fromMap(value)
                 self.aliyun = model
+            }
+            if let value = dict["global"] as? [String: Any?] {
+                var model = UpdateDigitalEmployeeRequest.ToolPolicy.Global()
+                model.fromMap(value)
+                self.global = model
+            }
+            if let value = dict["hooks"] as? [Any?] {
+                var tmp : [Hook] = []
+                for v in value {
+                    if v != nil {
+                        var model = Hook()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hooks = tmp
             }
         }
     }
