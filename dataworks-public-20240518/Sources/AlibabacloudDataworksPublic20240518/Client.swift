@@ -288,6 +288,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addKnowledgeBaseAdministratorWithOptions(_ request: AddKnowledgeBaseAdministratorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddKnowledgeBaseAdministratorResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.administratorUserId)) {
+            body["AdministratorUserId"] = request.administratorUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddKnowledgeBaseAdministrator",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddKnowledgeBaseAdministratorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addKnowledgeBaseAdministrator(_ request: AddKnowledgeBaseAdministratorRequest) async throws -> AddKnowledgeBaseAdministratorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addKnowledgeBaseAdministratorWithOptions(request as! AddKnowledgeBaseAdministratorRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func applyResourceAccessPermissionWithOptions(_ tmpReq: ApplyResourceAccessPermissionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyResourceAccessPermissionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ApplyResourceAccessPermissionShrinkRequest = ApplyResourceAccessPermissionShrinkRequest([:])
@@ -2526,6 +2560,321 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createImage(_ request: CreateImageRequest) async throws -> CreateImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createImageWithOptions(request as! CreateImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBaseWithOptions(_ request: CreateKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeBase",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBase(_ request: CreateKnowledgeBaseRequest) async throws -> CreateKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeBaseWithOptions(request as! CreateKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBaseBuildTaskWithOptions(_ tmpReq: CreateKnowledgeBaseBuildTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeBaseBuildTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateKnowledgeBaseBuildTaskShrinkRequest = CreateKnowledgeBaseBuildTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.input)) {
+            request.inputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.input, "Input", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.runtimeResource)) {
+            request.runtimeResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.runtimeResource, "RuntimeResource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.trigger)) {
+            request.triggerShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.trigger, "Trigger", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentLocale)) {
+            body["ContentLocale"] = request.contentLocale ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputShrink)) {
+            body["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.llmModel)) {
+            body["LlmModel"] = request.llmModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimeResourceShrink)) {
+            body["RuntimeResource"] = request.runtimeResourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerShrink)) {
+            body["Trigger"] = request.triggerShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeBaseBuildTask",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeBaseBuildTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBaseBuildTask(_ request: CreateKnowledgeBaseBuildTaskRequest) async throws -> CreateKnowledgeBaseBuildTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeBaseBuildTaskWithOptions(request as! CreateKnowledgeBaseBuildTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBaseBuildTaskInstanceWithOptions(_ request: CreateKnowledgeBaseBuildTaskInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeBaseBuildTaskInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeBaseBuildTaskInstance",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeBaseBuildTaskInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBaseBuildTaskInstance(_ request: CreateKnowledgeBaseBuildTaskInstanceRequest) async throws -> CreateKnowledgeBaseBuildTaskInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeBaseBuildTaskInstanceWithOptions(request as! CreateKnowledgeBaseBuildTaskInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeObjectWithOptions(_ tmpReq: CreateKnowledgeObjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeObjectResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateKnowledgeObjectShrinkRequest = CreateKnowledgeObjectShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.content)) {
+            request.contentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.content, "Content", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentShrink)) {
+            body["Content"] = request.contentShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadId)) {
+            body["UploadId"] = request.uploadId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeObject",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeObjectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeObject(_ request: CreateKnowledgeObjectRequest) async throws -> CreateKnowledgeObjectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeObjectWithOptions(request as! CreateKnowledgeObjectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeObjectUploadWithOptions(_ request: CreateKnowledgeObjectUploadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeObjectUploadResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentMd5)) {
+            body["ContentMd5"] = request.contentMd5 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentSha256)) {
+            body["ContentSha256"] = request.contentSha256 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentType)) {
+            body["ContentType"] = request.contentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            body["FileName"] = request.fileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sizeBytes)) {
+            body["SizeBytes"] = request.sizeBytes!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeObjectUpload",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeObjectUploadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeObjectUpload(_ request: CreateKnowledgeObjectUploadRequest) async throws -> CreateKnowledgeObjectUploadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeObjectUploadWithOptions(request as! CreateKnowledgeObjectUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeSourceWithOptions(_ tmpReq: CreateKnowledgeSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeSourceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateKnowledgeSourceShrinkRequest = CreateKnowledgeSourceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataSource)) {
+            request.dataSourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSource, "DataSource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.document)) {
+            request.documentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.document, "Document", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.project)) {
+            request.projectShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.project, "Project", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceShrink)) {
+            body["DataSource"] = request.dataSourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.documentShrink)) {
+            body["Document"] = request.documentShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectShrink)) {
+            body["Project"] = request.projectShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeSource",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeSource(_ request: CreateKnowledgeSourceRequest) async throws -> CreateKnowledgeSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeSourceWithOptions(request as! CreateKnowledgeSourceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4805,6 +5154,139 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteImage(_ request: DeleteImageRequest) async throws -> DeleteImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteImageWithOptions(request as! DeleteImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeBaseWithOptions(_ request: DeleteKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteKnowledgeBase",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeBase(_ request: DeleteKnowledgeBaseRequest) async throws -> DeleteKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteKnowledgeBaseWithOptions(request as! DeleteKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeBaseBuildTaskWithOptions(_ request: DeleteKnowledgeBaseBuildTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteKnowledgeBaseBuildTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteKnowledgeBaseBuildTask",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteKnowledgeBaseBuildTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeBaseBuildTask(_ request: DeleteKnowledgeBaseBuildTaskRequest) async throws -> DeleteKnowledgeBaseBuildTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteKnowledgeBaseBuildTaskWithOptions(request as! DeleteKnowledgeBaseBuildTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeObjectWithOptions(_ request: DeleteKnowledgeObjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteKnowledgeObjectResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeObjectId)) {
+            body["KnowledgeObjectId"] = request.knowledgeObjectId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteKnowledgeObject",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteKnowledgeObjectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeObject(_ request: DeleteKnowledgeObjectRequest) async throws -> DeleteKnowledgeObjectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteKnowledgeObjectWithOptions(request as! DeleteKnowledgeObjectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeSourceWithOptions(_ request: DeleteKnowledgeSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteKnowledgeSourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            body["SourceId"] = request.sourceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteKnowledgeSource",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteKnowledgeSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeSource(_ request: DeleteKnowledgeSourceRequest) async throws -> DeleteKnowledgeSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteKnowledgeSourceWithOptions(request as! DeleteKnowledgeSourceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7478,6 +7960,145 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeBaseBuildTaskWithOptions(_ request: GetKnowledgeBaseBuildTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKnowledgeBaseBuildTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKnowledgeBaseBuildTask",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKnowledgeBaseBuildTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeBaseBuildTask(_ request: GetKnowledgeBaseBuildTaskRequest) async throws -> GetKnowledgeBaseBuildTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKnowledgeBaseBuildTaskWithOptions(request as! GetKnowledgeBaseBuildTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeBaseBuildTaskInstanceWithOptions(_ request: GetKnowledgeBaseBuildTaskInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKnowledgeBaseBuildTaskInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskInstanceId)) {
+            body["TaskInstanceId"] = request.taskInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKnowledgeBaseBuildTaskInstance",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKnowledgeBaseBuildTaskInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeBaseBuildTaskInstance(_ request: GetKnowledgeBaseBuildTaskInstanceRequest) async throws -> GetKnowledgeBaseBuildTaskInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKnowledgeBaseBuildTaskInstanceWithOptions(request as! GetKnowledgeBaseBuildTaskInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeBaseBuildTaskResultWithOptions(_ request: GetKnowledgeBaseBuildTaskResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKnowledgeBaseBuildTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskInstanceId)) {
+            body["TaskInstanceId"] = request.taskInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKnowledgeBaseBuildTaskResult",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKnowledgeBaseBuildTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeBaseBuildTaskResult(_ request: GetKnowledgeBaseBuildTaskResultRequest) async throws -> GetKnowledgeBaseBuildTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKnowledgeBaseBuildTaskResultWithOptions(request as! GetKnowledgeBaseBuildTaskResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeObjectWithOptions(_ request: GetKnowledgeObjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKnowledgeObjectResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeObjectId)) {
+            body["KnowledgeObjectId"] = request.knowledgeObjectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionNo)) {
+            body["VersionNo"] = request.versionNo!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKnowledgeObject",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKnowledgeObjectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeObject(_ request: GetKnowledgeObjectRequest) async throws -> GetKnowledgeObjectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKnowledgeObjectWithOptions(request as! GetKnowledgeObjectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getKnowledgePointWithOptions(_ request: GetKnowledgePointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKnowledgePointResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -7518,6 +8139,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getKnowledgePoint(_ request: GetKnowledgePointRequest) async throws -> GetKnowledgePointResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getKnowledgePointWithOptions(request as! GetKnowledgePointRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeSourceWithOptions(_ request: GetKnowledgeSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKnowledgeSourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            body["SourceId"] = request.sourceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKnowledgeSource",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKnowledgeSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKnowledgeSource(_ request: GetKnowledgeSourceRequest) async throws -> GetKnowledgeSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKnowledgeSourceWithOptions(request as! GetKnowledgeSourceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8530,6 +9185,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWorkflowInstance(_ request: GetWorkflowInstanceRequest) async throws -> GetWorkflowInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getWorkflowInstanceWithOptions(request as! GetWorkflowInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantKnowledgeBaseRetrievalWithOptions(_ request: GrantKnowledgeBaseRetrievalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantKnowledgeBaseRetrievalResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalId)) {
+            body["PrincipalId"] = request.principalId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalType)) {
+            body["PrincipalType"] = request.principalType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GrantKnowledgeBaseRetrieval",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrantKnowledgeBaseRetrievalResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantKnowledgeBaseRetrieval(_ request: GrantKnowledgeBaseRetrievalRequest) async throws -> GrantKnowledgeBaseRetrievalResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await grantKnowledgeBaseRetrievalWithOptions(request as! GrantKnowledgeBaseRetrievalRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -11071,6 +11763,160 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseAdministratorsWithOptions(_ request: ListKnowledgeBaseAdministratorsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseAdministratorsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeBaseAdministrators",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeBaseAdministratorsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseAdministrators(_ request: ListKnowledgeBaseAdministratorsRequest) async throws -> ListKnowledgeBaseAdministratorsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKnowledgeBaseAdministratorsWithOptions(request as! ListKnowledgeBaseAdministratorsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseBuildTaskInstancesWithOptions(_ request: ListKnowledgeBaseBuildTaskInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseBuildTaskInstancesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeBaseBuildTaskInstances",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeBaseBuildTaskInstancesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseBuildTaskInstances(_ request: ListKnowledgeBaseBuildTaskInstancesRequest) async throws -> ListKnowledgeBaseBuildTaskInstancesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKnowledgeBaseBuildTaskInstancesWithOptions(request as! ListKnowledgeBaseBuildTaskInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseBuildTasksWithOptions(_ request: ListKnowledgeBaseBuildTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseBuildTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeBaseBuildTasks",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeBaseBuildTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseBuildTasks(_ request: ListKnowledgeBaseBuildTasksRequest) async throws -> ListKnowledgeBaseBuildTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKnowledgeBaseBuildTasksWithOptions(request as! ListKnowledgeBaseBuildTasksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseRetrievalGrantsWithOptions(_ request: ListKnowledgeBaseRetrievalGrantsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseRetrievalGrantsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalType)) {
+            body["PrincipalType"] = request.principalType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeBaseRetrievalGrants",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeBaseRetrievalGrantsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseRetrievalGrants(_ request: ListKnowledgeBaseRetrievalGrantsRequest) async throws -> ListKnowledgeBaseRetrievalGrantsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKnowledgeBaseRetrievalGrantsWithOptions(request as! ListKnowledgeBaseRetrievalGrantsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listKnowledgeBasesWithOptions(_ request: ListKnowledgeBasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBasesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -11102,6 +11948,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKnowledgeBases(_ request: ListKnowledgeBasesRequest) async throws -> ListKnowledgeBasesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listKnowledgeBasesWithOptions(request as! ListKnowledgeBasesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeObjectsWithOptions(_ request: ListKnowledgeObjectsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeObjectsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeObjects",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeObjectsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeObjects(_ request: ListKnowledgeObjectsRequest) async throws -> ListKnowledgeObjectsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKnowledgeObjectsWithOptions(request as! ListKnowledgeObjectsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -11142,6 +12028,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKnowledgePoints(_ request: ListKnowledgePointsRequest) async throws -> ListKnowledgePointsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listKnowledgePointsWithOptions(request as! ListKnowledgePointsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeSourcesWithOptions(_ request: ListKnowledgeSourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeSourcesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeSources",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeSourcesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeSources(_ request: ListKnowledgeSourcesRequest) async throws -> ListKnowledgeSourcesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKnowledgeSourcesWithOptions(request as! ListKnowledgeSourcesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -13492,6 +14418,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeKnowledgeBaseAdministratorWithOptions(_ request: RemoveKnowledgeBaseAdministratorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveKnowledgeBaseAdministratorResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.administratorUserId)) {
+            body["AdministratorUserId"] = request.administratorUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveKnowledgeBaseAdministrator",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveKnowledgeBaseAdministratorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeKnowledgeBaseAdministrator(_ request: RemoveKnowledgeBaseAdministratorRequest) async throws -> RemoveKnowledgeBaseAdministratorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeKnowledgeBaseAdministratorWithOptions(request as! RemoveKnowledgeBaseAdministratorRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func removeTaskInstanceDependenciesWithOptions(_ tmpReq: RemoveTaskInstanceDependenciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveTaskInstanceDependenciesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RemoveTaskInstanceDependenciesShrinkRequest = RemoveTaskInstanceDependenciesShrinkRequest([:])
@@ -13924,6 +14884,80 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryKnowledgeBaseBuildTaskInstanceWithOptions(_ request: RetryKnowledgeBaseBuildTaskInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RetryKnowledgeBaseBuildTaskInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskInstanceId)) {
+            body["TaskInstanceId"] = request.taskInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RetryKnowledgeBaseBuildTaskInstance",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RetryKnowledgeBaseBuildTaskInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryKnowledgeBaseBuildTaskInstance(_ request: RetryKnowledgeBaseBuildTaskInstanceRequest) async throws -> RetryKnowledgeBaseBuildTaskInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await retryKnowledgeBaseBuildTaskInstanceWithOptions(request as! RetryKnowledgeBaseBuildTaskInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeKnowledgeBaseRetrievalWithOptions(_ request: RevokeKnowledgeBaseRetrievalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeKnowledgeBaseRetrievalResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalId)) {
+            body["PrincipalId"] = request.principalId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.principalType)) {
+            body["PrincipalType"] = request.principalType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeKnowledgeBaseRetrieval",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeKnowledgeBaseRetrievalResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeKnowledgeBaseRetrieval(_ request: RevokeKnowledgeBaseRetrievalRequest) async throws -> RevokeKnowledgeBaseRetrievalResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await revokeKnowledgeBaseRetrievalWithOptions(request as! RevokeKnowledgeBaseRetrievalRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func revokeMemberProjectRolesWithOptions(_ tmpReq: RevokeMemberProjectRolesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeMemberProjectRolesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RevokeMemberProjectRolesShrinkRequest = RevokeMemberProjectRolesShrinkRequest([:])
@@ -14334,6 +15368,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopDIJob(_ request: StopDIJobRequest) async throws -> StopDIJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopDIJobWithOptions(request as! StopDIJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopKnowledgeBaseBuildTaskInstanceWithOptions(_ request: StopKnowledgeBaseBuildTaskInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopKnowledgeBaseBuildTaskInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskInstanceId)) {
+            body["TaskInstanceId"] = request.taskInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopKnowledgeBaseBuildTaskInstance",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopKnowledgeBaseBuildTaskInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopKnowledgeBaseBuildTaskInstance(_ request: StopKnowledgeBaseBuildTaskInstanceRequest) async throws -> StopKnowledgeBaseBuildTaskInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopKnowledgeBaseBuildTaskInstanceWithOptions(request as! StopKnowledgeBaseBuildTaskInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -16381,6 +17449,232 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateImage(_ request: UpdateImageRequest) async throws -> UpdateImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateImageWithOptions(request as! UpdateImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeBaseWithOptions(_ request: UpdateKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKnowledgeBase",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeBase(_ request: UpdateKnowledgeBaseRequest) async throws -> UpdateKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateKnowledgeBaseWithOptions(request as! UpdateKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeBaseBuildTaskWithOptions(_ tmpReq: UpdateKnowledgeBaseBuildTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKnowledgeBaseBuildTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateKnowledgeBaseBuildTaskShrinkRequest = UpdateKnowledgeBaseBuildTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.input)) {
+            request.inputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.input, "Input", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.runtimeResource)) {
+            request.runtimeResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.runtimeResource, "RuntimeResource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.trigger)) {
+            request.triggerShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.trigger, "Trigger", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contentLocale)) {
+            body["ContentLocale"] = request.contentLocale ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputShrink)) {
+            body["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.llmModel)) {
+            body["LlmModel"] = request.llmModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimeResourceShrink)) {
+            body["RuntimeResource"] = request.runtimeResourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerShrink)) {
+            body["Trigger"] = request.triggerShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKnowledgeBaseBuildTask",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKnowledgeBaseBuildTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeBaseBuildTask(_ request: UpdateKnowledgeBaseBuildTaskRequest) async throws -> UpdateKnowledgeBaseBuildTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateKnowledgeBaseBuildTaskWithOptions(request as! UpdateKnowledgeBaseBuildTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeObjectWithOptions(_ tmpReq: UpdateKnowledgeObjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKnowledgeObjectResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateKnowledgeObjectShrinkRequest = UpdateKnowledgeObjectShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.content)) {
+            request.contentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.content, "Content", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentShrink)) {
+            body["Content"] = request.contentShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expectedModifyTime)) {
+            body["ExpectedModifyTime"] = request.expectedModifyTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeObjectId)) {
+            body["KnowledgeObjectId"] = request.knowledgeObjectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadId)) {
+            body["UploadId"] = request.uploadId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionNo)) {
+            body["VersionNo"] = request.versionNo!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKnowledgeObject",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKnowledgeObjectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeObject(_ request: UpdateKnowledgeObjectRequest) async throws -> UpdateKnowledgeObjectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateKnowledgeObjectWithOptions(request as! UpdateKnowledgeObjectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeSourceWithOptions(_ tmpReq: UpdateKnowledgeSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKnowledgeSourceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateKnowledgeSourceShrinkRequest = UpdateKnowledgeSourceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataSource)) {
+            request.dataSourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSource, "DataSource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.document)) {
+            request.documentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.document, "Document", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.project)) {
+            request.projectShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.project, "Project", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataSourceShrink)) {
+            body["DataSource"] = request.dataSourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.documentShrink)) {
+            body["Document"] = request.documentShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            body["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectShrink)) {
+            body["Project"] = request.projectShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            body["SourceId"] = request.sourceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKnowledgeSource",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKnowledgeSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeSource(_ request: UpdateKnowledgeSourceRequest) async throws -> UpdateKnowledgeSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateKnowledgeSourceWithOptions(request as! UpdateKnowledgeSourceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
