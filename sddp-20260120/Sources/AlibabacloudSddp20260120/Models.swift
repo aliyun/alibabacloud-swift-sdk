@@ -2023,6 +2023,8 @@ public class ListDataAssetAccountsResponseBody : Tea.TeaModel {
 
         public var authRole: String?
 
+        public var description_: String?
+
         public var encryptionKeyMode: String?
 
         public var engineType: String?
@@ -2067,6 +2069,9 @@ public class ListDataAssetAccountsResponseBody : Tea.TeaModel {
             if self.authRole != nil {
                 map["AuthRole"] = self.authRole!
             }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.encryptionKeyMode != nil {
                 map["EncryptionKeyMode"] = self.encryptionKeyMode!
             }
@@ -2110,6 +2115,9 @@ public class ListDataAssetAccountsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthRole"] as? String {
                 self.authRole = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["EncryptionKeyMode"] as? String {
                 self.encryptionKeyMode = value
