@@ -4018,6 +4018,53 @@ public class SchemaColumn : Tea.TeaModel {
     }
 }
 
+public class SinkAgentCoreKnowledgeBaseParameters : Tea.TeaModel {
+    public var knowledgeBaseId: String?
+
+    public var roleName: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.knowledgeBaseId != nil {
+            map["KnowledgeBaseId"] = self.knowledgeBaseId!
+        }
+        if self.roleName != nil {
+            map["RoleName"] = self.roleName!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["KnowledgeBaseId"] as? String {
+            self.knowledgeBaseId = value
+        }
+        if let value = dict["RoleName"] as? String {
+            self.roleName = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
 public class SinkAgentRunParameters : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public var form: String?
@@ -17410,6 +17457,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
             }
         }
+        public var sinkAgentCoreKnowledgeBaseParameters: SinkAgentCoreKnowledgeBaseParameters?
+
         public var sinkAgentRunParameters: SinkAgentRunParameters?
 
         public var sinkApacheKafkaParameters: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters?
@@ -17476,6 +17525,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.sinkAgentCoreKnowledgeBaseParameters?.validate()
             try self.sinkAgentRunParameters?.validate()
             try self.sinkApacheKafkaParameters?.validate()
             try self.sinkApacheRocketMQCheckpointParameters?.validate()
@@ -17508,6 +17558,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.sinkAgentCoreKnowledgeBaseParameters != nil {
+                map["SinkAgentCoreKnowledgeBaseParameters"] = self.sinkAgentCoreKnowledgeBaseParameters?.toMap()
+            }
             if self.sinkAgentRunParameters != nil {
                 map["SinkAgentRunParameters"] = self.sinkAgentRunParameters?.toMap()
             }
@@ -17597,6 +17650,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["SinkAgentCoreKnowledgeBaseParameters"] as? [String: Any?] {
+                var model = SinkAgentCoreKnowledgeBaseParameters()
+                model.fromMap(value)
+                self.sinkAgentCoreKnowledgeBaseParameters = model
+            }
             if let value = dict["SinkAgentRunParameters"] as? [String: Any?] {
                 var model = SinkAgentRunParameters()
                 model.fromMap(value)
@@ -35074,6 +35132,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var sinkAgentCoreKnowledgeBaseParameters: SinkAgentCoreKnowledgeBaseParameters?
+
             public var sinkAgentRunParameters: SinkAgentRunParameters?
 
             public var sinkApacheKafkaParameters: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters?
@@ -35136,6 +35196,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.sinkAgentCoreKnowledgeBaseParameters?.validate()
                 try self.sinkAgentRunParameters?.validate()
                 try self.sinkApacheKafkaParameters?.validate()
                 try self.sinkApacheRocketMQCheckpointParameters?.validate()
@@ -35166,6 +35227,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.sinkAgentCoreKnowledgeBaseParameters != nil {
+                    map["SinkAgentCoreKnowledgeBaseParameters"] = self.sinkAgentCoreKnowledgeBaseParameters?.toMap()
+                }
                 if self.sinkAgentRunParameters != nil {
                     map["SinkAgentRunParameters"] = self.sinkAgentRunParameters?.toMap()
                 }
@@ -35249,6 +35313,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["SinkAgentCoreKnowledgeBaseParameters"] as? [String: Any?] {
+                    var model = SinkAgentCoreKnowledgeBaseParameters()
+                    model.fromMap(value)
+                    self.sinkAgentCoreKnowledgeBaseParameters = model
+                }
                 if let value = dict["SinkAgentRunParameters"] as? [String: Any?] {
                     var model = SinkAgentRunParameters()
                     model.fromMap(value)
@@ -36155,6 +36224,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var delimiter: String?
 
+                public var fileExtensions: [String]?
+
                 public var loadFormat: String?
 
                 public var loadMode: String?
@@ -36183,6 +36254,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.delimiter != nil {
                         map["Delimiter"] = self.delimiter!
                     }
+                    if self.fileExtensions != nil {
+                        map["FileExtensions"] = self.fileExtensions!
+                    }
                     if self.loadFormat != nil {
                         map["LoadFormat"] = self.loadFormat!
                     }
@@ -36205,6 +36279,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Delimiter"] as? String {
                         self.delimiter = value
+                    }
+                    if let value = dict["FileExtensions"] as? [String] {
+                        self.fileExtensions = value
                     }
                     if let value = dict["LoadFormat"] as? String {
                         self.loadFormat = value
@@ -49195,6 +49272,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var sinkAgentCoreKnowledgeBaseParameters: SinkAgentCoreKnowledgeBaseParameters?
+
                 public var sinkAgentRunParameters: SinkAgentRunParameters?
 
                 public var sinkApacheRocketMQCheckpointParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkApacheRocketMQCheckpointParameters?
@@ -49255,6 +49334,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.sinkAgentCoreKnowledgeBaseParameters?.validate()
                     try self.sinkAgentRunParameters?.validate()
                     try self.sinkApacheRocketMQCheckpointParameters?.validate()
                     try self.sinkApiDestinationParameters?.validate()
@@ -49284,6 +49364,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.sinkAgentCoreKnowledgeBaseParameters != nil {
+                        map["SinkAgentCoreKnowledgeBaseParameters"] = self.sinkAgentCoreKnowledgeBaseParameters?.toMap()
+                    }
                     if self.sinkAgentRunParameters != nil {
                         map["SinkAgentRunParameters"] = self.sinkAgentRunParameters?.toMap()
                     }
@@ -49364,6 +49447,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["SinkAgentCoreKnowledgeBaseParameters"] as? [String: Any?] {
+                        var model = SinkAgentCoreKnowledgeBaseParameters()
+                        model.fromMap(value)
+                        self.sinkAgentCoreKnowledgeBaseParameters = model
+                    }
                     if let value = dict["SinkAgentRunParameters"] as? [String: Any?] {
                         var model = SinkAgentRunParameters()
                         model.fromMap(value)
@@ -50058,6 +50146,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public var delimiter: String?
 
+                    public var fileExtensions: [String]?
+
                     public var loadFormat: String?
 
                     public var loadMode: String?
@@ -50086,6 +50176,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         if self.delimiter != nil {
                             map["Delimiter"] = self.delimiter!
                         }
+                        if self.fileExtensions != nil {
+                            map["FileExtensions"] = self.fileExtensions!
+                        }
                         if self.loadFormat != nil {
                             map["LoadFormat"] = self.loadFormat!
                         }
@@ -50108,6 +50201,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["Delimiter"] as? String {
                             self.delimiter = value
+                        }
+                        if let value = dict["FileExtensions"] as? [String] {
+                            self.fileExtensions = value
                         }
                         if let value = dict["LoadFormat"] as? String {
                             self.loadFormat = value
@@ -70639,6 +70735,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
             }
         }
+        public var sinkAgentCoreKnowledgeBaseParameters: SinkAgentCoreKnowledgeBaseParameters?
+
         public var sinkAgentRunParameters: SinkAgentRunParameters?
 
         public var sinkApacheKafkaParameters: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters?
@@ -70705,6 +70803,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.sinkAgentCoreKnowledgeBaseParameters?.validate()
             try self.sinkAgentRunParameters?.validate()
             try self.sinkApacheKafkaParameters?.validate()
             try self.sinkApacheRocketMQCheckpointParameters?.validate()
@@ -70737,6 +70836,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.sinkAgentCoreKnowledgeBaseParameters != nil {
+                map["SinkAgentCoreKnowledgeBaseParameters"] = self.sinkAgentCoreKnowledgeBaseParameters?.toMap()
+            }
             if self.sinkAgentRunParameters != nil {
                 map["SinkAgentRunParameters"] = self.sinkAgentRunParameters?.toMap()
             }
@@ -70826,6 +70928,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["SinkAgentCoreKnowledgeBaseParameters"] as? [String: Any?] {
+                var model = SinkAgentCoreKnowledgeBaseParameters()
+                model.fromMap(value)
+                self.sinkAgentCoreKnowledgeBaseParameters = model
+            }
             if let value = dict["SinkAgentRunParameters"] as? [String: Any?] {
                 var model = SinkAgentRunParameters()
                 model.fromMap(value)
