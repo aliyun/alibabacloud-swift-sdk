@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,13 +9,15 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Vpc"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "vpc.aliyuncs.com",
-            "cn-shanghai-finance-1": "vpc.aliyuncs.com",
-            "cn-shenzhen-finance-1": "vpc.aliyuncs.com",
-            "cn-north-2-gov-1": "vpc.aliyuncs.com",
             "ap-northeast-2-pop": "vpc.aliyuncs.com",
+            "ap-south-1": "vpc.aliyuncs.com",
+            "ap-southeast-2": "vpc.aliyuncs.com",
             "cn-beijing-finance-pop": "vpc.aliyuncs.com",
             "cn-beijing-gov-1": "vpc.aliyuncs.com",
             "cn-beijing-nu16-b01": "vpc.aliyuncs.com",
@@ -45,7 +48,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "vpc.cn-zhangjiakou.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
             "eu-west-1-oxs": "vpc-nebula.cn-shenzhen-cloudstone.aliyuncs.com",
-            "rus-west-1-pop": "vpc.aliyuncs.com"
+            "rus-west-1-pop": "vpc.aliyuncs.com",
+            "cn-nanjing": "vpc-smarthosting.cn-hangzhou-cloudstone.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vpc", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1848,6 +1852,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eipId)) {
             query["EipId"] = request.eipId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipInstanceId)) {
+            query["IpInstanceId"] = request.ipInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipType)) {
+            query["IpType"] = request.ipType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -5462,6 +5472,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipv6CidrMask)) {
             query["Ipv6CidrMask"] = request.ipv6CidrMask!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6Only)) {
+            query["Ipv6Only"] = request.ipv6Only!;
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -13176,6 +13189,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableIpv6)) {
             query["EnableIpv6"] = request.enableIpv6!;
         }
+        if (!TeaUtils.Client.isUnset(request.ipv6Only)) {
+            query["Ipv6Only"] = request.ipv6Only!;
+        }
         if (!TeaUtils.Client.isUnset(request.isDefault)) {
             query["IsDefault"] = request.isDefault!;
         }
@@ -17457,6 +17473,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eipId)) {
             query["EipId"] = request.eipId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipInstanceId)) {
+            query["IpInstanceId"] = request.ipInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipType)) {
+            query["IpType"] = request.ipType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";

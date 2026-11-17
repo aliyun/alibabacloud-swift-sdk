@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -6297,6 +6298,10 @@ public class CancelCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
 
     public var eipId: String?
 
+    public var ipInstanceId: String?
+
+    public var ipType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -6327,6 +6332,12 @@ public class CancelCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
         if self.eipId != nil {
             map["EipId"] = self.eipId!
         }
+        if self.ipInstanceId != nil {
+            map["IpInstanceId"] = self.ipInstanceId!
+        }
+        if self.ipType != nil {
+            map["IpType"] = self.ipType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -6352,6 +6363,12 @@ public class CancelCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
         }
         if let value = dict["EipId"] as? String {
             self.eipId = value
+        }
+        if let value = dict["IpInstanceId"] as? String {
+            self.ipInstanceId = value
+        }
+        if let value = dict["IpType"] as? String {
+            self.ipType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -21097,6 +21114,8 @@ public class CreateVSwitchRequest : Tea.TeaModel {
 
     public var ipv6CidrMask: Int32?
 
+    public var ipv6Only: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -21148,6 +21167,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         }
         if self.ipv6CidrMask != nil {
             map["Ipv6CidrMask"] = self.ipv6CidrMask!
+        }
+        if self.ipv6Only != nil {
+            map["Ipv6Only"] = self.ipv6Only!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -21205,6 +21227,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         }
         if let value = dict["Ipv6CidrMask"] as? Int32 {
             self.ipv6CidrMask = value
+        }
+        if let value = dict["Ipv6Only"] as? Bool {
+            self.ipv6Only = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -38415,7 +38440,13 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
 
                     public var bandwidthPackageIpRelationStatus: String?
 
+                    public var commonBandwidthPackageIpBandwidth: String?
+
                     public var ipAddress: String?
+
+                    public var ipInstanceId: String?
+
+                    public var ipType: String?
 
                     public override init() {
                         super.init()
@@ -38437,8 +38468,17 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
                         if self.bandwidthPackageIpRelationStatus != nil {
                             map["BandwidthPackageIpRelationStatus"] = self.bandwidthPackageIpRelationStatus!
                         }
+                        if self.commonBandwidthPackageIpBandwidth != nil {
+                            map["CommonBandwidthPackageIpBandwidth"] = self.commonBandwidthPackageIpBandwidth!
+                        }
                         if self.ipAddress != nil {
                             map["IpAddress"] = self.ipAddress!
+                        }
+                        if self.ipInstanceId != nil {
+                            map["IpInstanceId"] = self.ipInstanceId!
+                        }
+                        if self.ipType != nil {
+                            map["IpType"] = self.ipType!
                         }
                         return map
                     }
@@ -38451,8 +38491,17 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
                         if let value = dict["BandwidthPackageIpRelationStatus"] as? String {
                             self.bandwidthPackageIpRelationStatus = value
                         }
+                        if let value = dict["CommonBandwidthPackageIpBandwidth"] as? String {
+                            self.commonBandwidthPackageIpBandwidth = value
+                        }
                         if let value = dict["IpAddress"] as? String {
                             self.ipAddress = value
+                        }
+                        if let value = dict["IpInstanceId"] as? String {
+                            self.ipInstanceId = value
+                        }
+                        if let value = dict["IpType"] as? String {
+                            self.ipType = value
                         }
                     }
                 }
@@ -40652,6 +40701,8 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
 
             public var chargeType: String?
 
+            public var commonBandwidthPackageIpBandwidth: String?
+
             public var deletionProtection: Bool?
 
             public var description_: String?
@@ -40761,6 +40812,9 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if self.chargeType != nil {
                     map["ChargeType"] = self.chargeType!
+                }
+                if self.commonBandwidthPackageIpBandwidth != nil {
+                    map["CommonBandwidthPackageIpBandwidth"] = self.commonBandwidthPackageIpBandwidth!
                 }
                 if self.deletionProtection != nil {
                     map["DeletionProtection"] = self.deletionProtection!
@@ -40892,6 +40946,9 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ChargeType"] as? String {
                     self.chargeType = value
+                }
+                if let value = dict["CommonBandwidthPackageIpBandwidth"] as? String {
+                    self.commonBandwidthPackageIpBandwidth = value
                 }
                 if let value = dict["DeletionProtection"] as? Bool {
                     self.deletionProtection = value
@@ -49157,6 +49214,52 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
 public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
     public class Ipv6Addresses : Tea.TeaModel {
         public class Ipv6Address : Tea.TeaModel {
+            public class CommonBandwidthPackageInfo : Tea.TeaModel {
+                public var bandwidthPackageBandwidth: Int64?
+
+                public var bandwidthPackageId: String?
+
+                public var commonBandwidthPackageIpBandwidth: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bandwidthPackageBandwidth != nil {
+                        map["BandwidthPackageBandwidth"] = self.bandwidthPackageBandwidth!
+                    }
+                    if self.bandwidthPackageId != nil {
+                        map["BandwidthPackageId"] = self.bandwidthPackageId!
+                    }
+                    if self.commonBandwidthPackageIpBandwidth != nil {
+                        map["CommonBandwidthPackageIpBandwidth"] = self.commonBandwidthPackageIpBandwidth!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["BandwidthPackageBandwidth"] as? Int64 {
+                        self.bandwidthPackageBandwidth = value
+                    }
+                    if let value = dict["BandwidthPackageId"] as? String {
+                        self.bandwidthPackageId = value
+                    }
+                    if let value = dict["CommonBandwidthPackageIpBandwidth"] as? Int64 {
+                        self.commonBandwidthPackageIpBandwidth = value
+                    }
+                }
+            }
             public class Ipv6InternetBandwidth : Tea.TeaModel {
                 public var bandwidth: Int32?
 
@@ -49349,6 +49452,8 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
 
             public var associatedInstanceType: String?
 
+            public var commonBandwidthPackageInfo: DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.CommonBandwidthPackageInfo?
+
             public var ipv6Address: String?
 
             public var ipv6AddressDescription: String?
@@ -49389,6 +49494,7 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.commonBandwidthPackageInfo?.validate()
                 try self.ipv6InternetBandwidth?.validate()
                 try self.tags?.validate()
             }
@@ -49406,6 +49512,9 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 }
                 if self.associatedInstanceType != nil {
                     map["AssociatedInstanceType"] = self.associatedInstanceType!
+                }
+                if self.commonBandwidthPackageInfo != nil {
+                    map["CommonBandwidthPackageInfo"] = self.commonBandwidthPackageInfo?.toMap()
                 }
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
@@ -49468,6 +49577,11 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AssociatedInstanceType"] as? String {
                     self.associatedInstanceType = value
+                }
+                if let value = dict["CommonBandwidthPackageInfo"] as? [String: Any?] {
+                    var model = DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.CommonBandwidthPackageInfo()
+                    model.fromMap(value)
+                    self.commonBandwidthPackageInfo = model
                 }
                 if let value = dict["Ipv6Address"] as? String {
                     self.ipv6Address = value
@@ -63323,6 +63437,8 @@ public class DescribeVSwitchAttributesResponseBody : Tea.TeaModel {
 
     public var ipv6CidrBlock: String?
 
+    public var ipv6Only: Bool?
+
     public var isDefault: Bool?
 
     public var networkAclId: String?
@@ -63382,6 +63498,9 @@ public class DescribeVSwitchAttributesResponseBody : Tea.TeaModel {
         }
         if self.ipv6CidrBlock != nil {
             map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
+        if self.ipv6Only != nil {
+            map["Ipv6Only"] = self.ipv6Only!
         }
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
@@ -63444,6 +63563,9 @@ public class DescribeVSwitchAttributesResponseBody : Tea.TeaModel {
         }
         if let value = dict["Ipv6CidrBlock"] as? String {
             self.ipv6CidrBlock = value
+        }
+        if let value = dict["Ipv6Only"] as? Bool {
+            self.ipv6Only = value
         }
         if let value = dict["IsDefault"] as? Bool {
             self.isDefault = value
@@ -63584,6 +63706,8 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
 
     public var enableIpv6: Bool?
 
+    public var ipv6Only: Bool?
+
     public var isDefault: Bool?
 
     public var ownerAccount: String?
@@ -63635,6 +63759,9 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
         }
         if self.enableIpv6 != nil {
             map["EnableIpv6"] = self.enableIpv6!
+        }
+        if self.ipv6Only != nil {
+            map["Ipv6Only"] = self.ipv6Only!
         }
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
@@ -63698,6 +63825,9 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
         }
         if let value = dict["EnableIpv6"] as? Bool {
             self.enableIpv6 = value
+        }
+        if let value = dict["Ipv6Only"] as? Bool {
+            self.ipv6Only = value
         }
         if let value = dict["IsDefault"] as? Bool {
             self.isDefault = value
@@ -93565,6 +93695,10 @@ public class ModifyCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
 
     public var eipId: String?
 
+    public var ipInstanceId: String?
+
+    public var ipType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -93598,6 +93732,12 @@ public class ModifyCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
         if self.eipId != nil {
             map["EipId"] = self.eipId!
         }
+        if self.ipInstanceId != nil {
+            map["IpInstanceId"] = self.ipInstanceId!
+        }
+        if self.ipType != nil {
+            map["IpType"] = self.ipType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -93626,6 +93766,12 @@ public class ModifyCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
         }
         if let value = dict["EipId"] as? String {
             self.eipId = value
+        }
+        if let value = dict["IpInstanceId"] as? String {
+            self.ipInstanceId = value
+        }
+        if let value = dict["IpType"] as? String {
+            self.ipType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
