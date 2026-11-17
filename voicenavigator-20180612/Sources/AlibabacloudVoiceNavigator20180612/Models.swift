@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -4291,6 +4292,8 @@ public class GetAsrConfigResponseBody : Tea.TeaModel {
 
         public var asrClassVocabularyId: String?
 
+        public var asrContextEnabled: String?
+
         public var asrCustomizationId: String?
 
         public var asrOverrides: String?
@@ -4328,6 +4331,9 @@ public class GetAsrConfigResponseBody : Tea.TeaModel {
             if self.asrClassVocabularyId != nil {
                 map["AsrClassVocabularyId"] = self.asrClassVocabularyId!
             }
+            if self.asrContextEnabled != nil {
+                map["AsrContextEnabled"] = self.asrContextEnabled!
+            }
             if self.asrCustomizationId != nil {
                 map["AsrCustomizationId"] = self.asrCustomizationId!
             }
@@ -4362,6 +4368,9 @@ public class GetAsrConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["AsrClassVocabularyId"] as? String {
                 self.asrClassVocabularyId = value
+            }
+            if let value = dict["AsrContextEnabled"] as? String {
+                self.asrContextEnabled = value
             }
             if let value = dict["AsrCustomizationId"] as? String {
                 self.asrCustomizationId = value
@@ -6253,6 +6262,8 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
 
     public var asrClassVocabularyId: String?
 
+    public var asrContextEnabled: Bool?
+
     public var asrCustomizationId: String?
 
     public var asrOverrides: String?
@@ -6294,6 +6305,9 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
         if self.asrClassVocabularyId != nil {
             map["AsrClassVocabularyId"] = self.asrClassVocabularyId!
         }
+        if self.asrContextEnabled != nil {
+            map["AsrContextEnabled"] = self.asrContextEnabled!
+        }
         if self.asrCustomizationId != nil {
             map["AsrCustomizationId"] = self.asrCustomizationId!
         }
@@ -6334,6 +6348,9 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
         }
         if let value = dict["AsrClassVocabularyId"] as? String {
             self.asrClassVocabularyId = value
+        }
+        if let value = dict["AsrContextEnabled"] as? Bool {
+            self.asrContextEnabled = value
         }
         if let value = dict["AsrCustomizationId"] as? String {
             self.asrCustomizationId = value
