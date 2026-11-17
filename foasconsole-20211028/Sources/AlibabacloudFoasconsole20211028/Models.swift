@@ -10391,6 +10391,100 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ModulePrices : Tea.TeaModel {
+            public var discountAmount: Double?
+
+            public var finalUnitFee: String?
+
+            public var moduleCode: String?
+
+            public var moduleName: String?
+
+            public var originalAmount: Double?
+
+            public var payAmount: Double?
+
+            public var priceType: String?
+
+            public var priceUnit: String?
+
+            public var quantity: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.discountAmount != nil {
+                    map["DiscountAmount"] = self.discountAmount!
+                }
+                if self.finalUnitFee != nil {
+                    map["FinalUnitFee"] = self.finalUnitFee!
+                }
+                if self.moduleCode != nil {
+                    map["ModuleCode"] = self.moduleCode!
+                }
+                if self.moduleName != nil {
+                    map["ModuleName"] = self.moduleName!
+                }
+                if self.originalAmount != nil {
+                    map["OriginalAmount"] = self.originalAmount!
+                }
+                if self.payAmount != nil {
+                    map["PayAmount"] = self.payAmount!
+                }
+                if self.priceType != nil {
+                    map["PriceType"] = self.priceType!
+                }
+                if self.priceUnit != nil {
+                    map["PriceUnit"] = self.priceUnit!
+                }
+                if self.quantity != nil {
+                    map["Quantity"] = self.quantity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DiscountAmount"] as? Double {
+                    self.discountAmount = value
+                }
+                if let value = dict["FinalUnitFee"] as? String {
+                    self.finalUnitFee = value
+                }
+                if let value = dict["ModuleCode"] as? String {
+                    self.moduleCode = value
+                }
+                if let value = dict["ModuleName"] as? String {
+                    self.moduleName = value
+                }
+                if let value = dict["OriginalAmount"] as? Double {
+                    self.originalAmount = value
+                }
+                if let value = dict["PayAmount"] as? Double {
+                    self.payAmount = value
+                }
+                if let value = dict["PriceType"] as? String {
+                    self.priceType = value
+                }
+                if let value = dict["PriceUnit"] as? String {
+                    self.priceUnit = value
+                }
+                if let value = dict["Quantity"] as? String {
+                    self.quantity = value
+                }
+            }
+        }
         public class OptionalPromotions : Tea.TeaModel {
             public var promotionDesc: String?
 
@@ -10497,6 +10591,8 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
 
         public var message: String?
 
+        public var modulePrices: [QueryCreateInstancePriceResponseBody.PriceInfo.ModulePrices]?
+
         public var optionalPromotions: [QueryCreateInstancePriceResponseBody.PriceInfo.OptionalPromotions]?
 
         public var originalAmount: Double?
@@ -10544,6 +10640,13 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
             }
             if self.message != nil {
                 map["Message"] = self.message!
+            }
+            if self.modulePrices != nil {
+                var tmp : [Any] = []
+                for k in self.modulePrices! {
+                    tmp.append(k.toMap())
+                }
+                map["ModulePrices"] = tmp
             }
             if self.optionalPromotions != nil {
                 var tmp : [Any] = []
@@ -10598,6 +10701,19 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Message"] as? String {
                 self.message = value
+            }
+            if let value = dict["ModulePrices"] as? [Any?] {
+                var tmp : [QueryCreateInstancePriceResponseBody.PriceInfo.ModulePrices] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryCreateInstancePriceResponseBody.PriceInfo.ModulePrices()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.modulePrices = tmp
             }
             if let value = dict["OptionalPromotions"] as? [Any?] {
                 var tmp : [QueryCreateInstancePriceResponseBody.PriceInfo.OptionalPromotions] = []
