@@ -19364,6 +19364,438 @@ public class DeleteWorkflowTemplateVersionResponse : Tea.TeaModel {
     }
 }
 
+public class DisableConversationShareRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class DisableConversationShareResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareEnabledAt: String?
+
+    public var sharePath: String?
+
+    public var shareToken: String?
+
+    public var shareUrl: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareEnabledAt != nil {
+            map["shareEnabledAt"] = self.shareEnabledAt!
+        }
+        if self.sharePath != nil {
+            map["sharePath"] = self.sharePath!
+        }
+        if self.shareToken != nil {
+            map["shareToken"] = self.shareToken!
+        }
+        if self.shareUrl != nil {
+            map["shareUrl"] = self.shareUrl!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareEnabledAt"] as? String {
+            self.shareEnabledAt = value
+        }
+        if let value = dict["sharePath"] as? String {
+            self.sharePath = value
+        }
+        if let value = dict["shareToken"] as? String {
+            self.shareToken = value
+        }
+        if let value = dict["shareUrl"] as? String {
+            self.shareUrl = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+    }
+}
+
+public class DisableConversationShareResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableConversationShareResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableConversationShareResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DisableOutputItemShareRequest : Tea.TeaModel {
+    public var outputItemId: String?
+
+    public var outputItemName: String?
+
+    public var sessionId: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.outputItemName != nil {
+            map["outputItemName"] = self.outputItemName!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["outputItemName"] as? String {
+            self.outputItemName = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class DisableOutputItemShareResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var outputItemId: String?
+
+    public var requestId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareEnabledAt: String?
+
+    public var sharePath: String?
+
+    public var shareToken: String?
+
+    public var shareUrl: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareEnabledAt != nil {
+            map["shareEnabledAt"] = self.shareEnabledAt!
+        }
+        if self.sharePath != nil {
+            map["sharePath"] = self.sharePath!
+        }
+        if self.shareToken != nil {
+            map["shareToken"] = self.shareToken!
+        }
+        if self.shareUrl != nil {
+            map["shareUrl"] = self.shareUrl!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareEnabledAt"] as? String {
+            self.shareEnabledAt = value
+        }
+        if let value = dict["sharePath"] as? String {
+            self.sharePath = value
+        }
+        if let value = dict["shareToken"] as? String {
+            self.shareToken = value
+        }
+        if let value = dict["shareUrl"] as? String {
+            self.shareUrl = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+    }
+}
+
+public class DisableOutputItemShareResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableOutputItemShareResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableOutputItemShareResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DisableTokenRequest : Tea.TeaModel {
     public var tenantId: String?
 
@@ -19502,6 +19934,628 @@ public class DisableTokenResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DisableTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnableConversationShareRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class EnableConversationShareShrinkRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareUserGroupIdsShrink: String?
+
+    public var shareUserIdsShrink: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareUserGroupIdsShrink != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIdsShrink!
+        }
+        if self.shareUserIdsShrink != nil {
+            map["shareUserIds"] = self.shareUserIdsShrink!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareUserGroupIds"] as? String {
+            self.shareUserGroupIdsShrink = value
+        }
+        if let value = dict["shareUserIds"] as? String {
+            self.shareUserIdsShrink = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class EnableConversationShareResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareEnabledAt: String?
+
+    public var sharePath: String?
+
+    public var shareToken: String?
+
+    public var shareUrl: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareEnabledAt != nil {
+            map["shareEnabledAt"] = self.shareEnabledAt!
+        }
+        if self.sharePath != nil {
+            map["sharePath"] = self.sharePath!
+        }
+        if self.shareToken != nil {
+            map["shareToken"] = self.shareToken!
+        }
+        if self.shareUrl != nil {
+            map["shareUrl"] = self.shareUrl!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareEnabledAt"] as? String {
+            self.shareEnabledAt = value
+        }
+        if let value = dict["sharePath"] as? String {
+            self.sharePath = value
+        }
+        if let value = dict["shareToken"] as? String {
+            self.shareToken = value
+        }
+        if let value = dict["shareUrl"] as? String {
+            self.shareUrl = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+    }
+}
+
+public class EnableConversationShareResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableConversationShareResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableConversationShareResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnableOutputItemShareRequest : Tea.TeaModel {
+    public var outputItemId: String?
+
+    public var outputItemName: String?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.outputItemName != nil {
+            map["outputItemName"] = self.outputItemName!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["outputItemName"] as? String {
+            self.outputItemName = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class EnableOutputItemShareShrinkRequest : Tea.TeaModel {
+    public var outputItemId: String?
+
+    public var outputItemName: String?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareUserGroupIdsShrink: String?
+
+    public var shareUserIdsShrink: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.outputItemName != nil {
+            map["outputItemName"] = self.outputItemName!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareUserGroupIdsShrink != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIdsShrink!
+        }
+        if self.shareUserIdsShrink != nil {
+            map["shareUserIds"] = self.shareUserIdsShrink!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["outputItemName"] as? String {
+            self.outputItemName = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareUserGroupIds"] as? String {
+            self.shareUserGroupIdsShrink = value
+        }
+        if let value = dict["shareUserIds"] as? String {
+            self.shareUserIdsShrink = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class EnableOutputItemShareResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var outputItemId: String?
+
+    public var requestId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareEnabledAt: String?
+
+    public var sharePath: String?
+
+    public var shareToken: String?
+
+    public var shareUrl: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareEnabledAt != nil {
+            map["shareEnabledAt"] = self.shareEnabledAt!
+        }
+        if self.sharePath != nil {
+            map["sharePath"] = self.sharePath!
+        }
+        if self.shareToken != nil {
+            map["shareToken"] = self.shareToken!
+        }
+        if self.shareUrl != nil {
+            map["shareUrl"] = self.shareUrl!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareEnabledAt"] as? String {
+            self.shareEnabledAt = value
+        }
+        if let value = dict["sharePath"] as? String {
+            self.sharePath = value
+        }
+        if let value = dict["shareToken"] as? String {
+            self.shareToken = value
+        }
+        if let value = dict["shareUrl"] as? String {
+            self.shareUrl = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+    }
+}
+
+public class EnableOutputItemShareResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableOutputItemShareResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableOutputItemShareResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -37106,6 +38160,454 @@ public class ListBillingResponse : Tea.TeaModel {
     }
 }
 
+public class ListChatMessageContentsRequest : Tea.TeaModel {
+    public var maxCharsPerAttachment: Int32?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var sourceId: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxCharsPerAttachment != nil {
+            map["maxCharsPerAttachment"] = self.maxCharsPerAttachment!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.sourceId != nil {
+            map["sourceId"] = self.sourceId!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxCharsPerAttachment"] as? Int32 {
+            self.maxCharsPerAttachment = value
+        }
+        if let value = dict["page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["sourceId"] as? String {
+            self.sourceId = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class ListChatMessageContentsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class Attachments : Tea.TeaModel {
+            public var attachmentId: String?
+
+            public var charCount: Int64?
+
+            public var chunkCount: Int32?
+
+            public var content: String?
+
+            public var emptyReason: String?
+
+            public var failureCode: String?
+
+            public var failureReason: String?
+
+            public var fileName: String?
+
+            public var found: Bool?
+
+            public var messageId: String?
+
+            public var modality: String?
+
+            public var status: String?
+
+            public var truncated: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attachmentId != nil {
+                    map["attachmentId"] = self.attachmentId!
+                }
+                if self.charCount != nil {
+                    map["charCount"] = self.charCount!
+                }
+                if self.chunkCount != nil {
+                    map["chunkCount"] = self.chunkCount!
+                }
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.emptyReason != nil {
+                    map["emptyReason"] = self.emptyReason!
+                }
+                if self.failureCode != nil {
+                    map["failureCode"] = self.failureCode!
+                }
+                if self.failureReason != nil {
+                    map["failureReason"] = self.failureReason!
+                }
+                if self.fileName != nil {
+                    map["fileName"] = self.fileName!
+                }
+                if self.found != nil {
+                    map["found"] = self.found!
+                }
+                if self.messageId != nil {
+                    map["messageId"] = self.messageId!
+                }
+                if self.modality != nil {
+                    map["modality"] = self.modality!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.truncated != nil {
+                    map["truncated"] = self.truncated!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["attachmentId"] as? String {
+                    self.attachmentId = value
+                }
+                if let value = dict["charCount"] as? Int64 {
+                    self.charCount = value
+                }
+                if let value = dict["chunkCount"] as? Int32 {
+                    self.chunkCount = value
+                }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["emptyReason"] as? String {
+                    self.emptyReason = value
+                }
+                if let value = dict["failureCode"] as? String {
+                    self.failureCode = value
+                }
+                if let value = dict["failureReason"] as? String {
+                    self.failureReason = value
+                }
+                if let value = dict["fileName"] as? String {
+                    self.fileName = value
+                }
+                if let value = dict["found"] as? Bool {
+                    self.found = value
+                }
+                if let value = dict["messageId"] as? String {
+                    self.messageId = value
+                }
+                if let value = dict["modality"] as? String {
+                    self.modality = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["truncated"] as? Bool {
+                    self.truncated = value
+                }
+            }
+        }
+        public var attachments: [ListChatMessageContentsResponseBody.Items.Attachments]?
+
+        public var messageId: String?
+
+        public var messageType: String?
+
+        public var recordId: Int64?
+
+        public var senderId: String?
+
+        public var senderName: String?
+
+        public var sentAt: String?
+
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attachments != nil {
+                var tmp : [Any] = []
+                for k in self.attachments! {
+                    tmp.append(k.toMap())
+                }
+                map["attachments"] = tmp
+            }
+            if self.messageId != nil {
+                map["messageId"] = self.messageId!
+            }
+            if self.messageType != nil {
+                map["messageType"] = self.messageType!
+            }
+            if self.recordId != nil {
+                map["recordId"] = self.recordId!
+            }
+            if self.senderId != nil {
+                map["senderId"] = self.senderId!
+            }
+            if self.senderName != nil {
+                map["senderName"] = self.senderName!
+            }
+            if self.sentAt != nil {
+                map["sentAt"] = self.sentAt!
+            }
+            if self.text != nil {
+                map["text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["attachments"] as? [Any?] {
+                var tmp : [ListChatMessageContentsResponseBody.Items.Attachments] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListChatMessageContentsResponseBody.Items.Attachments()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.attachments = tmp
+            }
+            if let value = dict["messageId"] as? String {
+                self.messageId = value
+            }
+            if let value = dict["messageType"] as? String {
+                self.messageType = value
+            }
+            if let value = dict["recordId"] as? Int64 {
+                self.recordId = value
+            }
+            if let value = dict["senderId"] as? String {
+                self.senderId = value
+            }
+            if let value = dict["senderName"] as? String {
+                self.senderName = value
+            }
+            if let value = dict["sentAt"] as? String {
+                self.sentAt = value
+            }
+            if let value = dict["text"] as? String {
+                self.text = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var hasMore: Bool?
+
+    public var items: [ListChatMessageContentsResponseBody.Items]?
+
+    public var message: String?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var sourceId: String?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.hasMore != nil {
+            map["hasMore"] = self.hasMore!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["items"] = tmp
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sourceId != nil {
+            map["sourceId"] = self.sourceId!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["hasMore"] as? Bool {
+            self.hasMore = value
+        }
+        if let value = dict["items"] as? [Any?] {
+            var tmp : [ListChatMessageContentsResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = ListChatMessageContentsResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["sourceId"] as? String {
+            self.sourceId = value
+        }
+        if let value = dict["total"] as? Int64 {
+            self.total = value
+        }
+    }
+}
+
+public class ListChatMessageContentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListChatMessageContentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListChatMessageContentsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListChatSessionsRequest : Tea.TeaModel {
     public var digitalEmployeeName: String?
 
@@ -50785,6 +52287,532 @@ public class PreviewKnowledgeBaseSourceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = PreviewKnowledgeBaseSourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class PreviewOutputFileRequest : Tea.TeaModel {
+    public var outputItemId: String?
+
+    public var tenantId: String?
+
+    public var versionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        if self.versionId != nil {
+            map["versionId"] = self.versionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+        if let value = dict["versionId"] as? String {
+            self.versionId = value
+        }
+    }
+}
+
+public class PreviewOutputFileResponseBody : Tea.TeaModel {
+    public class Slides : Tea.TeaModel {
+        public var displayText: String?
+
+        public var imageUrl: String?
+
+        public var slideId: String?
+
+        public var slideIndex: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.displayText != nil {
+                map["displayText"] = self.displayText!
+            }
+            if self.imageUrl != nil {
+                map["imageUrl"] = self.imageUrl!
+            }
+            if self.slideId != nil {
+                map["slideId"] = self.slideId!
+            }
+            if self.slideIndex != nil {
+                map["slideIndex"] = self.slideIndex!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["displayText"] as? String {
+                self.displayText = value
+            }
+            if let value = dict["imageUrl"] as? String {
+                self.imageUrl = value
+            }
+            if let value = dict["slideId"] as? String {
+                self.slideId = value
+            }
+            if let value = dict["slideIndex"] as? Int64 {
+                self.slideIndex = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public class Version : Tea.TeaModel {
+        public class Capabilities : Tea.TeaModel {
+            public var canBrowserOpen: Bool?
+
+            public var canDownload: Bool?
+
+            public var canEdit: Bool?
+
+            public var canRestore: Bool?
+
+            public var canSaveAsKnowledge: Bool?
+
+            public var canShare: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.canBrowserOpen != nil {
+                    map["canBrowserOpen"] = self.canBrowserOpen!
+                }
+                if self.canDownload != nil {
+                    map["canDownload"] = self.canDownload!
+                }
+                if self.canEdit != nil {
+                    map["canEdit"] = self.canEdit!
+                }
+                if self.canRestore != nil {
+                    map["canRestore"] = self.canRestore!
+                }
+                if self.canSaveAsKnowledge != nil {
+                    map["canSaveAsKnowledge"] = self.canSaveAsKnowledge!
+                }
+                if self.canShare != nil {
+                    map["canShare"] = self.canShare!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["canBrowserOpen"] as? Bool {
+                    self.canBrowserOpen = value
+                }
+                if let value = dict["canDownload"] as? Bool {
+                    self.canDownload = value
+                }
+                if let value = dict["canEdit"] as? Bool {
+                    self.canEdit = value
+                }
+                if let value = dict["canRestore"] as? Bool {
+                    self.canRestore = value
+                }
+                if let value = dict["canSaveAsKnowledge"] as? Bool {
+                    self.canSaveAsKnowledge = value
+                }
+                if let value = dict["canShare"] as? Bool {
+                    self.canShare = value
+                }
+            }
+        }
+        public var availability: String?
+
+        public var capabilities: PreviewOutputFileResponseBody.Version.Capabilities?
+
+        public var contentRevision: Int64?
+
+        public var isLatest: Bool?
+
+        public var latestVersionId: String?
+
+        public var readState: String?
+
+        public var selectedVersionId: String?
+
+        public var sourceMessageId: String?
+
+        public var updatedAt: String?
+
+        public var versionNo: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.capabilities?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.availability != nil {
+                map["availability"] = self.availability!
+            }
+            if self.capabilities != nil {
+                map["capabilities"] = self.capabilities?.toMap()
+            }
+            if self.contentRevision != nil {
+                map["contentRevision"] = self.contentRevision!
+            }
+            if self.isLatest != nil {
+                map["isLatest"] = self.isLatest!
+            }
+            if self.latestVersionId != nil {
+                map["latestVersionId"] = self.latestVersionId!
+            }
+            if self.readState != nil {
+                map["readState"] = self.readState!
+            }
+            if self.selectedVersionId != nil {
+                map["selectedVersionId"] = self.selectedVersionId!
+            }
+            if self.sourceMessageId != nil {
+                map["sourceMessageId"] = self.sourceMessageId!
+            }
+            if self.updatedAt != nil {
+                map["updatedAt"] = self.updatedAt!
+            }
+            if self.versionNo != nil {
+                map["versionNo"] = self.versionNo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["availability"] as? String {
+                self.availability = value
+            }
+            if let value = dict["capabilities"] as? [String: Any?] {
+                var model = PreviewOutputFileResponseBody.Version.Capabilities()
+                model.fromMap(value)
+                self.capabilities = model
+            }
+            if let value = dict["contentRevision"] as? Int64 {
+                self.contentRevision = value
+            }
+            if let value = dict["isLatest"] as? Bool {
+                self.isLatest = value
+            }
+            if let value = dict["latestVersionId"] as? String {
+                self.latestVersionId = value
+            }
+            if let value = dict["readState"] as? String {
+                self.readState = value
+            }
+            if let value = dict["selectedVersionId"] as? String {
+                self.selectedVersionId = value
+            }
+            if let value = dict["sourceMessageId"] as? String {
+                self.sourceMessageId = value
+            }
+            if let value = dict["updatedAt"] as? String {
+                self.updatedAt = value
+            }
+            if let value = dict["versionNo"] as? Int64 {
+                self.versionNo = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var content: String?
+
+    public var degraded: Bool?
+
+    public var downloadExpiresAt: String?
+
+    public var downloadUrl: String?
+
+    public var fileExt: String?
+
+    public var gmtModified: String?
+
+    public var itemName: String?
+
+    public var itemType: String?
+
+    public var message: String?
+
+    public var outputItemId: String?
+
+    public var previewExpiresAt: String?
+
+    public var previewType: String?
+
+    public var previewUrl: String?
+
+    public var readState: String?
+
+    public var requestId: String?
+
+    public var slides: [PreviewOutputFileResponseBody.Slides]?
+
+    public var unavailableReason: String?
+
+    public var version: PreviewOutputFileResponseBody.Version?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.version?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.content != nil {
+            map["content"] = self.content!
+        }
+        if self.degraded != nil {
+            map["degraded"] = self.degraded!
+        }
+        if self.downloadExpiresAt != nil {
+            map["downloadExpiresAt"] = self.downloadExpiresAt!
+        }
+        if self.downloadUrl != nil {
+            map["downloadUrl"] = self.downloadUrl!
+        }
+        if self.fileExt != nil {
+            map["fileExt"] = self.fileExt!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.itemName != nil {
+            map["itemName"] = self.itemName!
+        }
+        if self.itemType != nil {
+            map["itemType"] = self.itemType!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.previewExpiresAt != nil {
+            map["previewExpiresAt"] = self.previewExpiresAt!
+        }
+        if self.previewType != nil {
+            map["previewType"] = self.previewType!
+        }
+        if self.previewUrl != nil {
+            map["previewUrl"] = self.previewUrl!
+        }
+        if self.readState != nil {
+            map["readState"] = self.readState!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.slides != nil {
+            var tmp : [Any] = []
+            for k in self.slides! {
+                tmp.append(k.toMap())
+            }
+            map["slides"] = tmp
+        }
+        if self.unavailableReason != nil {
+            map["unavailableReason"] = self.unavailableReason!
+        }
+        if self.version != nil {
+            map["version"] = self.version?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["content"] as? String {
+            self.content = value
+        }
+        if let value = dict["degraded"] as? Bool {
+            self.degraded = value
+        }
+        if let value = dict["downloadExpiresAt"] as? String {
+            self.downloadExpiresAt = value
+        }
+        if let value = dict["downloadUrl"] as? String {
+            self.downloadUrl = value
+        }
+        if let value = dict["fileExt"] as? String {
+            self.fileExt = value
+        }
+        if let value = dict["gmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["itemName"] as? String {
+            self.itemName = value
+        }
+        if let value = dict["itemType"] as? String {
+            self.itemType = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["previewExpiresAt"] as? String {
+            self.previewExpiresAt = value
+        }
+        if let value = dict["previewType"] as? String {
+            self.previewType = value
+        }
+        if let value = dict["previewUrl"] as? String {
+            self.previewUrl = value
+        }
+        if let value = dict["readState"] as? String {
+            self.readState = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["slides"] as? [Any?] {
+            var tmp : [PreviewOutputFileResponseBody.Slides] = []
+            for v in value {
+                if v != nil {
+                    var model = PreviewOutputFileResponseBody.Slides()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.slides = tmp
+        }
+        if let value = dict["unavailableReason"] as? String {
+            self.unavailableReason = value
+        }
+        if let value = dict["version"] as? [String: Any?] {
+            var model = PreviewOutputFileResponseBody.Version()
+            model.fromMap(value)
+            self.version = model
+        }
+    }
+}
+
+public class PreviewOutputFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PreviewOutputFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PreviewOutputFileResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -69840,6 +71868,397 @@ public class UpdateScheduledTaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateScheduledTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateShareRequest : Tea.TeaModel {
+    public var outputItemId: String?
+
+    public var outputItemName: String?
+
+    public var refreshShareLink: Bool?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public var targetType: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.outputItemName != nil {
+            map["outputItemName"] = self.outputItemName!
+        }
+        if self.refreshShareLink != nil {
+            map["refreshShareLink"] = self.refreshShareLink!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        if self.targetType != nil {
+            map["targetType"] = self.targetType!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["outputItemName"] as? String {
+            self.outputItemName = value
+        }
+        if let value = dict["refreshShareLink"] as? Bool {
+            self.refreshShareLink = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+        if let value = dict["targetType"] as? String {
+            self.targetType = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class UpdateShareShrinkRequest : Tea.TeaModel {
+    public var outputItemId: String?
+
+    public var outputItemName: String?
+
+    public var refreshShareLink: Bool?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareUserGroupIdsShrink: String?
+
+    public var shareUserIdsShrink: String?
+
+    public var targetType: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.outputItemName != nil {
+            map["outputItemName"] = self.outputItemName!
+        }
+        if self.refreshShareLink != nil {
+            map["refreshShareLink"] = self.refreshShareLink!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareUserGroupIdsShrink != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIdsShrink!
+        }
+        if self.shareUserIdsShrink != nil {
+            map["shareUserIds"] = self.shareUserIdsShrink!
+        }
+        if self.targetType != nil {
+            map["targetType"] = self.targetType!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["outputItemName"] as? String {
+            self.outputItemName = value
+        }
+        if let value = dict["refreshShareLink"] as? Bool {
+            self.refreshShareLink = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareUserGroupIds"] as? String {
+            self.shareUserGroupIdsShrink = value
+        }
+        if let value = dict["shareUserIds"] as? String {
+            self.shareUserIdsShrink = value
+        }
+        if let value = dict["targetType"] as? String {
+            self.targetType = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class UpdateShareResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var outputItemId: String?
+
+    public var requestId: String?
+
+    public var sessionId: String?
+
+    public var shareAccessType: String?
+
+    public var shareEnabled: Bool?
+
+    public var shareEnabledAt: String?
+
+    public var sharePath: String?
+
+    public var shareToken: String?
+
+    public var shareUrl: String?
+
+    public var shareUserGroupIds: [String]?
+
+    public var shareUserIds: [Int64]?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.outputItemId != nil {
+            map["outputItemId"] = self.outputItemId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.shareAccessType != nil {
+            map["shareAccessType"] = self.shareAccessType!
+        }
+        if self.shareEnabled != nil {
+            map["shareEnabled"] = self.shareEnabled!
+        }
+        if self.shareEnabledAt != nil {
+            map["shareEnabledAt"] = self.shareEnabledAt!
+        }
+        if self.sharePath != nil {
+            map["sharePath"] = self.sharePath!
+        }
+        if self.shareToken != nil {
+            map["shareToken"] = self.shareToken!
+        }
+        if self.shareUrl != nil {
+            map["shareUrl"] = self.shareUrl!
+        }
+        if self.shareUserGroupIds != nil {
+            map["shareUserGroupIds"] = self.shareUserGroupIds!
+        }
+        if self.shareUserIds != nil {
+            map["shareUserIds"] = self.shareUserIds!
+        }
+        if self.targetType != nil {
+            map["targetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["outputItemId"] as? String {
+            self.outputItemId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["shareAccessType"] as? String {
+            self.shareAccessType = value
+        }
+        if let value = dict["shareEnabled"] as? Bool {
+            self.shareEnabled = value
+        }
+        if let value = dict["shareEnabledAt"] as? String {
+            self.shareEnabledAt = value
+        }
+        if let value = dict["sharePath"] as? String {
+            self.sharePath = value
+        }
+        if let value = dict["shareToken"] as? String {
+            self.shareToken = value
+        }
+        if let value = dict["shareUrl"] as? String {
+            self.shareUrl = value
+        }
+        if let value = dict["shareUserGroupIds"] as? [String] {
+            self.shareUserGroupIds = value
+        }
+        if let value = dict["shareUserIds"] as? [Int64] {
+            self.shareUserIds = value
+        }
+        if let value = dict["targetType"] as? String {
+            self.targetType = value
+        }
+    }
+}
+
+public class UpdateShareResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateShareResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateShareResponseBody()
             model.fromMap(value)
             self.body = model
         }
