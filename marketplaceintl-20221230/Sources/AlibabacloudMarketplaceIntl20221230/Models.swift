@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -892,6 +893,8 @@ public class PushMeteringDataRequest : Tea.TeaModel {
     }
     public var gmtCreate: String?
 
+    public var metering: String?
+
     public var meteringData: [PushMeteringDataRequest.MeteringData]?
 
     public override init() {
@@ -911,6 +914,9 @@ public class PushMeteringDataRequest : Tea.TeaModel {
         if self.gmtCreate != nil {
             map["GmtCreate"] = self.gmtCreate!
         }
+        if self.metering != nil {
+            map["Metering"] = self.metering!
+        }
         if self.meteringData != nil {
             var tmp : [Any] = []
             for k in self.meteringData! {
@@ -925,6 +931,9 @@ public class PushMeteringDataRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["GmtCreate"] as? String {
             self.gmtCreate = value
+        }
+        if let value = dict["Metering"] as? String {
+            self.metering = value
         }
         if let value = dict["MeteringData"] as? [Any?] {
             var tmp : [PushMeteringDataRequest.MeteringData] = []
