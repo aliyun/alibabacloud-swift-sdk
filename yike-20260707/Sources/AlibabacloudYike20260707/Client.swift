@@ -241,6 +241,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOssUploadWithOptions(_ request: CreateOssUploadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOssUploadResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialType)) {
+            query["CredentialType"] = request.credentialType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileExt)) {
+            query["FileExt"] = request.fileExt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileType)) {
+            query["FileType"] = request.fileType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetBucket)) {
+            query["TargetBucket"] = request.targetBucket ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateOssUpload",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateOssUploadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOssUpload(_ request: CreateOssUploadRequest) async throws -> CreateOssUploadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createOssUploadWithOptions(request as! CreateOssUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createProjectWithOptions(_ request: CreateProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -272,6 +315,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createProject(_ request: CreateProjectRequest) async throws -> CreateProjectResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createProjectWithOptions(request as! CreateProjectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createUploadMediaWithOptions(_ request: CreateUploadMediaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUploadMediaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialType)) {
+            query["CredentialType"] = request.credentialType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityId)) {
+            query["EntityId"] = request.entityId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileInfo)) {
+            query["FileInfo"] = request.fileInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaMetaData)) {
+            query["MediaMetaData"] = request.mediaMetaData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.overwrite)) {
+            query["Overwrite"] = request.overwrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            query["ProjectId"] = request.projectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageLocation)) {
+            query["StorageLocation"] = request.storageLocation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateUploadMedia",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateUploadMediaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createUploadMedia(_ request: CreateUploadMediaRequest) async throws -> CreateUploadMediaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createUploadMediaWithOptions(request as! CreateUploadMediaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1183,6 +1281,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listInfiniteCanvases(_ request: ListInfiniteCanvasesRequest) async throws -> ListInfiniteCanvasesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listInfiniteCanvasesWithOptions(request as! ListInfiniteCanvasesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMediaFoldersWithOptions(_ request: ListMediaFoldersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMediaFoldersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productionId)) {
+            query["ProductionId"] = request.productionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMediaFolders",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMediaFoldersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMediaFolders(_ request: ListMediaFoldersRequest) async throws -> ListMediaFoldersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listMediaFoldersWithOptions(request as! ListMediaFoldersRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
