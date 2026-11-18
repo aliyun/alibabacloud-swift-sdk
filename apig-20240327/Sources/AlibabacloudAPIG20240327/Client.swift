@@ -4271,6 +4271,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayWebsocketUsageWithOptions(_ gatewayId: String, _ request: GetGatewayWebsocketUsageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayWebsocketUsageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGatewayWebsocketUsage",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/websocket-observability/usage",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGatewayWebsocketUsageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayWebsocketUsage(_ gatewayId: String, _ request: GetGatewayWebsocketUsageRequest) async throws -> GetGatewayWebsocketUsageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getGatewayWebsocketUsageWithOptions(gatewayId as! String, request as! GetGatewayWebsocketUsageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getHiMarketConsumerWithOptions(_ consumerId: String, _ request: GetHiMarketConsumerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHiMarketConsumerResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -6380,6 +6408,63 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listGatewayQuotaRulesWithOptions(gatewayId as! String, request as! ListGatewayQuotaRulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayWebsocketEventsWithOptions(_ gatewayId: String, _ request: ListGatewayWebsocketEventsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayWebsocketEventsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectionId)) {
+            query["connectionId"] = request.connectionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.provider)) {
+            query["provider"] = request.provider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.turnId)) {
+            query["turnId"] = request.turnId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGatewayWebsocketEvents",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/websocket-observability/events",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGatewayWebsocketEventsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayWebsocketEvents(_ gatewayId: String, _ request: ListGatewayWebsocketEventsRequest) async throws -> ListGatewayWebsocketEventsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listGatewayWebsocketEventsWithOptions(gatewayId as! String, request as! ListGatewayWebsocketEventsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -46845,6 +46845,184 @@ public class GetGatewayResourceQuotaUsageResponse : Tea.TeaModel {
     }
 }
 
+public class GetGatewayWebsocketUsageRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetGatewayWebsocketUsageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var basis: String?
+
+        public var hasMore: Bool?
+
+        public var items: [[String: Any]]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.basis != nil {
+                map["basis"] = self.basis!
+            }
+            if self.hasMore != nil {
+                map["hasMore"] = self.hasMore!
+            }
+            if self.items != nil {
+                map["items"] = self.items!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["basis"] as? String {
+                self.basis = value
+            }
+            if let value = dict["hasMore"] as? Bool {
+                self.hasMore = value
+            }
+            if let value = dict["items"] as? [[String: Any]] {
+                self.items = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetGatewayWebsocketUsageResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetGatewayWebsocketUsageResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetGatewayWebsocketUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGatewayWebsocketUsageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetGatewayWebsocketUsageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetHiMarketConsumerRequest : Tea.TeaModel {
 
     public override init() {
@@ -64793,6 +64971,271 @@ public class ListGatewayQuotaRulesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListGatewayQuotaRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListGatewayWebsocketEventsRequest : Tea.TeaModel {
+    public var connectionId: String?
+
+    public var endTime: Int64?
+
+    public var maxResults: Int32?
+
+    public var model: String?
+
+    public var nextToken: String?
+
+    public var provider: String?
+
+    public var source: String?
+
+    public var startTime: Int64?
+
+    public var turnId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.connectionId != nil {
+            map["connectionId"] = self.connectionId!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.model != nil {
+            map["model"] = self.model!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        if self.source != nil {
+            map["source"] = self.source!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.turnId != nil {
+            map["turnId"] = self.turnId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["connectionId"] as? String {
+            self.connectionId = value
+        }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["model"] as? String {
+            self.model = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+        if let value = dict["source"] as? String {
+            self.source = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["turnId"] as? String {
+            self.turnId = value
+        }
+    }
+}
+
+public class ListGatewayWebsocketEventsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var basis: String?
+
+        public var hasMore: Bool?
+
+        public var items: [[String: Any]]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.basis != nil {
+                map["basis"] = self.basis!
+            }
+            if self.hasMore != nil {
+                map["hasMore"] = self.hasMore!
+            }
+            if self.items != nil {
+                map["items"] = self.items!
+            }
+            if self.maxResults != nil {
+                map["maxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["nextToken"] = self.nextToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["basis"] as? String {
+                self.basis = value
+            }
+            if let value = dict["hasMore"] as? Bool {
+                self.hasMore = value
+            }
+            if let value = dict["items"] as? [[String: Any]] {
+                self.items = value
+            }
+            if let value = dict["maxResults"] as? Int32 {
+                self.maxResults = value
+            }
+            if let value = dict["nextToken"] as? String {
+                self.nextToken = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListGatewayWebsocketEventsResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListGatewayWebsocketEventsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListGatewayWebsocketEventsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayWebsocketEventsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListGatewayWebsocketEventsResponseBody()
             model.fromMap(value)
             self.body = model
         }
