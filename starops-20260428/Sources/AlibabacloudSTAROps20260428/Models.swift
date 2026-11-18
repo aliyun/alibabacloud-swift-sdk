@@ -1408,6 +1408,8 @@ public class Hook : Tea.TeaModel {
             }
         }
     }
+    public var debug: Bool?
+
     public var description_: String?
 
     public var enable: Bool?
@@ -1415,6 +1417,8 @@ public class Hook : Tea.TeaModel {
     public var event: String?
 
     public var execution: Hook.Execution?
+
+    public var invisible: Bool?
 
     public var match: [String]?
 
@@ -1439,6 +1443,9 @@ public class Hook : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.debug != nil {
+            map["debug"] = self.debug!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -1450,6 +1457,9 @@ public class Hook : Tea.TeaModel {
         }
         if self.execution != nil {
             map["execution"] = self.execution?.toMap()
+        }
+        if self.invisible != nil {
+            map["invisible"] = self.invisible!
         }
         if self.match != nil {
             map["match"] = self.match!
@@ -1468,6 +1478,9 @@ public class Hook : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["debug"] as? Bool {
+            self.debug = value
+        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
@@ -1481,6 +1494,9 @@ public class Hook : Tea.TeaModel {
             var model = Hook.Execution()
             model.fromMap(value)
             self.execution = model
+        }
+        if let value = dict["invisible"] as? Bool {
+            self.invisible = value
         }
         if let value = dict["match"] as? [String] {
             self.match = value
