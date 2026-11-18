@@ -10566,6 +10566,8 @@ public class CursorResponse : Tea.TeaModel {
 public class DeleteContactRequest : Tea.TeaModel {
     public var contactName: String?
 
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -10583,6 +10585,9 @@ public class DeleteContactRequest : Tea.TeaModel {
         if self.contactName != nil {
             map["ContactName"] = self.contactName!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -10590,6 +10595,9 @@ public class DeleteContactRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ContactName"] as? String {
             self.contactName = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
@@ -50580,6 +50588,8 @@ public class PutContactRequest : Tea.TeaModel {
 
     public var describe: String?
 
+    public var dryRun: Bool?
+
     public var lang: String?
 
     public override init() {
@@ -50606,6 +50616,9 @@ public class PutContactRequest : Tea.TeaModel {
         if self.describe != nil {
             map["Describe"] = self.describe!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -50624,6 +50637,9 @@ public class PutContactRequest : Tea.TeaModel {
         }
         if let value = dict["Describe"] as? String {
             self.describe = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
@@ -50743,6 +50759,8 @@ public class PutContactGroupRequest : Tea.TeaModel {
 
     public var describe: String?
 
+    public var dryRun: Bool?
+
     public var enableSubscribed: Bool?
 
     public override init() {
@@ -50768,6 +50786,9 @@ public class PutContactGroupRequest : Tea.TeaModel {
         if self.describe != nil {
             map["Describe"] = self.describe!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.enableSubscribed != nil {
             map["EnableSubscribed"] = self.enableSubscribed!
         }
@@ -50784,6 +50805,9 @@ public class PutContactGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Describe"] as? String {
             self.describe = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EnableSubscribed"] as? Bool {
             self.enableSubscribed = value
@@ -54795,6 +54819,8 @@ public class PutMetricRuleTargetsRequest : Tea.TeaModel {
             }
         }
     }
+    public var dryRun: Bool?
+
     public var regionId: String?
 
     public var ruleId: String?
@@ -54815,6 +54841,9 @@ public class PutMetricRuleTargetsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -54833,6 +54862,9 @@ public class PutMetricRuleTargetsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }

@@ -1117,6 +1117,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.contactName)) {
             query["ContactName"] = request.contactName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -5842,6 +5845,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.describe)) {
             query["Describe"] = request.describe ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -5884,6 +5890,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.describe)) {
             query["Describe"] = request.describe ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.enableSubscribed)) {
             query["EnableSubscribed"] = request.enableSubscribed!;
@@ -6494,6 +6503,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putMetricRuleTargetsWithOptions(_ request: PutMetricRuleTargetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutMetricRuleTargetsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId ?? "";
         }
