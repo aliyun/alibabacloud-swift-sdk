@@ -28,6 +28,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchVerifyPentestVulnWithOptions(_ tmpReq: BatchVerifyPentestVulnRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchVerifyPentestVulnResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchVerifyPentestVulnShrinkRequest = BatchVerifyPentestVulnShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.operationInput)) {
+            request.operationInputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operationInput, "OperationInput", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.operationInputShrink)) {
+            query["OperationInput"] = request.operationInputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationType)) {
+            query["OperationType"] = request.operationType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchVerifyPentestVuln",
+            "version": "2026-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchVerifyPentestVulnResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchVerifyPentestVuln(_ request: BatchVerifyPentestVulnRequest) async throws -> BatchVerifyPentestVulnResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchVerifyPentestVulnWithOptions(request as! BatchVerifyPentestVulnRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPentestTaskWithOptions(_ tmpReq: CreatePentestTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePentestTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreatePentestTaskShrinkRequest = CreatePentestTaskShrinkRequest([:])
@@ -142,6 +181,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describePentestTaskList(_ request: DescribePentestTaskListRequest) async throws -> DescribePentestTaskListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describePentestTaskListWithOptions(request as! DescribePentestTaskListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePentestVulnDetailWithOptions(_ tmpReq: DescribePentestVulnDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePentestVulnDetailResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribePentestVulnDetailShrinkRequest = DescribePentestVulnDetailShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.operationInput)) {
+            request.operationInputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operationInput, "OperationInput", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.operationInputShrink)) {
+            query["OperationInput"] = request.operationInputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationType)) {
+            query["OperationType"] = request.operationType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePentestVulnDetail",
+            "version": "2026-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePentestVulnDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePentestVulnDetail(_ request: DescribePentestVulnDetailRequest) async throws -> DescribePentestVulnDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePentestVulnDetailWithOptions(request as! DescribePentestVulnDetailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

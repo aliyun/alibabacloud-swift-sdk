@@ -6,6 +6,427 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class BatchVerifyPentestVulnRequest : Tea.TeaModel {
+    public class OperationInput : Tea.TeaModel {
+        public var vulnIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vulnIds != nil {
+                map["VulnIds"] = self.vulnIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VulnIds"] as? [String] {
+                self.vulnIds = value
+            }
+        }
+    }
+    public var operationInput: BatchVerifyPentestVulnRequest.OperationInput?
+
+    public var operationType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.operationInput?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationInput != nil {
+            map["OperationInput"] = self.operationInput?.toMap()
+        }
+        if self.operationType != nil {
+            map["OperationType"] = self.operationType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationInput"] as? [String: Any?] {
+            var model = BatchVerifyPentestVulnRequest.OperationInput()
+            model.fromMap(value)
+            self.operationInput = model
+        }
+        if let value = dict["OperationType"] as? String {
+            self.operationType = value
+        }
+    }
+}
+
+public class BatchVerifyPentestVulnShrinkRequest : Tea.TeaModel {
+    public var operationInputShrink: String?
+
+    public var operationType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationInputShrink != nil {
+            map["OperationInput"] = self.operationInputShrink!
+        }
+        if self.operationType != nil {
+            map["OperationType"] = self.operationType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationInput"] as? String {
+            self.operationInputShrink = value
+        }
+        if let value = dict["OperationType"] as? String {
+            self.operationType = value
+        }
+    }
+}
+
+public class BatchVerifyPentestVulnResponseBody : Tea.TeaModel {
+    public class Results : Tea.TeaModel {
+        public class Record : Tea.TeaModel {
+            public var completedAt: Int64?
+
+            public var creditsUsed: Int64?
+
+            public var durationSeconds: Int64?
+
+            public var failureReason: String?
+
+            public var logUrl: String?
+
+            public var operator_: String?
+
+            public var recordId: String?
+
+            public var startedAt: Int64?
+
+            public var status: String?
+
+            public var summary: String?
+
+            public var trigger: String?
+
+            public var verificationScanId: String?
+
+            public var vulnId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.completedAt != nil {
+                    map["CompletedAt"] = self.completedAt!
+                }
+                if self.creditsUsed != nil {
+                    map["CreditsUsed"] = self.creditsUsed!
+                }
+                if self.durationSeconds != nil {
+                    map["DurationSeconds"] = self.durationSeconds!
+                }
+                if self.failureReason != nil {
+                    map["FailureReason"] = self.failureReason!
+                }
+                if self.logUrl != nil {
+                    map["LogUrl"] = self.logUrl!
+                }
+                if self.operator_ != nil {
+                    map["Operator"] = self.operator_!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.startedAt != nil {
+                    map["StartedAt"] = self.startedAt!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.summary != nil {
+                    map["Summary"] = self.summary!
+                }
+                if self.trigger != nil {
+                    map["Trigger"] = self.trigger!
+                }
+                if self.verificationScanId != nil {
+                    map["VerificationScanId"] = self.verificationScanId!
+                }
+                if self.vulnId != nil {
+                    map["VulnId"] = self.vulnId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CompletedAt"] as? Int64 {
+                    self.completedAt = value
+                }
+                if let value = dict["CreditsUsed"] as? Int64 {
+                    self.creditsUsed = value
+                }
+                if let value = dict["DurationSeconds"] as? Int64 {
+                    self.durationSeconds = value
+                }
+                if let value = dict["FailureReason"] as? String {
+                    self.failureReason = value
+                }
+                if let value = dict["LogUrl"] as? String {
+                    self.logUrl = value
+                }
+                if let value = dict["Operator"] as? String {
+                    self.operator_ = value
+                }
+                if let value = dict["RecordId"] as? String {
+                    self.recordId = value
+                }
+                if let value = dict["StartedAt"] as? Int64 {
+                    self.startedAt = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["Summary"] as? String {
+                    self.summary = value
+                }
+                if let value = dict["Trigger"] as? String {
+                    self.trigger = value
+                }
+                if let value = dict["VerificationScanId"] as? String {
+                    self.verificationScanId = value
+                }
+                if let value = dict["VulnId"] as? String {
+                    self.vulnId = value
+                }
+            }
+        }
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var record: BatchVerifyPentestVulnResponseBody.Results.Record?
+
+        public var success: Bool?
+
+        public var vulnId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.record?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.record != nil {
+                map["Record"] = self.record?.toMap()
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.vulnId != nil {
+                map["VulnId"] = self.vulnId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["Record"] as? [String: Any?] {
+                var model = BatchVerifyPentestVulnResponseBody.Results.Record()
+                model.fromMap(value)
+                self.record = model
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+            if let value = dict["VulnId"] as? String {
+                self.vulnId = value
+            }
+        }
+    }
+    public var failureCount: Int32?
+
+    public var requestId: String?
+
+    public var results: [BatchVerifyPentestVulnResponseBody.Results]?
+
+    public var successCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.failureCount != nil {
+            map["FailureCount"] = self.failureCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.results != nil {
+            var tmp : [Any] = []
+            for k in self.results! {
+                tmp.append(k.toMap())
+            }
+            map["Results"] = tmp
+        }
+        if self.successCount != nil {
+            map["SuccessCount"] = self.successCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FailureCount"] as? Int32 {
+            self.failureCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Results"] as? [Any?] {
+            var tmp : [BatchVerifyPentestVulnResponseBody.Results] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchVerifyPentestVulnResponseBody.Results()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.results = tmp
+        }
+        if let value = dict["SuccessCount"] as? Int32 {
+            self.successCount = value
+        }
+    }
+}
+
+public class BatchVerifyPentestVulnResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchVerifyPentestVulnResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchVerifyPentestVulnResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreatePentestTaskRequest : Tea.TeaModel {
     public class OperationInput : Tea.TeaModel {
         public var assetSource: String?
@@ -1187,6 +1608,476 @@ public class DescribePentestTaskListResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribePentestTaskListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribePentestVulnDetailRequest : Tea.TeaModel {
+    public class OperationInput : Tea.TeaModel {
+        public var vulnId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vulnId != nil {
+                map["VulnId"] = self.vulnId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VulnId"] as? String {
+                self.vulnId = value
+            }
+        }
+    }
+    public var operationInput: DescribePentestVulnDetailRequest.OperationInput?
+
+    public var operationType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.operationInput?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationInput != nil {
+            map["OperationInput"] = self.operationInput?.toMap()
+        }
+        if self.operationType != nil {
+            map["OperationType"] = self.operationType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationInput"] as? [String: Any?] {
+            var model = DescribePentestVulnDetailRequest.OperationInput()
+            model.fromMap(value)
+            self.operationInput = model
+        }
+        if let value = dict["OperationType"] as? String {
+            self.operationType = value
+        }
+    }
+}
+
+public class DescribePentestVulnDetailShrinkRequest : Tea.TeaModel {
+    public var operationInputShrink: String?
+
+    public var operationType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationInputShrink != nil {
+            map["OperationInput"] = self.operationInputShrink!
+        }
+        if self.operationType != nil {
+            map["OperationType"] = self.operationType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationInput"] as? String {
+            self.operationInputShrink = value
+        }
+        if let value = dict["OperationType"] as? String {
+            self.operationType = value
+        }
+    }
+}
+
+public class DescribePentestVulnDetailResponseBody : Tea.TeaModel {
+    public class VulnDetail : Tea.TeaModel {
+        public class BasicInfo : Tea.TeaModel {
+            public var endpoint: String?
+
+            public var injectionParam: String?
+
+            public var injectionType: String?
+
+            public var severity: String?
+
+            public var vulnId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpoint != nil {
+                    map["Endpoint"] = self.endpoint!
+                }
+                if self.injectionParam != nil {
+                    map["InjectionParam"] = self.injectionParam!
+                }
+                if self.injectionType != nil {
+                    map["InjectionType"] = self.injectionType!
+                }
+                if self.severity != nil {
+                    map["Severity"] = self.severity!
+                }
+                if self.vulnId != nil {
+                    map["VulnId"] = self.vulnId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Endpoint"] as? String {
+                    self.endpoint = value
+                }
+                if let value = dict["InjectionParam"] as? String {
+                    self.injectionParam = value
+                }
+                if let value = dict["InjectionType"] as? String {
+                    self.injectionType = value
+                }
+                if let value = dict["Severity"] as? String {
+                    self.severity = value
+                }
+                if let value = dict["VulnId"] as? String {
+                    self.vulnId = value
+                }
+            }
+        }
+        public class Exploits : Tea.TeaModel {
+            public var request: String?
+
+            public var response: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.request != nil {
+                    map["Request"] = self.request!
+                }
+                if self.response != nil {
+                    map["Response"] = self.response!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Request"] as? String {
+                    self.request = value
+                }
+                if let value = dict["Response"] as? String {
+                    self.response = value
+                }
+            }
+        }
+        public var affectedUrl: String?
+
+        public var basicInfo: DescribePentestVulnDetailResponseBody.VulnDetail.BasicInfo?
+
+        public var cvss: Double?
+
+        public var description_: String?
+
+        public var discoveredAt: Int64?
+
+        public var evidence: String?
+
+        public var exploits: [DescribePentestVulnDetailResponseBody.VulnDetail.Exploits]?
+
+        public var fixSuggestions: [String]?
+
+        public var remediation: String?
+
+        public var riskDescription: String?
+
+        public var riskImpacts: [String]?
+
+        public var status: String?
+
+        public var taskId: String?
+
+        public var title: String?
+
+        public var verificationStatus: String?
+
+        public var vulnType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.basicInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.affectedUrl != nil {
+                map["AffectedUrl"] = self.affectedUrl!
+            }
+            if self.basicInfo != nil {
+                map["BasicInfo"] = self.basicInfo?.toMap()
+            }
+            if self.cvss != nil {
+                map["Cvss"] = self.cvss!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.discoveredAt != nil {
+                map["DiscoveredAt"] = self.discoveredAt!
+            }
+            if self.evidence != nil {
+                map["Evidence"] = self.evidence!
+            }
+            if self.exploits != nil {
+                var tmp : [Any] = []
+                for k in self.exploits! {
+                    tmp.append(k.toMap())
+                }
+                map["Exploits"] = tmp
+            }
+            if self.fixSuggestions != nil {
+                map["FixSuggestions"] = self.fixSuggestions!
+            }
+            if self.remediation != nil {
+                map["Remediation"] = self.remediation!
+            }
+            if self.riskDescription != nil {
+                map["RiskDescription"] = self.riskDescription!
+            }
+            if self.riskImpacts != nil {
+                map["RiskImpacts"] = self.riskImpacts!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            if self.verificationStatus != nil {
+                map["VerificationStatus"] = self.verificationStatus!
+            }
+            if self.vulnType != nil {
+                map["VulnType"] = self.vulnType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AffectedUrl"] as? String {
+                self.affectedUrl = value
+            }
+            if let value = dict["BasicInfo"] as? [String: Any?] {
+                var model = DescribePentestVulnDetailResponseBody.VulnDetail.BasicInfo()
+                model.fromMap(value)
+                self.basicInfo = model
+            }
+            if let value = dict["Cvss"] as? Double {
+                self.cvss = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["DiscoveredAt"] as? Int64 {
+                self.discoveredAt = value
+            }
+            if let value = dict["Evidence"] as? String {
+                self.evidence = value
+            }
+            if let value = dict["Exploits"] as? [Any?] {
+                var tmp : [DescribePentestVulnDetailResponseBody.VulnDetail.Exploits] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribePentestVulnDetailResponseBody.VulnDetail.Exploits()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.exploits = tmp
+            }
+            if let value = dict["FixSuggestions"] as? [String] {
+                self.fixSuggestions = value
+            }
+            if let value = dict["Remediation"] as? String {
+                self.remediation = value
+            }
+            if let value = dict["RiskDescription"] as? String {
+                self.riskDescription = value
+            }
+            if let value = dict["RiskImpacts"] as? [String] {
+                self.riskImpacts = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["Title"] as? String {
+                self.title = value
+            }
+            if let value = dict["VerificationStatus"] as? String {
+                self.verificationStatus = value
+            }
+            if let value = dict["VulnType"] as? String {
+                self.vulnType = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var vulnDetail: DescribePentestVulnDetailResponseBody.VulnDetail?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.vulnDetail?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.vulnDetail != nil {
+            map["VulnDetail"] = self.vulnDetail?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["VulnDetail"] as? [String: Any?] {
+            var model = DescribePentestVulnDetailResponseBody.VulnDetail()
+            model.fromMap(value)
+            self.vulnDetail = model
+        }
+    }
+}
+
+public class DescribePentestVulnDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePentestVulnDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePentestVulnDetailResponseBody()
             model.fromMap(value)
             self.body = model
         }
