@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "ThirdswAicall"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = ""
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("thirdswaicall", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -35,6 +39,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.callerUacAccountId)) {
             body["CallerUacAccountId"] = request.callerUacAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currentWorkspaceCode)) {
+            body["CurrentWorkspaceCode"] = request.currentWorkspaceCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
             body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
@@ -88,6 +95,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callerUacAccountId)) {
             body["CallerUacAccountId"] = request.callerUacAccountId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.currentWorkspaceCode)) {
+            body["CurrentWorkspaceCode"] = request.currentWorkspaceCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
             body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
         }
@@ -132,6 +142,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.labelTags)) {
             request.labelTagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelTags, "LabelTags", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.structuredLabelTags)) {
+            request.structuredLabelTagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.structuredLabelTags, "StructuredLabelTags", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callEndTimeBegin)) {
             body["CallEndTimeBegin"] = request.callEndTimeBegin!;
@@ -150,6 +163,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.current)) {
             body["Current"] = request.current!;
+        }
+        if (!TeaUtils.Client.isUnset(request.currentWorkspaceCode)) {
+            body["CurrentWorkspaceCode"] = request.currentWorkspaceCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
             body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
@@ -174,6 +190,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.size)) {
             body["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.structuredLabelTagsShrink)) {
+            body["StructuredLabelTags"] = request.structuredLabelTagsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";

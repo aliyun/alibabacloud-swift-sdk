@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -11,6 +12,8 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
     public var callerNumber: String?
 
     public var callerUacAccountId: String?
+
+    public var currentWorkspaceCode: String?
 
     public var currentWorkspaceId: String?
 
@@ -47,6 +50,9 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
         if self.callerUacAccountId != nil {
             map["CallerUacAccountId"] = self.callerUacAccountId!
         }
+        if self.currentWorkspaceCode != nil {
+            map["CurrentWorkspaceCode"] = self.currentWorkspaceCode!
+        }
         if self.currentWorkspaceId != nil {
             map["CurrentWorkspaceId"] = self.currentWorkspaceId!
         }
@@ -78,6 +84,9 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
         }
         if let value = dict["CallerUacAccountId"] as? String {
             self.callerUacAccountId = value
+        }
+        if let value = dict["CurrentWorkspaceCode"] as? String {
+            self.currentWorkspaceCode = value
         }
         if let value = dict["CurrentWorkspaceId"] as? String {
             self.currentWorkspaceId = value
@@ -291,6 +300,8 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
 
     public var callerUacAccountId: String?
 
+    public var currentWorkspaceCode: String?
+
     public var currentWorkspaceId: String?
 
     public var taskId: Int64?
@@ -315,6 +326,9 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
         if self.callerUacAccountId != nil {
             map["CallerUacAccountId"] = self.callerUacAccountId!
         }
+        if self.currentWorkspaceCode != nil {
+            map["CurrentWorkspaceCode"] = self.currentWorkspaceCode!
+        }
         if self.currentWorkspaceId != nil {
             map["CurrentWorkspaceId"] = self.currentWorkspaceId!
         }
@@ -331,6 +345,9 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
         }
         if let value = dict["CallerUacAccountId"] as? String {
             self.callerUacAccountId = value
+        }
+        if let value = dict["CurrentWorkspaceCode"] as? String {
+            self.currentWorkspaceCode = value
         }
         if let value = dict["CurrentWorkspaceId"] as? String {
             self.currentWorkspaceId = value
@@ -520,6 +537,44 @@ public class QueryTaskConcurrencyResponse : Tea.TeaModel {
 }
 
 public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
+    public class StructuredLabelTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? [String] {
+                self.value = value
+            }
+        }
+    }
     public var callEndTimeBegin: Int64?
 
     public var callEndTimeEnd: Int64?
@@ -531,6 +586,8 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
     public var callerUacAccountId: String?
 
     public var current: Int32?
+
+    public var currentWorkspaceCode: String?
 
     public var currentWorkspaceId: String?
 
@@ -547,6 +604,8 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var size: Int32?
+
+    public var structuredLabelTags: [ReadOutboundTaskCallListRequest.StructuredLabelTags]?
 
     public var taskId: String?
 
@@ -583,6 +642,9 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         }
         if self.current != nil {
             map["Current"] = self.current!
+        }
+        if self.currentWorkspaceCode != nil {
+            map["CurrentWorkspaceCode"] = self.currentWorkspaceCode!
         }
         if self.currentWorkspaceId != nil {
             map["CurrentWorkspaceId"] = self.currentWorkspaceId!
@@ -608,6 +670,13 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if self.size != nil {
             map["Size"] = self.size!
         }
+        if self.structuredLabelTags != nil {
+            var tmp : [Any] = []
+            for k in self.structuredLabelTags! {
+                tmp.append(k.toMap())
+            }
+            map["StructuredLabelTags"] = tmp
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -637,6 +706,9 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if let value = dict["Current"] as? Int32 {
             self.current = value
         }
+        if let value = dict["CurrentWorkspaceCode"] as? String {
+            self.currentWorkspaceCode = value
+        }
         if let value = dict["CurrentWorkspaceId"] as? String {
             self.currentWorkspaceId = value
         }
@@ -661,6 +733,19 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if let value = dict["Size"] as? Int32 {
             self.size = value
         }
+        if let value = dict["StructuredLabelTags"] as? [Any?] {
+            var tmp : [ReadOutboundTaskCallListRequest.StructuredLabelTags] = []
+            for v in value {
+                if v != nil {
+                    var model = ReadOutboundTaskCallListRequest.StructuredLabelTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.structuredLabelTags = tmp
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
@@ -683,6 +768,8 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
 
     public var current: Int32?
 
+    public var currentWorkspaceCode: String?
+
     public var currentWorkspaceId: String?
 
     public var customerNameOrPhone: String?
@@ -698,6 +785,8 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var size: Int32?
+
+    public var structuredLabelTagsShrink: String?
 
     public var taskId: String?
 
@@ -735,6 +824,9 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         if self.current != nil {
             map["Current"] = self.current!
         }
+        if self.currentWorkspaceCode != nil {
+            map["CurrentWorkspaceCode"] = self.currentWorkspaceCode!
+        }
         if self.currentWorkspaceId != nil {
             map["CurrentWorkspaceId"] = self.currentWorkspaceId!
         }
@@ -758,6 +850,9 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         }
         if self.size != nil {
             map["Size"] = self.size!
+        }
+        if self.structuredLabelTagsShrink != nil {
+            map["StructuredLabelTags"] = self.structuredLabelTagsShrink!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -788,6 +883,9 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         if let value = dict["Current"] as? Int32 {
             self.current = value
         }
+        if let value = dict["CurrentWorkspaceCode"] as? String {
+            self.currentWorkspaceCode = value
+        }
         if let value = dict["CurrentWorkspaceId"] as? String {
             self.currentWorkspaceId = value
         }
@@ -811,6 +909,9 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Size"] as? Int32 {
             self.size = value
+        }
+        if let value = dict["StructuredLabelTags"] as? String {
+            self.structuredLabelTagsShrink = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -877,6 +978,44 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class StructuredLabelTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? [String] {
+                    self.value = value
+                }
+            }
+        }
         public var billingDuration: Int64?
 
         public var callEndTime: String?
@@ -907,6 +1046,8 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var hangupDirection: String?
+
         public var id: Int64?
 
         public var instanceId: String?
@@ -924,6 +1065,8 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
         public var sceneId: String?
 
         public var status: String?
+
+        public var structuredLabelTags: [ReadOutboundTaskCallListResponseBody.Records.StructuredLabelTags]?
 
         public var taskId: String?
 
@@ -998,6 +1141,9 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.hangupDirection != nil {
+                map["HangupDirection"] = self.hangupDirection!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -1024,6 +1170,13 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.structuredLabelTags != nil {
+                var tmp : [Any] = []
+                for k in self.structuredLabelTags! {
+                    tmp.append(k.toMap())
+                }
+                map["StructuredLabelTags"] = tmp
             }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
@@ -1100,6 +1253,9 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
             if let value = dict["GmtModified"] as? String {
                 self.gmtModified = value
             }
+            if let value = dict["HangupDirection"] as? String {
+                self.hangupDirection = value
+            }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
             }
@@ -1126,6 +1282,19 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["StructuredLabelTags"] as? [Any?] {
+                var tmp : [ReadOutboundTaskCallListResponseBody.Records.StructuredLabelTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ReadOutboundTaskCallListResponseBody.Records.StructuredLabelTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.structuredLabelTags = tmp
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
