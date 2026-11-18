@@ -13200,6 +13200,8 @@ public class CreateDriveRequest : Tea.TeaModel {
 
     public var externalDomainId: String?
 
+    public var platforms: [String]?
+
     public var profileRoaming: Bool?
 
     public var regionId: String?
@@ -13239,6 +13241,9 @@ public class CreateDriveRequest : Tea.TeaModel {
         if self.externalDomainId != nil {
             map["ExternalDomainId"] = self.externalDomainId!
         }
+        if self.platforms != nil {
+            map["Platforms"] = self.platforms!
+        }
         if self.profileRoaming != nil {
             map["ProfileRoaming"] = self.profileRoaming!
         }
@@ -13273,6 +13278,9 @@ public class CreateDriveRequest : Tea.TeaModel {
         }
         if let value = dict["ExternalDomainId"] as? String {
             self.externalDomainId = value
+        }
+        if let value = dict["Platforms"] as? [String] {
+            self.platforms = value
         }
         if let value = dict["ProfileRoaming"] as? Bool {
             self.profileRoaming = value
@@ -19855,7 +19863,13 @@ public class DeleteDirectoriesResponse : Tea.TeaModel {
 }
 
 public class DeleteDriveRequest : Tea.TeaModel {
+    public var domainId: String?
+
     public var driveId: String?
+
+    public var endUserId: String?
+
+    public var officeSiteId: String?
 
     public var regionId: String?
 
@@ -19873,8 +19887,17 @@ public class DeleteDriveRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
         if self.driveId != nil {
             map["DriveId"] = self.driveId!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -19884,8 +19907,17 @@ public class DeleteDriveRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
+        }
         if let value = dict["DriveId"] as? String {
             self.driveId = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -44445,6 +44477,10 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var trustPassword: String?
 
+        public var upmDomainId: String?
+
+        public var upmStatus: String?
+
         public var vSwitchIds: [String]?
 
         public var vpcId: String?
@@ -44670,6 +44706,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.trustPassword != nil {
                 map["TrustPassword"] = self.trustPassword!
+            }
+            if self.upmDomainId != nil {
+                map["UpmDomainId"] = self.upmDomainId!
+            }
+            if self.upmStatus != nil {
+                map["UpmStatus"] = self.upmStatus!
             }
             if self.vSwitchIds != nil {
                 map["VSwitchIds"] = self.vSwitchIds!
@@ -44909,6 +44951,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["TrustPassword"] as? String {
                 self.trustPassword = value
+            }
+            if let value = dict["UpmDomainId"] as? String {
+                self.upmDomainId = value
+            }
+            if let value = dict["UpmStatus"] as? String {
+                self.upmStatus = value
             }
             if let value = dict["VSwitchIds"] as? [String] {
                 self.vSwitchIds = value
@@ -61932,6 +61980,190 @@ public class HibernateDesktopsResponse : Tea.TeaModel {
     }
 }
 
+public class ImportDriveRequest : Tea.TeaModel {
+    public var domainId: String?
+
+    public var endUserId: String?
+
+    public var forceUpdate: Bool?
+
+    public var mountUrl: String?
+
+    public var platform: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.forceUpdate != nil {
+            map["ForceUpdate"] = self.forceUpdate!
+        }
+        if self.mountUrl != nil {
+            map["MountUrl"] = self.mountUrl!
+        }
+        if self.platform != nil {
+            map["Platform"] = self.platform!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["ForceUpdate"] as? Bool {
+            self.forceUpdate = value
+        }
+        if let value = dict["MountUrl"] as? String {
+            self.mountUrl = value
+        }
+        if let value = dict["Platform"] as? String {
+            self.platform = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ImportDriveResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var driveId: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.driveId != nil {
+            map["DriveId"] = self.driveId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["DriveId"] as? String {
+            self.driveId = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ImportDriveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ImportDriveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ImportDriveResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListCdsFilesRequest : Tea.TeaModel {
     public var cdsId: String?
 
@@ -72928,6 +73160,8 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
 
     public var enableAdminAccess: Bool?
 
+    public var enableUpm: Bool?
+
     public var needVerifyLoginRisk: Bool?
 
     public var needVerifyZeroDevice: Bool?
@@ -72974,6 +73208,9 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
         if self.enableAdminAccess != nil {
             map["EnableAdminAccess"] = self.enableAdminAccess!
         }
+        if self.enableUpm != nil {
+            map["EnableUpm"] = self.enableUpm!
+        }
         if self.needVerifyLoginRisk != nil {
             map["NeedVerifyLoginRisk"] = self.needVerifyLoginRisk!
         }
@@ -73017,6 +73254,9 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["EnableAdminAccess"] as? Bool {
             self.enableAdminAccess = value
+        }
+        if let value = dict["EnableUpm"] as? Bool {
+            self.enableUpm = value
         }
         if let value = dict["NeedVerifyLoginRisk"] as? Bool {
             self.needVerifyLoginRisk = value

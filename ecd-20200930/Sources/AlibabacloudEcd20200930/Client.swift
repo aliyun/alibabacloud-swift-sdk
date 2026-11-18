@@ -2931,6 +2931,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.externalDomainId)) {
             query["ExternalDomainId"] = request.externalDomainId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.platforms)) {
+            query["Platforms"] = request.platforms ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.profileRoaming)) {
             query["ProfileRoaming"] = request.profileRoaming!;
         }
@@ -4539,8 +4542,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDriveWithOptions(_ request: DeleteDriveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDriveResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainId)) {
+            query["DomainId"] = request.domainId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.driveId)) {
             query["DriveId"] = request.driveId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            query["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
+            query["OfficeSiteId"] = request.officeSiteId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -10426,6 +10438,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importDriveWithOptions(_ request: ImportDriveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportDriveResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainId)) {
+            query["DomainId"] = request.domainId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            query["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.forceUpdate)) {
+            query["ForceUpdate"] = request.forceUpdate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mountUrl)) {
+            query["MountUrl"] = request.mountUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportDrive",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportDriveResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importDrive(_ request: ImportDriveRequest) async throws -> ImportDriveResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importDriveWithOptions(request as! ImportDriveRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listCdsFilesWithOptions(_ tmpReq: ListCdsFilesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCdsFilesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListCdsFilesShrinkRequest = ListCdsFilesShrinkRequest([:])
@@ -12989,6 +13047,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableAdminAccess)) {
             query["EnableAdminAccess"] = request.enableAdminAccess!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableUpm)) {
+            query["EnableUpm"] = request.enableUpm!;
         }
         if (!TeaUtils.Client.isUnset(request.needVerifyLoginRisk)) {
             query["NeedVerifyLoginRisk"] = request.needVerifyLoginRisk!;
