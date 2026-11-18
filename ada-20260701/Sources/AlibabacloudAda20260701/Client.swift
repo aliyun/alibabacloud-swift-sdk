@@ -540,6 +540,31 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkflowGlobalEnvWithOptions(_ request: GetWorkflowGlobalEnvRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkflowGlobalEnvResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWorkflowGlobalEnv",
+            "version": "2026-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWorkflowGlobalEnvResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkflowGlobalEnv(_ request: GetWorkflowGlobalEnvRequest) async throws -> GetWorkflowGlobalEnvResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWorkflowGlobalEnvWithOptions(request as! GetWorkflowGlobalEnvRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAgentSessionsWithOptions(_ tmpReq: ListAgentSessionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgentSessionsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListAgentSessionsShrinkRequest = ListAgentSessionsShrinkRequest([:])
@@ -855,6 +880,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func replyAgentSession(_ request: ReplyAgentSessionRequest) async throws -> ReplyAgentSessionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await replyAgentSessionWithOptions(request as! ReplyAgentSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveWorkflowGlobalEnvWithOptions(_ request: SaveWorkflowGlobalEnvRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveWorkflowGlobalEnvResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["Content"] = request.content ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveWorkflowGlobalEnv",
+            "version": "2026-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveWorkflowGlobalEnvResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveWorkflowGlobalEnv(_ request: SaveWorkflowGlobalEnvRequest) async throws -> SaveWorkflowGlobalEnvResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveWorkflowGlobalEnvWithOptions(request as! SaveWorkflowGlobalEnvRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
