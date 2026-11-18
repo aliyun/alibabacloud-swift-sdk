@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "vod"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "vod.cn-shanghai.aliyuncs.com",
@@ -53,18 +57,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1-oxs": "vod.aliyuncs.com",
             "me-east-1": "vod.aliyuncs.com",
             "rus-west-1-pop": "vod.aliyuncs.com",
-            "us-east-1": "vod.aliyuncs.com",
-            "cn-shenzhen": "vod.cn-shenzhen.aliyuncs.com",
-            "cn-beijing": "vod.cn-beijing.aliyuncs.com",
-            "cn-shanghai": "vod.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "vod.cn-hongkong.aliyuncs.com",
-            "ap-southeast-1": "vod.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "vod.ap-northeast-1.aliyuncs.com",
-            "ap-southeast-5": "vod.ap-southeast-5.aliyuncs.com",
-            "us-west-1": "vod.us-west-1.aliyuncs.com",
-            "eu-central-1": "vod.eu-central-1.aliyuncs.com",
-            "me-central-1": "vod.me-central-1.aliyuncs.com",
-            "cn-north-2-gov-1": "vod.cn-north-2-gov-1.aliyuncs.com"
+            "us-east-1": "vod.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vod", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -7124,6 +7117,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitWorkflowJobWithOptions(_ request: SubmitWorkflowJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitWorkflowJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.extraInputs)) {
+            query["ExtraInputs"] = request.extraInputs ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mediaId)) {
             query["MediaId"] = request.mediaId ?? "";
         }

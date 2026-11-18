@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -47447,6 +47448,8 @@ public class SubmitTranscodeJobsResponse : Tea.TeaModel {
 }
 
 public class SubmitWorkflowJobRequest : Tea.TeaModel {
+    public var extraInputs: String?
+
     public var mediaId: String?
 
     public var workflowId: String?
@@ -47465,6 +47468,9 @@ public class SubmitWorkflowJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.extraInputs != nil {
+            map["ExtraInputs"] = self.extraInputs!
+        }
         if self.mediaId != nil {
             map["MediaId"] = self.mediaId!
         }
@@ -47476,6 +47482,9 @@ public class SubmitWorkflowJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExtraInputs"] as? String {
+            self.extraInputs = value
+        }
         if let value = dict["MediaId"] as? String {
             self.mediaId = value
         }
