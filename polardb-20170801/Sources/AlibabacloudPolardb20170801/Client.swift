@@ -9276,6 +9276,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAgenticDBPerformanceWithOptions(_ request: DescribeAgenticDBPerformanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAgenticDBPerformanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggregate)) {
+            query["Aggregate"] = request.aggregate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.branchId)) {
+            query["BranchId"] = request.branchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            query["Interval"] = request.interval ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.key)) {
+            query["Key"] = request.key ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAgenticDBPerformance",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAgenticDBPerformanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAgenticDBPerformance(_ request: DescribeAgenticDBPerformanceRequest) async throws -> DescribeAgenticDBPerformanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAgenticDBPerformanceWithOptions(request as! DescribeAgenticDBPerformanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeAgenticDBProjectWithOptions(_ request: DescribeAgenticDBProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAgenticDBProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -41896,6 +41896,384 @@ public class DescribeAgenticDBComputeClustersResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeAgenticDBPerformanceRequest : Tea.TeaModel {
+    public var aggregate: Bool?
+
+    public var branchId: String?
+
+    public var DBClusterId: String?
+
+    public var endTime: String?
+
+    public var interval: String?
+
+    public var key: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aggregate != nil {
+            map["Aggregate"] = self.aggregate!
+        }
+        if self.branchId != nil {
+            map["BranchId"] = self.branchId!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Aggregate"] as? Bool {
+            self.aggregate = value
+        }
+        if let value = dict["BranchId"] as? String {
+            self.branchId = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Interval"] as? String {
+            self.interval = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeAgenticDBPerformanceResponseBody : Tea.TeaModel {
+    public class PerformanceKeys : Tea.TeaModel {
+        public class PerformanceKeys : Tea.TeaModel {
+            public class Points : Tea.TeaModel {
+                public class Points : Tea.TeaModel {
+                    public var timestamp: Int64?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.timestamp != nil {
+                            map["Timestamp"] = self.timestamp!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Timestamp"] as? Int64 {
+                            self.timestamp = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var points: [DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys.Points.Points]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.points != nil {
+                        var tmp : [Any] = []
+                        for k in self.points! {
+                            tmp.append(k.toMap())
+                        }
+                        map["points"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["points"] as? [Any?] {
+                        var tmp : [DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys.Points.Points] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys.Points.Points()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.points = tmp
+                    }
+                }
+            }
+            public var branchId: String?
+
+            public var measurement: String?
+
+            public var metricName: String?
+
+            public var points: DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys.Points?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.points?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.branchId != nil {
+                    map["BranchId"] = self.branchId!
+                }
+                if self.measurement != nil {
+                    map["Measurement"] = self.measurement!
+                }
+                if self.metricName != nil {
+                    map["MetricName"] = self.metricName!
+                }
+                if self.points != nil {
+                    map["Points"] = self.points?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BranchId"] as? String {
+                    self.branchId = value
+                }
+                if let value = dict["Measurement"] as? String {
+                    self.measurement = value
+                }
+                if let value = dict["MetricName"] as? String {
+                    self.metricName = value
+                }
+                if let value = dict["Points"] as? [String: Any?] {
+                    var model = DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys.Points()
+                    model.fromMap(value)
+                    self.points = model
+                }
+            }
+        }
+        public var performanceKeys: [DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.performanceKeys != nil {
+                var tmp : [Any] = []
+                for k in self.performanceKeys! {
+                    tmp.append(k.toMap())
+                }
+                map["performanceKeys"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["performanceKeys"] as? [Any?] {
+                var tmp : [DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAgenticDBPerformanceResponseBody.PerformanceKeys.PerformanceKeys()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.performanceKeys = tmp
+            }
+        }
+    }
+    public var DBClusterId: String?
+
+    public var endTime: String?
+
+    public var performanceKeys: DescribeAgenticDBPerformanceResponseBody.PerformanceKeys?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.performanceKeys?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.performanceKeys != nil {
+            map["PerformanceKeys"] = self.performanceKeys?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["PerformanceKeys"] as? [String: Any?] {
+            var model = DescribeAgenticDBPerformanceResponseBody.PerformanceKeys()
+            model.fromMap(value)
+            self.performanceKeys = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeAgenticDBPerformanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAgenticDBPerformanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeAgenticDBPerformanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeAgenticDBProjectRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
