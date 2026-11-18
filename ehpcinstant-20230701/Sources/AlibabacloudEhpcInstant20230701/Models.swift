@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -907,6 +908,8 @@ public class CreateJobRequest : Tea.TeaModel {
     }
     public class DeploymentPolicy : Tea.TeaModel {
         public class Network : Tea.TeaModel {
+            public var enableENIMapping: Bool?
+
             public var enableExternalIpAddress: Bool?
 
             public var vswitch: [String]?
@@ -925,6 +928,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.enableENIMapping != nil {
+                    map["EnableENIMapping"] = self.enableENIMapping!
+                }
                 if self.enableExternalIpAddress != nil {
                     map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
                 }
@@ -936,6 +942,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["EnableENIMapping"] as? Bool {
+                    self.enableENIMapping = value
+                }
                 if let value = dict["EnableExternalIpAddress"] as? Bool {
                     self.enableExternalIpAddress = value
                 }
@@ -1480,9 +1489,13 @@ public class CreateJobRequest : Tea.TeaModel {
 
                     public var environmentVars: [CreateJobRequest.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars]?
 
+                    public var gpuDriverVersion: String?
+
                     public var image: String?
 
                     public var imageRegistryOptions: String?
+
+                    public var privileged: Bool?
 
                     public var workingDir: String?
 
@@ -1516,11 +1529,17 @@ public class CreateJobRequest : Tea.TeaModel {
                             }
                             map["EnvironmentVars"] = tmp
                         }
+                        if self.gpuDriverVersion != nil {
+                            map["GpuDriverVersion"] = self.gpuDriverVersion!
+                        }
                         if self.image != nil {
                             map["Image"] = self.image!
                         }
                         if self.imageRegistryOptions != nil {
                             map["ImageRegistryOptions"] = self.imageRegistryOptions!
+                        }
+                        if self.privileged != nil {
+                            map["Privileged"] = self.privileged!
                         }
                         if self.workingDir != nil {
                             map["WorkingDir"] = self.workingDir!
@@ -1552,11 +1571,17 @@ public class CreateJobRequest : Tea.TeaModel {
                             }
                             self.environmentVars = tmp
                         }
+                        if let value = dict["GpuDriverVersion"] as? String {
+                            self.gpuDriverVersion = value
+                        }
                         if let value = dict["Image"] as? String {
                             self.image = value
                         }
                         if let value = dict["ImageRegistryOptions"] as? String {
                             self.imageRegistryOptions = value
+                        }
+                        if let value = dict["Privileged"] as? Bool {
+                            self.privileged = value
                         }
                         if let value = dict["WorkingDir"] as? String {
                             self.workingDir = value
@@ -2273,6 +2298,1261 @@ public class CreateJobResponse : Tea.TeaModel {
     }
 }
 
+public class CreateJobTemplateRequest : Tea.TeaModel {
+    public class JobTemplateConfig : Tea.TeaModel {
+        public class DeploymentPolicy : Tea.TeaModel {
+            public class Network : Tea.TeaModel {
+                public var enableExternalIpAddress: Bool?
+
+                public var vswitch: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableExternalIpAddress != nil {
+                        map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
+                    }
+                    if self.vswitch != nil {
+                        map["Vswitch"] = self.vswitch!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EnableExternalIpAddress"] as? Bool {
+                        self.enableExternalIpAddress = value
+                    }
+                    if let value = dict["Vswitch"] as? [String] {
+                        self.vswitch = value
+                    }
+                }
+            }
+            public class Tags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var allocationSpec: String?
+
+            public var level: String?
+
+            public var network: CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Network?
+
+            public var pool: String?
+
+            public var priority: Int32?
+
+            public var tags: [CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Tags]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.network?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocationSpec != nil {
+                    map["AllocationSpec"] = self.allocationSpec!
+                }
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
+                if self.network != nil {
+                    map["Network"] = self.network?.toMap()
+                }
+                if self.pool != nil {
+                    map["Pool"] = self.pool!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllocationSpec"] as? String {
+                    self.allocationSpec = value
+                }
+                if let value = dict["Level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["Network"] as? [String: Any?] {
+                    var model = CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Network()
+                    model.fromMap(value)
+                    self.network = model
+                }
+                if let value = dict["Pool"] as? String {
+                    self.pool = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["Tags"] as? [Any?] {
+                    var tmp : [CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Tags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Tags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tags = tmp
+                }
+            }
+        }
+        public class SecurityPolicy : Tea.TeaModel {
+            public class SecurityGroup : Tea.TeaModel {
+                public var securityGroupIds: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.securityGroupIds != nil {
+                        map["SecurityGroupIds"] = self.securityGroupIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecurityGroupIds"] as? [String] {
+                        self.securityGroupIds = value
+                    }
+                }
+            }
+            public var securityGroup: CreateJobTemplateRequest.JobTemplateConfig.SecurityPolicy.SecurityGroup?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.securityGroup?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroup != nil {
+                    map["SecurityGroup"] = self.securityGroup?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SecurityGroup"] as? [String: Any?] {
+                    var model = CreateJobTemplateRequest.JobTemplateConfig.SecurityPolicy.SecurityGroup()
+                    model.fromMap(value)
+                    self.securityGroup = model
+                }
+            }
+        }
+        public class Tasks : Tea.TeaModel {
+            public class ExecutorPolicy : Tea.TeaModel {
+                public class ArraySpec : Tea.TeaModel {
+                    public var indexEnd: Int32?
+
+                    public var indexStart: Int32?
+
+                    public var indexStep: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.indexEnd != nil {
+                            map["IndexEnd"] = self.indexEnd!
+                        }
+                        if self.indexStart != nil {
+                            map["IndexStart"] = self.indexStart!
+                        }
+                        if self.indexStep != nil {
+                            map["IndexStep"] = self.indexStep!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["IndexEnd"] as? Int32 {
+                            self.indexEnd = value
+                        }
+                        if let value = dict["IndexStart"] as? Int32 {
+                            self.indexStart = value
+                        }
+                        if let value = dict["IndexStep"] as? Int32 {
+                            self.indexStep = value
+                        }
+                    }
+                }
+                public var arraySpec: CreateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy.ArraySpec?
+
+                public var maxCount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.arraySpec?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.arraySpec != nil {
+                        map["ArraySpec"] = self.arraySpec?.toMap()
+                    }
+                    if self.maxCount != nil {
+                        map["MaxCount"] = self.maxCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ArraySpec"] as? [String: Any?] {
+                        var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy.ArraySpec()
+                        model.fromMap(value)
+                        self.arraySpec = model
+                    }
+                    if let value = dict["MaxCount"] as? Int32 {
+                        self.maxCount = value
+                    }
+                }
+            }
+            public class TaskSpec : Tea.TeaModel {
+                public class Resource : Tea.TeaModel {
+                    public class Disks : Tea.TeaModel {
+                        public var size: Int32?
+
+                        public var type: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.size != nil {
+                                map["Size"] = self.size!
+                            }
+                            if self.type != nil {
+                                map["Type"] = self.type!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Size"] as? Int32 {
+                                self.size = value
+                            }
+                            if let value = dict["Type"] as? String {
+                                self.type = value
+                            }
+                        }
+                    }
+                    public var cores: Double?
+
+                    public var disks: [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks]?
+
+                    public var enableHT: Bool?
+
+                    public var hostNamePrefix: String?
+
+                    public var instanceTypes: [String]?
+
+                    public var memory: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cores != nil {
+                            map["Cores"] = self.cores!
+                        }
+                        if self.disks != nil {
+                            var tmp : [Any] = []
+                            for k in self.disks! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Disks"] = tmp
+                        }
+                        if self.enableHT != nil {
+                            map["EnableHT"] = self.enableHT!
+                        }
+                        if self.hostNamePrefix != nil {
+                            map["HostNamePrefix"] = self.hostNamePrefix!
+                        }
+                        if self.instanceTypes != nil {
+                            map["InstanceTypes"] = self.instanceTypes!
+                        }
+                        if self.memory != nil {
+                            map["Memory"] = self.memory!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Cores"] as? Double {
+                            self.cores = value
+                        }
+                        if let value = dict["Disks"] as? [Any?] {
+                            var tmp : [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.disks = tmp
+                        }
+                        if let value = dict["EnableHT"] as? Bool {
+                            self.enableHT = value
+                        }
+                        if let value = dict["HostNamePrefix"] as? String {
+                            self.hostNamePrefix = value
+                        }
+                        if let value = dict["InstanceTypes"] as? [String] {
+                            self.instanceTypes = value
+                        }
+                        if let value = dict["Memory"] as? Double {
+                            self.memory = value
+                        }
+                    }
+                }
+                public class RetryPolicy : Tea.TeaModel {
+                    public class ExitCodeActions : Tea.TeaModel {
+                        public var action: String?
+
+                        public var exitCode: Int64?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.action != nil {
+                                map["Action"] = self.action!
+                            }
+                            if self.exitCode != nil {
+                                map["ExitCode"] = self.exitCode!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Action"] as? String {
+                                self.action = value
+                            }
+                            if let value = dict["ExitCode"] as? Int64 {
+                                self.exitCode = value
+                            }
+                        }
+                    }
+                    public var exitCodeActions: [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions]?
+
+                    public var retryCount: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.exitCodeActions != nil {
+                            var tmp : [Any] = []
+                            for k in self.exitCodeActions! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ExitCodeActions"] = tmp
+                        }
+                        if self.retryCount != nil {
+                            map["RetryCount"] = self.retryCount!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ExitCodeActions"] as? [Any?] {
+                            var tmp : [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.exitCodeActions = tmp
+                        }
+                        if let value = dict["RetryCount"] as? Int32 {
+                            self.retryCount = value
+                        }
+                    }
+                }
+                public class TaskExecutor : Tea.TeaModel {
+                    public class Container : Tea.TeaModel {
+                        public class EnvironmentVars : Tea.TeaModel {
+                            public var name: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.name != nil {
+                                    map["Name"] = self.name!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Name"] as? String {
+                                    self.name = value
+                                }
+                                if let value = dict["Value"] as? String {
+                                    self.value = value
+                                }
+                            }
+                        }
+                        public var appId: String?
+
+                        public var arg: [String]?
+
+                        public var command: [String]?
+
+                        public var environmentVars: [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars]?
+
+                        public var gpuDriverVersion: String?
+
+                        public var image: String?
+
+                        public var imageRegistryOptions: String?
+
+                        public var privileged: Bool?
+
+                        public var workingDir: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["AppId"] = self.appId!
+                            }
+                            if self.arg != nil {
+                                map["Arg"] = self.arg!
+                            }
+                            if self.command != nil {
+                                map["Command"] = self.command!
+                            }
+                            if self.environmentVars != nil {
+                                var tmp : [Any] = []
+                                for k in self.environmentVars! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["EnvironmentVars"] = tmp
+                            }
+                            if self.gpuDriverVersion != nil {
+                                map["GpuDriverVersion"] = self.gpuDriverVersion!
+                            }
+                            if self.image != nil {
+                                map["Image"] = self.image!
+                            }
+                            if self.imageRegistryOptions != nil {
+                                map["ImageRegistryOptions"] = self.imageRegistryOptions!
+                            }
+                            if self.privileged != nil {
+                                map["Privileged"] = self.privileged!
+                            }
+                            if self.workingDir != nil {
+                                map["WorkingDir"] = self.workingDir!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AppId"] as? String {
+                                self.appId = value
+                            }
+                            if let value = dict["Arg"] as? [String] {
+                                self.arg = value
+                            }
+                            if let value = dict["Command"] as? [String] {
+                                self.command = value
+                            }
+                            if let value = dict["EnvironmentVars"] as? [Any?] {
+                                var tmp : [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.environmentVars = tmp
+                            }
+                            if let value = dict["GpuDriverVersion"] as? String {
+                                self.gpuDriverVersion = value
+                            }
+                            if let value = dict["Image"] as? String {
+                                self.image = value
+                            }
+                            if let value = dict["ImageRegistryOptions"] as? String {
+                                self.imageRegistryOptions = value
+                            }
+                            if let value = dict["Privileged"] as? Bool {
+                                self.privileged = value
+                            }
+                            if let value = dict["WorkingDir"] as? String {
+                                self.workingDir = value
+                            }
+                        }
+                    }
+                    public class VM : Tea.TeaModel {
+                        public var appId: String?
+
+                        public var image: String?
+
+                        public var password: String?
+
+                        public var prologScript: String?
+
+                        public var script: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["AppId"] = self.appId!
+                            }
+                            if self.image != nil {
+                                map["Image"] = self.image!
+                            }
+                            if self.password != nil {
+                                map["Password"] = self.password!
+                            }
+                            if self.prologScript != nil {
+                                map["PrologScript"] = self.prologScript!
+                            }
+                            if self.script != nil {
+                                map["Script"] = self.script!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AppId"] as? String {
+                                self.appId = value
+                            }
+                            if let value = dict["Image"] as? String {
+                                self.image = value
+                            }
+                            if let value = dict["Password"] as? String {
+                                self.password = value
+                            }
+                            if let value = dict["PrologScript"] as? String {
+                                self.prologScript = value
+                            }
+                            if let value = dict["Script"] as? String {
+                                self.script = value
+                            }
+                        }
+                    }
+                    public var container: CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container?
+
+                    public var VM: CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.VM?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.container?.validate()
+                        try self.VM?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.container != nil {
+                            map["Container"] = self.container?.toMap()
+                        }
+                        if self.VM != nil {
+                            map["VM"] = self.VM?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Container"] as? [String: Any?] {
+                            var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container()
+                            model.fromMap(value)
+                            self.container = model
+                        }
+                        if let value = dict["VM"] as? [String: Any?] {
+                            var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.VM()
+                            model.fromMap(value)
+                            self.VM = model
+                        }
+                    }
+                }
+                public class VolumeMount : Tea.TeaModel {
+                    public var mountOptions: String?
+
+                    public var mountPath: String?
+
+                    public var readOnly: Bool?
+
+                    public var volumeDriver: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.mountOptions != nil {
+                            map["MountOptions"] = self.mountOptions!
+                        }
+                        if self.mountPath != nil {
+                            map["MountPath"] = self.mountPath!
+                        }
+                        if self.readOnly != nil {
+                            map["ReadOnly"] = self.readOnly!
+                        }
+                        if self.volumeDriver != nil {
+                            map["VolumeDriver"] = self.volumeDriver!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["MountOptions"] as? String {
+                            self.mountOptions = value
+                        }
+                        if let value = dict["MountPath"] as? String {
+                            self.mountPath = value
+                        }
+                        if let value = dict["ReadOnly"] as? Bool {
+                            self.readOnly = value
+                        }
+                        if let value = dict["VolumeDriver"] as? String {
+                            self.volumeDriver = value
+                        }
+                    }
+                }
+                public var resource: CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource?
+
+                public var retryPolicy: CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy?
+
+                public var taskExecutor: [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor]?
+
+                public var volumeMount: [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.VolumeMount]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.resource?.validate()
+                    try self.retryPolicy?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.resource != nil {
+                        map["Resource"] = self.resource?.toMap()
+                    }
+                    if self.retryPolicy != nil {
+                        map["RetryPolicy"] = self.retryPolicy?.toMap()
+                    }
+                    if self.taskExecutor != nil {
+                        var tmp : [Any] = []
+                        for k in self.taskExecutor! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TaskExecutor"] = tmp
+                    }
+                    if self.volumeMount != nil {
+                        var tmp : [Any] = []
+                        for k in self.volumeMount! {
+                            tmp.append(k.toMap())
+                        }
+                        map["VolumeMount"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Resource"] as? [String: Any?] {
+                        var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource()
+                        model.fromMap(value)
+                        self.resource = model
+                    }
+                    if let value = dict["RetryPolicy"] as? [String: Any?] {
+                        var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy()
+                        model.fromMap(value)
+                        self.retryPolicy = model
+                    }
+                    if let value = dict["TaskExecutor"] as? [Any?] {
+                        var tmp : [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor] = []
+                        for v in value {
+                            if v != nil {
+                                var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.taskExecutor = tmp
+                    }
+                    if let value = dict["VolumeMount"] as? [Any?] {
+                        var tmp : [CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.VolumeMount] = []
+                        for v in value {
+                            if v != nil {
+                                var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.VolumeMount()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.volumeMount = tmp
+                    }
+                }
+            }
+            public var executorPolicy: CreateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy?
+
+            public var taskName: String?
+
+            public var taskSpec: CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec?
+
+            public var taskSustainable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.executorPolicy?.validate()
+                try self.taskSpec?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.executorPolicy != nil {
+                    map["ExecutorPolicy"] = self.executorPolicy?.toMap()
+                }
+                if self.taskName != nil {
+                    map["TaskName"] = self.taskName!
+                }
+                if self.taskSpec != nil {
+                    map["TaskSpec"] = self.taskSpec?.toMap()
+                }
+                if self.taskSustainable != nil {
+                    map["TaskSustainable"] = self.taskSustainable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExecutorPolicy"] as? [String: Any?] {
+                    var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy()
+                    model.fromMap(value)
+                    self.executorPolicy = model
+                }
+                if let value = dict["TaskName"] as? String {
+                    self.taskName = value
+                }
+                if let value = dict["TaskSpec"] as? [String: Any?] {
+                    var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec()
+                    model.fromMap(value)
+                    self.taskSpec = model
+                }
+                if let value = dict["TaskSustainable"] as? Bool {
+                    self.taskSustainable = value
+                }
+            }
+        }
+        public var deploymentPolicy: CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy?
+
+        public var jobDescription: String?
+
+        public var jobName: String?
+
+        public var jobScheduler: String?
+
+        public var securityPolicy: CreateJobTemplateRequest.JobTemplateConfig.SecurityPolicy?
+
+        public var tasks: [CreateJobTemplateRequest.JobTemplateConfig.Tasks]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.deploymentPolicy?.validate()
+            try self.securityPolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deploymentPolicy != nil {
+                map["DeploymentPolicy"] = self.deploymentPolicy?.toMap()
+            }
+            if self.jobDescription != nil {
+                map["JobDescription"] = self.jobDescription!
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
+            if self.jobScheduler != nil {
+                map["JobScheduler"] = self.jobScheduler!
+            }
+            if self.securityPolicy != nil {
+                map["SecurityPolicy"] = self.securityPolicy?.toMap()
+            }
+            if self.tasks != nil {
+                var tmp : [Any] = []
+                for k in self.tasks! {
+                    tmp.append(k.toMap())
+                }
+                map["Tasks"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DeploymentPolicy"] as? [String: Any?] {
+                var model = CreateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy()
+                model.fromMap(value)
+                self.deploymentPolicy = model
+            }
+            if let value = dict["JobDescription"] as? String {
+                self.jobDescription = value
+            }
+            if let value = dict["JobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["JobScheduler"] as? String {
+                self.jobScheduler = value
+            }
+            if let value = dict["SecurityPolicy"] as? [String: Any?] {
+                var model = CreateJobTemplateRequest.JobTemplateConfig.SecurityPolicy()
+                model.fromMap(value)
+                self.securityPolicy = model
+            }
+            if let value = dict["Tasks"] as? [Any?] {
+                var tmp : [CreateJobTemplateRequest.JobTemplateConfig.Tasks] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateJobTemplateRequest.JobTemplateConfig.Tasks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tasks = tmp
+            }
+        }
+    }
+    public var jobTemplateConfig: CreateJobTemplateRequest.JobTemplateConfig?
+
+    public var jobTemplateDescription: String?
+
+    public var jobTemplateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.jobTemplateConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateConfig != nil {
+            map["JobTemplateConfig"] = self.jobTemplateConfig?.toMap()
+        }
+        if self.jobTemplateDescription != nil {
+            map["JobTemplateDescription"] = self.jobTemplateDescription!
+        }
+        if self.jobTemplateName != nil {
+            map["JobTemplateName"] = self.jobTemplateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateConfig"] as? [String: Any?] {
+            var model = CreateJobTemplateRequest.JobTemplateConfig()
+            model.fromMap(value)
+            self.jobTemplateConfig = model
+        }
+        if let value = dict["JobTemplateDescription"] as? String {
+            self.jobTemplateDescription = value
+        }
+        if let value = dict["JobTemplateName"] as? String {
+            self.jobTemplateName = value
+        }
+    }
+}
+
+public class CreateJobTemplateShrinkRequest : Tea.TeaModel {
+    public var jobTemplateConfigShrink: String?
+
+    public var jobTemplateDescription: String?
+
+    public var jobTemplateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateConfigShrink != nil {
+            map["JobTemplateConfig"] = self.jobTemplateConfigShrink!
+        }
+        if self.jobTemplateDescription != nil {
+            map["JobTemplateDescription"] = self.jobTemplateDescription!
+        }
+        if self.jobTemplateName != nil {
+            map["JobTemplateName"] = self.jobTemplateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateConfig"] as? String {
+            self.jobTemplateConfigShrink = value
+        }
+        if let value = dict["JobTemplateDescription"] as? String {
+            self.jobTemplateDescription = value
+        }
+        if let value = dict["JobTemplateName"] as? String {
+            self.jobTemplateName = value
+        }
+    }
+}
+
+public class CreateJobTemplateResponseBody : Tea.TeaModel {
+    public var jobTemplateId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateId != nil {
+            map["JobTemplateId"] = self.jobTemplateId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateId"] as? String {
+            self.jobTemplateId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateJobTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateJobTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateJobTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreatePoolRequest : Tea.TeaModel {
     public class ResourceLimits : Tea.TeaModel {
         public var maxExecutorNum: Int32?
@@ -2814,6 +4094,118 @@ public class DeleteJobRecordsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteJobRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteJobTemplateRequest : Tea.TeaModel {
+    public var jobTemplateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateId != nil {
+            map["JobTemplateId"] = self.jobTemplateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateId"] as? String {
+            self.jobTemplateId = value
+        }
+    }
+}
+
+public class DeleteJobTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteJobTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteJobTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteJobTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -6414,6 +7806,1246 @@ public class GetJobRecordDurationResponse : Tea.TeaModel {
     }
 }
 
+public class GetJobTemplateRequest : Tea.TeaModel {
+    public var jobTemplateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateId != nil {
+            map["JobTemplateId"] = self.jobTemplateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateId"] as? String {
+            self.jobTemplateId = value
+        }
+    }
+}
+
+public class GetJobTemplateResponseBody : Tea.TeaModel {
+    public class JobTemplateConfig : Tea.TeaModel {
+        public class DeploymentPolicy : Tea.TeaModel {
+            public class Network : Tea.TeaModel {
+                public var enableExternalIpAddress: Bool?
+
+                public var vswitch: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableExternalIpAddress != nil {
+                        map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
+                    }
+                    if self.vswitch != nil {
+                        map["Vswitch"] = self.vswitch!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EnableExternalIpAddress"] as? Bool {
+                        self.enableExternalIpAddress = value
+                    }
+                    if let value = dict["Vswitch"] as? [String] {
+                        self.vswitch = value
+                    }
+                }
+            }
+            public class Tags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var allocationSpec: String?
+
+            public var level: String?
+
+            public var network: GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy.Network?
+
+            public var pool: String?
+
+            public var priority: Int32?
+
+            public var tags: [GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy.Tags]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.network?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocationSpec != nil {
+                    map["AllocationSpec"] = self.allocationSpec!
+                }
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
+                if self.network != nil {
+                    map["Network"] = self.network?.toMap()
+                }
+                if self.pool != nil {
+                    map["Pool"] = self.pool!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllocationSpec"] as? String {
+                    self.allocationSpec = value
+                }
+                if let value = dict["Level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["Network"] as? [String: Any?] {
+                    var model = GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy.Network()
+                    model.fromMap(value)
+                    self.network = model
+                }
+                if let value = dict["Pool"] as? String {
+                    self.pool = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["Tags"] as? [Any?] {
+                    var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy.Tags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy.Tags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tags = tmp
+                }
+            }
+        }
+        public class SecurityPolicy : Tea.TeaModel {
+            public class SecurityGroup : Tea.TeaModel {
+                public var securityGroupIds: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.securityGroupIds != nil {
+                        map["SecurityGroupIds"] = self.securityGroupIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecurityGroupIds"] as? [String] {
+                        self.securityGroupIds = value
+                    }
+                }
+            }
+            public var securityGroup: GetJobTemplateResponseBody.JobTemplateConfig.SecurityPolicy.SecurityGroup?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.securityGroup?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroup != nil {
+                    map["SecurityGroup"] = self.securityGroup?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SecurityGroup"] as? [String: Any?] {
+                    var model = GetJobTemplateResponseBody.JobTemplateConfig.SecurityPolicy.SecurityGroup()
+                    model.fromMap(value)
+                    self.securityGroup = model
+                }
+            }
+        }
+        public class Tasks : Tea.TeaModel {
+            public class ExecutorPolicy : Tea.TeaModel {
+                public class ArraySpec : Tea.TeaModel {
+                    public var indexEnd: Int32?
+
+                    public var indexStart: Int32?
+
+                    public var indexStep: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.indexEnd != nil {
+                            map["IndexEnd"] = self.indexEnd!
+                        }
+                        if self.indexStart != nil {
+                            map["IndexStart"] = self.indexStart!
+                        }
+                        if self.indexStep != nil {
+                            map["IndexStep"] = self.indexStep!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["IndexEnd"] as? Int32 {
+                            self.indexEnd = value
+                        }
+                        if let value = dict["IndexStart"] as? Int32 {
+                            self.indexStart = value
+                        }
+                        if let value = dict["IndexStep"] as? Int32 {
+                            self.indexStep = value
+                        }
+                    }
+                }
+                public var arraySpec: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.ExecutorPolicy.ArraySpec?
+
+                public var maxCount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.arraySpec?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.arraySpec != nil {
+                        map["ArraySpec"] = self.arraySpec?.toMap()
+                    }
+                    if self.maxCount != nil {
+                        map["MaxCount"] = self.maxCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ArraySpec"] as? [String: Any?] {
+                        var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.ExecutorPolicy.ArraySpec()
+                        model.fromMap(value)
+                        self.arraySpec = model
+                    }
+                    if let value = dict["MaxCount"] as? Int32 {
+                        self.maxCount = value
+                    }
+                }
+            }
+            public class TaskSpec : Tea.TeaModel {
+                public class Resource : Tea.TeaModel {
+                    public class Disks : Tea.TeaModel {
+                        public var size: Int32?
+
+                        public var type: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.size != nil {
+                                map["Size"] = self.size!
+                            }
+                            if self.type != nil {
+                                map["Type"] = self.type!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Size"] as? Int32 {
+                                self.size = value
+                            }
+                            if let value = dict["Type"] as? String {
+                                self.type = value
+                            }
+                        }
+                    }
+                    public var cores: Double?
+
+                    public var disks: [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks]?
+
+                    public var enableHT: Bool?
+
+                    public var hostNamePrefix: String?
+
+                    public var instanceTypes: [String]?
+
+                    public var memory: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cores != nil {
+                            map["Cores"] = self.cores!
+                        }
+                        if self.disks != nil {
+                            var tmp : [Any] = []
+                            for k in self.disks! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Disks"] = tmp
+                        }
+                        if self.enableHT != nil {
+                            map["EnableHT"] = self.enableHT!
+                        }
+                        if self.hostNamePrefix != nil {
+                            map["HostNamePrefix"] = self.hostNamePrefix!
+                        }
+                        if self.instanceTypes != nil {
+                            map["InstanceTypes"] = self.instanceTypes!
+                        }
+                        if self.memory != nil {
+                            map["Memory"] = self.memory!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Cores"] as? Double {
+                            self.cores = value
+                        }
+                        if let value = dict["Disks"] as? [Any?] {
+                            var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.disks = tmp
+                        }
+                        if let value = dict["EnableHT"] as? Bool {
+                            self.enableHT = value
+                        }
+                        if let value = dict["HostNamePrefix"] as? String {
+                            self.hostNamePrefix = value
+                        }
+                        if let value = dict["InstanceTypes"] as? [String] {
+                            self.instanceTypes = value
+                        }
+                        if let value = dict["Memory"] as? Double {
+                            self.memory = value
+                        }
+                    }
+                }
+                public class RetryPolicy : Tea.TeaModel {
+                    public class ExitCodeActions : Tea.TeaModel {
+                        public var action: String?
+
+                        public var exitCode: Int64?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.action != nil {
+                                map["Action"] = self.action!
+                            }
+                            if self.exitCode != nil {
+                                map["ExitCode"] = self.exitCode!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Action"] as? String {
+                                self.action = value
+                            }
+                            if let value = dict["ExitCode"] as? Int64 {
+                                self.exitCode = value
+                            }
+                        }
+                    }
+                    public var exitCodeActions: [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions]?
+
+                    public var retryCount: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.exitCodeActions != nil {
+                            var tmp : [Any] = []
+                            for k in self.exitCodeActions! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ExitCodeActions"] = tmp
+                        }
+                        if self.retryCount != nil {
+                            map["RetryCount"] = self.retryCount!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ExitCodeActions"] as? [Any?] {
+                            var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.exitCodeActions = tmp
+                        }
+                        if let value = dict["RetryCount"] as? Int32 {
+                            self.retryCount = value
+                        }
+                    }
+                }
+                public class TaskExecutor : Tea.TeaModel {
+                    public class Container : Tea.TeaModel {
+                        public class EnvironmentVars : Tea.TeaModel {
+                            public var name: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.name != nil {
+                                    map["Name"] = self.name!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Name"] as? String {
+                                    self.name = value
+                                }
+                                if let value = dict["Value"] as? String {
+                                    self.value = value
+                                }
+                            }
+                        }
+                        public var appId: String?
+
+                        public var arg: [String]?
+
+                        public var command: [String]?
+
+                        public var environmentVars: [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars]?
+
+                        public var gpuDriverVersion: String?
+
+                        public var image: String?
+
+                        public var imageRegistryOptions: String?
+
+                        public var privileged: Bool?
+
+                        public var workingDir: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["AppId"] = self.appId!
+                            }
+                            if self.arg != nil {
+                                map["Arg"] = self.arg!
+                            }
+                            if self.command != nil {
+                                map["Command"] = self.command!
+                            }
+                            if self.environmentVars != nil {
+                                var tmp : [Any] = []
+                                for k in self.environmentVars! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["EnvironmentVars"] = tmp
+                            }
+                            if self.gpuDriverVersion != nil {
+                                map["GpuDriverVersion"] = self.gpuDriverVersion!
+                            }
+                            if self.image != nil {
+                                map["Image"] = self.image!
+                            }
+                            if self.imageRegistryOptions != nil {
+                                map["ImageRegistryOptions"] = self.imageRegistryOptions!
+                            }
+                            if self.privileged != nil {
+                                map["Privileged"] = self.privileged!
+                            }
+                            if self.workingDir != nil {
+                                map["WorkingDir"] = self.workingDir!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AppId"] as? String {
+                                self.appId = value
+                            }
+                            if let value = dict["Arg"] as? [String] {
+                                self.arg = value
+                            }
+                            if let value = dict["Command"] as? [String] {
+                                self.command = value
+                            }
+                            if let value = dict["EnvironmentVars"] as? [Any?] {
+                                var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.environmentVars = tmp
+                            }
+                            if let value = dict["GpuDriverVersion"] as? String {
+                                self.gpuDriverVersion = value
+                            }
+                            if let value = dict["Image"] as? String {
+                                self.image = value
+                            }
+                            if let value = dict["ImageRegistryOptions"] as? String {
+                                self.imageRegistryOptions = value
+                            }
+                            if let value = dict["Privileged"] as? Bool {
+                                self.privileged = value
+                            }
+                            if let value = dict["WorkingDir"] as? String {
+                                self.workingDir = value
+                            }
+                        }
+                    }
+                    public class VM : Tea.TeaModel {
+                        public var appId: String?
+
+                        public var image: String?
+
+                        public var password: String?
+
+                        public var prologScript: String?
+
+                        public var script: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["AppId"] = self.appId!
+                            }
+                            if self.image != nil {
+                                map["Image"] = self.image!
+                            }
+                            if self.password != nil {
+                                map["Password"] = self.password!
+                            }
+                            if self.prologScript != nil {
+                                map["PrologScript"] = self.prologScript!
+                            }
+                            if self.script != nil {
+                                map["Script"] = self.script!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AppId"] as? String {
+                                self.appId = value
+                            }
+                            if let value = dict["Image"] as? String {
+                                self.image = value
+                            }
+                            if let value = dict["Password"] as? String {
+                                self.password = value
+                            }
+                            if let value = dict["PrologScript"] as? String {
+                                self.prologScript = value
+                            }
+                            if let value = dict["Script"] as? String {
+                                self.script = value
+                            }
+                        }
+                    }
+                    public var container: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container?
+
+                    public var VM: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.VM?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.container?.validate()
+                        try self.VM?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.container != nil {
+                            map["Container"] = self.container?.toMap()
+                        }
+                        if self.VM != nil {
+                            map["VM"] = self.VM?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Container"] as? [String: Any?] {
+                            var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container()
+                            model.fromMap(value)
+                            self.container = model
+                        }
+                        if let value = dict["VM"] as? [String: Any?] {
+                            var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.VM()
+                            model.fromMap(value)
+                            self.VM = model
+                        }
+                    }
+                }
+                public class VolumeMount : Tea.TeaModel {
+                    public var mountOptions: String?
+
+                    public var mountPath: String?
+
+                    public var readOnly: Bool?
+
+                    public var volumeDriver: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.mountOptions != nil {
+                            map["MountOptions"] = self.mountOptions!
+                        }
+                        if self.mountPath != nil {
+                            map["MountPath"] = self.mountPath!
+                        }
+                        if self.readOnly != nil {
+                            map["ReadOnly"] = self.readOnly!
+                        }
+                        if self.volumeDriver != nil {
+                            map["VolumeDriver"] = self.volumeDriver!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["MountOptions"] as? String {
+                            self.mountOptions = value
+                        }
+                        if let value = dict["MountPath"] as? String {
+                            self.mountPath = value
+                        }
+                        if let value = dict["ReadOnly"] as? Bool {
+                            self.readOnly = value
+                        }
+                        if let value = dict["VolumeDriver"] as? String {
+                            self.volumeDriver = value
+                        }
+                    }
+                }
+                public var resource: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.Resource?
+
+                public var retryPolicy: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy?
+
+                public var taskExecutor: [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor]?
+
+                public var volumeMount: [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.VolumeMount]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.resource?.validate()
+                    try self.retryPolicy?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.resource != nil {
+                        map["Resource"] = self.resource?.toMap()
+                    }
+                    if self.retryPolicy != nil {
+                        map["RetryPolicy"] = self.retryPolicy?.toMap()
+                    }
+                    if self.taskExecutor != nil {
+                        var tmp : [Any] = []
+                        for k in self.taskExecutor! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TaskExecutor"] = tmp
+                    }
+                    if self.volumeMount != nil {
+                        var tmp : [Any] = []
+                        for k in self.volumeMount! {
+                            tmp.append(k.toMap())
+                        }
+                        map["VolumeMount"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Resource"] as? [String: Any?] {
+                        var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.Resource()
+                        model.fromMap(value)
+                        self.resource = model
+                    }
+                    if let value = dict["RetryPolicy"] as? [String: Any?] {
+                        var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy()
+                        model.fromMap(value)
+                        self.retryPolicy = model
+                    }
+                    if let value = dict["TaskExecutor"] as? [Any?] {
+                        var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.taskExecutor = tmp
+                    }
+                    if let value = dict["VolumeMount"] as? [Any?] {
+                        var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.VolumeMount] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec.VolumeMount()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.volumeMount = tmp
+                    }
+                }
+            }
+            public var executorPolicy: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.ExecutorPolicy?
+
+            public var taskName: String?
+
+            public var taskSpec: GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec?
+
+            public var taskSustainable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.executorPolicy?.validate()
+                try self.taskSpec?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.executorPolicy != nil {
+                    map["ExecutorPolicy"] = self.executorPolicy?.toMap()
+                }
+                if self.taskName != nil {
+                    map["TaskName"] = self.taskName!
+                }
+                if self.taskSpec != nil {
+                    map["TaskSpec"] = self.taskSpec?.toMap()
+                }
+                if self.taskSustainable != nil {
+                    map["TaskSustainable"] = self.taskSustainable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExecutorPolicy"] as? [String: Any?] {
+                    var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.ExecutorPolicy()
+                    model.fromMap(value)
+                    self.executorPolicy = model
+                }
+                if let value = dict["TaskName"] as? String {
+                    self.taskName = value
+                }
+                if let value = dict["TaskSpec"] as? [String: Any?] {
+                    var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks.TaskSpec()
+                    model.fromMap(value)
+                    self.taskSpec = model
+                }
+                if let value = dict["TaskSustainable"] as? Bool {
+                    self.taskSustainable = value
+                }
+            }
+        }
+        public var deploymentPolicy: GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy?
+
+        public var jobDescription: String?
+
+        public var jobName: String?
+
+        public var jobScheduler: String?
+
+        public var securityPolicy: GetJobTemplateResponseBody.JobTemplateConfig.SecurityPolicy?
+
+        public var tasks: [GetJobTemplateResponseBody.JobTemplateConfig.Tasks]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.deploymentPolicy?.validate()
+            try self.securityPolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deploymentPolicy != nil {
+                map["DeploymentPolicy"] = self.deploymentPolicy?.toMap()
+            }
+            if self.jobDescription != nil {
+                map["JobDescription"] = self.jobDescription!
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
+            if self.jobScheduler != nil {
+                map["JobScheduler"] = self.jobScheduler!
+            }
+            if self.securityPolicy != nil {
+                map["SecurityPolicy"] = self.securityPolicy?.toMap()
+            }
+            if self.tasks != nil {
+                var tmp : [Any] = []
+                for k in self.tasks! {
+                    tmp.append(k.toMap())
+                }
+                map["Tasks"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DeploymentPolicy"] as? [String: Any?] {
+                var model = GetJobTemplateResponseBody.JobTemplateConfig.DeploymentPolicy()
+                model.fromMap(value)
+                self.deploymentPolicy = model
+            }
+            if let value = dict["JobDescription"] as? String {
+                self.jobDescription = value
+            }
+            if let value = dict["JobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["JobScheduler"] as? String {
+                self.jobScheduler = value
+            }
+            if let value = dict["SecurityPolicy"] as? [String: Any?] {
+                var model = GetJobTemplateResponseBody.JobTemplateConfig.SecurityPolicy()
+                model.fromMap(value)
+                self.securityPolicy = model
+            }
+            if let value = dict["Tasks"] as? [Any?] {
+                var tmp : [GetJobTemplateResponseBody.JobTemplateConfig.Tasks] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetJobTemplateResponseBody.JobTemplateConfig.Tasks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tasks = tmp
+            }
+        }
+    }
+    public var createTime: String?
+
+    public var jobTemplateConfig: GetJobTemplateResponseBody.JobTemplateConfig?
+
+    public var jobTemplateDescription: String?
+
+    public var jobTemplateId: String?
+
+    public var jobTemplateName: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var updateTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.jobTemplateConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.jobTemplateConfig != nil {
+            map["JobTemplateConfig"] = self.jobTemplateConfig?.toMap()
+        }
+        if self.jobTemplateDescription != nil {
+            map["JobTemplateDescription"] = self.jobTemplateDescription!
+        }
+        if self.jobTemplateId != nil {
+            map["JobTemplateId"] = self.jobTemplateId!
+        }
+        if self.jobTemplateName != nil {
+            map["JobTemplateName"] = self.jobTemplateName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.updateTime != nil {
+            map["UpdateTime"] = self.updateTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["JobTemplateConfig"] as? [String: Any?] {
+            var model = GetJobTemplateResponseBody.JobTemplateConfig()
+            model.fromMap(value)
+            self.jobTemplateConfig = model
+        }
+        if let value = dict["JobTemplateDescription"] as? String {
+            self.jobTemplateDescription = value
+        }
+        if let value = dict["JobTemplateId"] as? String {
+            self.jobTemplateId = value
+        }
+        if let value = dict["JobTemplateName"] as? String {
+            self.jobTemplateName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["UpdateTime"] as? String {
+            self.updateTime = value
+        }
+    }
+}
+
+public class GetJobTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetJobTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetJobTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetPoolRequest : Tea.TeaModel {
     public var poolName: String?
 
@@ -9267,6 +11899,302 @@ public class ListJobExecutorsResponse : Tea.TeaModel {
     }
 }
 
+public class ListJobTemplatesRequest : Tea.TeaModel {
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListJobTemplatesResponseBody : Tea.TeaModel {
+    public class JobTemplates : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var jobTemplateDescription: String?
+
+        public var jobTemplateId: String?
+
+        public var jobTemplateName: String?
+
+        public var status: String?
+
+        public var tags: [ListJobTemplatesResponseBody.JobTemplates.Tags]?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.jobTemplateDescription != nil {
+                map["JobTemplateDescription"] = self.jobTemplateDescription!
+            }
+            if self.jobTemplateId != nil {
+                map["JobTemplateId"] = self.jobTemplateId!
+            }
+            if self.jobTemplateName != nil {
+                map["JobTemplateName"] = self.jobTemplateName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["JobTemplateDescription"] as? String {
+                self.jobTemplateDescription = value
+            }
+            if let value = dict["JobTemplateId"] as? String {
+                self.jobTemplateId = value
+            }
+            if let value = dict["JobTemplateName"] as? String {
+                self.jobTemplateName = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ListJobTemplatesResponseBody.JobTemplates.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListJobTemplatesResponseBody.JobTemplates.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+            if let value = dict["UpdateTime"] as? String {
+                self.updateTime = value
+            }
+        }
+    }
+    public var jobTemplates: [ListJobTemplatesResponseBody.JobTemplates]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplates != nil {
+            var tmp : [Any] = []
+            for k in self.jobTemplates! {
+                tmp.append(k.toMap())
+            }
+            map["JobTemplates"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplates"] as? [Any?] {
+            var tmp : [ListJobTemplatesResponseBody.JobTemplates] = []
+            for v in value {
+                if v != nil {
+                    var model = ListJobTemplatesResponseBody.JobTemplates()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.jobTemplates = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListJobTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListJobTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListJobTemplatesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListJobsRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
@@ -11462,6 +14390,1269 @@ public class UpdateJobRecordDurationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateJobRecordDurationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateJobTemplateRequest : Tea.TeaModel {
+    public class JobTemplateConfig : Tea.TeaModel {
+        public class DeploymentPolicy : Tea.TeaModel {
+            public class Network : Tea.TeaModel {
+                public var enableExternalIpAddress: Bool?
+
+                public var vswitch: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableExternalIpAddress != nil {
+                        map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
+                    }
+                    if self.vswitch != nil {
+                        map["Vswitch"] = self.vswitch!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EnableExternalIpAddress"] as? Bool {
+                        self.enableExternalIpAddress = value
+                    }
+                    if let value = dict["Vswitch"] as? [String] {
+                        self.vswitch = value
+                    }
+                }
+            }
+            public class Tags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var allocationSpec: String?
+
+            public var level: String?
+
+            public var network: UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Network?
+
+            public var pool: String?
+
+            public var priority: Int32?
+
+            public var tags: [UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Tags]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.network?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocationSpec != nil {
+                    map["AllocationSpec"] = self.allocationSpec!
+                }
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
+                if self.network != nil {
+                    map["Network"] = self.network?.toMap()
+                }
+                if self.pool != nil {
+                    map["Pool"] = self.pool!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllocationSpec"] as? String {
+                    self.allocationSpec = value
+                }
+                if let value = dict["Level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["Network"] as? [String: Any?] {
+                    var model = UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Network()
+                    model.fromMap(value)
+                    self.network = model
+                }
+                if let value = dict["Pool"] as? String {
+                    self.pool = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["Tags"] as? [Any?] {
+                    var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Tags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy.Tags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tags = tmp
+                }
+            }
+        }
+        public class SecurityPolicy : Tea.TeaModel {
+            public class SecurityGroup : Tea.TeaModel {
+                public var securityGroupIds: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.securityGroupIds != nil {
+                        map["SecurityGroupIds"] = self.securityGroupIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecurityGroupIds"] as? [String] {
+                        self.securityGroupIds = value
+                    }
+                }
+            }
+            public var securityGroup: UpdateJobTemplateRequest.JobTemplateConfig.SecurityPolicy.SecurityGroup?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.securityGroup?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroup != nil {
+                    map["SecurityGroup"] = self.securityGroup?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SecurityGroup"] as? [String: Any?] {
+                    var model = UpdateJobTemplateRequest.JobTemplateConfig.SecurityPolicy.SecurityGroup()
+                    model.fromMap(value)
+                    self.securityGroup = model
+                }
+            }
+        }
+        public class Tasks : Tea.TeaModel {
+            public class ExecutorPolicy : Tea.TeaModel {
+                public class ArraySpec : Tea.TeaModel {
+                    public var indexEnd: Int32?
+
+                    public var indexStart: Int32?
+
+                    public var indexStep: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.indexEnd != nil {
+                            map["IndexEnd"] = self.indexEnd!
+                        }
+                        if self.indexStart != nil {
+                            map["IndexStart"] = self.indexStart!
+                        }
+                        if self.indexStep != nil {
+                            map["IndexStep"] = self.indexStep!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["IndexEnd"] as? Int32 {
+                            self.indexEnd = value
+                        }
+                        if let value = dict["IndexStart"] as? Int32 {
+                            self.indexStart = value
+                        }
+                        if let value = dict["IndexStep"] as? Int32 {
+                            self.indexStep = value
+                        }
+                    }
+                }
+                public var arraySpec: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy.ArraySpec?
+
+                public var maxCount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.arraySpec?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.arraySpec != nil {
+                        map["ArraySpec"] = self.arraySpec?.toMap()
+                    }
+                    if self.maxCount != nil {
+                        map["MaxCount"] = self.maxCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ArraySpec"] as? [String: Any?] {
+                        var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy.ArraySpec()
+                        model.fromMap(value)
+                        self.arraySpec = model
+                    }
+                    if let value = dict["MaxCount"] as? Int32 {
+                        self.maxCount = value
+                    }
+                }
+            }
+            public class TaskSpec : Tea.TeaModel {
+                public class Resource : Tea.TeaModel {
+                    public class Disks : Tea.TeaModel {
+                        public var size: Int32?
+
+                        public var type: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.size != nil {
+                                map["Size"] = self.size!
+                            }
+                            if self.type != nil {
+                                map["Type"] = self.type!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Size"] as? Int32 {
+                                self.size = value
+                            }
+                            if let value = dict["Type"] as? String {
+                                self.type = value
+                            }
+                        }
+                    }
+                    public var cores: Double?
+
+                    public var disks: [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks]?
+
+                    public var enableHT: Bool?
+
+                    public var hostNamePrefix: String?
+
+                    public var instanceTypes: [String]?
+
+                    public var memory: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cores != nil {
+                            map["Cores"] = self.cores!
+                        }
+                        if self.disks != nil {
+                            var tmp : [Any] = []
+                            for k in self.disks! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Disks"] = tmp
+                        }
+                        if self.enableHT != nil {
+                            map["EnableHT"] = self.enableHT!
+                        }
+                        if self.hostNamePrefix != nil {
+                            map["HostNamePrefix"] = self.hostNamePrefix!
+                        }
+                        if self.instanceTypes != nil {
+                            map["InstanceTypes"] = self.instanceTypes!
+                        }
+                        if self.memory != nil {
+                            map["Memory"] = self.memory!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Cores"] as? Double {
+                            self.cores = value
+                        }
+                        if let value = dict["Disks"] as? [Any?] {
+                            var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource.Disks()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.disks = tmp
+                        }
+                        if let value = dict["EnableHT"] as? Bool {
+                            self.enableHT = value
+                        }
+                        if let value = dict["HostNamePrefix"] as? String {
+                            self.hostNamePrefix = value
+                        }
+                        if let value = dict["InstanceTypes"] as? [String] {
+                            self.instanceTypes = value
+                        }
+                        if let value = dict["Memory"] as? Double {
+                            self.memory = value
+                        }
+                    }
+                }
+                public class RetryPolicy : Tea.TeaModel {
+                    public class ExitCodeActions : Tea.TeaModel {
+                        public var action: String?
+
+                        public var exitCode: Int64?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.action != nil {
+                                map["Action"] = self.action!
+                            }
+                            if self.exitCode != nil {
+                                map["ExitCode"] = self.exitCode!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Action"] as? String {
+                                self.action = value
+                            }
+                            if let value = dict["ExitCode"] as? Int64 {
+                                self.exitCode = value
+                            }
+                        }
+                    }
+                    public var exitCodeActions: [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions]?
+
+                    public var retryCount: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.exitCodeActions != nil {
+                            var tmp : [Any] = []
+                            for k in self.exitCodeActions! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ExitCodeActions"] = tmp
+                        }
+                        if self.retryCount != nil {
+                            map["RetryCount"] = self.retryCount!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ExitCodeActions"] as? [Any?] {
+                            var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy.ExitCodeActions()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.exitCodeActions = tmp
+                        }
+                        if let value = dict["RetryCount"] as? Int32 {
+                            self.retryCount = value
+                        }
+                    }
+                }
+                public class TaskExecutor : Tea.TeaModel {
+                    public class Container : Tea.TeaModel {
+                        public class EnvironmentVars : Tea.TeaModel {
+                            public var name: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.name != nil {
+                                    map["Name"] = self.name!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Name"] as? String {
+                                    self.name = value
+                                }
+                                if let value = dict["Value"] as? String {
+                                    self.value = value
+                                }
+                            }
+                        }
+                        public var appId: String?
+
+                        public var arg: [String]?
+
+                        public var command: [String]?
+
+                        public var environmentVars: [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars]?
+
+                        public var gpuDriverVersion: String?
+
+                        public var image: String?
+
+                        public var imageRegistryOptions: String?
+
+                        public var privileged: Bool?
+
+                        public var workingDir: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["AppId"] = self.appId!
+                            }
+                            if self.arg != nil {
+                                map["Arg"] = self.arg!
+                            }
+                            if self.command != nil {
+                                map["Command"] = self.command!
+                            }
+                            if self.environmentVars != nil {
+                                var tmp : [Any] = []
+                                for k in self.environmentVars! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["EnvironmentVars"] = tmp
+                            }
+                            if self.gpuDriverVersion != nil {
+                                map["GpuDriverVersion"] = self.gpuDriverVersion!
+                            }
+                            if self.image != nil {
+                                map["Image"] = self.image!
+                            }
+                            if self.imageRegistryOptions != nil {
+                                map["ImageRegistryOptions"] = self.imageRegistryOptions!
+                            }
+                            if self.privileged != nil {
+                                map["Privileged"] = self.privileged!
+                            }
+                            if self.workingDir != nil {
+                                map["WorkingDir"] = self.workingDir!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AppId"] as? String {
+                                self.appId = value
+                            }
+                            if let value = dict["Arg"] as? [String] {
+                                self.arg = value
+                            }
+                            if let value = dict["Command"] as? [String] {
+                                self.command = value
+                            }
+                            if let value = dict["EnvironmentVars"] as? [Any?] {
+                                var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.environmentVars = tmp
+                            }
+                            if let value = dict["GpuDriverVersion"] as? String {
+                                self.gpuDriverVersion = value
+                            }
+                            if let value = dict["Image"] as? String {
+                                self.image = value
+                            }
+                            if let value = dict["ImageRegistryOptions"] as? String {
+                                self.imageRegistryOptions = value
+                            }
+                            if let value = dict["Privileged"] as? Bool {
+                                self.privileged = value
+                            }
+                            if let value = dict["WorkingDir"] as? String {
+                                self.workingDir = value
+                            }
+                        }
+                    }
+                    public class VM : Tea.TeaModel {
+                        public var appId: String?
+
+                        public var image: String?
+
+                        public var password: String?
+
+                        public var prologScript: String?
+
+                        public var script: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["AppId"] = self.appId!
+                            }
+                            if self.image != nil {
+                                map["Image"] = self.image!
+                            }
+                            if self.password != nil {
+                                map["Password"] = self.password!
+                            }
+                            if self.prologScript != nil {
+                                map["PrologScript"] = self.prologScript!
+                            }
+                            if self.script != nil {
+                                map["Script"] = self.script!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AppId"] as? String {
+                                self.appId = value
+                            }
+                            if let value = dict["Image"] as? String {
+                                self.image = value
+                            }
+                            if let value = dict["Password"] as? String {
+                                self.password = value
+                            }
+                            if let value = dict["PrologScript"] as? String {
+                                self.prologScript = value
+                            }
+                            if let value = dict["Script"] as? String {
+                                self.script = value
+                            }
+                        }
+                    }
+                    public var container: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container?
+
+                    public var VM: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.VM?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.container?.validate()
+                        try self.VM?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.container != nil {
+                            map["Container"] = self.container?.toMap()
+                        }
+                        if self.VM != nil {
+                            map["VM"] = self.VM?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Container"] as? [String: Any?] {
+                            var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.Container()
+                            model.fromMap(value)
+                            self.container = model
+                        }
+                        if let value = dict["VM"] as? [String: Any?] {
+                            var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor.VM()
+                            model.fromMap(value)
+                            self.VM = model
+                        }
+                    }
+                }
+                public class VolumeMount : Tea.TeaModel {
+                    public var mountOptions: String?
+
+                    public var mountPath: String?
+
+                    public var readOnly: Bool?
+
+                    public var volumeDriver: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.mountOptions != nil {
+                            map["MountOptions"] = self.mountOptions!
+                        }
+                        if self.mountPath != nil {
+                            map["MountPath"] = self.mountPath!
+                        }
+                        if self.readOnly != nil {
+                            map["ReadOnly"] = self.readOnly!
+                        }
+                        if self.volumeDriver != nil {
+                            map["VolumeDriver"] = self.volumeDriver!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["MountOptions"] as? String {
+                            self.mountOptions = value
+                        }
+                        if let value = dict["MountPath"] as? String {
+                            self.mountPath = value
+                        }
+                        if let value = dict["ReadOnly"] as? Bool {
+                            self.readOnly = value
+                        }
+                        if let value = dict["VolumeDriver"] as? String {
+                            self.volumeDriver = value
+                        }
+                    }
+                }
+                public var resource: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource?
+
+                public var retryPolicy: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy?
+
+                public var taskExecutor: [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor]?
+
+                public var volumeMount: [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.VolumeMount]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.resource?.validate()
+                    try self.retryPolicy?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.resource != nil {
+                        map["Resource"] = self.resource?.toMap()
+                    }
+                    if self.retryPolicy != nil {
+                        map["RetryPolicy"] = self.retryPolicy?.toMap()
+                    }
+                    if self.taskExecutor != nil {
+                        var tmp : [Any] = []
+                        for k in self.taskExecutor! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TaskExecutor"] = tmp
+                    }
+                    if self.volumeMount != nil {
+                        var tmp : [Any] = []
+                        for k in self.volumeMount! {
+                            tmp.append(k.toMap())
+                        }
+                        map["VolumeMount"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Resource"] as? [String: Any?] {
+                        var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.Resource()
+                        model.fromMap(value)
+                        self.resource = model
+                    }
+                    if let value = dict["RetryPolicy"] as? [String: Any?] {
+                        var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.RetryPolicy()
+                        model.fromMap(value)
+                        self.retryPolicy = model
+                    }
+                    if let value = dict["TaskExecutor"] as? [Any?] {
+                        var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor] = []
+                        for v in value {
+                            if v != nil {
+                                var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.TaskExecutor()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.taskExecutor = tmp
+                    }
+                    if let value = dict["VolumeMount"] as? [Any?] {
+                        var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.VolumeMount] = []
+                        for v in value {
+                            if v != nil {
+                                var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec.VolumeMount()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.volumeMount = tmp
+                    }
+                }
+            }
+            public var executorPolicy: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy?
+
+            public var taskName: String?
+
+            public var taskSpec: UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec?
+
+            public var taskSustainable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.executorPolicy?.validate()
+                try self.taskSpec?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.executorPolicy != nil {
+                    map["ExecutorPolicy"] = self.executorPolicy?.toMap()
+                }
+                if self.taskName != nil {
+                    map["TaskName"] = self.taskName!
+                }
+                if self.taskSpec != nil {
+                    map["TaskSpec"] = self.taskSpec?.toMap()
+                }
+                if self.taskSustainable != nil {
+                    map["TaskSustainable"] = self.taskSustainable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExecutorPolicy"] as? [String: Any?] {
+                    var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.ExecutorPolicy()
+                    model.fromMap(value)
+                    self.executorPolicy = model
+                }
+                if let value = dict["TaskName"] as? String {
+                    self.taskName = value
+                }
+                if let value = dict["TaskSpec"] as? [String: Any?] {
+                    var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks.TaskSpec()
+                    model.fromMap(value)
+                    self.taskSpec = model
+                }
+                if let value = dict["TaskSustainable"] as? Bool {
+                    self.taskSustainable = value
+                }
+            }
+        }
+        public var deploymentPolicy: UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy?
+
+        public var jobDescription: String?
+
+        public var jobName: String?
+
+        public var jobScheduler: String?
+
+        public var securityPolicy: UpdateJobTemplateRequest.JobTemplateConfig.SecurityPolicy?
+
+        public var tasks: [UpdateJobTemplateRequest.JobTemplateConfig.Tasks]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.deploymentPolicy?.validate()
+            try self.securityPolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deploymentPolicy != nil {
+                map["DeploymentPolicy"] = self.deploymentPolicy?.toMap()
+            }
+            if self.jobDescription != nil {
+                map["JobDescription"] = self.jobDescription!
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
+            if self.jobScheduler != nil {
+                map["JobScheduler"] = self.jobScheduler!
+            }
+            if self.securityPolicy != nil {
+                map["SecurityPolicy"] = self.securityPolicy?.toMap()
+            }
+            if self.tasks != nil {
+                var tmp : [Any] = []
+                for k in self.tasks! {
+                    tmp.append(k.toMap())
+                }
+                map["Tasks"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DeploymentPolicy"] as? [String: Any?] {
+                var model = UpdateJobTemplateRequest.JobTemplateConfig.DeploymentPolicy()
+                model.fromMap(value)
+                self.deploymentPolicy = model
+            }
+            if let value = dict["JobDescription"] as? String {
+                self.jobDescription = value
+            }
+            if let value = dict["JobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["JobScheduler"] as? String {
+                self.jobScheduler = value
+            }
+            if let value = dict["SecurityPolicy"] as? [String: Any?] {
+                var model = UpdateJobTemplateRequest.JobTemplateConfig.SecurityPolicy()
+                model.fromMap(value)
+                self.securityPolicy = model
+            }
+            if let value = dict["Tasks"] as? [Any?] {
+                var tmp : [UpdateJobTemplateRequest.JobTemplateConfig.Tasks] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateJobTemplateRequest.JobTemplateConfig.Tasks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tasks = tmp
+            }
+        }
+    }
+    public var jobTemplateConfig: UpdateJobTemplateRequest.JobTemplateConfig?
+
+    public var jobTemplateDescription: String?
+
+    public var jobTemplateId: String?
+
+    public var jobTemplateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.jobTemplateConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateConfig != nil {
+            map["JobTemplateConfig"] = self.jobTemplateConfig?.toMap()
+        }
+        if self.jobTemplateDescription != nil {
+            map["JobTemplateDescription"] = self.jobTemplateDescription!
+        }
+        if self.jobTemplateId != nil {
+            map["JobTemplateId"] = self.jobTemplateId!
+        }
+        if self.jobTemplateName != nil {
+            map["JobTemplateName"] = self.jobTemplateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateConfig"] as? [String: Any?] {
+            var model = UpdateJobTemplateRequest.JobTemplateConfig()
+            model.fromMap(value)
+            self.jobTemplateConfig = model
+        }
+        if let value = dict["JobTemplateDescription"] as? String {
+            self.jobTemplateDescription = value
+        }
+        if let value = dict["JobTemplateId"] as? String {
+            self.jobTemplateId = value
+        }
+        if let value = dict["JobTemplateName"] as? String {
+            self.jobTemplateName = value
+        }
+    }
+}
+
+public class UpdateJobTemplateShrinkRequest : Tea.TeaModel {
+    public var jobTemplateConfigShrink: String?
+
+    public var jobTemplateDescription: String?
+
+    public var jobTemplateId: String?
+
+    public var jobTemplateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobTemplateConfigShrink != nil {
+            map["JobTemplateConfig"] = self.jobTemplateConfigShrink!
+        }
+        if self.jobTemplateDescription != nil {
+            map["JobTemplateDescription"] = self.jobTemplateDescription!
+        }
+        if self.jobTemplateId != nil {
+            map["JobTemplateId"] = self.jobTemplateId!
+        }
+        if self.jobTemplateName != nil {
+            map["JobTemplateName"] = self.jobTemplateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobTemplateConfig"] as? String {
+            self.jobTemplateConfigShrink = value
+        }
+        if let value = dict["JobTemplateDescription"] as? String {
+            self.jobTemplateDescription = value
+        }
+        if let value = dict["JobTemplateId"] as? String {
+            self.jobTemplateId = value
+        }
+        if let value = dict["JobTemplateName"] as? String {
+            self.jobTemplateName = value
+        }
+    }
+}
+
+public class UpdateJobTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateJobTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateJobTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateJobTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }

@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,24 +9,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "EhpcInstant"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-shenzhen": "ehpcinstant.cn-shenzhen.aliyuncs.com",
-            "cn-wulanchabu": "ehpcinstant.cn-wulanchabu.aliyuncs.com",
-            "cn-beijing": "ehpcinstant.cn-beijing.aliyuncs.com",
-            "ap-northeast-2": "ehpcinstant.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "ehpcinstant.ap-northeast-1.aliyuncs.com",
-            "cn-chengdu": "ehpcinstant.cn-chengdu.aliyuncs.com",
-            "cn-shanghai": "ehpcinstant.cn-shanghai.aliyuncs.com",
-            "cn-guangzhou": "ehpcinstant.cn-guangzhou.aliyuncs.com",
-            "cn-hongkong": "ehpcinstant.cn-hongkong.aliyuncs.com",
-            "cn-heyuan": "ehpcinstant.cn-heyuan.aliyuncs.com",
-            "ap-southeast-1": "ehpcinstant.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-3": "ehpcinstant.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-5": "ehpcinstant.ap-southeast-5.aliyuncs.com",
-            "cn-hangzhou": "ehpcinstant.cn-hangzhou.aliyuncs.com",
-            "eu-central-1": "ehpcinstant.eu-central-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ehpcinstant", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -230,6 +217,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createJobTemplateWithOptions(_ tmpReq: CreateJobTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateJobTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateJobTemplateShrinkRequest = CreateJobTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.jobTemplateConfig)) {
+            request.jobTemplateConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobTemplateConfig, "JobTemplateConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobTemplateConfigShrink)) {
+            query["JobTemplateConfig"] = request.jobTemplateConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobTemplateDescription)) {
+            query["JobTemplateDescription"] = request.jobTemplateDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobTemplateName)) {
+            query["JobTemplateName"] = request.jobTemplateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateJobTemplate",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateJobTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createJobTemplate(_ request: CreateJobTemplateRequest) async throws -> CreateJobTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createJobTemplateWithOptions(request as! CreateJobTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPoolWithOptions(_ tmpReq: CreatePoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePoolResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreatePoolShrinkRequest = CreatePoolShrinkRequest([:])
@@ -345,6 +374,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteJobRecords(_ request: DeleteJobRecordsRequest) async throws -> DeleteJobRecordsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteJobRecordsWithOptions(request as! DeleteJobRecordsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteJobTemplateWithOptions(_ request: DeleteJobTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteJobTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobTemplateId)) {
+            query["JobTemplateId"] = request.jobTemplateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteJobTemplate",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteJobTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteJobTemplate(_ request: DeleteJobTemplateRequest) async throws -> DeleteJobTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteJobTemplateWithOptions(request as! DeleteJobTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -732,6 +792,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getJobTemplateWithOptions(_ request: GetJobTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetJobTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobTemplateId)) {
+            query["JobTemplateId"] = request.jobTemplateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetJobTemplate",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetJobTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getJobTemplate(_ request: GetJobTemplateRequest) async throws -> GetJobTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getJobTemplateWithOptions(request as! GetJobTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPoolWithOptions(_ request: GetPoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPoolResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1020,6 +1111,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listJobExecutors(_ request: ListJobExecutorsRequest) async throws -> ListJobExecutorsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listJobExecutorsWithOptions(request as! ListJobExecutorsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listJobTemplatesWithOptions(_ request: ListJobTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListJobTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListJobTemplates",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListJobTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listJobTemplates(_ request: ListJobTemplatesRequest) async throws -> ListJobTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listJobTemplatesWithOptions(request as! ListJobTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1374,6 +1499,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateJobRecordDuration(_ request: UpdateJobRecordDurationRequest) async throws -> UpdateJobRecordDurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateJobRecordDurationWithOptions(request as! UpdateJobRecordDurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateJobTemplateWithOptions(_ tmpReq: UpdateJobTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateJobTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateJobTemplateShrinkRequest = UpdateJobTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.jobTemplateConfig)) {
+            request.jobTemplateConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobTemplateConfig, "JobTemplateConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobTemplateConfigShrink)) {
+            query["JobTemplateConfig"] = request.jobTemplateConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobTemplateDescription)) {
+            query["JobTemplateDescription"] = request.jobTemplateDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobTemplateId)) {
+            query["JobTemplateId"] = request.jobTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobTemplateName)) {
+            query["JobTemplateName"] = request.jobTemplateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateJobTemplate",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateJobTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateJobTemplate(_ request: UpdateJobTemplateRequest) async throws -> UpdateJobTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateJobTemplateWithOptions(request as! UpdateJobTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
