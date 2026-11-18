@@ -38078,6 +38078,12 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
 
             public var networkAccessEndpointQuota: Int64?
 
+            public var pamActiveUserBaseQuota: Int64?
+
+            public var pamActiveUserPurchasedQuota: Int64?
+
+            public var pamElasticBillingEnabled: Bool?
+
             public var pamLicenseStatus: String?
 
             public var prepaidActiveUserNumber: Int64?
@@ -38113,6 +38119,15 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
                 if self.networkAccessEndpointQuota != nil {
                     map["NetworkAccessEndpointQuota"] = self.networkAccessEndpointQuota!
                 }
+                if self.pamActiveUserBaseQuota != nil {
+                    map["PamActiveUserBaseQuota"] = self.pamActiveUserBaseQuota!
+                }
+                if self.pamActiveUserPurchasedQuota != nil {
+                    map["PamActiveUserPurchasedQuota"] = self.pamActiveUserPurchasedQuota!
+                }
+                if self.pamElasticBillingEnabled != nil {
+                    map["PamElasticBillingEnabled"] = self.pamElasticBillingEnabled!
+                }
                 if self.pamLicenseStatus != nil {
                     map["PamLicenseStatus"] = self.pamLicenseStatus!
                 }
@@ -38141,6 +38156,15 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NetworkAccessEndpointQuota"] as? Int64 {
                     self.networkAccessEndpointQuota = value
+                }
+                if let value = dict["PamActiveUserBaseQuota"] as? Int64 {
+                    self.pamActiveUserBaseQuota = value
+                }
+                if let value = dict["PamActiveUserPurchasedQuota"] as? Int64 {
+                    self.pamActiveUserPurchasedQuota = value
+                }
+                if let value = dict["PamElasticBillingEnabled"] as? Bool {
+                    self.pamElasticBillingEnabled = value
                 }
                 if let value = dict["PamLicenseStatus"] as? String {
                     self.pamLicenseStatus = value
