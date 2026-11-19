@@ -17675,9 +17675,13 @@ public class CreateKnowledgeBaseResponse : Tea.TeaModel {
 }
 
 public class CreateKnowledgeSpaceRequest : Tea.TeaModel {
+    public var autoCreateMcpInstance: Bool?
+
     public var DBType: String?
 
     public var description_: String?
+
+    public var dryRun: Bool?
 
     public var embeddingDimension: Int32?
 
@@ -17725,11 +17729,17 @@ public class CreateKnowledgeSpaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoCreateMcpInstance != nil {
+            map["AutoCreateMcpInstance"] = self.autoCreateMcpInstance!
+        }
         if self.DBType != nil {
             map["DBType"] = self.DBType!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.embeddingDimension != nil {
             map["EmbeddingDimension"] = self.embeddingDimension!
@@ -17784,11 +17794,17 @@ public class CreateKnowledgeSpaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoCreateMcpInstance"] as? Bool {
+            self.autoCreateMcpInstance = value
+        }
         if let value = dict["DBType"] as? String {
             self.DBType = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EmbeddingDimension"] as? Int32 {
             self.embeddingDimension = value

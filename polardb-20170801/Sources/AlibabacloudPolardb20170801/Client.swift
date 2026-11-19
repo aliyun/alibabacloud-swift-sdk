@@ -4465,11 +4465,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createKnowledgeSpaceWithOptions(_ request: CreateKnowledgeSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeSpaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoCreateMcpInstance)) {
+            query["AutoCreateMcpInstance"] = request.autoCreateMcpInstance!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBType)) {
             query["DBType"] = request.DBType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.embeddingDimension)) {
             query["EmbeddingDimension"] = request.embeddingDimension!;
