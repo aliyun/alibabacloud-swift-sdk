@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -269,6 +270,8 @@ public class AuthorizeEndpointAclResponse : Tea.TeaModel {
 
 public class CreateEventRuleRequest : Tea.TeaModel {
     public class Endpoint : Tea.TeaModel {
+        public var endpointRoleName: String?
+
         public var endpointType: String?
 
         public var endpointValue: String?
@@ -287,6 +290,9 @@ public class CreateEventRuleRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.endpointRoleName != nil {
+                map["EndpointRoleName"] = self.endpointRoleName!
+            }
             if self.endpointType != nil {
                 map["EndpointType"] = self.endpointType!
             }
@@ -298,6 +304,9 @@ public class CreateEventRuleRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EndpointRoleName"] as? String {
+                self.endpointRoleName = value
+            }
             if let value = dict["EndpointType"] as? String {
                 self.endpointType = value
             }
