@@ -7020,6 +7020,8 @@ public class Quota : Tea.TeaModel {
 
     public var memoryGB: Int32?
 
+    public var scalingCpuCoresPerMinute: Int64?
+
     public var tagValue: String?
 
     public override init() {
@@ -7045,6 +7047,9 @@ public class Quota : Tea.TeaModel {
         if self.memoryGB != nil {
             map["memoryGB"] = self.memoryGB!
         }
+        if self.scalingCpuCoresPerMinute != nil {
+            map["scalingCpuCoresPerMinute"] = self.scalingCpuCoresPerMinute!
+        }
         if self.tagValue != nil {
             map["tagValue"] = self.tagValue!
         }
@@ -7062,6 +7067,9 @@ public class Quota : Tea.TeaModel {
         if let value = dict["memoryGB"] as? Int32 {
             self.memoryGB = value
         }
+        if let value = dict["scalingCpuCoresPerMinute"] as? Int64 {
+            self.scalingCpuCoresPerMinute = value
+        }
         if let value = dict["tagValue"] as? String {
             self.tagValue = value
         }
@@ -7074,6 +7082,8 @@ public class QuotaUsage : Tea.TeaModel {
     public var instanceCount: Int64?
 
     public var memoryGB: Double?
+
+    public var scalingCpuCoresPerMinute: Double?
 
     public override init() {
         super.init()
@@ -7098,6 +7108,9 @@ public class QuotaUsage : Tea.TeaModel {
         if self.memoryGB != nil {
             map["memoryGB"] = self.memoryGB!
         }
+        if self.scalingCpuCoresPerMinute != nil {
+            map["scalingCpuCoresPerMinute"] = self.scalingCpuCoresPerMinute!
+        }
         return map
     }
 
@@ -7111,6 +7124,9 @@ public class QuotaUsage : Tea.TeaModel {
         }
         if let value = dict["memoryGB"] as? Double {
             self.memoryGB = value
+        }
+        if let value = dict["scalingCpuCoresPerMinute"] as? Double {
+            self.scalingCpuCoresPerMinute = value
         }
     }
 }
