@@ -23362,6 +23362,8 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
         public var networkConfiguration: CreateWorkspaceRequest.Body.NetworkConfiguration?
 
+        public var scanPolicy: String?
+
         public var storageType: String?
 
         public override init() {
@@ -23391,6 +23393,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
             if self.networkConfiguration != nil {
                 map["networkConfiguration"] = self.networkConfiguration?.toMap()
             }
+            if self.scanPolicy != nil {
+                map["scanPolicy"] = self.scanPolicy!
+            }
             if self.storageType != nil {
                 map["storageType"] = self.storageType!
             }
@@ -23412,6 +23417,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
                 var model = CreateWorkspaceRequest.Body.NetworkConfiguration()
                 model.fromMap(value)
                 self.networkConfiguration = model
+            }
+            if let value = dict["scanPolicy"] as? String {
+                self.scanPolicy = value
             }
             if let value = dict["storageType"] as? String {
                 self.storageType = value
