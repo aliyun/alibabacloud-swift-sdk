@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -4112,6 +4113,8 @@ public class BatchCreateKgEntityRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var bizId: String?
+
             public var entityType: String?
 
             public var propertyList: [BatchCreateKgEntityRequest.CreateCommand.EntityList.PropertyList]?
@@ -4130,6 +4133,9 @@ public class BatchCreateKgEntityRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bizId != nil {
+                    map["BizId"] = self.bizId!
+                }
                 if self.entityType != nil {
                     map["EntityType"] = self.entityType!
                 }
@@ -4145,6 +4151,9 @@ public class BatchCreateKgEntityRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BizId"] as? String {
+                    self.bizId = value
+                }
                 if let value = dict["EntityType"] as? String {
                     self.entityType = value
                 }
@@ -4321,6 +4330,8 @@ public class BatchCreateKgEntityShrinkRequest : Tea.TeaModel {
 public class BatchCreateKgEntityResponseBody : Tea.TeaModel {
     public class CreateResult : Tea.TeaModel {
         public class SuccessEntityList : Tea.TeaModel {
+            public var bizId: String?
+
             public var entityId: String?
 
             public var entityType: String?
@@ -4339,6 +4350,9 @@ public class BatchCreateKgEntityResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bizId != nil {
+                    map["BizId"] = self.bizId!
+                }
                 if self.entityId != nil {
                     map["EntityId"] = self.entityId!
                 }
@@ -4350,6 +4364,9 @@ public class BatchCreateKgEntityResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BizId"] as? String {
+                    self.bizId = value
+                }
                 if let value = dict["EntityId"] as? String {
                     self.entityId = value
                 }
@@ -4810,6 +4827,10 @@ public class BatchCreateKgRelationResponseBody : Tea.TeaModel {
 
             public var relationType: String?
 
+            public var sourceEntityId: String?
+
+            public var targetEntityId: String?
+
             public override init() {
                 super.init()
             }
@@ -4830,6 +4851,12 @@ public class BatchCreateKgRelationResponseBody : Tea.TeaModel {
                 if self.relationType != nil {
                     map["RelationType"] = self.relationType!
                 }
+                if self.sourceEntityId != nil {
+                    map["SourceEntityId"] = self.sourceEntityId!
+                }
+                if self.targetEntityId != nil {
+                    map["TargetEntityId"] = self.targetEntityId!
+                }
                 return map
             }
 
@@ -4840,6 +4867,12 @@ public class BatchCreateKgRelationResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RelationType"] as? String {
                     self.relationType = value
+                }
+                if let value = dict["SourceEntityId"] as? String {
+                    self.sourceEntityId = value
+                }
+                if let value = dict["TargetEntityId"] as? String {
+                    self.targetEntityId = value
                 }
             }
         }
