@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "mPaaS"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "mpaas.aliyuncs.com",
@@ -5176,6 +5180,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetMsgkey)) {
             body["TargetMsgkey"] = request.targetMsgkey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetVendorTemplate)) {
+            body["TargetVendorTemplate"] = request.targetVendorTemplate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskName)) {
             body["TaskName"] = request.taskName ?? "";
         }
@@ -5197,8 +5204,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.uri)) {
             body["Uri"] = request.uri ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useVoip)) {
+            body["UseVoip"] = request.useVoip!;
+        }
         if (!TeaUtils.Client.isUnset(request.vendorTemplate)) {
             body["VendorTemplate"] = request.vendorTemplate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voipMap)) {
+            body["VoipMap"] = request.voipMap ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -5302,6 +5315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetMsgkey)) {
             body["TargetMsgkey"] = request.targetMsgkey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetVendorTemplate)) {
+            body["TargetVendorTemplate"] = request.targetVendorTemplate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskName)) {
             body["TaskName"] = request.taskName ?? "";
         }
@@ -5323,8 +5339,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.transparentMessageUrgency)) {
             body["TransparentMessageUrgency"] = request.transparentMessageUrgency ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useVoip)) {
+            body["UseVoip"] = request.useVoip!;
+        }
         if (!TeaUtils.Client.isUnset(request.vendorTemplate)) {
             body["VendorTemplate"] = request.vendorTemplate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voipMap)) {
+            body["VoipMap"] = request.voipMap ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -6797,6 +6819,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startUserAppAsyncEnhanceInMsa(_ request: StartUserAppAsyncEnhanceInMsaRequest) async throws -> StartUserAppAsyncEnhanceInMsaResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await startUserAppAsyncEnhanceInMsaWithOptions(request as! StartUserAppAsyncEnhanceInMsaRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncMiniGameOnlineStatusByAppWithOptions(_ request: SyncMiniGameOnlineStatusByAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncMiniGameOnlineStatusByAppResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.miniProgramCode)) {
+            body["MiniProgramCode"] = request.miniProgramCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.onlineStatus)) {
+            body["OnlineStatus"] = request.onlineStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            body["TenantId"] = request.tenantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SyncMiniGameOnlineStatusByApp",
+            "version": "2020-10-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SyncMiniGameOnlineStatusByAppResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncMiniGameOnlineStatusByApp(_ request: SyncMiniGameOnlineStatusByAppRequest) async throws -> SyncMiniGameOnlineStatusByAppResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await syncMiniGameOnlineStatusByAppWithOptions(request as! SyncMiniGameOnlineStatusByAppRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
