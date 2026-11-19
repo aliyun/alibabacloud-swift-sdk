@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -36539,6 +36540,275 @@ public class RefundInstanceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RefundInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ReleaseExpiredPrepaidInstanceRequest : Tea.TeaModel {
+    public var instanceIds: String?
+
+    public var productCode: String?
+
+    public var productType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceIds"] as? String {
+            self.instanceIds = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+    }
+}
+
+public class ReleaseExpiredPrepaidInstanceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class InstanceResults : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var hostId: String?
+
+        public var instanceResults: [ReleaseExpiredPrepaidInstanceResponseBody.Data.InstanceResults]?
+
+        public var releaseResult: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hostId != nil {
+                map["HostId"] = self.hostId!
+            }
+            if self.instanceResults != nil {
+                var tmp : [Any] = []
+                for k in self.instanceResults! {
+                    tmp.append(k.toMap())
+                }
+                map["InstanceResults"] = tmp
+            }
+            if self.releaseResult != nil {
+                map["ReleaseResult"] = self.releaseResult!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["HostId"] as? String {
+                self.hostId = value
+            }
+            if let value = dict["InstanceResults"] as? [Any?] {
+                var tmp : [ReleaseExpiredPrepaidInstanceResponseBody.Data.InstanceResults] = []
+                for v in value {
+                    if v != nil {
+                        var model = ReleaseExpiredPrepaidInstanceResponseBody.Data.InstanceResults()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.instanceResults = tmp
+            }
+            if let value = dict["ReleaseResult"] as? Bool {
+                self.releaseResult = value
+            }
+        }
+    }
+    public var class_: String?
+
+    public var code: String?
+
+    public var data: ReleaseExpiredPrepaidInstanceResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.class_ != nil {
+            map["Class"] = self.class_!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Class"] as? String {
+            self.class_ = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ReleaseExpiredPrepaidInstanceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ReleaseExpiredPrepaidInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ReleaseExpiredPrepaidInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ReleaseExpiredPrepaidInstanceResponseBody()
             model.fromMap(value)
             self.body = model
         }
