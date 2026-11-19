@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -4708,6 +4709,8 @@ public class GetOrganizationMemberSeatStatsResponse : Tea.TeaModel {
 }
 
 public class GetSubscriptionSeatDetailsRequest : Tea.TeaModel {
+    public var instanceCode: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -4734,6 +4737,9 @@ public class GetSubscriptionSeatDetailsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceCode != nil {
+            map["InstanceCode"] = self.instanceCode!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -4757,6 +4763,9 @@ public class GetSubscriptionSeatDetailsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceCode"] as? String {
+            self.instanceCode = value
+        }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
         }

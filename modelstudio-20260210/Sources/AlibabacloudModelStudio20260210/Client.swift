@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "ModelStudio"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("modelstudio", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -625,6 +629,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getSubscriptionSeatDetailsWithOptions(_ request: GetSubscriptionSeatDetailsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSubscriptionSeatDetailsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceCode)) {
+            query["InstanceCode"] = request.instanceCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
         }
