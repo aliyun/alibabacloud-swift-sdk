@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "mPaaS"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "mpaas.aliyuncs.com",
@@ -2595,6 +2599,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetMsgkey)) {
             body["TargetMsgkey"] = request.targetMsgkey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetVendorTemplate)) {
+            body["TargetVendorTemplate"] = request.targetVendorTemplate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskName)) {
             body["TaskName"] = request.taskName ?? "";
         }
@@ -2616,8 +2623,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.uri)) {
             body["Uri"] = request.uri ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useVoip)) {
+            body["UseVoip"] = request.useVoip!;
+        }
         if (!TeaUtils.Client.isUnset(request.vendorTemplate)) {
             body["VendorTemplate"] = request.vendorTemplate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voipMap)) {
+            body["VoipMap"] = request.voipMap ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -2709,6 +2722,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetMsgkey)) {
             body["TargetMsgkey"] = request.targetMsgkey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetVendorTemplate)) {
+            body["TargetVendorTemplate"] = request.targetVendorTemplate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskName)) {
             body["TaskName"] = request.taskName ?? "";
         }
@@ -2730,8 +2746,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.transparentMessageUrgency)) {
             body["TransparentMessageUrgency"] = request.transparentMessageUrgency ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useVoip)) {
+            body["UseVoip"] = request.useVoip!;
+        }
         if (!TeaUtils.Client.isUnset(request.vendorTemplate)) {
             body["VendorTemplate"] = request.vendorTemplate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voipMap)) {
+            body["VoipMap"] = request.voipMap ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";

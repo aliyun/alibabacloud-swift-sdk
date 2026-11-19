@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -14601,6 +14602,8 @@ public class PushMultipleRequest : Tea.TeaModel {
 
         public var templateKeyValue: String?
 
+        public var vendorTemplate: String?
+
         public override init() {
             super.init()
         }
@@ -14627,6 +14630,9 @@ public class PushMultipleRequest : Tea.TeaModel {
             if self.templateKeyValue != nil {
                 map["TemplateKeyValue"] = self.templateKeyValue!
             }
+            if self.vendorTemplate != nil {
+                map["VendorTemplate"] = self.vendorTemplate!
+            }
             return map
         }
 
@@ -14643,6 +14649,9 @@ public class PushMultipleRequest : Tea.TeaModel {
             }
             if let value = dict["TemplateKeyValue"] as? String {
                 self.templateKeyValue = value
+            }
+            if let value = dict["VendorTemplate"] as? String {
+                self.vendorTemplate = value
             }
         }
     }
@@ -14892,6 +14901,8 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
 
         public var templateKeyValue: String?
 
+        public var vendorTemplate: String?
+
         public override init() {
             super.init()
         }
@@ -14918,6 +14929,9 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
             if self.templateKeyValue != nil {
                 map["TemplateKeyValue"] = self.templateKeyValue!
             }
+            if self.vendorTemplate != nil {
+                map["VendorTemplate"] = self.vendorTemplate!
+            }
             return map
         }
 
@@ -14934,6 +14948,9 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["TemplateKeyValue"] as? String {
                 self.templateKeyValue = value
+            }
+            if let value = dict["VendorTemplate"] as? String {
+                self.vendorTemplate = value
             }
         }
     }
@@ -15635,6 +15652,8 @@ public class PushSimpleRequest : Tea.TeaModel {
 
     public var targetMsgkey: String?
 
+    public var targetVendorTemplate: String?
+
     public var taskName: String?
 
     public var tenantId: String?
@@ -15649,7 +15668,11 @@ public class PushSimpleRequest : Tea.TeaModel {
 
     public var uri: String?
 
+    public var useVoip: Bool?
+
     public var vendorTemplate: String?
+
+    public var voipMap: String?
 
     public var workspaceId: String?
 
@@ -15730,6 +15753,9 @@ public class PushSimpleRequest : Tea.TeaModel {
         if self.targetMsgkey != nil {
             map["TargetMsgkey"] = self.targetMsgkey!
         }
+        if self.targetVendorTemplate != nil {
+            map["TargetVendorTemplate"] = self.targetVendorTemplate!
+        }
         if self.taskName != nil {
             map["TaskName"] = self.taskName!
         }
@@ -15751,8 +15777,14 @@ public class PushSimpleRequest : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.useVoip != nil {
+            map["UseVoip"] = self.useVoip!
+        }
         if self.vendorTemplate != nil {
             map["VendorTemplate"] = self.vendorTemplate!
+        }
+        if self.voipMap != nil {
+            map["VoipMap"] = self.voipMap!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -15825,6 +15857,9 @@ public class PushSimpleRequest : Tea.TeaModel {
         if let value = dict["TargetMsgkey"] as? String {
             self.targetMsgkey = value
         }
+        if let value = dict["TargetVendorTemplate"] as? String {
+            self.targetVendorTemplate = value
+        }
         if let value = dict["TaskName"] as? String {
             self.taskName = value
         }
@@ -15846,8 +15881,14 @@ public class PushSimpleRequest : Tea.TeaModel {
         if let value = dict["Uri"] as? String {
             self.uri = value
         }
+        if let value = dict["UseVoip"] as? Bool {
+            self.useVoip = value
+        }
         if let value = dict["VendorTemplate"] as? String {
             self.vendorTemplate = value
+        }
+        if let value = dict["VoipMap"] as? String {
+            self.voipMap = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -15898,6 +15939,8 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
 
     public var targetMsgkey: String?
 
+    public var targetVendorTemplate: String?
+
     public var taskName: String?
 
     public var tenantId: String?
@@ -15912,7 +15955,11 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
 
     public var uri: String?
 
+    public var useVoip: Bool?
+
     public var vendorTemplate: String?
+
+    public var voipMap: String?
 
     public var workspaceId: String?
 
@@ -15993,6 +16040,9 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         if self.targetMsgkey != nil {
             map["TargetMsgkey"] = self.targetMsgkey!
         }
+        if self.targetVendorTemplate != nil {
+            map["TargetVendorTemplate"] = self.targetVendorTemplate!
+        }
         if self.taskName != nil {
             map["TaskName"] = self.taskName!
         }
@@ -16014,8 +16064,14 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.useVoip != nil {
+            map["UseVoip"] = self.useVoip!
+        }
         if self.vendorTemplate != nil {
             map["VendorTemplate"] = self.vendorTemplate!
+        }
+        if self.voipMap != nil {
+            map["VoipMap"] = self.voipMap!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -16088,6 +16144,9 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         if let value = dict["TargetMsgkey"] as? String {
             self.targetMsgkey = value
         }
+        if let value = dict["TargetVendorTemplate"] as? String {
+            self.targetVendorTemplate = value
+        }
         if let value = dict["TaskName"] as? String {
             self.taskName = value
         }
@@ -16109,8 +16168,14 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         if let value = dict["Uri"] as? String {
             self.uri = value
         }
+        if let value = dict["UseVoip"] as? Bool {
+            self.useVoip = value
+        }
         if let value = dict["VendorTemplate"] as? String {
             self.vendorTemplate = value
+        }
+        if let value = dict["VoipMap"] as? String {
+            self.voipMap = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16315,6 +16380,8 @@ public class PushTemplateRequest : Tea.TeaModel {
 
     public var targetMsgkey: String?
 
+    public var targetVendorTemplate: String?
+
     public var taskName: String?
 
     public var templateKeyValue: String?
@@ -16329,7 +16396,11 @@ public class PushTemplateRequest : Tea.TeaModel {
 
     public var transparentMessageUrgency: String?
 
+    public var useVoip: Bool?
+
     public var vendorTemplate: String?
+
+    public var voipMap: String?
 
     public var workspaceId: String?
 
@@ -16398,6 +16469,9 @@ public class PushTemplateRequest : Tea.TeaModel {
         if self.targetMsgkey != nil {
             map["TargetMsgkey"] = self.targetMsgkey!
         }
+        if self.targetVendorTemplate != nil {
+            map["TargetVendorTemplate"] = self.targetVendorTemplate!
+        }
         if self.taskName != nil {
             map["TaskName"] = self.taskName!
         }
@@ -16419,8 +16493,14 @@ public class PushTemplateRequest : Tea.TeaModel {
         if self.transparentMessageUrgency != nil {
             map["TransparentMessageUrgency"] = self.transparentMessageUrgency!
         }
+        if self.useVoip != nil {
+            map["UseVoip"] = self.useVoip!
+        }
         if self.vendorTemplate != nil {
             map["VendorTemplate"] = self.vendorTemplate!
+        }
+        if self.voipMap != nil {
+            map["VoipMap"] = self.voipMap!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -16481,6 +16561,9 @@ public class PushTemplateRequest : Tea.TeaModel {
         if let value = dict["TargetMsgkey"] as? String {
             self.targetMsgkey = value
         }
+        if let value = dict["TargetVendorTemplate"] as? String {
+            self.targetVendorTemplate = value
+        }
         if let value = dict["TaskName"] as? String {
             self.taskName = value
         }
@@ -16502,8 +16585,14 @@ public class PushTemplateRequest : Tea.TeaModel {
         if let value = dict["TransparentMessageUrgency"] as? String {
             self.transparentMessageUrgency = value
         }
+        if let value = dict["UseVoip"] as? Bool {
+            self.useVoip = value
+        }
         if let value = dict["VendorTemplate"] as? String {
             self.vendorTemplate = value
+        }
+        if let value = dict["VoipMap"] as? String {
+            self.voipMap = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16546,6 +16635,8 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
 
     public var targetMsgkey: String?
 
+    public var targetVendorTemplate: String?
+
     public var taskName: String?
 
     public var templateKeyValue: String?
@@ -16560,7 +16651,11 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
 
     public var transparentMessageUrgency: String?
 
+    public var useVoip: Bool?
+
     public var vendorTemplate: String?
+
+    public var voipMap: String?
 
     public var workspaceId: String?
 
@@ -16629,6 +16724,9 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         if self.targetMsgkey != nil {
             map["TargetMsgkey"] = self.targetMsgkey!
         }
+        if self.targetVendorTemplate != nil {
+            map["TargetVendorTemplate"] = self.targetVendorTemplate!
+        }
         if self.taskName != nil {
             map["TaskName"] = self.taskName!
         }
@@ -16650,8 +16748,14 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         if self.transparentMessageUrgency != nil {
             map["TransparentMessageUrgency"] = self.transparentMessageUrgency!
         }
+        if self.useVoip != nil {
+            map["UseVoip"] = self.useVoip!
+        }
         if self.vendorTemplate != nil {
             map["VendorTemplate"] = self.vendorTemplate!
+        }
+        if self.voipMap != nil {
+            map["VoipMap"] = self.voipMap!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -16712,6 +16816,9 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         if let value = dict["TargetMsgkey"] as? String {
             self.targetMsgkey = value
         }
+        if let value = dict["TargetVendorTemplate"] as? String {
+            self.targetVendorTemplate = value
+        }
         if let value = dict["TaskName"] as? String {
             self.taskName = value
         }
@@ -16733,8 +16840,14 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         if let value = dict["TransparentMessageUrgency"] as? String {
             self.transparentMessageUrgency = value
         }
+        if let value = dict["UseVoip"] as? Bool {
+            self.useVoip = value
+        }
         if let value = dict["VendorTemplate"] as? String {
             self.vendorTemplate = value
+        }
+        if let value = dict["VoipMap"] as? String {
+            self.voipMap = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
