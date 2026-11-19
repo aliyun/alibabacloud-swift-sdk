@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -7994,7 +7995,11 @@ public class ExportTextScanResultResponse : Tea.TeaModel {
 public class GetAiAppDetailRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var endTime: String?
+
     public var regionId: String?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -8013,8 +8018,14 @@ public class GetAiAppDetailRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -8024,8 +8035,14 @@ public class GetAiAppDetailRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -8118,6 +8135,60 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
                     }
                 }
                 self.y = tmp
+            }
+        }
+    }
+    public class Property : Tea.TeaModel {
+        public var email: String?
+
+        public var hostname: String?
+
+        public var ip: String?
+
+        public var mac: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.email != nil {
+                map["Email"] = self.email!
+            }
+            if self.hostname != nil {
+                map["Hostname"] = self.hostname!
+            }
+            if self.ip != nil {
+                map["Ip"] = self.ip!
+            }
+            if self.mac != nil {
+                map["Mac"] = self.mac!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Email"] as? String {
+                self.email = value
+            }
+            if let value = dict["Hostname"] as? String {
+                self.hostname = value
+            }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
+            }
+            if let value = dict["Mac"] as? String {
+                self.mac = value
             }
         }
     }
@@ -8251,15 +8322,67 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RiskStats : Tea.TeaModel {
+        public var requestCount: Int64?
+
+        public var riskCount: Int64?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.requestCount != nil {
+                map["RequestCount"] = self.requestCount!
+            }
+            if self.riskCount != nil {
+                map["RiskCount"] = self.riskCount!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RequestCount"] as? Int64 {
+                self.requestCount = value
+            }
+            if let value = dict["RiskCount"] as? Int64 {
+                self.riskCount = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public var appId: String?
 
     public var appName: String?
 
+    public var channel: String?
+
     public var chart: GetAiAppDetailResponseBody.Chart?
+
+    public var property: GetAiAppDetailResponseBody.Property?
 
     public var requestId: String?
 
     public var riskEvents: [GetAiAppDetailResponseBody.RiskEvents]?
+
+    public var riskStats: [GetAiAppDetailResponseBody.RiskStats]?
 
     public var score: Int32?
 
@@ -8276,6 +8399,7 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.chart?.validate()
+        try self.property?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -8286,8 +8410,14 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
+        if self.channel != nil {
+            map["Channel"] = self.channel!
+        }
         if self.chart != nil {
             map["Chart"] = self.chart?.toMap()
+        }
+        if self.property != nil {
+            map["Property"] = self.property?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -8298,6 +8428,13 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["RiskEvents"] = tmp
+        }
+        if self.riskStats != nil {
+            var tmp : [Any] = []
+            for k in self.riskStats! {
+                tmp.append(k.toMap())
+            }
+            map["RiskStats"] = tmp
         }
         if self.score != nil {
             map["Score"] = self.score!
@@ -8316,10 +8453,18 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
+        if let value = dict["Channel"] as? String {
+            self.channel = value
+        }
         if let value = dict["Chart"] as? [String: Any?] {
             var model = GetAiAppDetailResponseBody.Chart()
             model.fromMap(value)
             self.chart = model
+        }
+        if let value = dict["Property"] as? [String: Any?] {
+            var model = GetAiAppDetailResponseBody.Property()
+            model.fromMap(value)
+            self.property = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -8336,6 +8481,19 @@ public class GetAiAppDetailResponseBody : Tea.TeaModel {
                 }
             }
             self.riskEvents = tmp
+        }
+        if let value = dict["RiskStats"] as? [Any?] {
+            var tmp : [GetAiAppDetailResponseBody.RiskStats] = []
+            for v in value {
+                if v != nil {
+                    var model = GetAiAppDetailResponseBody.RiskStats()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.riskStats = tmp
         }
         if let value = dict["Score"] as? Int32 {
             self.score = value
@@ -16616,6 +16774,8 @@ public class GetQpsStatsResponse : Tea.TeaModel {
 }
 
 public class GetRiskStatsRequest : Tea.TeaModel {
+    public var channel: String?
+
     public var classify: String?
 
     public var endTime: String?
@@ -16640,6 +16800,9 @@ public class GetRiskStatsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channel != nil {
+            map["Channel"] = self.channel!
+        }
         if self.classify != nil {
             map["Classify"] = self.classify!
         }
@@ -16660,6 +16823,9 @@ public class GetRiskStatsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Channel"] as? String {
+            self.channel = value
+        }
         if let value = dict["Classify"] as? String {
             self.classify = value
         }
@@ -21241,6 +21407,52 @@ public class ListAiAppByPageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RiskStats : Tea.TeaModel {
+            public var requestCount: Int64?
+
+            public var riskCount: Int64?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.requestCount != nil {
+                    map["RequestCount"] = self.requestCount!
+                }
+                if self.riskCount != nil {
+                    map["RiskCount"] = self.riskCount!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RequestCount"] as? Int64 {
+                    self.requestCount = value
+                }
+                if let value = dict["RiskCount"] as? Int64 {
+                    self.riskCount = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var appId: String?
 
         public var appName: String?
@@ -21254,6 +21466,8 @@ public class ListAiAppByPageResponseBody : Tea.TeaModel {
         public var riskEvents: [ListAiAppByPageResponseBody.Items.RiskEvents]?
 
         public var riskLevel: String?
+
+        public var riskStats: [ListAiAppByPageResponseBody.Items.RiskStats]?
 
         public var traceStatus: String?
 
@@ -21300,6 +21514,13 @@ public class ListAiAppByPageResponseBody : Tea.TeaModel {
             if self.riskLevel != nil {
                 map["RiskLevel"] = self.riskLevel!
             }
+            if self.riskStats != nil {
+                var tmp : [Any] = []
+                for k in self.riskStats! {
+                    tmp.append(k.toMap())
+                }
+                map["RiskStats"] = tmp
+            }
             if self.traceStatus != nil {
                 map["TraceStatus"] = self.traceStatus!
             }
@@ -21344,6 +21565,19 @@ public class ListAiAppByPageResponseBody : Tea.TeaModel {
             }
             if let value = dict["RiskLevel"] as? String {
                 self.riskLevel = value
+            }
+            if let value = dict["RiskStats"] as? [Any?] {
+                var tmp : [ListAiAppByPageResponseBody.Items.RiskStats] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAiAppByPageResponseBody.Items.RiskStats()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.riskStats = tmp
             }
             if let value = dict["TraceStatus"] as? String {
                 self.traceStatus = value
