@@ -7016,9 +7016,17 @@ public class PublicWarmPoolConfig : Tea.TeaModel {
 public class Quota : Tea.TeaModel {
     public var cpuCores: Int32?
 
+    public var createSessionWithSnapshotConcurrency: Int32?
+
+    public var createSnapshotConcurrency: Int32?
+
     public var instanceCount: Int32?
 
     public var memoryGB: Int32?
+
+    public var pauseConcurrency: Int32?
+
+    public var resumeConcurrency: Int32?
 
     public var scalingCpuCoresPerMinute: Int64?
 
@@ -7041,11 +7049,23 @@ public class Quota : Tea.TeaModel {
         if self.cpuCores != nil {
             map["cpuCores"] = self.cpuCores!
         }
+        if self.createSessionWithSnapshotConcurrency != nil {
+            map["createSessionWithSnapshotConcurrency"] = self.createSessionWithSnapshotConcurrency!
+        }
+        if self.createSnapshotConcurrency != nil {
+            map["createSnapshotConcurrency"] = self.createSnapshotConcurrency!
+        }
         if self.instanceCount != nil {
             map["instanceCount"] = self.instanceCount!
         }
         if self.memoryGB != nil {
             map["memoryGB"] = self.memoryGB!
+        }
+        if self.pauseConcurrency != nil {
+            map["pauseConcurrency"] = self.pauseConcurrency!
+        }
+        if self.resumeConcurrency != nil {
+            map["resumeConcurrency"] = self.resumeConcurrency!
         }
         if self.scalingCpuCoresPerMinute != nil {
             map["scalingCpuCoresPerMinute"] = self.scalingCpuCoresPerMinute!
@@ -7061,11 +7081,23 @@ public class Quota : Tea.TeaModel {
         if let value = dict["cpuCores"] as? Int32 {
             self.cpuCores = value
         }
+        if let value = dict["createSessionWithSnapshotConcurrency"] as? Int32 {
+            self.createSessionWithSnapshotConcurrency = value
+        }
+        if let value = dict["createSnapshotConcurrency"] as? Int32 {
+            self.createSnapshotConcurrency = value
+        }
         if let value = dict["instanceCount"] as? Int32 {
             self.instanceCount = value
         }
         if let value = dict["memoryGB"] as? Int32 {
             self.memoryGB = value
+        }
+        if let value = dict["pauseConcurrency"] as? Int32 {
+            self.pauseConcurrency = value
+        }
+        if let value = dict["resumeConcurrency"] as? Int32 {
+            self.resumeConcurrency = value
         }
         if let value = dict["scalingCpuCoresPerMinute"] as? Int64 {
             self.scalingCpuCoresPerMinute = value
@@ -7079,9 +7111,17 @@ public class Quota : Tea.TeaModel {
 public class QuotaUsage : Tea.TeaModel {
     public var cpuCores: Double?
 
+    public var createSessionWithSnapshotConcurrency: Int32?
+
+    public var createSnapshotConcurrency: Int32?
+
     public var instanceCount: Int64?
 
     public var memoryGB: Double?
+
+    public var pauseConcurrency: Int32?
+
+    public var resumeConcurrency: Int32?
 
     public var scalingCpuCoresPerMinute: Double?
 
@@ -7102,11 +7142,23 @@ public class QuotaUsage : Tea.TeaModel {
         if self.cpuCores != nil {
             map["cpuCores"] = self.cpuCores!
         }
+        if self.createSessionWithSnapshotConcurrency != nil {
+            map["createSessionWithSnapshotConcurrency"] = self.createSessionWithSnapshotConcurrency!
+        }
+        if self.createSnapshotConcurrency != nil {
+            map["createSnapshotConcurrency"] = self.createSnapshotConcurrency!
+        }
         if self.instanceCount != nil {
             map["instanceCount"] = self.instanceCount!
         }
         if self.memoryGB != nil {
             map["memoryGB"] = self.memoryGB!
+        }
+        if self.pauseConcurrency != nil {
+            map["pauseConcurrency"] = self.pauseConcurrency!
+        }
+        if self.resumeConcurrency != nil {
+            map["resumeConcurrency"] = self.resumeConcurrency!
         }
         if self.scalingCpuCoresPerMinute != nil {
             map["scalingCpuCoresPerMinute"] = self.scalingCpuCoresPerMinute!
@@ -7119,11 +7171,23 @@ public class QuotaUsage : Tea.TeaModel {
         if let value = dict["cpuCores"] as? Double {
             self.cpuCores = value
         }
+        if let value = dict["createSessionWithSnapshotConcurrency"] as? Int32 {
+            self.createSessionWithSnapshotConcurrency = value
+        }
+        if let value = dict["createSnapshotConcurrency"] as? Int32 {
+            self.createSnapshotConcurrency = value
+        }
         if let value = dict["instanceCount"] as? Int64 {
             self.instanceCount = value
         }
         if let value = dict["memoryGB"] as? Double {
             self.memoryGB = value
+        }
+        if let value = dict["pauseConcurrency"] as? Int32 {
+            self.pauseConcurrency = value
+        }
+        if let value = dict["resumeConcurrency"] as? Int32 {
+            self.resumeConcurrency = value
         }
         if let value = dict["scalingCpuCoresPerMinute"] as? Double {
             self.scalingCpuCoresPerMinute = value
