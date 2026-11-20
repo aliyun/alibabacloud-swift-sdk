@@ -308,6 +308,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.attachments)) {
             body["attachments"] = request.attachments ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.commands)) {
+            body["commands"] = request.commands ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             body["content"] = request.content ?? "";
         }

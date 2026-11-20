@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudOpenAgent20260801"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud OpenAgent (20260801) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/openagent-20260801" 

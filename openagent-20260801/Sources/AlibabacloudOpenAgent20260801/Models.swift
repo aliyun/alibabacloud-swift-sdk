@@ -2741,6 +2741,85 @@ public class SendMessageRequest : Tea.TeaModel {
             }
         }
     }
+    public class Commands : Tea.TeaModel {
+        public class Payload : Tea.TeaModel {
+            public var name: String?
+
+            public var skillId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.skillId != nil {
+                    map["skillId"] = self.skillId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["skillId"] as? String {
+                    self.skillId = value
+                }
+            }
+        }
+        public var payload: SendMessageRequest.Commands.Payload?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.payload?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.payload != nil {
+                map["payload"] = self.payload?.toMap()
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["payload"] as? [String: Any?] {
+                var model = SendMessageRequest.Commands.Payload()
+                model.fromMap(value)
+                self.payload = model
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class Resume : Tea.TeaModel {
         public var interruptId: String?
 
@@ -2789,6 +2868,8 @@ public class SendMessageRequest : Tea.TeaModel {
     }
     public var attachments: [SendMessageRequest.Attachments]?
 
+    public var commands: [SendMessageRequest.Commands]?
+
     public var content: String?
 
     public var resume: [SendMessageRequest.Resume]?
@@ -2817,6 +2898,13 @@ public class SendMessageRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["attachments"] = tmp
+        }
+        if self.commands != nil {
+            var tmp : [Any] = []
+            for k in self.commands! {
+                tmp.append(k.toMap())
+            }
+            map["commands"] = tmp
         }
         if self.content != nil {
             map["content"] = self.content!
@@ -2851,6 +2939,19 @@ public class SendMessageRequest : Tea.TeaModel {
                 }
             }
             self.attachments = tmp
+        }
+        if let value = dict["commands"] as? [Any?] {
+            var tmp : [SendMessageRequest.Commands] = []
+            for v in value {
+                if v != nil {
+                    var model = SendMessageRequest.Commands()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.commands = tmp
         }
         if let value = dict["content"] as? String {
             self.content = value
