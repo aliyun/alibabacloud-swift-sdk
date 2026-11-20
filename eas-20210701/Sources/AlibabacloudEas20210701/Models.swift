@@ -3397,6 +3397,8 @@ public class CreateGatewayRequest : Tea.TeaModel {
 
     public var replicas: Int32?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -3438,6 +3440,9 @@ public class CreateGatewayRequest : Tea.TeaModel {
         if self.replicas != nil {
             map["Replicas"] = self.replicas!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -3469,6 +3474,9 @@ public class CreateGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["Replicas"] as? Int32 {
             self.replicas = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -9865,6 +9873,8 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
 
     public var updateTime: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -9937,6 +9947,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -10005,6 +10018,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         }
         if let value = dict["UpdateTime"] as? String {
             self.updateTime = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -15314,6 +15330,8 @@ public class ListGatewayRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -15364,6 +15382,9 @@ public class ListGatewayRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -15405,6 +15426,9 @@ public class ListGatewayRequest : Tea.TeaModel {
         if let value = dict["Status"] as? String {
             self.status = value
         }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
     }
 }
 
@@ -15432,6 +15456,8 @@ public class ListGatewayShrinkRequest : Tea.TeaModel {
     public var sort: String?
 
     public var status: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -15483,6 +15509,9 @@ public class ListGatewayShrinkRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -15523,6 +15552,9 @@ public class ListGatewayShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -15597,6 +15629,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
         public var updateTime: String?
 
+        public var workspaceId: String?
+
         public override init() {
             super.init()
         }
@@ -15660,6 +15694,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
             return map
         }
 
@@ -15719,6 +15756,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
+            }
+            if let value = dict["WorkspaceId"] as? String {
+                self.workspaceId = value
             }
         }
     }
@@ -21370,6 +21410,8 @@ public class UpdateGatewayRequest : Tea.TeaModel {
 
     public var vpcId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -21411,6 +21453,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -21442,6 +21487,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
