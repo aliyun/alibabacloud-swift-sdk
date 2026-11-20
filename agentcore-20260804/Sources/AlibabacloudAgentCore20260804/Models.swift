@@ -1722,6 +1722,8 @@ public class ConvertMcpToFreeEditResponseBody : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -1748,6 +1750,9 @@ public class ConvertMcpToFreeEditResponseBody : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -1764,6 +1769,9 @@ public class ConvertMcpToFreeEditResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -16108,6 +16116,8 @@ public class CreateMcpRequest : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -16134,6 +16144,9 @@ public class CreateMcpRequest : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -16150,6 +16163,9 @@ public class CreateMcpRequest : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -16757,6 +16773,8 @@ public class CreateMcpRequest : Tea.TeaModel {
 
         public var auth: CreateMcpRequest.Body.Auth?
 
+        public var backendMcpProtocol: String?
+
         public var customTags: [String]?
 
         public var deploymentConfig: CreateMcpRequest.Body.DeploymentConfig?
@@ -16764,6 +16782,8 @@ public class CreateMcpRequest : Tea.TeaModel {
         public var description_: String?
 
         public var name: String?
+
+        public var originProtocolVersion: String?
 
         public var permissionMode: String?
 
@@ -16795,6 +16815,9 @@ public class CreateMcpRequest : Tea.TeaModel {
             if self.auth != nil {
                 map["auth"] = self.auth?.toMap()
             }
+            if self.backendMcpProtocol != nil {
+                map["backendMcpProtocol"] = self.backendMcpProtocol!
+            }
             if self.customTags != nil {
                 map["customTags"] = self.customTags!
             }
@@ -16806,6 +16829,9 @@ public class CreateMcpRequest : Tea.TeaModel {
             }
             if self.name != nil {
                 map["name"] = self.name!
+            }
+            if self.originProtocolVersion != nil {
+                map["originProtocolVersion"] = self.originProtocolVersion!
             }
             if self.permissionMode != nil {
                 map["permissionMode"] = self.permissionMode!
@@ -16832,6 +16858,9 @@ public class CreateMcpRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.auth = model
             }
+            if let value = dict["backendMcpProtocol"] as? String {
+                self.backendMcpProtocol = value
+            }
             if let value = dict["customTags"] as? [String] {
                 self.customTags = value
             }
@@ -16845,6 +16874,9 @@ public class CreateMcpRequest : Tea.TeaModel {
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["originProtocolVersion"] as? String {
+                self.originProtocolVersion = value
             }
             if let value = dict["permissionMode"] as? String {
                 self.permissionMode = value
@@ -17572,6 +17604,8 @@ public class CreateMcpResponseBody : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -17598,6 +17632,9 @@ public class CreateMcpResponseBody : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -17614,6 +17651,9 @@ public class CreateMcpResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -18247,6 +18287,358 @@ public class CreateMcpResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Operation : Tea.TeaModel {
+            public class Error : Tea.TeaModel {
+                public var code: String?
+
+                public var message: String?
+
+                public var retryable: Bool?
+
+                public var source: String?
+
+                public var stage: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["code"] = self.code!
+                    }
+                    if self.message != nil {
+                        map["message"] = self.message!
+                    }
+                    if self.retryable != nil {
+                        map["retryable"] = self.retryable!
+                    }
+                    if self.source != nil {
+                        map["source"] = self.source!
+                    }
+                    if self.stage != nil {
+                        map["stage"] = self.stage!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["code"] as? String {
+                        self.code = value
+                    }
+                    if let value = dict["message"] as? String {
+                        self.message = value
+                    }
+                    if let value = dict["retryable"] as? Bool {
+                        self.retryable = value
+                    }
+                    if let value = dict["source"] as? String {
+                        self.source = value
+                    }
+                    if let value = dict["stage"] as? String {
+                        self.stage = value
+                    }
+                }
+            }
+            public var error: CreateMcpResponseBody.Data.Operation.Error?
+
+            public var operationId: String?
+
+            public var stage: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public var updatedAt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.error?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.error != nil {
+                    map["error"] = self.error?.toMap()
+                }
+                if self.operationId != nil {
+                    map["operationId"] = self.operationId!
+                }
+                if self.stage != nil {
+                    map["stage"] = self.stage!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.updatedAt != nil {
+                    map["updatedAt"] = self.updatedAt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["error"] as? [String: Any?] {
+                    var model = CreateMcpResponseBody.Data.Operation.Error()
+                    model.fromMap(value)
+                    self.error = model
+                }
+                if let value = dict["operationId"] as? String {
+                    self.operationId = value
+                }
+                if let value = dict["stage"] as? String {
+                    self.stage = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["updatedAt"] as? String {
+                    self.updatedAt = value
+                }
+            }
+        }
+        public class OriginProbe : Tea.TeaModel {
+            public class LastResult : Tea.TeaModel {
+                public class ActualConfiguration : Tea.TeaModel {
+                    public var backendMcpProtocol: String?
+
+                    public var protocol_: String?
+
+                    public var protocolVersion: String?
+
+                    public var sessionMode: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.backendMcpProtocol != nil {
+                            map["backendMcpProtocol"] = self.backendMcpProtocol!
+                        }
+                        if self.protocol_ != nil {
+                            map["protocol"] = self.protocol_!
+                        }
+                        if self.protocolVersion != nil {
+                            map["protocolVersion"] = self.protocolVersion!
+                        }
+                        if self.sessionMode != nil {
+                            map["sessionMode"] = self.sessionMode!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["backendMcpProtocol"] as? String {
+                            self.backendMcpProtocol = value
+                        }
+                        if let value = dict["protocol"] as? String {
+                            self.protocol_ = value
+                        }
+                        if let value = dict["protocolVersion"] as? String {
+                            self.protocolVersion = value
+                        }
+                        if let value = dict["sessionMode"] as? String {
+                            self.sessionMode = value
+                        }
+                    }
+                }
+                public class Error : Tea.TeaModel {
+                    public var code: String?
+
+                    public var message: String?
+
+                    public var retryable: Bool?
+
+                    public var source: String?
+
+                    public var stage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.code != nil {
+                            map["code"] = self.code!
+                        }
+                        if self.message != nil {
+                            map["message"] = self.message!
+                        }
+                        if self.retryable != nil {
+                            map["retryable"] = self.retryable!
+                        }
+                        if self.source != nil {
+                            map["source"] = self.source!
+                        }
+                        if self.stage != nil {
+                            map["stage"] = self.stage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["code"] as? String {
+                            self.code = value
+                        }
+                        if let value = dict["message"] as? String {
+                            self.message = value
+                        }
+                        if let value = dict["retryable"] as? Bool {
+                            self.retryable = value
+                        }
+                        if let value = dict["source"] as? String {
+                            self.source = value
+                        }
+                        if let value = dict["stage"] as? String {
+                            self.stage = value
+                        }
+                    }
+                }
+                public var actualConfiguration: CreateMcpResponseBody.Data.OriginProbe.LastResult.ActualConfiguration?
+
+                public var error: CreateMcpResponseBody.Data.OriginProbe.LastResult.Error?
+
+                public var probedAt: String?
+
+                public var stage: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.actualConfiguration?.validate()
+                    try self.error?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actualConfiguration != nil {
+                        map["actualConfiguration"] = self.actualConfiguration?.toMap()
+                    }
+                    if self.error != nil {
+                        map["error"] = self.error?.toMap()
+                    }
+                    if self.probedAt != nil {
+                        map["probedAt"] = self.probedAt!
+                    }
+                    if self.stage != nil {
+                        map["stage"] = self.stage!
+                    }
+                    if self.status != nil {
+                        map["status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["actualConfiguration"] as? [String: Any?] {
+                        var model = CreateMcpResponseBody.Data.OriginProbe.LastResult.ActualConfiguration()
+                        model.fromMap(value)
+                        self.actualConfiguration = model
+                    }
+                    if let value = dict["error"] as? [String: Any?] {
+                        var model = CreateMcpResponseBody.Data.OriginProbe.LastResult.Error()
+                        model.fromMap(value)
+                        self.error = model
+                    }
+                    if let value = dict["probedAt"] as? String {
+                        self.probedAt = value
+                    }
+                    if let value = dict["stage"] as? String {
+                        self.stage = value
+                    }
+                    if let value = dict["status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public var lastResult: CreateMcpResponseBody.Data.OriginProbe.LastResult?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.lastResult?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.lastResult != nil {
+                    map["lastResult"] = self.lastResult?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["lastResult"] as? [String: Any?] {
+                    var model = CreateMcpResponseBody.Data.OriginProbe.LastResult()
+                    model.fromMap(value)
+                    self.lastResult = model
+                }
+            }
+        }
         public class Template : Tea.TeaModel {
             public var appliedTemplateVersion: String?
 
@@ -18313,6 +18705,8 @@ public class CreateMcpResponseBody : Tea.TeaModel {
 
         public var auth: CreateMcpResponseBody.Data.Auth?
 
+        public var backendMcpProtocol: String?
+
         public var customTags: [String]?
 
         public var deploymentConfig: CreateMcpResponseBody.Data.DeploymentConfig?
@@ -18332,6 +18726,12 @@ public class CreateMcpResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var officialTag: String?
+
+        public var operation: CreateMcpResponseBody.Data.Operation?
+
+        public var originProbe: CreateMcpResponseBody.Data.OriginProbe?
+
+        public var originProtocolVersion: String?
 
         public var permissionMode: String?
 
@@ -18362,6 +18762,8 @@ public class CreateMcpResponseBody : Tea.TeaModel {
             try self.auth?.validate()
             try self.deploymentConfig?.validate()
             try self.marketSource?.validate()
+            try self.operation?.validate()
+            try self.originProbe?.validate()
             try self.template?.validate()
         }
 
@@ -18372,6 +18774,9 @@ public class CreateMcpResponseBody : Tea.TeaModel {
             }
             if self.auth != nil {
                 map["auth"] = self.auth?.toMap()
+            }
+            if self.backendMcpProtocol != nil {
+                map["backendMcpProtocol"] = self.backendMcpProtocol!
             }
             if self.customTags != nil {
                 map["customTags"] = self.customTags!
@@ -18402,6 +18807,15 @@ public class CreateMcpResponseBody : Tea.TeaModel {
             }
             if self.officialTag != nil {
                 map["officialTag"] = self.officialTag!
+            }
+            if self.operation != nil {
+                map["operation"] = self.operation?.toMap()
+            }
+            if self.originProbe != nil {
+                map["originProbe"] = self.originProbe?.toMap()
+            }
+            if self.originProtocolVersion != nil {
+                map["originProtocolVersion"] = self.originProtocolVersion!
             }
             if self.permissionMode != nil {
                 map["permissionMode"] = self.permissionMode!
@@ -18440,6 +18854,9 @@ public class CreateMcpResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.auth = model
             }
+            if let value = dict["backendMcpProtocol"] as? String {
+                self.backendMcpProtocol = value
+            }
             if let value = dict["customTags"] as? [String] {
                 self.customTags = value
             }
@@ -18473,6 +18890,19 @@ public class CreateMcpResponseBody : Tea.TeaModel {
             }
             if let value = dict["officialTag"] as? String {
                 self.officialTag = value
+            }
+            if let value = dict["operation"] as? [String: Any?] {
+                var model = CreateMcpResponseBody.Data.Operation()
+                model.fromMap(value)
+                self.operation = model
+            }
+            if let value = dict["originProbe"] as? [String: Any?] {
+                var model = CreateMcpResponseBody.Data.OriginProbe()
+                model.fromMap(value)
+                self.originProbe = model
+            }
+            if let value = dict["originProtocolVersion"] as? String {
+                self.originProtocolVersion = value
             }
             if let value = dict["permissionMode"] as? String {
                 self.permissionMode = value
@@ -41521,6 +41951,8 @@ public class GetMcpResponseBody : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -41547,6 +41979,9 @@ public class GetMcpResponseBody : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -41563,6 +41998,9 @@ public class GetMcpResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -42196,6 +42634,358 @@ public class GetMcpResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Operation : Tea.TeaModel {
+            public class Error : Tea.TeaModel {
+                public var code: String?
+
+                public var message: String?
+
+                public var retryable: Bool?
+
+                public var source: String?
+
+                public var stage: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["code"] = self.code!
+                    }
+                    if self.message != nil {
+                        map["message"] = self.message!
+                    }
+                    if self.retryable != nil {
+                        map["retryable"] = self.retryable!
+                    }
+                    if self.source != nil {
+                        map["source"] = self.source!
+                    }
+                    if self.stage != nil {
+                        map["stage"] = self.stage!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["code"] as? String {
+                        self.code = value
+                    }
+                    if let value = dict["message"] as? String {
+                        self.message = value
+                    }
+                    if let value = dict["retryable"] as? Bool {
+                        self.retryable = value
+                    }
+                    if let value = dict["source"] as? String {
+                        self.source = value
+                    }
+                    if let value = dict["stage"] as? String {
+                        self.stage = value
+                    }
+                }
+            }
+            public var error: GetMcpResponseBody.Data.Operation.Error?
+
+            public var operationId: String?
+
+            public var stage: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public var updatedAt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.error?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.error != nil {
+                    map["error"] = self.error?.toMap()
+                }
+                if self.operationId != nil {
+                    map["operationId"] = self.operationId!
+                }
+                if self.stage != nil {
+                    map["stage"] = self.stage!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.updatedAt != nil {
+                    map["updatedAt"] = self.updatedAt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["error"] as? [String: Any?] {
+                    var model = GetMcpResponseBody.Data.Operation.Error()
+                    model.fromMap(value)
+                    self.error = model
+                }
+                if let value = dict["operationId"] as? String {
+                    self.operationId = value
+                }
+                if let value = dict["stage"] as? String {
+                    self.stage = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["updatedAt"] as? String {
+                    self.updatedAt = value
+                }
+            }
+        }
+        public class OriginProbe : Tea.TeaModel {
+            public class LastResult : Tea.TeaModel {
+                public class ActualConfiguration : Tea.TeaModel {
+                    public var backendMcpProtocol: String?
+
+                    public var protocol_: String?
+
+                    public var protocolVersion: String?
+
+                    public var sessionMode: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.backendMcpProtocol != nil {
+                            map["backendMcpProtocol"] = self.backendMcpProtocol!
+                        }
+                        if self.protocol_ != nil {
+                            map["protocol"] = self.protocol_!
+                        }
+                        if self.protocolVersion != nil {
+                            map["protocolVersion"] = self.protocolVersion!
+                        }
+                        if self.sessionMode != nil {
+                            map["sessionMode"] = self.sessionMode!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["backendMcpProtocol"] as? String {
+                            self.backendMcpProtocol = value
+                        }
+                        if let value = dict["protocol"] as? String {
+                            self.protocol_ = value
+                        }
+                        if let value = dict["protocolVersion"] as? String {
+                            self.protocolVersion = value
+                        }
+                        if let value = dict["sessionMode"] as? String {
+                            self.sessionMode = value
+                        }
+                    }
+                }
+                public class Error : Tea.TeaModel {
+                    public var code: String?
+
+                    public var message: String?
+
+                    public var retryable: Bool?
+
+                    public var source: String?
+
+                    public var stage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.code != nil {
+                            map["code"] = self.code!
+                        }
+                        if self.message != nil {
+                            map["message"] = self.message!
+                        }
+                        if self.retryable != nil {
+                            map["retryable"] = self.retryable!
+                        }
+                        if self.source != nil {
+                            map["source"] = self.source!
+                        }
+                        if self.stage != nil {
+                            map["stage"] = self.stage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["code"] as? String {
+                            self.code = value
+                        }
+                        if let value = dict["message"] as? String {
+                            self.message = value
+                        }
+                        if let value = dict["retryable"] as? Bool {
+                            self.retryable = value
+                        }
+                        if let value = dict["source"] as? String {
+                            self.source = value
+                        }
+                        if let value = dict["stage"] as? String {
+                            self.stage = value
+                        }
+                    }
+                }
+                public var actualConfiguration: GetMcpResponseBody.Data.OriginProbe.LastResult.ActualConfiguration?
+
+                public var error: GetMcpResponseBody.Data.OriginProbe.LastResult.Error?
+
+                public var probedAt: String?
+
+                public var stage: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.actualConfiguration?.validate()
+                    try self.error?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actualConfiguration != nil {
+                        map["actualConfiguration"] = self.actualConfiguration?.toMap()
+                    }
+                    if self.error != nil {
+                        map["error"] = self.error?.toMap()
+                    }
+                    if self.probedAt != nil {
+                        map["probedAt"] = self.probedAt!
+                    }
+                    if self.stage != nil {
+                        map["stage"] = self.stage!
+                    }
+                    if self.status != nil {
+                        map["status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["actualConfiguration"] as? [String: Any?] {
+                        var model = GetMcpResponseBody.Data.OriginProbe.LastResult.ActualConfiguration()
+                        model.fromMap(value)
+                        self.actualConfiguration = model
+                    }
+                    if let value = dict["error"] as? [String: Any?] {
+                        var model = GetMcpResponseBody.Data.OriginProbe.LastResult.Error()
+                        model.fromMap(value)
+                        self.error = model
+                    }
+                    if let value = dict["probedAt"] as? String {
+                        self.probedAt = value
+                    }
+                    if let value = dict["stage"] as? String {
+                        self.stage = value
+                    }
+                    if let value = dict["status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public var lastResult: GetMcpResponseBody.Data.OriginProbe.LastResult?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.lastResult?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.lastResult != nil {
+                    map["lastResult"] = self.lastResult?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["lastResult"] as? [String: Any?] {
+                    var model = GetMcpResponseBody.Data.OriginProbe.LastResult()
+                    model.fromMap(value)
+                    self.lastResult = model
+                }
+            }
+        }
         public class Template : Tea.TeaModel {
             public var appliedTemplateVersion: String?
 
@@ -42262,6 +43052,8 @@ public class GetMcpResponseBody : Tea.TeaModel {
 
         public var auth: GetMcpResponseBody.Data.Auth?
 
+        public var backendMcpProtocol: String?
+
         public var createdAt: String?
 
         public var customTags: [String]?
@@ -42283,6 +43075,12 @@ public class GetMcpResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var officialTag: String?
+
+        public var operation: GetMcpResponseBody.Data.Operation?
+
+        public var originProbe: GetMcpResponseBody.Data.OriginProbe?
+
+        public var originProtocolVersion: String?
 
         public var permissionMode: String?
 
@@ -42317,6 +43115,8 @@ public class GetMcpResponseBody : Tea.TeaModel {
             try self.auth?.validate()
             try self.deploymentConfig?.validate()
             try self.marketSource?.validate()
+            try self.operation?.validate()
+            try self.originProbe?.validate()
             try self.template?.validate()
         }
 
@@ -42327,6 +43127,9 @@ public class GetMcpResponseBody : Tea.TeaModel {
             }
             if self.auth != nil {
                 map["auth"] = self.auth?.toMap()
+            }
+            if self.backendMcpProtocol != nil {
+                map["backendMcpProtocol"] = self.backendMcpProtocol!
             }
             if self.createdAt != nil {
                 map["createdAt"] = self.createdAt!
@@ -42360,6 +43163,15 @@ public class GetMcpResponseBody : Tea.TeaModel {
             }
             if self.officialTag != nil {
                 map["officialTag"] = self.officialTag!
+            }
+            if self.operation != nil {
+                map["operation"] = self.operation?.toMap()
+            }
+            if self.originProbe != nil {
+                map["originProbe"] = self.originProbe?.toMap()
+            }
+            if self.originProtocolVersion != nil {
+                map["originProtocolVersion"] = self.originProtocolVersion!
             }
             if self.permissionMode != nil {
                 map["permissionMode"] = self.permissionMode!
@@ -42404,6 +43216,9 @@ public class GetMcpResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.auth = model
             }
+            if let value = dict["backendMcpProtocol"] as? String {
+                self.backendMcpProtocol = value
+            }
             if let value = dict["createdAt"] as? String {
                 self.createdAt = value
             }
@@ -42440,6 +43255,19 @@ public class GetMcpResponseBody : Tea.TeaModel {
             }
             if let value = dict["officialTag"] as? String {
                 self.officialTag = value
+            }
+            if let value = dict["operation"] as? [String: Any?] {
+                var model = GetMcpResponseBody.Data.Operation()
+                model.fromMap(value)
+                self.operation = model
+            }
+            if let value = dict["originProbe"] as? [String: Any?] {
+                var model = GetMcpResponseBody.Data.OriginProbe()
+                model.fromMap(value)
+                self.originProbe = model
+            }
+            if let value = dict["originProtocolVersion"] as? String {
+                self.originProtocolVersion = value
             }
             if let value = dict["permissionMode"] as? String {
                 self.permissionMode = value
@@ -47029,6 +47857,8 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
 
         public var from: String?
 
+        public var labelDescriptions: [String: String]?
+
         public var labels: [String: String]?
 
         public var name: String?
@@ -47086,6 +47916,9 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
             }
             if self.from != nil {
                 map["from"] = self.from!
+            }
+            if self.labelDescriptions != nil {
+                map["labelDescriptions"] = self.labelDescriptions!
             }
             if self.labels != nil {
                 map["labels"] = self.labels!
@@ -47149,6 +47982,9 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["from"] as? String {
                 self.from = value
+            }
+            if let value = dict["labelDescriptions"] as? [String: String] {
+                self.labelDescriptions = value
             }
             if let value = dict["labels"] as? [String: String] {
                 self.labels = value
@@ -50242,6 +51078,8 @@ public class InstallMcpMarketItemRequest : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -50268,6 +51106,9 @@ public class InstallMcpMarketItemRequest : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -50284,6 +51125,9 @@ public class InstallMcpMarketItemRequest : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -51502,6 +52346,8 @@ public class InstallMcpMarketItemResponseBody : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -51528,6 +52374,9 @@ public class InstallMcpMarketItemResponseBody : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -51544,6 +52393,9 @@ public class InstallMcpMarketItemResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -60684,6 +61536,8 @@ public class ListMcpsResponseBody : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -60710,6 +61564,9 @@ public class ListMcpsResponseBody : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -60726,6 +61583,9 @@ public class ListMcpsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -61359,9 +62219,363 @@ public class ListMcpsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Operation : Tea.TeaModel {
+            public class Error : Tea.TeaModel {
+                public var code: String?
+
+                public var message: String?
+
+                public var retryable: Bool?
+
+                public var source: String?
+
+                public var stage: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["code"] = self.code!
+                    }
+                    if self.message != nil {
+                        map["message"] = self.message!
+                    }
+                    if self.retryable != nil {
+                        map["retryable"] = self.retryable!
+                    }
+                    if self.source != nil {
+                        map["source"] = self.source!
+                    }
+                    if self.stage != nil {
+                        map["stage"] = self.stage!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["code"] as? String {
+                        self.code = value
+                    }
+                    if let value = dict["message"] as? String {
+                        self.message = value
+                    }
+                    if let value = dict["retryable"] as? Bool {
+                        self.retryable = value
+                    }
+                    if let value = dict["source"] as? String {
+                        self.source = value
+                    }
+                    if let value = dict["stage"] as? String {
+                        self.stage = value
+                    }
+                }
+            }
+            public var error: ListMcpsResponseBody.Items.Operation.Error?
+
+            public var operationId: String?
+
+            public var stage: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public var updatedAt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.error?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.error != nil {
+                    map["error"] = self.error?.toMap()
+                }
+                if self.operationId != nil {
+                    map["operationId"] = self.operationId!
+                }
+                if self.stage != nil {
+                    map["stage"] = self.stage!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.updatedAt != nil {
+                    map["updatedAt"] = self.updatedAt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["error"] as? [String: Any?] {
+                    var model = ListMcpsResponseBody.Items.Operation.Error()
+                    model.fromMap(value)
+                    self.error = model
+                }
+                if let value = dict["operationId"] as? String {
+                    self.operationId = value
+                }
+                if let value = dict["stage"] as? String {
+                    self.stage = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["updatedAt"] as? String {
+                    self.updatedAt = value
+                }
+            }
+        }
+        public class OriginProbe : Tea.TeaModel {
+            public class LastResult : Tea.TeaModel {
+                public class ActualConfiguration : Tea.TeaModel {
+                    public var backendMcpProtocol: String?
+
+                    public var protocol_: String?
+
+                    public var protocolVersion: String?
+
+                    public var sessionMode: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.backendMcpProtocol != nil {
+                            map["backendMcpProtocol"] = self.backendMcpProtocol!
+                        }
+                        if self.protocol_ != nil {
+                            map["protocol"] = self.protocol_!
+                        }
+                        if self.protocolVersion != nil {
+                            map["protocolVersion"] = self.protocolVersion!
+                        }
+                        if self.sessionMode != nil {
+                            map["sessionMode"] = self.sessionMode!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["backendMcpProtocol"] as? String {
+                            self.backendMcpProtocol = value
+                        }
+                        if let value = dict["protocol"] as? String {
+                            self.protocol_ = value
+                        }
+                        if let value = dict["protocolVersion"] as? String {
+                            self.protocolVersion = value
+                        }
+                        if let value = dict["sessionMode"] as? String {
+                            self.sessionMode = value
+                        }
+                    }
+                }
+                public class Error : Tea.TeaModel {
+                    public var code: String?
+
+                    public var message: String?
+
+                    public var retryable: Bool?
+
+                    public var source: String?
+
+                    public var stage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.code != nil {
+                            map["code"] = self.code!
+                        }
+                        if self.message != nil {
+                            map["message"] = self.message!
+                        }
+                        if self.retryable != nil {
+                            map["retryable"] = self.retryable!
+                        }
+                        if self.source != nil {
+                            map["source"] = self.source!
+                        }
+                        if self.stage != nil {
+                            map["stage"] = self.stage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["code"] as? String {
+                            self.code = value
+                        }
+                        if let value = dict["message"] as? String {
+                            self.message = value
+                        }
+                        if let value = dict["retryable"] as? Bool {
+                            self.retryable = value
+                        }
+                        if let value = dict["source"] as? String {
+                            self.source = value
+                        }
+                        if let value = dict["stage"] as? String {
+                            self.stage = value
+                        }
+                    }
+                }
+                public var actualConfiguration: ListMcpsResponseBody.Items.OriginProbe.LastResult.ActualConfiguration?
+
+                public var error: ListMcpsResponseBody.Items.OriginProbe.LastResult.Error?
+
+                public var probedAt: String?
+
+                public var stage: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.actualConfiguration?.validate()
+                    try self.error?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actualConfiguration != nil {
+                        map["actualConfiguration"] = self.actualConfiguration?.toMap()
+                    }
+                    if self.error != nil {
+                        map["error"] = self.error?.toMap()
+                    }
+                    if self.probedAt != nil {
+                        map["probedAt"] = self.probedAt!
+                    }
+                    if self.stage != nil {
+                        map["stage"] = self.stage!
+                    }
+                    if self.status != nil {
+                        map["status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["actualConfiguration"] as? [String: Any?] {
+                        var model = ListMcpsResponseBody.Items.OriginProbe.LastResult.ActualConfiguration()
+                        model.fromMap(value)
+                        self.actualConfiguration = model
+                    }
+                    if let value = dict["error"] as? [String: Any?] {
+                        var model = ListMcpsResponseBody.Items.OriginProbe.LastResult.Error()
+                        model.fromMap(value)
+                        self.error = model
+                    }
+                    if let value = dict["probedAt"] as? String {
+                        self.probedAt = value
+                    }
+                    if let value = dict["stage"] as? String {
+                        self.stage = value
+                    }
+                    if let value = dict["status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public var lastResult: ListMcpsResponseBody.Items.OriginProbe.LastResult?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.lastResult?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.lastResult != nil {
+                    map["lastResult"] = self.lastResult?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["lastResult"] as? [String: Any?] {
+                    var model = ListMcpsResponseBody.Items.OriginProbe.LastResult()
+                    model.fromMap(value)
+                    self.lastResult = model
+                }
+            }
+        }
         public var addresses: [String]?
 
         public var auth: ListMcpsResponseBody.Items.Auth?
+
+        public var backendMcpProtocol: String?
 
         public var createdAt: String?
 
@@ -61382,6 +62596,12 @@ public class ListMcpsResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var officialTag: String?
+
+        public var operation: ListMcpsResponseBody.Items.Operation?
+
+        public var originProbe: ListMcpsResponseBody.Items.OriginProbe?
+
+        public var originProtocolVersion: String?
 
         public var permissionMode: String?
 
@@ -61412,6 +62632,8 @@ public class ListMcpsResponseBody : Tea.TeaModel {
             try self.auth?.validate()
             try self.deploymentConfig?.validate()
             try self.marketSource?.validate()
+            try self.operation?.validate()
+            try self.originProbe?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -61421,6 +62643,9 @@ public class ListMcpsResponseBody : Tea.TeaModel {
             }
             if self.auth != nil {
                 map["auth"] = self.auth?.toMap()
+            }
+            if self.backendMcpProtocol != nil {
+                map["backendMcpProtocol"] = self.backendMcpProtocol!
             }
             if self.createdAt != nil {
                 map["createdAt"] = self.createdAt!
@@ -61451,6 +62676,15 @@ public class ListMcpsResponseBody : Tea.TeaModel {
             }
             if self.officialTag != nil {
                 map["officialTag"] = self.officialTag!
+            }
+            if self.operation != nil {
+                map["operation"] = self.operation?.toMap()
+            }
+            if self.originProbe != nil {
+                map["originProbe"] = self.originProbe?.toMap()
+            }
+            if self.originProtocolVersion != nil {
+                map["originProtocolVersion"] = self.originProtocolVersion!
             }
             if self.permissionMode != nil {
                 map["permissionMode"] = self.permissionMode!
@@ -61489,6 +62723,9 @@ public class ListMcpsResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.auth = model
             }
+            if let value = dict["backendMcpProtocol"] as? String {
+                self.backendMcpProtocol = value
+            }
             if let value = dict["createdAt"] as? String {
                 self.createdAt = value
             }
@@ -61522,6 +62759,19 @@ public class ListMcpsResponseBody : Tea.TeaModel {
             }
             if let value = dict["officialTag"] as? String {
                 self.officialTag = value
+            }
+            if let value = dict["operation"] as? [String: Any?] {
+                var model = ListMcpsResponseBody.Items.Operation()
+                model.fromMap(value)
+                self.operation = model
+            }
+            if let value = dict["originProbe"] as? [String: Any?] {
+                var model = ListMcpsResponseBody.Items.OriginProbe()
+                model.fromMap(value)
+                self.originProbe = model
+            }
+            if let value = dict["originProtocolVersion"] as? String {
+                self.originProtocolVersion = value
             }
             if let value = dict["permissionMode"] as? String {
                 self.permissionMode = value
@@ -64431,6 +65681,8 @@ public class ListModelsResponseBody : Tea.TeaModel {
 
         public var modelName: String?
 
+        public var supportedThinkingLevels: [String]?
+
         public var updatedAt: String?
 
         public var workspaceId: String?
@@ -64474,6 +65726,9 @@ public class ListModelsResponseBody : Tea.TeaModel {
             if self.modelName != nil {
                 map["modelName"] = self.modelName!
             }
+            if self.supportedThinkingLevels != nil {
+                map["supportedThinkingLevels"] = self.supportedThinkingLevels!
+            }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
             }
@@ -64510,6 +65765,9 @@ public class ListModelsResponseBody : Tea.TeaModel {
             }
             if let value = dict["modelName"] as? String {
                 self.modelName = value
+            }
+            if let value = dict["supportedThinkingLevels"] as? [String] {
+                self.supportedThinkingLevels = value
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
@@ -69898,6 +71156,1062 @@ public class PrepareIdentityProviderSCIMResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = PrepareIdentityProviderSCIMResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ProbeMcpOriginRequest : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public class Auth : Tea.TeaModel {
+            public class DirectProxy : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public class HttpToMcp : Tea.TeaModel {
+                public var credential: String?
+
+                public var id: String?
+
+                public var name: String?
+
+                public var position: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.credential != nil {
+                        map["credential"] = self.credential!
+                    }
+                    if self.id != nil {
+                        map["id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.position != nil {
+                        map["position"] = self.position!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["credential"] as? String {
+                        self.credential = value
+                    }
+                    if let value = dict["id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["position"] as? String {
+                        self.position = value
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var directProxy: ProbeMcpOriginRequest.Body.Auth.DirectProxy?
+
+            public var enabled: Bool?
+
+            public var httpToMcp: [ProbeMcpOriginRequest.Body.Auth.HttpToMcp]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.directProxy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.directProxy != nil {
+                    map["directProxy"] = self.directProxy?.toMap()
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.httpToMcp != nil {
+                    var tmp : [Any] = []
+                    for k in self.httpToMcp! {
+                        tmp.append(k.toMap())
+                    }
+                    map["httpToMcp"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["directProxy"] as? [String: Any?] {
+                    var model = ProbeMcpOriginRequest.Body.Auth.DirectProxy()
+                    model.fromMap(value)
+                    self.directProxy = model
+                }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["httpToMcp"] as? [Any?] {
+                    var tmp : [ProbeMcpOriginRequest.Body.Auth.HttpToMcp] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ProbeMcpOriginRequest.Body.Auth.HttpToMcp()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.httpToMcp = tmp
+                }
+            }
+        }
+        public var address: String?
+
+        public var auth: ProbeMcpOriginRequest.Body.Auth?
+
+        public var swaggerConfig: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.auth?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                map["address"] = self.address!
+            }
+            if self.auth != nil {
+                map["auth"] = self.auth?.toMap()
+            }
+            if self.swaggerConfig != nil {
+                map["swaggerConfig"] = self.swaggerConfig!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["address"] as? String {
+                self.address = value
+            }
+            if let value = dict["auth"] as? [String: Any?] {
+                var model = ProbeMcpOriginRequest.Body.Auth()
+                model.fromMap(value)
+                self.auth = model
+            }
+            if let value = dict["swaggerConfig"] as? String {
+                self.swaggerConfig = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var body: ProbeMcpOriginRequest.Body?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ProbeMcpOriginRequest.Body()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ProbeMcpOriginShrinkRequest : Tea.TeaModel {
+    public var bodyShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bodyShrink != nil {
+            map["body"] = self.bodyShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? String {
+            self.bodyShrink = value
+        }
+    }
+}
+
+public class ProbeMcpOriginResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Coverage : Tea.TeaModel {
+            public var backendMcpProtocol: String?
+
+            public var headerNames: [String]?
+
+            public var method: String?
+
+            public var path: String?
+
+            public var protocol_: String?
+
+            public var target: String?
+
+            public var viaGateway: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendMcpProtocol != nil {
+                    map["backendMcpProtocol"] = self.backendMcpProtocol!
+                }
+                if self.headerNames != nil {
+                    map["headerNames"] = self.headerNames!
+                }
+                if self.method != nil {
+                    map["method"] = self.method!
+                }
+                if self.path != nil {
+                    map["path"] = self.path!
+                }
+                if self.protocol_ != nil {
+                    map["protocol"] = self.protocol_!
+                }
+                if self.target != nil {
+                    map["target"] = self.target!
+                }
+                if self.viaGateway != nil {
+                    map["viaGateway"] = self.viaGateway!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["backendMcpProtocol"] as? String {
+                    self.backendMcpProtocol = value
+                }
+                if let value = dict["headerNames"] as? [String] {
+                    self.headerNames = value
+                }
+                if let value = dict["method"] as? String {
+                    self.method = value
+                }
+                if let value = dict["path"] as? String {
+                    self.path = value
+                }
+                if let value = dict["protocol"] as? String {
+                    self.protocol_ = value
+                }
+                if let value = dict["target"] as? String {
+                    self.target = value
+                }
+                if let value = dict["viaGateway"] as? Bool {
+                    self.viaGateway = value
+                }
+            }
+        }
+        public class Error : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public var retryable: Bool?
+
+            public var source: String?
+
+            public var stage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                if self.retryable != nil {
+                    map["retryable"] = self.retryable!
+                }
+                if self.source != nil {
+                    map["source"] = self.source!
+                }
+                if self.stage != nil {
+                    map["stage"] = self.stage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+                if let value = dict["retryable"] as? Bool {
+                    self.retryable = value
+                }
+                if let value = dict["source"] as? String {
+                    self.source = value
+                }
+                if let value = dict["stage"] as? String {
+                    self.stage = value
+                }
+            }
+        }
+        public class HttpResult : Tea.TeaModel {
+            public var connectionStatus: String?
+
+            public var definitionStatus: String?
+
+            public var httpStatusCode: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.connectionStatus != nil {
+                    map["connectionStatus"] = self.connectionStatus!
+                }
+                if self.definitionStatus != nil {
+                    map["definitionStatus"] = self.definitionStatus!
+                }
+                if self.httpStatusCode != nil {
+                    map["httpStatusCode"] = self.httpStatusCode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["connectionStatus"] as? String {
+                    self.connectionStatus = value
+                }
+                if let value = dict["definitionStatus"] as? String {
+                    self.definitionStatus = value
+                }
+                if let value = dict["httpStatusCode"] as? Int32 {
+                    self.httpStatusCode = value
+                }
+            }
+        }
+        public class Observations : Tea.TeaModel {
+            public var backendMcpProtocol: String?
+
+            public var declared: Bool?
+
+            public var declaredVersions: [String]?
+
+            public var endpoint: String?
+
+            public var negotiatedVersion: String?
+
+            public var protocol_: String?
+
+            public var sessionMode: String?
+
+            public var verificationStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendMcpProtocol != nil {
+                    map["backendMcpProtocol"] = self.backendMcpProtocol!
+                }
+                if self.declared != nil {
+                    map["declared"] = self.declared!
+                }
+                if self.declaredVersions != nil {
+                    map["declaredVersions"] = self.declaredVersions!
+                }
+                if self.endpoint != nil {
+                    map["endpoint"] = self.endpoint!
+                }
+                if self.negotiatedVersion != nil {
+                    map["negotiatedVersion"] = self.negotiatedVersion!
+                }
+                if self.protocol_ != nil {
+                    map["protocol"] = self.protocol_!
+                }
+                if self.sessionMode != nil {
+                    map["sessionMode"] = self.sessionMode!
+                }
+                if self.verificationStatus != nil {
+                    map["verificationStatus"] = self.verificationStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["backendMcpProtocol"] as? String {
+                    self.backendMcpProtocol = value
+                }
+                if let value = dict["declared"] as? Bool {
+                    self.declared = value
+                }
+                if let value = dict["declaredVersions"] as? [String] {
+                    self.declaredVersions = value
+                }
+                if let value = dict["endpoint"] as? String {
+                    self.endpoint = value
+                }
+                if let value = dict["negotiatedVersion"] as? String {
+                    self.negotiatedVersion = value
+                }
+                if let value = dict["protocol"] as? String {
+                    self.protocol_ = value
+                }
+                if let value = dict["sessionMode"] as? String {
+                    self.sessionMode = value
+                }
+                if let value = dict["verificationStatus"] as? String {
+                    self.verificationStatus = value
+                }
+            }
+        }
+        public class Recommendation : Tea.TeaModel {
+            public var backendMcpProtocol: String?
+
+            public var originProtocolVersion: String?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendMcpProtocol != nil {
+                    map["backendMcpProtocol"] = self.backendMcpProtocol!
+                }
+                if self.originProtocolVersion != nil {
+                    map["originProtocolVersion"] = self.originProtocolVersion!
+                }
+                if self.protocol_ != nil {
+                    map["protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["backendMcpProtocol"] as? String {
+                    self.backendMcpProtocol = value
+                }
+                if let value = dict["originProtocolVersion"] as? String {
+                    self.originProtocolVersion = value
+                }
+                if let value = dict["protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
+        public class SelectedConfiguration : Tea.TeaModel {
+            public var backendMcpProtocol: String?
+
+            public var originProtocolVersion: String?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendMcpProtocol != nil {
+                    map["backendMcpProtocol"] = self.backendMcpProtocol!
+                }
+                if self.originProtocolVersion != nil {
+                    map["originProtocolVersion"] = self.originProtocolVersion!
+                }
+                if self.protocol_ != nil {
+                    map["protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["backendMcpProtocol"] as? String {
+                    self.backendMcpProtocol = value
+                }
+                if let value = dict["originProtocolVersion"] as? String {
+                    self.originProtocolVersion = value
+                }
+                if let value = dict["protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
+        public class Tools : Tea.TeaModel {
+            public var inputSchema: String?
+
+            public var outputSchema: String?
+
+            public var toolDescription: String?
+
+            public var toolName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.inputSchema != nil {
+                    map["inputSchema"] = self.inputSchema!
+                }
+                if self.outputSchema != nil {
+                    map["outputSchema"] = self.outputSchema!
+                }
+                if self.toolDescription != nil {
+                    map["toolDescription"] = self.toolDescription!
+                }
+                if self.toolName != nil {
+                    map["toolName"] = self.toolName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["inputSchema"] as? String {
+                    self.inputSchema = value
+                }
+                if let value = dict["outputSchema"] as? String {
+                    self.outputSchema = value
+                }
+                if let value = dict["toolDescription"] as? String {
+                    self.toolDescription = value
+                }
+                if let value = dict["toolName"] as? String {
+                    self.toolName = value
+                }
+            }
+        }
+        public class Warnings : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public var coverage: ProbeMcpOriginResponseBody.Data.Coverage?
+
+        public var error: ProbeMcpOriginResponseBody.Data.Error?
+
+        public var httpResult: ProbeMcpOriginResponseBody.Data.HttpResult?
+
+        public var observations: [ProbeMcpOriginResponseBody.Data.Observations]?
+
+        public var probeId: String?
+
+        public var probedAt: String?
+
+        public var recommendation: ProbeMcpOriginResponseBody.Data.Recommendation?
+
+        public var selectedConfiguration: ProbeMcpOriginResponseBody.Data.SelectedConfiguration?
+
+        public var stage: String?
+
+        public var status: String?
+
+        public var tools: [ProbeMcpOriginResponseBody.Data.Tools]?
+
+        public var toolsComplete: Bool?
+
+        public var toolsStatus: String?
+
+        public var warnings: [ProbeMcpOriginResponseBody.Data.Warnings]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.coverage?.validate()
+            try self.error?.validate()
+            try self.httpResult?.validate()
+            try self.recommendation?.validate()
+            try self.selectedConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.coverage != nil {
+                map["coverage"] = self.coverage?.toMap()
+            }
+            if self.error != nil {
+                map["error"] = self.error?.toMap()
+            }
+            if self.httpResult != nil {
+                map["httpResult"] = self.httpResult?.toMap()
+            }
+            if self.observations != nil {
+                var tmp : [Any] = []
+                for k in self.observations! {
+                    tmp.append(k.toMap())
+                }
+                map["observations"] = tmp
+            }
+            if self.probeId != nil {
+                map["probeId"] = self.probeId!
+            }
+            if self.probedAt != nil {
+                map["probedAt"] = self.probedAt!
+            }
+            if self.recommendation != nil {
+                map["recommendation"] = self.recommendation?.toMap()
+            }
+            if self.selectedConfiguration != nil {
+                map["selectedConfiguration"] = self.selectedConfiguration?.toMap()
+            }
+            if self.stage != nil {
+                map["stage"] = self.stage!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.tools != nil {
+                var tmp : [Any] = []
+                for k in self.tools! {
+                    tmp.append(k.toMap())
+                }
+                map["tools"] = tmp
+            }
+            if self.toolsComplete != nil {
+                map["toolsComplete"] = self.toolsComplete!
+            }
+            if self.toolsStatus != nil {
+                map["toolsStatus"] = self.toolsStatus!
+            }
+            if self.warnings != nil {
+                var tmp : [Any] = []
+                for k in self.warnings! {
+                    tmp.append(k.toMap())
+                }
+                map["warnings"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["coverage"] as? [String: Any?] {
+                var model = ProbeMcpOriginResponseBody.Data.Coverage()
+                model.fromMap(value)
+                self.coverage = model
+            }
+            if let value = dict["error"] as? [String: Any?] {
+                var model = ProbeMcpOriginResponseBody.Data.Error()
+                model.fromMap(value)
+                self.error = model
+            }
+            if let value = dict["httpResult"] as? [String: Any?] {
+                var model = ProbeMcpOriginResponseBody.Data.HttpResult()
+                model.fromMap(value)
+                self.httpResult = model
+            }
+            if let value = dict["observations"] as? [Any?] {
+                var tmp : [ProbeMcpOriginResponseBody.Data.Observations] = []
+                for v in value {
+                    if v != nil {
+                        var model = ProbeMcpOriginResponseBody.Data.Observations()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.observations = tmp
+            }
+            if let value = dict["probeId"] as? String {
+                self.probeId = value
+            }
+            if let value = dict["probedAt"] as? String {
+                self.probedAt = value
+            }
+            if let value = dict["recommendation"] as? [String: Any?] {
+                var model = ProbeMcpOriginResponseBody.Data.Recommendation()
+                model.fromMap(value)
+                self.recommendation = model
+            }
+            if let value = dict["selectedConfiguration"] as? [String: Any?] {
+                var model = ProbeMcpOriginResponseBody.Data.SelectedConfiguration()
+                model.fromMap(value)
+                self.selectedConfiguration = model
+            }
+            if let value = dict["stage"] as? String {
+                self.stage = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["tools"] as? [Any?] {
+                var tmp : [ProbeMcpOriginResponseBody.Data.Tools] = []
+                for v in value {
+                    if v != nil {
+                        var model = ProbeMcpOriginResponseBody.Data.Tools()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tools = tmp
+            }
+            if let value = dict["toolsComplete"] as? Bool {
+                self.toolsComplete = value
+            }
+            if let value = dict["toolsStatus"] as? String {
+                self.toolsStatus = value
+            }
+            if let value = dict["warnings"] as? [Any?] {
+                var tmp : [ProbeMcpOriginResponseBody.Data.Warnings] = []
+                for v in value {
+                    if v != nil {
+                        var model = ProbeMcpOriginResponseBody.Data.Warnings()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.warnings = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ProbeMcpOriginResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ProbeMcpOriginResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ProbeMcpOriginResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ProbeMcpOriginResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ProbeMcpOriginResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -84961,6 +87275,8 @@ public class UpdateMcpRequest : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -84987,6 +87303,9 @@ public class UpdateMcpRequest : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -85003,6 +87322,9 @@ public class UpdateMcpRequest : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -85610,13 +87932,19 @@ public class UpdateMcpRequest : Tea.TeaModel {
 
         public var auth: UpdateMcpRequest.Body.Auth?
 
+        public var backendMcpProtocol: String?
+
         public var customTags: [String]?
 
         public var deploymentConfig: UpdateMcpRequest.Body.DeploymentConfig?
 
         public var description_: String?
 
+        public var originProtocolVersion: String?
+
         public var permissionMode: String?
+
+        public var protocol_: String?
 
         public var swaggerConfig: String?
 
@@ -85642,6 +87970,9 @@ public class UpdateMcpRequest : Tea.TeaModel {
             if self.auth != nil {
                 map["auth"] = self.auth?.toMap()
             }
+            if self.backendMcpProtocol != nil {
+                map["backendMcpProtocol"] = self.backendMcpProtocol!
+            }
             if self.customTags != nil {
                 map["customTags"] = self.customTags!
             }
@@ -85651,8 +87982,14 @@ public class UpdateMcpRequest : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.originProtocolVersion != nil {
+                map["originProtocolVersion"] = self.originProtocolVersion!
+            }
             if self.permissionMode != nil {
                 map["permissionMode"] = self.permissionMode!
+            }
+            if self.protocol_ != nil {
+                map["protocol"] = self.protocol_!
             }
             if self.swaggerConfig != nil {
                 map["swaggerConfig"] = self.swaggerConfig!
@@ -85670,6 +88007,9 @@ public class UpdateMcpRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.auth = model
             }
+            if let value = dict["backendMcpProtocol"] as? String {
+                self.backendMcpProtocol = value
+            }
             if let value = dict["customTags"] as? [String] {
                 self.customTags = value
             }
@@ -85681,8 +88021,14 @@ public class UpdateMcpRequest : Tea.TeaModel {
             if let value = dict["description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["originProtocolVersion"] as? String {
+                self.originProtocolVersion = value
+            }
             if let value = dict["permissionMode"] as? String {
                 self.permissionMode = value
+            }
+            if let value = dict["protocol"] as? String {
+                self.protocol_ = value
             }
             if let value = dict["swaggerConfig"] as? String {
                 self.swaggerConfig = value
@@ -86465,6 +88811,8 @@ public class UpdateMcpTemplateConfigRequest : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -86491,6 +88839,9 @@ public class UpdateMcpTemplateConfigRequest : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -86507,6 +88858,9 @@ public class UpdateMcpTemplateConfigRequest : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -87693,6 +90047,8 @@ public class UpdateMcpTemplateConfigResponseBody : Tea.TeaModel {
 
                 public var sessionMaxLifetimeSeconds: Int32?
 
+                public var sessionMode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -87719,6 +90075,9 @@ public class UpdateMcpTemplateConfigResponseBody : Tea.TeaModel {
                     if self.sessionMaxLifetimeSeconds != nil {
                         map["sessionMaxLifetimeSeconds"] = self.sessionMaxLifetimeSeconds!
                     }
+                    if self.sessionMode != nil {
+                        map["sessionMode"] = self.sessionMode!
+                    }
                     return map
                 }
 
@@ -87735,6 +90094,9 @@ public class UpdateMcpTemplateConfigResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["sessionMaxLifetimeSeconds"] as? Int32 {
                         self.sessionMaxLifetimeSeconds = value
+                    }
+                    if let value = dict["sessionMode"] as? String {
+                        self.sessionMode = value
                     }
                 }
             }
@@ -92168,6 +94530,8 @@ public class UpdateSkillBizTagsResponse : Tea.TeaModel {
 
 public class UpdateSkillLabelsRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
+        public var labelDescriptions: String?
+
         public var labels: String?
 
         public override init() {
@@ -92184,6 +94548,9 @@ public class UpdateSkillLabelsRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.labelDescriptions != nil {
+                map["labelDescriptions"] = self.labelDescriptions!
+            }
             if self.labels != nil {
                 map["labels"] = self.labels!
             }
@@ -92192,6 +94559,9 @@ public class UpdateSkillLabelsRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["labelDescriptions"] as? String {
+                self.labelDescriptions = value
+            }
             if let value = dict["labels"] as? String {
                 self.labels = value
             }
