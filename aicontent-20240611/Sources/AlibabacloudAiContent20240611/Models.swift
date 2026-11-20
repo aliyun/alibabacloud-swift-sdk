@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -30439,6 +30440,8 @@ public class ModelRouterQueryCostModelListRequest : Tea.TeaModel {
 
     public var memberUserIds: String?
 
+    public var modelIds: String?
+
     public var modelTypes: String?
 
     public var nextToken: String?
@@ -30482,6 +30485,9 @@ public class ModelRouterQueryCostModelListRequest : Tea.TeaModel {
         if self.memberUserIds != nil {
             map["memberUserIds"] = self.memberUserIds!
         }
+        if self.modelIds != nil {
+            map["modelIds"] = self.modelIds!
+        }
         if self.modelTypes != nil {
             map["modelTypes"] = self.modelTypes!
         }
@@ -30519,6 +30525,9 @@ public class ModelRouterQueryCostModelListRequest : Tea.TeaModel {
         }
         if let value = dict["memberUserIds"] as? String {
             self.memberUserIds = value
+        }
+        if let value = dict["modelIds"] as? String {
+            self.modelIds = value
         }
         if let value = dict["modelTypes"] as? String {
             self.modelTypes = value
@@ -30944,6 +30953,8 @@ public class ModelRouterQueryCostTrendMetricsRequest : Tea.TeaModel {
 
     public var memberUserIds: String?
 
+    public var modelIds: String?
+
     public var modelTypes: String?
 
     public var nextToken: String?
@@ -30985,6 +30996,9 @@ public class ModelRouterQueryCostTrendMetricsRequest : Tea.TeaModel {
         if self.memberUserIds != nil {
             map["memberUserIds"] = self.memberUserIds!
         }
+        if self.modelIds != nil {
+            map["modelIds"] = self.modelIds!
+        }
         if self.modelTypes != nil {
             map["modelTypes"] = self.modelTypes!
         }
@@ -31019,6 +31033,9 @@ public class ModelRouterQueryCostTrendMetricsRequest : Tea.TeaModel {
         }
         if let value = dict["memberUserIds"] as? String {
             self.memberUserIds = value
+        }
+        if let value = dict["modelIds"] as? String {
+            self.modelIds = value
         }
         if let value = dict["modelTypes"] as? String {
             self.modelTypes = value

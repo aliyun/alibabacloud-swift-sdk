@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "AiContent"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-shanghai": "aicontent.aliyuncs.com",
@@ -3934,6 +3938,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.memberUserIds)) {
             query["memberUserIds"] = request.memberUserIds ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelIds)) {
+            query["modelIds"] = request.modelIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelTypes)) {
             query["modelTypes"] = request.modelTypes ?? "";
         }
@@ -4056,6 +4063,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.memberUserIds)) {
             query["memberUserIds"] = request.memberUserIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelIds)) {
+            query["modelIds"] = request.modelIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.modelTypes)) {
             query["modelTypes"] = request.modelTypes ?? "";
