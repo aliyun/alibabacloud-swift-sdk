@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -6011,6 +6012,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var enableSSL: Bool?
 
+        public var enableSandbox: Bool?
+
         public var enableServerless: Bool?
 
         public var endpoints: [GetInstanceResponseBody.Instance.Endpoints]?
@@ -6095,6 +6098,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.enableSSL != nil {
                 map["EnableSSL"] = self.enableSSL!
+            }
+            if self.enableSandbox != nil {
+                map["EnableSandbox"] = self.enableSandbox!
             }
             if self.enableServerless != nil {
                 map["EnableServerless"] = self.enableServerless!
@@ -6201,6 +6207,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableSSL"] as? Bool {
                 self.enableSSL = value
+            }
+            if let value = dict["EnableSandbox"] as? Bool {
+                self.enableSandbox = value
             }
             if let value = dict["EnableServerless"] as? Bool {
                 self.enableServerless = value
