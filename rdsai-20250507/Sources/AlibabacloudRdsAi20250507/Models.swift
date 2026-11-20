@@ -673,6 +673,8 @@ public class ChatMessagesRequest : Tea.TeaModel {
 
         public var uploadFileId: String?
 
+        public var url: String?
+
         public override init() {
             super.init()
         }
@@ -696,6 +698,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
             if self.uploadFileId != nil {
                 map["UploadFileId"] = self.uploadFileId!
             }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
             return map
         }
 
@@ -709,6 +714,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
             }
             if let value = dict["UploadFileId"] as? String {
                 self.uploadFileId = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
             }
         }
     }
