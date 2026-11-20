@@ -22864,6 +22864,44 @@ public class DescribeDefenseResourceRequest : Tea.TeaModel {
 
 public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
     public class Resource : Tea.TeaModel {
+        public class CookieConfig : Tea.TeaModel {
+            public var acwScV3SameSite: String?
+
+            public var acwTcSameSite: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.acwScV3SameSite != nil {
+                    map["AcwScV3SameSite"] = self.acwScV3SameSite!
+                }
+                if self.acwTcSameSite != nil {
+                    map["AcwTcSameSite"] = self.acwTcSameSite!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AcwScV3SameSite"] as? String {
+                    self.acwScV3SameSite = value
+                }
+                if let value = dict["AcwTcSameSite"] as? String {
+                    self.acwTcSameSite = value
+                }
+            }
+        }
         public class ResponseHeaders : Tea.TeaModel {
             public var key: String?
 
@@ -22908,6 +22946,8 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
 
         public var acwV3SecureStatus: Int32?
 
+        public var cookieConfig: DescribeDefenseResourceResponseBody.Resource.CookieConfig?
+
         public var customHeaders: [String]?
 
         public var description_: String?
@@ -22950,6 +22990,7 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cookieConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -22962,6 +23003,9 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             }
             if self.acwV3SecureStatus != nil {
                 map["AcwV3SecureStatus"] = self.acwV3SecureStatus!
+            }
+            if self.cookieConfig != nil {
+                map["CookieConfig"] = self.cookieConfig?.toMap()
             }
             if self.customHeaders != nil {
                 map["CustomHeaders"] = self.customHeaders!
@@ -23028,6 +23072,11 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             }
             if let value = dict["AcwV3SecureStatus"] as? Int32 {
                 self.acwV3SecureStatus = value
+            }
+            if let value = dict["CookieConfig"] as? [String: Any?] {
+                var model = DescribeDefenseResourceResponseBody.Resource.CookieConfig()
+                model.fromMap(value)
+                self.cookieConfig = model
             }
             if let value = dict["CustomHeaders"] as? [String] {
                 self.customHeaders = value
@@ -24606,6 +24655,44 @@ public class DescribeDefenseResourcesRequest : Tea.TeaModel {
 
 public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
     public class Resources : Tea.TeaModel {
+        public class CookieConfig : Tea.TeaModel {
+            public var acwScV3SameSite: String?
+
+            public var acwTcSameSite: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.acwScV3SameSite != nil {
+                    map["AcwScV3SameSite"] = self.acwScV3SameSite!
+                }
+                if self.acwTcSameSite != nil {
+                    map["AcwTcSameSite"] = self.acwTcSameSite!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AcwScV3SameSite"] as? String {
+                    self.acwScV3SameSite = value
+                }
+                if let value = dict["AcwTcSameSite"] as? String {
+                    self.acwTcSameSite = value
+                }
+            }
+        }
         public class ResponseHeaders : Tea.TeaModel {
             public var key: String?
 
@@ -24650,6 +24737,8 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
 
         public var acwV3SecureStatus: Int32?
 
+        public var cookieConfig: DescribeDefenseResourcesResponseBody.Resources.CookieConfig?
+
         public var customHeaders: [String]?
 
         public var description_: String?
@@ -24692,6 +24781,7 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cookieConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -24704,6 +24794,9 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             }
             if self.acwV3SecureStatus != nil {
                 map["AcwV3SecureStatus"] = self.acwV3SecureStatus!
+            }
+            if self.cookieConfig != nil {
+                map["CookieConfig"] = self.cookieConfig?.toMap()
             }
             if self.customHeaders != nil {
                 map["CustomHeaders"] = self.customHeaders!
@@ -24770,6 +24863,11 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AcwV3SecureStatus"] as? Int32 {
                 self.acwV3SecureStatus = value
+            }
+            if let value = dict["CookieConfig"] as? [String: Any?] {
+                var model = DescribeDefenseResourcesResponseBody.Resources.CookieConfig()
+                model.fromMap(value)
+                self.cookieConfig = model
             }
             if let value = dict["CustomHeaders"] as? [String] {
                 self.customHeaders = value
@@ -55604,6 +55702,44 @@ public class ModifyDefenseResourceGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
+    public class CookieConfig : Tea.TeaModel {
+        public var acwScV3SameSite: String?
+
+        public var acwTcSameSite: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acwScV3SameSite != nil {
+                map["AcwScV3SameSite"] = self.acwScV3SameSite!
+            }
+            if self.acwTcSameSite != nil {
+                map["AcwTcSameSite"] = self.acwTcSameSite!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AcwScV3SameSite"] as? String {
+                self.acwScV3SameSite = value
+            }
+            if let value = dict["AcwTcSameSite"] as? String {
+                self.acwTcSameSite = value
+            }
+        }
+    }
     public class ResponseHeaders : Tea.TeaModel {
         public var key: String?
 
@@ -55648,6 +55784,8 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
 
     public var acwV3SecureStatus: Int32?
 
+    public var cookieConfig: ModifyDefenseResourceXffRequest.CookieConfig?
+
     public var customHeaders: [String]?
 
     public var instanceId: String?
@@ -55672,6 +55810,7 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.cookieConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -55684,6 +55823,9 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
         }
         if self.acwV3SecureStatus != nil {
             map["AcwV3SecureStatus"] = self.acwV3SecureStatus!
+        }
+        if self.cookieConfig != nil {
+            map["CookieConfig"] = self.cookieConfig?.toMap()
         }
         if self.customHeaders != nil {
             map["CustomHeaders"] = self.customHeaders!
@@ -55724,6 +55866,11 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
         if let value = dict["AcwV3SecureStatus"] as? Int32 {
             self.acwV3SecureStatus = value
         }
+        if let value = dict["CookieConfig"] as? [String: Any?] {
+            var model = ModifyDefenseResourceXffRequest.CookieConfig()
+            model.fromMap(value)
+            self.cookieConfig = model
+        }
         if let value = dict["CustomHeaders"] as? [String] {
             self.customHeaders = value
         }
@@ -55744,6 +55891,169 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
             for v in value {
                 if v != nil {
                     var model = ModifyDefenseResourceXffRequest.ResponseHeaders()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.responseHeaders = tmp
+        }
+        if let value = dict["XffStatus"] as? Int32 {
+            self.xffStatus = value
+        }
+    }
+}
+
+public class ModifyDefenseResourceXffShrinkRequest : Tea.TeaModel {
+    public class ResponseHeaders : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var acwCookieStatus: Int32?
+
+    public var acwSecureStatus: Int32?
+
+    public var acwV3SecureStatus: Int32?
+
+    public var cookieConfigShrink: String?
+
+    public var customHeaders: [String]?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resource: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public var responseHeaders: [ModifyDefenseResourceXffShrinkRequest.ResponseHeaders]?
+
+    public var xffStatus: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acwCookieStatus != nil {
+            map["AcwCookieStatus"] = self.acwCookieStatus!
+        }
+        if self.acwSecureStatus != nil {
+            map["AcwSecureStatus"] = self.acwSecureStatus!
+        }
+        if self.acwV3SecureStatus != nil {
+            map["AcwV3SecureStatus"] = self.acwV3SecureStatus!
+        }
+        if self.cookieConfigShrink != nil {
+            map["CookieConfig"] = self.cookieConfigShrink!
+        }
+        if self.customHeaders != nil {
+            map["CustomHeaders"] = self.customHeaders!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        if self.responseHeaders != nil {
+            var tmp : [Any] = []
+            for k in self.responseHeaders! {
+                tmp.append(k.toMap())
+            }
+            map["ResponseHeaders"] = tmp
+        }
+        if self.xffStatus != nil {
+            map["XffStatus"] = self.xffStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcwCookieStatus"] as? Int32 {
+            self.acwCookieStatus = value
+        }
+        if let value = dict["AcwSecureStatus"] as? Int32 {
+            self.acwSecureStatus = value
+        }
+        if let value = dict["AcwV3SecureStatus"] as? Int32 {
+            self.acwV3SecureStatus = value
+        }
+        if let value = dict["CookieConfig"] as? String {
+            self.cookieConfigShrink = value
+        }
+        if let value = dict["CustomHeaders"] as? [String] {
+            self.customHeaders = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Resource"] as? String {
+            self.resource = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+        if let value = dict["ResponseHeaders"] as? [Any?] {
+            var tmp : [ModifyDefenseResourceXffShrinkRequest.ResponseHeaders] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyDefenseResourceXffShrinkRequest.ResponseHeaders()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }

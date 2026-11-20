@@ -10387,8 +10387,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyDefenseResourceXffWithOptions(_ request: ModifyDefenseResourceXffRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDefenseResourceXffResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyDefenseResourceXffWithOptions(_ tmpReq: ModifyDefenseResourceXffRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDefenseResourceXffResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyDefenseResourceXffShrinkRequest = ModifyDefenseResourceXffShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.cookieConfig)) {
+            request.cookieConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.cookieConfig, "CookieConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acwCookieStatus)) {
             query["AcwCookieStatus"] = request.acwCookieStatus!;
@@ -10398,6 +10403,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.acwV3SecureStatus)) {
             query["AcwV3SecureStatus"] = request.acwV3SecureStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cookieConfigShrink)) {
+            query["CookieConfig"] = request.cookieConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.customHeaders)) {
             query["CustomHeaders"] = request.customHeaders ?? [];
