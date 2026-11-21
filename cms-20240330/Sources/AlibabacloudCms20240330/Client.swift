@@ -1001,8 +1001,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createEntityStoreWithOptions(_ workspaceName: String, _ request: CreateEntityStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEntityStoreResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateEntityStore",
@@ -1695,12 +1700,17 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createUmodelWithOptions(_ workspace: String, _ request: CreateUmodelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUmodelResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -2854,6 +2864,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.kind)) {
             query["kind"] = request.kind ?? "";
@@ -6772,6 +6785,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func putWorkspaceWithOptions(_ workspaceName: String, _ request: PutWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PutWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
@@ -6790,6 +6807,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -8409,6 +8427,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func upsertUmodelCommonSchemaRefWithOptions(_ workspace: String, _ request: UpsertUmodelCommonSchemaRefRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpsertUmodelCommonSchemaRefResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.group)) {
             query["group"] = request.group ?? "";
         }
@@ -8445,6 +8466,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func upsertUmodelDataWithOptions(_ workspace: String, _ request: UpsertUmodelDataRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpsertUmodelDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.method)) {
             query["method"] = request.method ?? "";
         }

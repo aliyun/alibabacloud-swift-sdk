@@ -8487,6 +8487,8 @@ public class Hook : Tea.TeaModel {
             }
         }
     }
+    public var debug: Bool?
+
     public var description_: String?
 
     public var enable: Bool?
@@ -8494,6 +8496,8 @@ public class Hook : Tea.TeaModel {
     public var event: String?
 
     public var execution: Hook.Execution?
+
+    public var invisible: Bool?
 
     public var match: [String]?
 
@@ -8518,6 +8522,9 @@ public class Hook : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.debug != nil {
+            map["debug"] = self.debug!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -8529,6 +8536,9 @@ public class Hook : Tea.TeaModel {
         }
         if self.execution != nil {
             map["execution"] = self.execution?.toMap()
+        }
+        if self.invisible != nil {
+            map["invisible"] = self.invisible!
         }
         if self.match != nil {
             map["match"] = self.match!
@@ -8547,6 +8557,9 @@ public class Hook : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["debug"] as? Bool {
+            self.debug = value
+        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
@@ -8560,6 +8573,9 @@ public class Hook : Tea.TeaModel {
             var model = Hook.Execution()
             model.fromMap(value)
             self.execution = model
+        }
+        if let value = dict["invisible"] as? Bool {
+            self.invisible = value
         }
         if let value = dict["match"] as? [String] {
             self.match = value
@@ -14444,6 +14460,8 @@ public class NotifyRouteForSubscription : Tea.TeaModel {
 
 public class NotifyStrategyConfig : Tea.TeaModel {
     public class CustomTemplateEntries : Tea.TeaModel {
+        public var targetType: String?
+
         public var templateUuid: String?
 
         public override init() {
@@ -14460,6 +14478,9 @@ public class NotifyStrategyConfig : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.targetType != nil {
+                map["targetType"] = self.targetType!
+            }
             if self.templateUuid != nil {
                 map["templateUuid"] = self.templateUuid!
             }
@@ -14468,6 +14489,9 @@ public class NotifyStrategyConfig : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["targetType"] as? String {
+                self.targetType = value
+            }
             if let value = dict["templateUuid"] as? String {
                 self.templateUuid = value
             }
@@ -31842,6 +31866,7 @@ public class CreateDeliveryTaskResponse : Tea.TeaModel {
 }
 
 public class CreateEntityStoreRequest : Tea.TeaModel {
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -31857,11 +31882,17 @@ public class CreateEntityStoreRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -35356,6 +35387,8 @@ public class CreateTicketResponse : Tea.TeaModel {
 public class CreateUmodelRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -35373,6 +35406,9 @@ public class CreateUmodelRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -35380,6 +35416,9 @@ public class CreateUmodelRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
@@ -39639,6 +39678,8 @@ public class DeleteUmodelCommonSchemaRefResponse : Tea.TeaModel {
 public class DeleteUmodelDataRequest : Tea.TeaModel {
     public var domain: String?
 
+    public var dryRun: Bool?
+
     public var kind: String?
 
     public var name: String?
@@ -39660,6 +39701,9 @@ public class DeleteUmodelDataRequest : Tea.TeaModel {
         if self.domain != nil {
             map["domain"] = self.domain!
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         if self.kind != nil {
             map["kind"] = self.kind!
         }
@@ -39673,6 +39717,9 @@ public class DeleteUmodelDataRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["kind"] as? String {
             self.kind = value
@@ -75629,6 +75676,8 @@ public class PutWorkspaceRequest : Tea.TeaModel {
             }
         }
     }
+    public var dryRun: Bool?
+
     public var description_: String?
 
     public var displayName: String?
@@ -75653,6 +75702,9 @@ public class PutWorkspaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -75677,6 +75729,9 @@ public class PutWorkspaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
@@ -86014,6 +86069,8 @@ public class UpdateUmodelResponse : Tea.TeaModel {
 }
 
 public class UpsertUmodelCommonSchemaRefRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var group: String?
 
     public var version: String?
@@ -86032,6 +86089,9 @@ public class UpsertUmodelCommonSchemaRefRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         if self.group != nil {
             map["group"] = self.group!
         }
@@ -86043,6 +86103,9 @@ public class UpsertUmodelCommonSchemaRefRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["group"] as? String {
             self.group = value
         }
@@ -86136,6 +86199,8 @@ public class UpsertUmodelCommonSchemaRefResponse : Tea.TeaModel {
 public class UpsertUmodelDataRequest : Tea.TeaModel {
     public var elements: [Any]?
 
+    public var dryRun: Bool?
+
     public var method: String?
 
     public override init() {
@@ -86155,6 +86220,9 @@ public class UpsertUmodelDataRequest : Tea.TeaModel {
         if self.elements != nil {
             map["elements"] = self.elements!
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         if self.method != nil {
             map["method"] = self.method!
         }
@@ -86165,6 +86233,9 @@ public class UpsertUmodelDataRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["elements"] as? [Any] {
             self.elements = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["method"] as? String {
             self.method = value
