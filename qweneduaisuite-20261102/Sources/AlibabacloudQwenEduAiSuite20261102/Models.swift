@@ -885,55 +885,11 @@ public class CreateEduProblemSolveShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public class Items : Tea.TeaModel {
-            public class Thinking : Tea.TeaModel {
-                public var content: String?
-
-                public var status: String?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.content != nil {
-                        map["content"] = self.content!
-                    }
-                    if self.status != nil {
-                        map["status"] = self.status!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                    guard let dict else { return }
-                    if let value = dict["content"] as? String {
-                        self.content = value
-                    }
-                    if let value = dict["status"] as? String {
-                        self.status = value
-                    }
-                }
-            }
+    public class Items : Tea.TeaModel {
+        public class Thinking : Tea.TeaModel {
             public var content: String?
 
-            public var imageUrl: String?
-
-            public var questionId: String?
-
             public var status: String?
-
-            public var thinking: CreateEduProblemSolveResponseBody.Data.Items.Thinking?
 
             public override init() {
                 super.init()
@@ -945,7 +901,6 @@ public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
-                try self.thinking?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -953,17 +908,8 @@ public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
                 if self.content != nil {
                     map["content"] = self.content!
                 }
-                if self.imageUrl != nil {
-                    map["imageUrl"] = self.imageUrl!
-                }
-                if self.questionId != nil {
-                    map["questionId"] = self.questionId!
-                }
                 if self.status != nil {
                     map["status"] = self.status!
-                }
-                if self.thinking != nil {
-                    map["thinking"] = self.thinking?.toMap()
                 }
                 return map
             }
@@ -973,75 +919,20 @@ public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
                 if let value = dict["content"] as? String {
                     self.content = value
                 }
-                if let value = dict["imageUrl"] as? String {
-                    self.imageUrl = value
-                }
-                if let value = dict["questionId"] as? String {
-                    self.questionId = value
-                }
                 if let value = dict["status"] as? String {
                     self.status = value
                 }
-                if let value = dict["thinking"] as? [String: Any?] {
-                    var model = CreateEduProblemSolveResponseBody.Data.Items.Thinking()
-                    model.fromMap(value)
-                    self.thinking = model
-                }
             }
         }
-        public class Usage : Tea.TeaModel {
-            public var completionTokens: Int32?
+        public var content: String?
 
-            public var promptTokens: Int32?
+        public var imageUrl: String?
 
-            public override init() {
-                super.init()
-            }
+        public var questionId: String?
 
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
+        public var status: String?
 
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.completionTokens != nil {
-                    map["completionTokens"] = self.completionTokens!
-                }
-                if self.promptTokens != nil {
-                    map["promptTokens"] = self.promptTokens!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["completionTokens"] as? Int32 {
-                    self.completionTokens = value
-                }
-                if let value = dict["promptTokens"] as? Int32 {
-                    self.promptTokens = value
-                }
-            }
-        }
-        public var code: String?
-
-        public var finished: Bool?
-
-        public var items: [CreateEduProblemSolveResponseBody.Data.Items]?
-
-        public var message: String?
-
-        public var requestId: String?
-
-        public var resultType: String?
-
-        public var retryable: Bool?
-
-        public var usage: CreateEduProblemSolveResponseBody.Data.Usage?
+        public var thinking: CreateEduProblemSolveResponseBody.Items.Thinking?
 
         public override init() {
             super.init()
@@ -1053,85 +944,103 @@ public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.usage?.validate()
+            try self.thinking?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.code != nil {
-                map["code"] = self.code!
+            if self.content != nil {
+                map["content"] = self.content!
             }
-            if self.finished != nil {
-                map["finished"] = self.finished!
+            if self.imageUrl != nil {
+                map["imageUrl"] = self.imageUrl!
             }
-            if self.items != nil {
-                var tmp : [Any] = []
-                for k in self.items! {
-                    tmp.append(k.toMap())
-                }
-                map["items"] = tmp
+            if self.questionId != nil {
+                map["questionId"] = self.questionId!
             }
-            if self.message != nil {
-                map["message"] = self.message!
+            if self.status != nil {
+                map["status"] = self.status!
             }
-            if self.requestId != nil {
-                map["requestId"] = self.requestId!
-            }
-            if self.resultType != nil {
-                map["resultType"] = self.resultType!
-            }
-            if self.retryable != nil {
-                map["retryable"] = self.retryable!
-            }
-            if self.usage != nil {
-                map["usage"] = self.usage?.toMap()
+            if self.thinking != nil {
+                map["thinking"] = self.thinking?.toMap()
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["code"] as? String {
-                self.code = value
+            if let value = dict["content"] as? String {
+                self.content = value
             }
-            if let value = dict["finished"] as? Bool {
-                self.finished = value
+            if let value = dict["imageUrl"] as? String {
+                self.imageUrl = value
             }
-            if let value = dict["items"] as? [Any?] {
-                var tmp : [CreateEduProblemSolveResponseBody.Data.Items] = []
-                for v in value {
-                    if v != nil {
-                        var model = CreateEduProblemSolveResponseBody.Data.Items()
-                        if v != nil {
-                            model.fromMap(v as? [String: Any?])
-                        }
-                        tmp.append(model)
-                    }
-                }
-                self.items = tmp
+            if let value = dict["questionId"] as? String {
+                self.questionId = value
             }
-            if let value = dict["message"] as? String {
-                self.message = value
+            if let value = dict["status"] as? String {
+                self.status = value
             }
-            if let value = dict["requestId"] as? String {
-                self.requestId = value
-            }
-            if let value = dict["resultType"] as? String {
-                self.resultType = value
-            }
-            if let value = dict["retryable"] as? Bool {
-                self.retryable = value
-            }
-            if let value = dict["usage"] as? [String: Any?] {
-                var model = CreateEduProblemSolveResponseBody.Data.Usage()
+            if let value = dict["thinking"] as? [String: Any?] {
+                var model = CreateEduProblemSolveResponseBody.Items.Thinking()
                 model.fromMap(value)
-                self.usage = model
+                self.thinking = model
             }
         }
     }
-    public var data: CreateEduProblemSolveResponseBody.Data?
+    public class Usage : Tea.TeaModel {
+        public var completionTokens: Int32?
 
-    public var event: String?
+        public var promptTokens: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.completionTokens != nil {
+                map["completionTokens"] = self.completionTokens!
+            }
+            if self.promptTokens != nil {
+                map["promptTokens"] = self.promptTokens!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["completionTokens"] as? Int32 {
+                self.completionTokens = value
+            }
+            if let value = dict["promptTokens"] as? Int32 {
+                self.promptTokens = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var finished: Bool?
+
+    public var items: [CreateEduProblemSolveResponseBody.Items]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultType: String?
+
+    public var retryable: Bool?
+
+    public var usage: CreateEduProblemSolveResponseBody.Usage?
 
     public override init() {
         super.init()
@@ -1143,29 +1052,79 @@ public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.data?.validate()
+        try self.usage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.data != nil {
-            map["data"] = self.data?.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
         }
-        if self.event != nil {
-            map["event"] = self.event!
+        if self.finished != nil {
+            map["finished"] = self.finished!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["items"] = tmp
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.resultType != nil {
+            map["resultType"] = self.resultType!
+        }
+        if self.retryable != nil {
+            map["retryable"] = self.retryable!
+        }
+        if self.usage != nil {
+            map["usage"] = self.usage?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["data"] as? [String: Any?] {
-            var model = CreateEduProblemSolveResponseBody.Data()
-            model.fromMap(value)
-            self.data = model
+        if let value = dict["code"] as? String {
+            self.code = value
         }
-        if let value = dict["event"] as? String {
-            self.event = value
+        if let value = dict["finished"] as? Bool {
+            self.finished = value
+        }
+        if let value = dict["items"] as? [Any?] {
+            var tmp : [CreateEduProblemSolveResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateEduProblemSolveResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["resultType"] as? String {
+            self.resultType = value
+        }
+        if let value = dict["retryable"] as? Bool {
+            self.retryable = value
+        }
+        if let value = dict["usage"] as? [String: Any?] {
+            var model = CreateEduProblemSolveResponseBody.Usage()
+            model.fromMap(value)
+            self.usage = model
         }
     }
 }
