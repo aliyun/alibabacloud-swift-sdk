@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -2211,6 +2212,8 @@ public class FindGuestTicketRecordResponse : Tea.TeaModel {
 public class MosCheckInRequest : Tea.TeaModel {
     public var activityId: String?
 
+    public var checkinPoint: String?
+
     public var extParam: String?
 
     public var qrCode: String?
@@ -2232,6 +2235,9 @@ public class MosCheckInRequest : Tea.TeaModel {
         if self.activityId != nil {
             map["ActivityId"] = self.activityId!
         }
+        if self.checkinPoint != nil {
+            map["CheckinPoint"] = self.checkinPoint!
+        }
         if self.extParam != nil {
             map["ExtParam"] = self.extParam!
         }
@@ -2245,6 +2251,9 @@ public class MosCheckInRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ActivityId"] as? String {
             self.activityId = value
+        }
+        if let value = dict["CheckinPoint"] as? String {
+            self.checkinPoint = value
         }
         if let value = dict["ExtParam"] as? String {
             self.extParam = value
@@ -2370,6 +2379,407 @@ public class MosCheckInResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = MosCheckInResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class MosQueryRegistrationInfoRequest : Tea.TeaModel {
+    public var activityId: String?
+
+    public var checkinStatus: String?
+
+    public var keyword: String?
+
+    public var page: String?
+
+    public var pageSize: String?
+
+    public var qrCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.activityId != nil {
+            map["ActivityId"] = self.activityId!
+        }
+        if self.checkinStatus != nil {
+            map["CheckinStatus"] = self.checkinStatus!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.qrCode != nil {
+            map["QrCode"] = self.qrCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActivityId"] as? String {
+            self.activityId = value
+        }
+        if let value = dict["CheckinStatus"] as? String {
+            self.checkinStatus = value
+        }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["Page"] as? String {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["QrCode"] as? String {
+            self.qrCode = value
+        }
+    }
+}
+
+public class MosQueryRegistrationInfoResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class TagInfos : Tea.TeaModel {
+                public var tagCode: String?
+
+                public var tagName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagCode != nil {
+                        map["TagCode"] = self.tagCode!
+                    }
+                    if self.tagName != nil {
+                        map["TagName"] = self.tagName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["TagCode"] as? String {
+                        self.tagCode = value
+                    }
+                    if let value = dict["TagName"] as? String {
+                        self.tagName = value
+                    }
+                }
+            }
+            public var activityId: String?
+
+            public var channelName: String?
+
+            public var checkinStatus: String?
+
+            public var id: Int64?
+
+            public var qrCode: String?
+
+            public var tagInfos: [MosQueryRegistrationInfoResponseBody.Data.List.TagInfos]?
+
+            public var userCompany: String?
+
+            public var userEmail: String?
+
+            public var userName: String?
+
+            public var userPhone: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.activityId != nil {
+                    map["ActivityId"] = self.activityId!
+                }
+                if self.channelName != nil {
+                    map["ChannelName"] = self.channelName!
+                }
+                if self.checkinStatus != nil {
+                    map["CheckinStatus"] = self.checkinStatus!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.qrCode != nil {
+                    map["QrCode"] = self.qrCode!
+                }
+                if self.tagInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.tagInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TagInfos"] = tmp
+                }
+                if self.userCompany != nil {
+                    map["UserCompany"] = self.userCompany!
+                }
+                if self.userEmail != nil {
+                    map["UserEmail"] = self.userEmail!
+                }
+                if self.userName != nil {
+                    map["UserName"] = self.userName!
+                }
+                if self.userPhone != nil {
+                    map["UserPhone"] = self.userPhone!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ActivityId"] as? String {
+                    self.activityId = value
+                }
+                if let value = dict["ChannelName"] as? String {
+                    self.channelName = value
+                }
+                if let value = dict["CheckinStatus"] as? String {
+                    self.checkinStatus = value
+                }
+                if let value = dict["Id"] as? Int64 {
+                    self.id = value
+                }
+                if let value = dict["QrCode"] as? String {
+                    self.qrCode = value
+                }
+                if let value = dict["TagInfos"] as? [Any?] {
+                    var tmp : [MosQueryRegistrationInfoResponseBody.Data.List.TagInfos] = []
+                    for v in value {
+                        if v != nil {
+                            var model = MosQueryRegistrationInfoResponseBody.Data.List.TagInfos()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tagInfos = tmp
+                }
+                if let value = dict["UserCompany"] as? String {
+                    self.userCompany = value
+                }
+                if let value = dict["UserEmail"] as? String {
+                    self.userEmail = value
+                }
+                if let value = dict["UserName"] as? String {
+                    self.userName = value
+                }
+                if let value = dict["UserPhone"] as? String {
+                    self.userPhone = value
+                }
+            }
+        }
+        public var list: [MosQueryRegistrationInfoResponseBody.Data.List]?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [MosQueryRegistrationInfoResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = MosQueryRegistrationInfoResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+            if let value = dict["Total"] as? Int64 {
+                self.total = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: MosQueryRegistrationInfoResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = MosQueryRegistrationInfoResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class MosQueryRegistrationInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MosQueryRegistrationInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MosQueryRegistrationInfoResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -5159,6 +5569,287 @@ public class UpdateTicketRecordByticketCodePopResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateTicketRecordByticketCodePopResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class VerifyActivityAdmissionRequest : Tea.TeaModel {
+    public var activityId: Int64?
+
+    public var idCardNo: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.activityId != nil {
+            map["ActivityId"] = self.activityId!
+        }
+        if self.idCardNo != nil {
+            map["IdCardNo"] = self.idCardNo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActivityId"] as? Int64 {
+            self.activityId = value
+        }
+        if let value = dict["IdCardNo"] as? String {
+            self.idCardNo = value
+        }
+    }
+}
+
+public class VerifyActivityAdmissionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var activityId: Int64?
+
+        public var activityName: String?
+
+        public var address: String?
+
+        public var admissionDate: String?
+
+        public var allowedDates: [String]?
+
+        public var decision: String?
+
+        public var endTime: String?
+
+        public var maskedIdCardNo: String?
+
+        public var name: String?
+
+        public var registrationStatus: Int32?
+
+        public var signedIn: Bool?
+
+        public var signinTime: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.activityId != nil {
+                map["ActivityId"] = self.activityId!
+            }
+            if self.activityName != nil {
+                map["ActivityName"] = self.activityName!
+            }
+            if self.address != nil {
+                map["Address"] = self.address!
+            }
+            if self.admissionDate != nil {
+                map["AdmissionDate"] = self.admissionDate!
+            }
+            if self.allowedDates != nil {
+                map["AllowedDates"] = self.allowedDates!
+            }
+            if self.decision != nil {
+                map["Decision"] = self.decision!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.maskedIdCardNo != nil {
+                map["MaskedIdCardNo"] = self.maskedIdCardNo!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.registrationStatus != nil {
+                map["RegistrationStatus"] = self.registrationStatus!
+            }
+            if self.signedIn != nil {
+                map["SignedIn"] = self.signedIn!
+            }
+            if self.signinTime != nil {
+                map["SigninTime"] = self.signinTime!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActivityId"] as? Int64 {
+                self.activityId = value
+            }
+            if let value = dict["ActivityName"] as? String {
+                self.activityName = value
+            }
+            if let value = dict["Address"] as? String {
+                self.address = value
+            }
+            if let value = dict["AdmissionDate"] as? String {
+                self.admissionDate = value
+            }
+            if let value = dict["AllowedDates"] as? [String] {
+                self.allowedDates = value
+            }
+            if let value = dict["Decision"] as? String {
+                self.decision = value
+            }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["MaskedIdCardNo"] as? String {
+                self.maskedIdCardNo = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["RegistrationStatus"] as? Int32 {
+                self.registrationStatus = value
+            }
+            if let value = dict["SignedIn"] as? Bool {
+                self.signedIn = value
+            }
+            if let value = dict["SigninTime"] as? String {
+                self.signinTime = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: VerifyActivityAdmissionResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = VerifyActivityAdmissionResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class VerifyActivityAdmissionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VerifyActivityAdmissionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = VerifyActivityAdmissionResponseBody()
             model.fromMap(value)
             self.body = model
         }

@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "marketing_event"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = ""
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("marketing_event", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -349,6 +353,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.activityId)) {
             body["ActivityId"] = request.activityId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.checkinPoint)) {
+            body["CheckinPoint"] = request.checkinPoint ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.extParam)) {
             body["ExtParam"] = request.extParam ?? "";
         }
@@ -377,6 +384,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func mosCheckIn(_ request: MosCheckInRequest) async throws -> MosCheckInResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await mosCheckInWithOptions(request as! MosCheckInRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mosQueryRegistrationInfoWithOptions(_ request: MosQueryRegistrationInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MosQueryRegistrationInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MosQueryRegistrationInfo",
+            "version": "2021-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MosQueryRegistrationInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mosQueryRegistrationInfo(_ request: MosQueryRegistrationInfoRequest) async throws -> MosQueryRegistrationInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await mosQueryRegistrationInfoWithOptions(request as! MosQueryRegistrationInfoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -803,5 +838,39 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTicketRecordByticketCodePop(_ request: UpdateTicketRecordByticketCodePopRequest) async throws -> UpdateTicketRecordByticketCodePopResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateTicketRecordByticketCodePopWithOptions(request as! UpdateTicketRecordByticketCodePopRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyActivityAdmissionWithOptions(_ request: VerifyActivityAdmissionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyActivityAdmissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityId)) {
+            body["ActivityId"] = request.activityId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.idCardNo)) {
+            body["IdCardNo"] = request.idCardNo ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VerifyActivityAdmission",
+            "version": "2021-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VerifyActivityAdmissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyActivityAdmission(_ request: VerifyActivityAdmissionRequest) async throws -> VerifyActivityAdmissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await verifyActivityAdmissionWithOptions(request as! VerifyActivityAdmissionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
