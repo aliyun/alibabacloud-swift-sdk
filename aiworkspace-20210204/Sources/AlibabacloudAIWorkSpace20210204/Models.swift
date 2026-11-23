@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -6435,9 +6436,83 @@ public class CreateExperimentResponse : Tea.TeaModel {
 
 public class CreateImageBuildRequest : Tea.TeaModel {
     public class BuildConfig : Tea.TeaModel {
+        public class DataSources : Tea.TeaModel {
+            public var dataSourceId: String?
+
+            public var dataSourceVersion: String?
+
+            public var mountAccess: String?
+
+            public var mountPath: String?
+
+            public var options: String?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataSourceId != nil {
+                    map["DataSourceId"] = self.dataSourceId!
+                }
+                if self.dataSourceVersion != nil {
+                    map["DataSourceVersion"] = self.dataSourceVersion!
+                }
+                if self.mountAccess != nil {
+                    map["MountAccess"] = self.mountAccess!
+                }
+                if self.mountPath != nil {
+                    map["MountPath"] = self.mountPath!
+                }
+                if self.options != nil {
+                    map["Options"] = self.options!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataSourceId"] as? String {
+                    self.dataSourceId = value
+                }
+                if let value = dict["DataSourceVersion"] as? String {
+                    self.dataSourceVersion = value
+                }
+                if let value = dict["MountAccess"] as? String {
+                    self.mountAccess = value
+                }
+                if let value = dict["MountPath"] as? String {
+                    self.mountPath = value
+                }
+                if let value = dict["Options"] as? String {
+                    self.options = value
+                }
+                if let value = dict["Uri"] as? String {
+                    self.uri = value
+                }
+            }
+        }
         public var buildType: String?
 
+        public var dataSources: [CreateImageBuildRequest.BuildConfig.DataSources]?
+
         public var dockerfile: String?
+
+        public var dockerfilePath: String?
 
         public var registryAuths: [String: Any]?
 
@@ -6458,8 +6533,18 @@ public class CreateImageBuildRequest : Tea.TeaModel {
             if self.buildType != nil {
                 map["BuildType"] = self.buildType!
             }
+            if self.dataSources != nil {
+                var tmp : [Any] = []
+                for k in self.dataSources! {
+                    tmp.append(k.toMap())
+                }
+                map["DataSources"] = tmp
+            }
             if self.dockerfile != nil {
                 map["Dockerfile"] = self.dockerfile!
+            }
+            if self.dockerfilePath != nil {
+                map["DockerfilePath"] = self.dockerfilePath!
             }
             if self.registryAuths != nil {
                 map["RegistryAuths"] = self.registryAuths!
@@ -6472,8 +6557,24 @@ public class CreateImageBuildRequest : Tea.TeaModel {
             if let value = dict["BuildType"] as? String {
                 self.buildType = value
             }
+            if let value = dict["DataSources"] as? [Any?] {
+                var tmp : [CreateImageBuildRequest.BuildConfig.DataSources] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateImageBuildRequest.BuildConfig.DataSources()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dataSources = tmp
+            }
             if let value = dict["Dockerfile"] as? String {
                 self.dockerfile = value
+            }
+            if let value = dict["DockerfilePath"] as? String {
+                self.dockerfilePath = value
             }
             if let value = dict["RegistryAuths"] as? [String: Any] {
                 self.registryAuths = value

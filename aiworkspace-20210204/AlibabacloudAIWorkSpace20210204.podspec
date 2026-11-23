@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAIWorkSpace20210204"
-  spec.version      = "6.3.6"
+  spec.version      = "6.3.7"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud AIWorkSpace (20210204) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/aiworkspace-20210204" 
@@ -19,6 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.8'
+  spec.dependency 'AlibabacloudGatewayPOP',  '~> 0.0.3'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.2'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
