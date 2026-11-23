@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,7 +9,43 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "ExpressConnectRouter"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-hongkong": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-zhangjiakou": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-zhengzhou-jva": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-shenzhen": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-beijing": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-wulanchabu": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-nanjing": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-northeast-2": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-northeast-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-fuzhou": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-chengdu": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-wuhan-lr": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-guangzhou": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-heyuan": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-southeast-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-southeast-3": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-huhehaote": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-southeast-5": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-southeast-6": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "ap-southeast-7": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-hangzhou": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "us-west-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "us-east-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "eu-central-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "eu-west-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "me-central-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-shenzhen-finance-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-shanghai-finance-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-heyuan-acdr-1": "expressconnectrouter.cn-shanghai.aliyuncs.com",
+            "cn-beijing-finance-1": "expressconnectrouter.cn-shanghai.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("expressconnectrouter", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -375,6 +412,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRouteMapAssociationWithOptions(_ request: CreateRouteMapAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRouteMapAssociationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionIdList)) {
+            query["RegionIdList"] = request.regionIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.routeMapId)) {
+            query["RouteMapId"] = request.routeMapId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrId)) {
+            body["EcrId"] = request.ecrId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRouteMapAssociation",
+            "version": "2023-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRouteMapAssociationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRouteMapAssociation(_ request: CreateRouteMapAssociationRequest) async throws -> CreateRouteMapAssociationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createRouteMapAssociationWithOptions(request as! CreateRouteMapAssociationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deactivateFlowLogWithOptions(_ request: DeactivateFlowLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeactivateFlowLogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -552,6 +637,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteFlowlog(_ request: DeleteFlowlogRequest) async throws -> DeleteFlowlogResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteFlowlogWithOptions(request as! DeleteFlowlogRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRouteMapAssociationWithOptions(_ request: DeleteRouteMapAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRouteMapAssociationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.associationId)) {
+            query["AssociationId"] = request.associationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrId)) {
+            body["EcrId"] = request.ecrId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRouteMapAssociation",
+            "version": "2023-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRouteMapAssociationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRouteMapAssociation(_ request: DeleteRouteMapAssociationRequest) async throws -> DeleteRouteMapAssociationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteRouteMapAssociationWithOptions(request as! DeleteRouteMapAssociationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1404,6 +1534,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRouteMapAssociationsWithOptions(_ request: ListRouteMapAssociationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRouteMapAssociationsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.associationId)) {
+            query["AssociationId"] = request.associationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routeMapId)) {
+            query["RouteMapId"] = request.routeMapId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrId)) {
+            body["EcrId"] = request.ecrId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRouteMapAssociations",
+            "version": "2023-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRouteMapAssociationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRouteMapAssociations(_ request: ListRouteMapAssociationsRequest) async throws -> ListRouteMapAssociationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listRouteMapAssociationsWithOptions(request as! ListRouteMapAssociationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listTagResourcesWithOptions(_ request: ListTagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1995,5 +2179,53 @@ open class Client : AlibabacloudOpenApi.Client {
     public func untagResources(_ request: UntagResourcesRequest) async throws -> UntagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await untagResourcesWithOptions(request as! UntagResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRouteMapAssociationWithOptions(_ request: UpdateRouteMapAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRouteMapAssociationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.associationId)) {
+            query["AssociationId"] = request.associationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionIdList)) {
+            query["RegionIdList"] = request.regionIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrId)) {
+            body["EcrId"] = request.ecrId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRouteMapAssociation",
+            "version": "2023-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRouteMapAssociationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRouteMapAssociation(_ request: UpdateRouteMapAssociationRequest) async throws -> UpdateRouteMapAssociationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateRouteMapAssociationWithOptions(request as! UpdateRouteMapAssociationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
