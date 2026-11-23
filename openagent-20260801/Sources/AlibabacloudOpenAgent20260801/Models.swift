@@ -256,6 +256,8 @@ public class CreateSessionHeaders : Tea.TeaModel {
 public class CreateSessionRequest : Tea.TeaModel {
     public var title: String?
 
+    public var uiEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -273,6 +275,9 @@ public class CreateSessionRequest : Tea.TeaModel {
         if self.title != nil {
             map["title"] = self.title!
         }
+        if self.uiEnabled != nil {
+            map["uiEnabled"] = self.uiEnabled!
+        }
         return map
     }
 
@@ -280,6 +285,9 @@ public class CreateSessionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["title"] as? String {
             self.title = value
+        }
+        if let value = dict["uiEnabled"] as? Bool {
+            self.uiEnabled = value
         }
     }
 }
@@ -293,6 +301,8 @@ public class CreateSessionResponseBody : Tea.TeaModel {
         public var sessionId: String?
 
         public var status: String?
+
+        public var uiEnabled: Bool?
 
         public var updatedAt: String?
 
@@ -322,6 +332,9 @@ public class CreateSessionResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["status"] = self.status!
             }
+            if self.uiEnabled != nil {
+                map["uiEnabled"] = self.uiEnabled!
+            }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
             }
@@ -341,6 +354,9 @@ public class CreateSessionResponseBody : Tea.TeaModel {
             }
             if let value = dict["status"] as? String {
                 self.status = value
+            }
+            if let value = dict["uiEnabled"] as? Bool {
+                self.uiEnabled = value
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
@@ -1318,6 +1334,8 @@ public class GetSessionResponseBody : Tea.TeaModel {
 
         public var title: String?
 
+        public var uiEnabled: Bool?
+
         public var updatedAt: String?
 
         public override init() {
@@ -1355,6 +1373,9 @@ public class GetSessionResponseBody : Tea.TeaModel {
             if self.title != nil {
                 map["title"] = self.title!
             }
+            if self.uiEnabled != nil {
+                map["uiEnabled"] = self.uiEnabled!
+            }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
             }
@@ -1383,6 +1404,9 @@ public class GetSessionResponseBody : Tea.TeaModel {
             }
             if let value = dict["title"] as? String {
                 self.title = value
+            }
+            if let value = dict["uiEnabled"] as? Bool {
+                self.uiEnabled = value
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
@@ -2418,6 +2442,8 @@ public class ListSessionsResponseBody : Tea.TeaModel {
 
             public var title: String?
 
+            public var uiEnabled: Bool?
+
             public var updatedAt: String?
 
             public override init() {
@@ -2455,6 +2481,9 @@ public class ListSessionsResponseBody : Tea.TeaModel {
                 if self.title != nil {
                     map["title"] = self.title!
                 }
+                if self.uiEnabled != nil {
+                    map["uiEnabled"] = self.uiEnabled!
+                }
                 if self.updatedAt != nil {
                     map["updatedAt"] = self.updatedAt!
                 }
@@ -2483,6 +2512,9 @@ public class ListSessionsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["title"] as? String {
                     self.title = value
+                }
+                if let value = dict["uiEnabled"] as? Bool {
+                    self.uiEnabled = value
                 }
                 if let value = dict["updatedAt"] as? String {
                     self.updatedAt = value
@@ -3262,6 +3294,8 @@ public class UpdateSessionRequest : Tea.TeaModel {
 
     public var title: String?
 
+    public var uiEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -3282,6 +3316,9 @@ public class UpdateSessionRequest : Tea.TeaModel {
         if self.title != nil {
             map["title"] = self.title!
         }
+        if self.uiEnabled != nil {
+            map["uiEnabled"] = self.uiEnabled!
+        }
         return map
     }
 
@@ -3292,6 +3329,9 @@ public class UpdateSessionRequest : Tea.TeaModel {
         }
         if let value = dict["title"] as? String {
             self.title = value
+        }
+        if let value = dict["uiEnabled"] as? Bool {
+            self.uiEnabled = value
         }
     }
 }
@@ -3311,6 +3351,8 @@ public class UpdateSessionResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var title: String?
+
+        public var uiEnabled: Bool?
 
         public var updatedAt: String?
 
@@ -3349,6 +3391,9 @@ public class UpdateSessionResponseBody : Tea.TeaModel {
             if self.title != nil {
                 map["title"] = self.title!
             }
+            if self.uiEnabled != nil {
+                map["uiEnabled"] = self.uiEnabled!
+            }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
             }
@@ -3377,6 +3422,9 @@ public class UpdateSessionResponseBody : Tea.TeaModel {
             }
             if let value = dict["title"] as? String {
                 self.title = value
+            }
+            if let value = dict["uiEnabled"] as? Bool {
+                self.uiEnabled = value
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
