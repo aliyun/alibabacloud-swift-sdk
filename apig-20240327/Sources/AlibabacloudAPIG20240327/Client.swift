@@ -3771,6 +3771,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gatewayId)) {
             query["gatewayId"] = request.gatewayId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeModelTpm)) {
+            query["includeModelTpm"] = request.includeModelTpm!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -4634,6 +4637,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getModelGroupWithOptions(modelGroupId as! String, request as! GetModelGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getModelTokenRateLimitWithOptions(_ gatewayId: String, _ modelId: String, _ request: GetModelTokenRateLimitRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelTokenRateLimitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetModelTokenRateLimit",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/model-tpm/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(modelId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetModelTokenRateLimitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getModelTokenRateLimit(_ gatewayId: String, _ modelId: String, _ request: GetModelTokenRateLimitRequest) async throws -> GetModelTokenRateLimitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getModelTokenRateLimitWithOptions(gatewayId as! String, modelId as! String, request as! GetModelTokenRateLimitRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -10424,6 +10455,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateModelGroupWithOptions(modelGroupId as! String, request as! UpdateModelGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateModelTokenRateLimitWithOptions(_ gatewayId: String, _ modelId: String, _ request: UpdateModelTokenRateLimitRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateModelTokenRateLimitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.consumers)) {
+            body["consumers"] = request.consumers ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.expectedRevision)) {
+            body["expectedRevision"] = request.expectedRevision!;
+        }
+        if (!TeaUtils.Client.isUnset(request.globalTpm)) {
+            body["globalTpm"] = request.globalTpm!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateModelTokenRateLimit",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/model-tpm/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(modelId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateModelTokenRateLimitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateModelTokenRateLimit(_ gatewayId: String, _ modelId: String, _ request: UpdateModelTokenRateLimitRequest) async throws -> UpdateModelTokenRateLimitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateModelTokenRateLimitWithOptions(gatewayId as! String, modelId as! String, request as! UpdateModelTokenRateLimitRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
