@@ -9847,6 +9847,8 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
 
     public var gatewayName: String?
 
+    public var idleTimeout: String?
+
     public var instanceType: String?
 
     public var internetDomain: String?
@@ -9866,6 +9868,8 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
     public var replicas: Int32?
 
     public var requestId: String?
+
+    public var requestTimeout: String?
 
     public var SSLRedirectionEnabled: Bool?
 
@@ -9904,6 +9908,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         if self.gatewayName != nil {
             map["GatewayName"] = self.gatewayName!
         }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
@@ -9938,6 +9945,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.requestTimeout != nil {
+            map["RequestTimeout"] = self.requestTimeout!
+        }
         if self.SSLRedirectionEnabled != nil {
             map["SSLRedirectionEnabled"] = self.SSLRedirectionEnabled!
         }
@@ -9969,6 +9979,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         }
         if let value = dict["GatewayName"] as? String {
             self.gatewayName = value
+        }
+        if let value = dict["IdleTimeout"] as? String {
+            self.idleTimeout = value
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
@@ -10009,6 +10022,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["RequestTimeout"] as? String {
+            self.requestTimeout = value
         }
         if let value = dict["SSLRedirectionEnabled"] as? Bool {
             self.SSLRedirectionEnabled = value
@@ -21398,6 +21414,8 @@ public class UpdateGatewayRequest : Tea.TeaModel {
 
     public var enableSSLRedirection: Bool?
 
+    public var idleTimeout: Int32?
+
     public var instanceType: String?
 
     public var isDefault: Bool?
@@ -21405,6 +21423,8 @@ public class UpdateGatewayRequest : Tea.TeaModel {
     public var name: String?
 
     public var replicas: Int32?
+
+    public var requestTimeout: Int32?
 
     public var vSwitchIds: [String]?
 
@@ -21435,6 +21455,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         if self.enableSSLRedirection != nil {
             map["EnableSSLRedirection"] = self.enableSSLRedirection!
         }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
@@ -21446,6 +21469,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         }
         if self.replicas != nil {
             map["Replicas"] = self.replicas!
+        }
+        if self.requestTimeout != nil {
+            map["RequestTimeout"] = self.requestTimeout!
         }
         if self.vSwitchIds != nil {
             map["VSwitchIds"] = self.vSwitchIds!
@@ -21470,6 +21496,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         if let value = dict["EnableSSLRedirection"] as? Bool {
             self.enableSSLRedirection = value
         }
+        if let value = dict["IdleTimeout"] as? Int32 {
+            self.idleTimeout = value
+        }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
         }
@@ -21481,6 +21510,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["Replicas"] as? Int32 {
             self.replicas = value
+        }
+        if let value = dict["RequestTimeout"] as? Int32 {
+            self.requestTimeout = value
         }
         if let value = dict["VSwitchIds"] as? [String] {
             self.vSwitchIds = value
