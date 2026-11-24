@@ -2985,6 +2985,8 @@ public class AttachInstancesRequest : Tea.TeaModel {
 
     public var formatDisk: Bool?
 
+    public var formatDiskOption: String?
+
     public var imageId: String?
 
     public var instances: [String]?
@@ -3027,6 +3029,9 @@ public class AttachInstancesRequest : Tea.TeaModel {
         }
         if self.formatDisk != nil {
             map["format_disk"] = self.formatDisk!
+        }
+        if self.formatDiskOption != nil {
+            map["format_disk_option"] = self.formatDiskOption!
         }
         if self.imageId != nil {
             map["image_id"] = self.imageId!
@@ -3075,6 +3080,9 @@ public class AttachInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["format_disk"] as? Bool {
             self.formatDisk = value
+        }
+        if let value = dict["format_disk_option"] as? String {
+            self.formatDiskOption = value
         }
         if let value = dict["image_id"] as? String {
             self.imageId = value
@@ -3276,6 +3284,8 @@ public class AttachInstancesResponse : Tea.TeaModel {
 public class AttachInstancesToNodePoolRequest : Tea.TeaModel {
     public var formatDisk: Bool?
 
+    public var formatDiskOption: String?
+
     public var instances: [String]?
 
     public var keepInstanceName: Bool?
@@ -3299,6 +3309,9 @@ public class AttachInstancesToNodePoolRequest : Tea.TeaModel {
         if self.formatDisk != nil {
             map["format_disk"] = self.formatDisk!
         }
+        if self.formatDiskOption != nil {
+            map["format_disk_option"] = self.formatDiskOption!
+        }
         if self.instances != nil {
             map["instances"] = self.instances!
         }
@@ -3315,6 +3328,9 @@ public class AttachInstancesToNodePoolRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["format_disk"] as? Bool {
             self.formatDisk = value
+        }
+        if let value = dict["format_disk_option"] as? String {
+            self.formatDiskOption = value
         }
         if let value = dict["instances"] as? [String] {
             self.instances = value
@@ -12624,6 +12640,8 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
 
     public var formatDisk: Bool?
 
+    public var formatDiskOption: String?
+
     public var keepInstanceName: Bool?
 
     public var nodepoolId: String?
@@ -12657,6 +12675,9 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
         if self.formatDisk != nil {
             map["format_disk"] = self.formatDisk!
         }
+        if self.formatDiskOption != nil {
+            map["format_disk_option"] = self.formatDiskOption!
+        }
         if self.keepInstanceName != nil {
             map["keep_instance_name"] = self.keepInstanceName!
         }
@@ -12685,6 +12706,9 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
         }
         if let value = dict["format_disk"] as? Bool {
             self.formatDisk = value
+        }
+        if let value = dict["format_disk_option"] as? String {
+            self.formatDiskOption = value
         }
         if let value = dict["keep_instance_name"] as? Bool {
             self.keepInstanceName = value

@@ -69,6 +69,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.formatDisk)) {
             body["format_disk"] = request.formatDisk!;
         }
+        if (!TeaUtils.Client.isUnset(request.formatDiskOption)) {
+            body["format_disk_option"] = request.formatDiskOption ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             body["image_id"] = request.imageId ?? "";
         }
@@ -134,6 +137,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.formatDisk)) {
             body["format_disk"] = request.formatDisk!;
+        }
+        if (!TeaUtils.Client.isUnset(request.formatDiskOption)) {
+            body["format_disk_option"] = request.formatDiskOption ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instances)) {
             body["instances"] = request.instances ?? [];
@@ -1943,6 +1949,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.formatDisk)) {
             body["format_disk"] = request.formatDisk!;
+        }
+        if (!TeaUtils.Client.isUnset(request.formatDiskOption)) {
+            body["format_disk_option"] = request.formatDiskOption ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keepInstanceName)) {
             body["keep_instance_name"] = request.keepInstanceName!;
