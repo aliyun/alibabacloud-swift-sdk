@@ -252,6 +252,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addManifestEditTemplateWithOptions(_ request: AddManifestEditTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddManifestEditTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templates)) {
+            query["Templates"] = request.templates ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddManifestEditTemplate",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddManifestEditTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addManifestEditTemplate(_ request: AddManifestEditTemplateRequest) async throws -> AddManifestEditTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addManifestEditTemplateWithOptions(request as! AddManifestEditTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addTranscodeTemplateGroupWithOptions(_ request: AddTranscodeTemplateGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddTranscodeTemplateGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1353,6 +1387,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteImage(_ request: DeleteImageRequest) async throws -> DeleteImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteImageWithOptions(request as! DeleteImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteManifestEditTemplateWithOptions(_ request: DeleteManifestEditTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteManifestEditTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteManifestEditTemplate",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteManifestEditTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteManifestEditTemplate(_ request: DeleteManifestEditTemplateRequest) async throws -> DeleteManifestEditTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteManifestEditTemplateWithOptions(request as! DeleteManifestEditTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5517,6 +5582,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listManifestEditTemplateWithOptions(_ request: ListManifestEditTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListManifestEditTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListManifestEditTemplate",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListManifestEditTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listManifestEditTemplate(_ request: ListManifestEditTemplateRequest) async throws -> ListManifestEditTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listManifestEditTemplateWithOptions(request as! ListManifestEditTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listSnapshotsWithOptions(_ request: ListSnapshotsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSnapshotsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -6913,6 +7012,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitDynamicImageJob(_ request: SubmitDynamicImageJobRequest) async throws -> SubmitDynamicImageJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitDynamicImageJobWithOptions(request as! SubmitDynamicImageJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitEditMediaManifestJobWithOptions(_ request: SubmitEditMediaManifestJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitEditMediaManifestJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.audioTracks)) {
+            query["AudioTracks"] = request.audioTracks ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoStreamJobId)) {
+            query["AutoStreamJobId"] = request.autoStreamJobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputConfig)) {
+            query["OutputConfig"] = request.outputConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.removeTracks)) {
+            query["RemoveTracks"] = request.removeTracks ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subtitles)) {
+            query["Subtitles"] = request.subtitles ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoId)) {
+            query["VideoId"] = request.videoId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoTracks)) {
+            query["VideoTracks"] = request.videoTracks ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitEditMediaManifestJob",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitEditMediaManifestJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitEditMediaManifestJob(_ request: SubmitEditMediaManifestJobRequest) async throws -> SubmitEditMediaManifestJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitEditMediaManifestJobWithOptions(request as! SubmitEditMediaManifestJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
