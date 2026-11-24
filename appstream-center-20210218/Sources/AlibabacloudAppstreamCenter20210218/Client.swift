@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,11 +9,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "appstream-center"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-shanghai": "appstream-center.cn-shanghai.aliyuncs.com",
-            "ap-southeast-1": "appstream-center.ap-southeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("appstream-center", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -25,6 +25,51 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createThirdAppAccessTokenWithOptions(_ tmpReq: CreateThirdAppAccessTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateThirdAppAccessTokenResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateThirdAppAccessTokenShrinkRequest = CreateThirdAppAccessTokenShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resource)) {
+            request.resourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resource, "Resource", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorizerId)) {
+            body["AuthorizerId"] = request.authorizerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expiration)) {
+            body["Expiration"] = request.expiration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceShrink)) {
+            body["Resource"] = request.resourceShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateThirdAppAccessToken",
+            "version": "2021-02-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateThirdAppAccessTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createThirdAppAccessToken(_ request: CreateThirdAppAccessTokenRequest) async throws -> CreateThirdAppAccessTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createThirdAppAccessTokenWithOptions(request as! CreateThirdAppAccessTokenRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -119,6 +164,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAuthCode(_ request: GetAuthCodeRequest) async throws -> GetAuthCodeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAuthCodeWithOptions(request as! GetAuthCodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLatestThirdAppAccessTokenWithOptions(_ tmpReq: GetLatestThirdAppAccessTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLatestThirdAppAccessTokenResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetLatestThirdAppAccessTokenShrinkRequest = GetLatestThirdAppAccessTokenShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resource)) {
+            request.resourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resource, "Resource", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorizerId)) {
+            body["AuthorizerId"] = request.authorizerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceShrink)) {
+            body["Resource"] = request.resourceShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLatestThirdAppAccessToken",
+            "version": "2021-02-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLatestThirdAppAccessTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLatestThirdAppAccessToken(_ request: GetLatestThirdAppAccessTokenRequest) async throws -> GetLatestThirdAppAccessTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getLatestThirdAppAccessTokenWithOptions(request as! GetLatestThirdAppAccessTokenRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

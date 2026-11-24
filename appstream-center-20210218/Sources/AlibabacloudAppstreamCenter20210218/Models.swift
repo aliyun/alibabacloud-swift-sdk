@@ -1,9 +1,258 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
+
+public class CreateThirdAppAccessTokenRequest : Tea.TeaModel {
+    public class Resource : Tea.TeaModel {
+        public var resourceId: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+        }
+    }
+    public var authorizerId: String?
+
+    public var businessChannel: String?
+
+    public var expiration: Int32?
+
+    public var resource: CreateThirdAppAccessTokenRequest.Resource?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resource?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizerId != nil {
+            map["AuthorizerId"] = self.authorizerId!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        if self.expiration != nil {
+            map["Expiration"] = self.expiration!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizerId"] as? String {
+            self.authorizerId = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+        if let value = dict["Expiration"] as? Int32 {
+            self.expiration = value
+        }
+        if let value = dict["Resource"] as? [String: Any?] {
+            var model = CreateThirdAppAccessTokenRequest.Resource()
+            model.fromMap(value)
+            self.resource = model
+        }
+    }
+}
+
+public class CreateThirdAppAccessTokenShrinkRequest : Tea.TeaModel {
+    public var authorizerId: String?
+
+    public var businessChannel: String?
+
+    public var expiration: Int32?
+
+    public var resourceShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizerId != nil {
+            map["AuthorizerId"] = self.authorizerId!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        if self.expiration != nil {
+            map["Expiration"] = self.expiration!
+        }
+        if self.resourceShrink != nil {
+            map["Resource"] = self.resourceShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizerId"] as? String {
+            self.authorizerId = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+        if let value = dict["Expiration"] as? Int32 {
+            self.expiration = value
+        }
+        if let value = dict["Resource"] as? String {
+            self.resourceShrink = value
+        }
+    }
+}
+
+public class CreateThirdAppAccessTokenResponseBody : Tea.TeaModel {
+    public var accessToken: String?
+
+    public var expiresAt: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["AccessToken"] = self.accessToken!
+        }
+        if self.expiresAt != nil {
+            map["ExpiresAt"] = self.expiresAt!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessToken"] as? String {
+            self.accessToken = value
+        }
+        if let value = dict["ExpiresAt"] as? Int64 {
+            self.expiresAt = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateThirdAppAccessTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateThirdAppAccessTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateThirdAppAccessTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
 
 public class ExpireLoginTokenRequest : Tea.TeaModel {
     public var endUserId: String?
@@ -360,6 +609,238 @@ public class GetAuthCodeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetAuthCodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetLatestThirdAppAccessTokenRequest : Tea.TeaModel {
+    public class Resource : Tea.TeaModel {
+        public var resourceId: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+        }
+    }
+    public var authorizerId: String?
+
+    public var businessChannel: String?
+
+    public var resource: GetLatestThirdAppAccessTokenRequest.Resource?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resource?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizerId != nil {
+            map["AuthorizerId"] = self.authorizerId!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizerId"] as? String {
+            self.authorizerId = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+        if let value = dict["Resource"] as? [String: Any?] {
+            var model = GetLatestThirdAppAccessTokenRequest.Resource()
+            model.fromMap(value)
+            self.resource = model
+        }
+    }
+}
+
+public class GetLatestThirdAppAccessTokenShrinkRequest : Tea.TeaModel {
+    public var authorizerId: String?
+
+    public var businessChannel: String?
+
+    public var resourceShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizerId != nil {
+            map["AuthorizerId"] = self.authorizerId!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        if self.resourceShrink != nil {
+            map["Resource"] = self.resourceShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizerId"] as? String {
+            self.authorizerId = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+        if let value = dict["Resource"] as? String {
+            self.resourceShrink = value
+        }
+    }
+}
+
+public class GetLatestThirdAppAccessTokenResponseBody : Tea.TeaModel {
+    public var accessToken: String?
+
+    public var expiresAt: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["AccessToken"] = self.accessToken!
+        }
+        if self.expiresAt != nil {
+            map["ExpiresAt"] = self.expiresAt!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessToken"] as? String {
+            self.accessToken = value
+        }
+        if let value = dict["ExpiresAt"] as? Int64 {
+            self.expiresAt = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetLatestThirdAppAccessTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetLatestThirdAppAccessTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetLatestThirdAppAccessTokenResponseBody()
             model.fromMap(value)
             self.body = model
         }
