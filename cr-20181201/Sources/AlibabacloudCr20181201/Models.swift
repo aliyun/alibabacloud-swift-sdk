@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1470,6 +1471,8 @@ public class CreateArtifactSubscriptionRuleRequest : Tea.TeaModel {
 
     public var tagCount: Int64?
 
+    public var tagList: [String]?
+
     public var tagRegexp: String?
 
     public override init() {
@@ -1516,6 +1519,9 @@ public class CreateArtifactSubscriptionRuleRequest : Tea.TeaModel {
         if self.tagCount != nil {
             map["TagCount"] = self.tagCount!
         }
+        if self.tagList != nil {
+            map["TagList"] = self.tagList!
+        }
         if self.tagRegexp != nil {
             map["TagRegexp"] = self.tagRegexp!
         }
@@ -1553,6 +1559,9 @@ public class CreateArtifactSubscriptionRuleRequest : Tea.TeaModel {
         }
         if let value = dict["TagCount"] as? Int64 {
             self.tagCount = value
+        }
+        if let value = dict["TagList"] as? [String] {
+            self.tagList = value
         }
         if let value = dict["TagRegexp"] as? String {
             self.tagRegexp = value
@@ -9349,6 +9358,8 @@ public class GetArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
 
     public var tagCount: Int64?
 
+    public var tagList: [String]?
+
     public var tagRegexp: String?
 
     public override init() {
@@ -9416,6 +9427,9 @@ public class GetArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
         if self.tagCount != nil {
             map["TagCount"] = self.tagCount!
         }
+        if self.tagList != nil {
+            map["TagList"] = self.tagList!
+        }
         if self.tagRegexp != nil {
             map["TagRegexp"] = self.tagRegexp!
         }
@@ -9474,6 +9488,9 @@ public class GetArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
         }
         if let value = dict["TagCount"] as? Int64 {
             self.tagCount = value
+        }
+        if let value = dict["TagList"] as? [String] {
+            self.tagList = value
         }
         if let value = dict["TagRegexp"] as? String {
             self.tagRegexp = value
@@ -9864,6 +9881,8 @@ public class GetArtifactSubscriptionTaskResultResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var message: String?
+
         public var namespaceName: String?
 
         public var repoName: String?
@@ -9898,6 +9917,9 @@ public class GetArtifactSubscriptionTaskResultResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
             if self.namespaceName != nil {
                 map["NamespaceName"] = self.namespaceName!
             }
@@ -9929,6 +9951,9 @@ public class GetArtifactSubscriptionTaskResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
             }
             if let value = dict["NamespaceName"] as? String {
                 self.namespaceName = value
@@ -15913,6 +15938,8 @@ public class ListArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
 
         public var tagCount: Int64?
 
+        public var tagList: [String]?
+
         public var tagRegexp: String?
 
         public override init() {
@@ -15971,6 +15998,9 @@ public class ListArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
             if self.tagCount != nil {
                 map["TagCount"] = self.tagCount!
             }
+            if self.tagList != nil {
+                map["TagList"] = self.tagList!
+            }
             if self.tagRegexp != nil {
                 map["TagRegexp"] = self.tagRegexp!
             }
@@ -16020,6 +16050,9 @@ public class ListArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["TagCount"] as? Int64 {
                 self.tagCount = value
+            }
+            if let value = dict["TagList"] as? [String] {
+                self.tagList = value
             }
             if let value = dict["TagRegexp"] as? String {
                 self.tagRegexp = value
@@ -24875,6 +24908,8 @@ public class UpdateArtifactSubscriptionRuleRequest : Tea.TeaModel {
 
     public var tagCount: Int64?
 
+    public var tagList: [String]?
+
     public var tagRegexp: String?
 
     public override init() {
@@ -24924,6 +24959,9 @@ public class UpdateArtifactSubscriptionRuleRequest : Tea.TeaModel {
         if self.tagCount != nil {
             map["TagCount"] = self.tagCount!
         }
+        if self.tagList != nil {
+            map["TagList"] = self.tagList!
+        }
         if self.tagRegexp != nil {
             map["TagRegexp"] = self.tagRegexp!
         }
@@ -24964,6 +25002,9 @@ public class UpdateArtifactSubscriptionRuleRequest : Tea.TeaModel {
         }
         if let value = dict["TagCount"] as? Int64 {
             self.tagCount = value
+        }
+        if let value = dict["TagList"] as? [String] {
+            self.tagList = value
         }
         if let value = dict["TagRegexp"] as? String {
             self.tagRegexp = value
