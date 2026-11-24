@@ -2288,6 +2288,8 @@ public class ApprovePolarClawDevicePairResponse : Tea.TeaModel {
 public class AttachApplicationPolarFSRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var containerMountPath: String?
+
     public var polarFSAccessKeyId: String?
 
     public var polarFSAccessKeySecret: String?
@@ -2311,6 +2313,9 @@ public class AttachApplicationPolarFSRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.containerMountPath != nil {
+            map["ContainerMountPath"] = self.containerMountPath!
+        }
         if self.polarFSAccessKeyId != nil {
             map["PolarFSAccessKeyId"] = self.polarFSAccessKeyId!
         }
@@ -2328,6 +2333,9 @@ public class AttachApplicationPolarFSRequest : Tea.TeaModel {
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
+        if let value = dict["ContainerMountPath"] as? String {
+            self.containerMountPath = value
+        }
         if let value = dict["PolarFSAccessKeyId"] as? String {
             self.polarFSAccessKeyId = value
         }
@@ -2342,6 +2350,8 @@ public class AttachApplicationPolarFSRequest : Tea.TeaModel {
 
 public class AttachApplicationPolarFSResponseBody : Tea.TeaModel {
     public var applicationId: String?
+
+    public var containerMountPath: String?
 
     public var polarFSInstanceId: String?
 
@@ -2364,6 +2374,9 @@ public class AttachApplicationPolarFSResponseBody : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.containerMountPath != nil {
+            map["ContainerMountPath"] = self.containerMountPath!
+        }
         if self.polarFSInstanceId != nil {
             map["PolarFSInstanceId"] = self.polarFSInstanceId!
         }
@@ -2377,6 +2390,9 @@ public class AttachApplicationPolarFSResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ContainerMountPath"] as? String {
+            self.containerMountPath = value
         }
         if let value = dict["PolarFSInstanceId"] as? String {
             self.polarFSInstanceId = value
@@ -42245,6 +42261,8 @@ public class DescribeAgenticDBPerformanceRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var endpointId: String?
+
     public var interval: String?
 
     public var key: String?
@@ -42277,6 +42295,9 @@ public class DescribeAgenticDBPerformanceRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.endpointId != nil {
+            map["EndpointId"] = self.endpointId!
+        }
         if self.interval != nil {
             map["Interval"] = self.interval!
         }
@@ -42302,6 +42323,9 @@ public class DescribeAgenticDBPerformanceRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["EndpointId"] as? String {
+            self.endpointId = value
         }
         if let value = dict["Interval"] as? String {
             self.interval = value
@@ -42402,6 +42426,8 @@ public class DescribeAgenticDBPerformanceResponseBody : Tea.TeaModel {
             }
             public var branchId: String?
 
+            public var endpointId: String?
+
             public var measurement: String?
 
             public var metricName: String?
@@ -42426,6 +42452,9 @@ public class DescribeAgenticDBPerformanceResponseBody : Tea.TeaModel {
                 if self.branchId != nil {
                     map["BranchId"] = self.branchId!
                 }
+                if self.endpointId != nil {
+                    map["EndpointId"] = self.endpointId!
+                }
                 if self.measurement != nil {
                     map["Measurement"] = self.measurement!
                 }
@@ -42442,6 +42471,9 @@ public class DescribeAgenticDBPerformanceResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["BranchId"] as? String {
                     self.branchId = value
+                }
+                if let value = dict["EndpointId"] as? String {
+                    self.endpointId = value
                 }
                 if let value = dict["Measurement"] as? String {
                     self.measurement = value
@@ -44963,6 +44995,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
     }
     public class Storages : Tea.TeaModel {
+        public var containerMountPath: String?
+
         public var storageCapacity: String?
 
         public var storageInstanceId: String?
@@ -44985,6 +45019,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.containerMountPath != nil {
+                map["ContainerMountPath"] = self.containerMountPath!
+            }
             if self.storageCapacity != nil {
                 map["StorageCapacity"] = self.storageCapacity!
             }
@@ -45002,6 +45039,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ContainerMountPath"] as? String {
+                self.containerMountPath = value
+            }
             if let value = dict["StorageCapacity"] as? String {
                 self.storageCapacity = value
             }
@@ -45040,6 +45080,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var expired: Bool?
 
+    public var headSchedulingMode: String?
+
     public var isLatestVersion: Bool?
 
     public var latestVersion: String?
@@ -45054,6 +45096,10 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var minorVersion: String?
 
+    public var monitorCategory: String?
+
+    public var monitorRegionId: String?
+
     public var natGatewayId: String?
 
     public var natMappingSnatIpAddress: String?
@@ -45065,6 +45111,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public var polarClawSaaSApplicationAttribute: DescribeApplicationAttributeResponseBody.PolarClawSaaSApplicationAttribute?
 
     public var polarFSInstanceId: String?
+
+    public var prometheusVirtualInstanceId: String?
 
     public var regionId: String?
 
@@ -45159,6 +45207,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if self.expired != nil {
             map["Expired"] = self.expired!
         }
+        if self.headSchedulingMode != nil {
+            map["HeadSchedulingMode"] = self.headSchedulingMode!
+        }
         if self.isLatestVersion != nil {
             map["IsLatestVersion"] = self.isLatestVersion!
         }
@@ -45180,6 +45231,12 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if self.minorVersion != nil {
             map["MinorVersion"] = self.minorVersion!
         }
+        if self.monitorCategory != nil {
+            map["MonitorCategory"] = self.monitorCategory!
+        }
+        if self.monitorRegionId != nil {
+            map["MonitorRegionId"] = self.monitorRegionId!
+        }
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
         }
@@ -45197,6 +45254,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.polarFSInstanceId != nil {
             map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        if self.prometheusVirtualInstanceId != nil {
+            map["PrometheusVirtualInstanceId"] = self.prometheusVirtualInstanceId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -45323,6 +45383,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if let value = dict["Expired"] as? Bool {
             self.expired = value
         }
+        if let value = dict["HeadSchedulingMode"] as? String {
+            self.headSchedulingMode = value
+        }
         if let value = dict["IsLatestVersion"] as? Bool {
             self.isLatestVersion = value
         }
@@ -45346,6 +45409,12 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if let value = dict["MinorVersion"] as? String {
             self.minorVersion = value
         }
+        if let value = dict["MonitorCategory"] as? String {
+            self.monitorCategory = value
+        }
+        if let value = dict["MonitorRegionId"] as? String {
+            self.monitorRegionId = value
+        }
         if let value = dict["NatGatewayId"] as? String {
             self.natGatewayId = value
         }
@@ -45367,6 +45436,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["PolarFSInstanceId"] as? String {
             self.polarFSInstanceId = value
+        }
+        if let value = dict["PrometheusVirtualInstanceId"] as? String {
+            self.prometheusVirtualInstanceId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -134961,6 +135033,10 @@ public class OpenAITaskResponse : Tea.TeaModel {
 public class OperateApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var componentTypes: String?
+
+    public var groupNames: String?
+
     public var operation: String?
 
     public override init() {
@@ -134980,6 +135056,12 @@ public class OperateApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.componentTypes != nil {
+            map["ComponentTypes"] = self.componentTypes!
+        }
+        if self.groupNames != nil {
+            map["GroupNames"] = self.groupNames!
+        }
         if self.operation != nil {
             map["Operation"] = self.operation!
         }
@@ -134991,6 +135073,12 @@ public class OperateApplicationRequest : Tea.TeaModel {
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
+        if let value = dict["ComponentTypes"] as? String {
+            self.componentTypes = value
+        }
+        if let value = dict["GroupNames"] as? String {
+            self.groupNames = value
+        }
         if let value = dict["Operation"] as? String {
             self.operation = value
         }
@@ -134999,6 +135087,8 @@ public class OperateApplicationRequest : Tea.TeaModel {
 
 public class OperateApplicationResponseBody : Tea.TeaModel {
     public var requestId: String?
+
+    public var taskId: Int32?
 
     public override init() {
         super.init()
@@ -135017,6 +135107,9 @@ public class OperateApplicationResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -135024,6 +135117,9 @@ public class OperateApplicationResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
         }
     }
 }
