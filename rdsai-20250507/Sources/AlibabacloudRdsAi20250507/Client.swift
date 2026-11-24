@@ -2657,6 +2657,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getConversationsWithOptions(_ request: GetConversationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConversationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.flowId)) {
+            query["FlowId"] = request.flowId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lastId)) {
             query["LastId"] = request.lastId ?? "";
         }
@@ -2776,6 +2779,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.firstId)) {
             query["FirstId"] = request.firstId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flowId)) {
+            query["FlowId"] = request.flowId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;

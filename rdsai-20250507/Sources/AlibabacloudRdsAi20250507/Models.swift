@@ -725,6 +725,8 @@ public class ChatMessagesRequest : Tea.TeaModel {
 
         public var enableThinking: String?
 
+        public var flowId: String?
+
         public var language: String?
 
         public var modelId: String?
@@ -761,6 +763,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
             if self.enableThinking != nil {
                 map["EnableThinking"] = self.enableThinking!
             }
+            if self.flowId != nil {
+                map["FlowId"] = self.flowId!
+            }
             if self.language != nil {
                 map["Language"] = self.language!
             }
@@ -795,6 +800,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
             }
             if let value = dict["EnableThinking"] as? String {
                 self.enableThinking = value
+            }
+            if let value = dict["FlowId"] as? String {
+                self.flowId = value
             }
             if let value = dict["Language"] as? String {
                 self.language = value
@@ -17253,6 +17261,8 @@ public class GetContextDatabaseUsageResponse : Tea.TeaModel {
 }
 
 public class GetConversationsRequest : Tea.TeaModel {
+    public var flowId: String?
+
     public var lastId: String?
 
     public var limit: String?
@@ -17277,6 +17287,9 @@ public class GetConversationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.flowId != nil {
+            map["FlowId"] = self.flowId!
+        }
         if self.lastId != nil {
             map["LastId"] = self.lastId!
         }
@@ -17297,6 +17310,9 @@ public class GetConversationsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FlowId"] as? String {
+            self.flowId = value
+        }
         if let value = dict["LastId"] as? String {
             self.lastId = value
         }
@@ -18268,6 +18284,8 @@ public class GetMessagesRequest : Tea.TeaModel {
 
     public var firstId: String?
 
+    public var flowId: String?
+
     public var limit: Int64?
 
     public var workspaceId: String?
@@ -18295,6 +18313,9 @@ public class GetMessagesRequest : Tea.TeaModel {
         if self.firstId != nil {
             map["FirstId"] = self.firstId!
         }
+        if self.flowId != nil {
+            map["FlowId"] = self.flowId!
+        }
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
@@ -18314,6 +18335,9 @@ public class GetMessagesRequest : Tea.TeaModel {
         }
         if let value = dict["FirstId"] as? String {
             self.firstId = value
+        }
+        if let value = dict["FlowId"] as? String {
+            self.flowId = value
         }
         if let value = dict["Limit"] as? Int64 {
             self.limit = value
