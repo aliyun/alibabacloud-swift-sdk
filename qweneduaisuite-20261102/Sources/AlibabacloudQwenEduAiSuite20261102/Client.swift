@@ -83,7 +83,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
-            "reqBodyType": "formData",
+            "reqBodyType": "json",
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -98,16 +98,11 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createEduProblemSolveWithOptions(_ tmpReq: CreateEduProblemSolveRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEduProblemSolveResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: CreateEduProblemSolveShrinkRequest = CreateEduProblemSolveShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.query)) {
-            request.queryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.query, "query", "json")
-        }
+    public func createEduProblemSolveWithOptions(_ request: CreateEduProblemSolveRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEduProblemSolveResponse {
+        try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.queryShrink)) {
-            body["query"] = request.queryShrink ?? "";
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query!;
         }
         if (!TeaUtils.Client.isUnset(request.requestId)) {
             body["requestId"] = request.requestId ?? "";
@@ -124,7 +119,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
-            "reqBodyType": "formData",
+            "reqBodyType": "json",
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)

@@ -845,45 +845,6 @@ public class CreateEduProblemSolveRequest : Tea.TeaModel {
     }
 }
 
-public class CreateEduProblemSolveShrinkRequest : Tea.TeaModel {
-    public var queryShrink: String?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.queryShrink != nil {
-            map["query"] = self.queryShrink!
-        }
-        if self.requestId != nil {
-            map["requestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["query"] as? String {
-            self.queryShrink = value
-        }
-        if let value = dict["requestId"] as? String {
-            self.requestId = value
-        }
-    }
-}
-
 public class CreateEduProblemSolveResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
         public class Thinking : Tea.TeaModel {
