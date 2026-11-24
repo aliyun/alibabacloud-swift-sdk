@@ -2032,6 +2032,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.roleFor)) {
             body["RoleFor"] = request.roleFor!;
         }
+        if (!TeaUtils.Client.isUnset(request.withAutoKeyDetect)) {
+            body["WithAutoKeyDetect"] = request.withAutoKeyDetect!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])

@@ -8671,6 +8671,8 @@ public class GetDataStorageRequest : Tea.TeaModel {
 
     public var roleFor: Int64?
 
+    public var withAutoKeyDetect: Bool?
+
     public override init() {
         super.init()
     }
@@ -8694,6 +8696,9 @@ public class GetDataStorageRequest : Tea.TeaModel {
         if self.roleFor != nil {
             map["RoleFor"] = self.roleFor!
         }
+        if self.withAutoKeyDetect != nil {
+            map["WithAutoKeyDetect"] = self.withAutoKeyDetect!
+        }
         return map
     }
 
@@ -8707,6 +8712,9 @@ public class GetDataStorageRequest : Tea.TeaModel {
         }
         if let value = dict["RoleFor"] as? Int64 {
             self.roleFor = value
+        }
+        if let value = dict["WithAutoKeyDetect"] as? Bool {
+            self.withAutoKeyDetect = value
         }
     }
 }
@@ -9028,6 +9036,10 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
             }
         }
         public class NormalizationLogStores : Tea.TeaModel {
+            public var autoKeyDetect: Bool?
+
+            public var logStoreExisted: Bool?
+
             public var logStoreName: String?
 
             public var logStoreTtl: Int32?
@@ -9048,6 +9060,12 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoKeyDetect != nil {
+                    map["AutoKeyDetect"] = self.autoKeyDetect!
+                }
+                if self.logStoreExisted != nil {
+                    map["LogStoreExisted"] = self.logStoreExisted!
+                }
                 if self.logStoreName != nil {
                     map["LogStoreName"] = self.logStoreName!
                 }
@@ -9062,6 +9080,12 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AutoKeyDetect"] as? Bool {
+                    self.autoKeyDetect = value
+                }
+                if let value = dict["LogStoreExisted"] as? Bool {
+                    self.logStoreExisted = value
+                }
                 if let value = dict["LogStoreName"] as? String {
                     self.logStoreName = value
                 }
@@ -9270,6 +9294,8 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
             }
             public var accountDeliveries: [GetDataStorageResponseBody.Data.SasLogStores.AccountDeliveries]?
 
+            public var autoKeyDetect: Bool?
+
             public var logCode: String?
 
             public var logDeliveryGroup: String?
@@ -9312,6 +9338,9 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["AccountDeliveries"] = tmp
+                }
+                if self.autoKeyDetect != nil {
+                    map["AutoKeyDetect"] = self.autoKeyDetect!
                 }
                 if self.logCode != nil {
                     map["LogCode"] = self.logCode!
@@ -9363,6 +9392,9 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                         }
                     }
                     self.accountDeliveries = tmp
+                }
+                if let value = dict["AutoKeyDetect"] as? Bool {
+                    self.autoKeyDetect = value
                 }
                 if let value = dict["LogCode"] as? String {
                     self.logCode = value
