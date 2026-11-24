@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -11173,6 +11174,8 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
 
     public var tag: [DescribeDBClustersRequest.Tag]?
 
+    public var vpcIds: String?
+
     public override init() {
         super.init()
     }
@@ -11227,6 +11230,9 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.vpcIds != nil {
+            map["VpcIds"] = self.vpcIds!
+        }
         return map
     }
 
@@ -11277,6 +11283,9 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["VpcIds"] as? String {
+            self.vpcIds = value
         }
     }
 }

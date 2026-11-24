@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "clickhouse"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "clickhouse.aliyuncs.com",
@@ -54,22 +58,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "rus-west-1-pop": "clickhouse.aliyuncs.com",
             "us-east-1": "clickhouse.aliyuncs.com",
             "us-west-1": "clickhouse.aliyuncs.com",
-            "cn-huhehaote": "clickhouse.cn-huhehaote.aliyuncs.com",
             "ap-southeast-3": "clickhouse.aliyuncs.com",
-            "cn-wulanchabu": "clickhouse.cn-wulanchabu.aliyuncs.com",
-            "cn-zhangjiakou": "clickhouse.cn-zhangjiakou.aliyuncs.com",
-            "ap-northeast-1": "clickhouse.ap-northeast-1.aliyuncs.com",
-            "cn-chengdu": "clickhouse.cn-chengdu.aliyuncs.com",
-            "cn-guangzhou": "clickhouse.cn-guangzhou.aliyuncs.com",
-            "ap-southeast-5": "clickhouse.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-6": "clickhouse.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-8": "clickhouse.ap-southeast-8.aliyuncs.com",
-            "us-southeast-1": "clickhouse.us-southeast-1.aliyuncs.com",
-            "na-south-1": "clickhouse.na-south-1.aliyuncs.com",
-            "eu-central-1": "clickhouse.eu-central-1.aliyuncs.com",
-            "eu-west-1": "clickhouse.eu-west-1.aliyuncs.com",
-            "me-central-1": "clickhouse.me-central-1.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "clickhouse.cn-wulanchabu-gic-1.aliyuncs.com"
+            "ap-southeast-7": "clickhouse.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("clickhouse", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -2454,6 +2444,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcIds)) {
+            query["VpcIds"] = request.vpcIds ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
