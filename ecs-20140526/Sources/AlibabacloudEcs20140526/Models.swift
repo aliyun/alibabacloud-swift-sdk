@@ -5698,6 +5698,8 @@ public class CloneDisksRequest : Tea.TeaModel {
 
     public var provisionedIops: Int64?
 
+    public var readWriteMode: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -5766,6 +5768,9 @@ public class CloneDisksRequest : Tea.TeaModel {
         }
         if self.provisionedIops != nil {
             map["ProvisionedIops"] = self.provisionedIops!
+        }
+        if self.readWriteMode != nil {
+            map["ReadWriteMode"] = self.readWriteMode!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -5842,6 +5847,9 @@ public class CloneDisksRequest : Tea.TeaModel {
         }
         if let value = dict["ProvisionedIops"] as? Int64 {
             self.provisionedIops = value
+        }
+        if let value = dict["ReadWriteMode"] as? String {
+            self.readWriteMode = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -12687,6 +12695,8 @@ public class CreateDiskRequest : Tea.TeaModel {
 
     public var provisionedIops: Int64?
 
+    public var readWriteMode: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -12774,6 +12784,9 @@ public class CreateDiskRequest : Tea.TeaModel {
         }
         if self.provisionedIops != nil {
             map["ProvisionedIops"] = self.provisionedIops!
+        }
+        if self.readWriteMode != nil {
+            map["ReadWriteMode"] = self.readWriteMode!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -12874,6 +12887,9 @@ public class CreateDiskRequest : Tea.TeaModel {
         }
         if let value = dict["ProvisionedIops"] as? Int64 {
             self.provisionedIops = value
+        }
+        if let value = dict["ReadWriteMode"] as? String {
+            self.readWriteMode = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -46297,6 +46313,250 @@ public class DescribeDiagnosticReportsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDiskAttachmentsRequest : Tea.TeaModel {
+    public var diskId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskId != nil {
+            map["DiskId"] = self.diskId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskId"] as? String {
+            self.diskId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class DescribeDiskAttachmentsResponseBody : Tea.TeaModel {
+    public class DiskAttachments : Tea.TeaModel {
+        public var attachedTime: String?
+
+        public var device: String?
+
+        public var diskId: String?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attachedTime != nil {
+                map["AttachedTime"] = self.attachedTime!
+            }
+            if self.device != nil {
+                map["Device"] = self.device!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AttachedTime"] as? String {
+                self.attachedTime = value
+            }
+            if let value = dict["Device"] as? String {
+                self.device = value
+            }
+            if let value = dict["DiskId"] as? String {
+                self.diskId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
+    public var diskAttachments: [DescribeDiskAttachmentsResponseBody.DiskAttachments]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskAttachments != nil {
+            var tmp : [Any] = []
+            for k in self.diskAttachments! {
+                tmp.append(k.toMap())
+            }
+            map["DiskAttachments"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskAttachments"] as? [Any?] {
+            var tmp : [DescribeDiskAttachmentsResponseBody.DiskAttachments] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDiskAttachmentsResponseBody.DiskAttachments()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.diskAttachments = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeDiskAttachmentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDiskAttachmentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeDiskAttachmentsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
@@ -47786,6 +48046,8 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
 
             public var provisionedIops: Int64?
 
+            public var readWriteMode: String?
+
             public var regionId: String?
 
             public var resourceGroupId: String?
@@ -47942,6 +48204,9 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if self.provisionedIops != nil {
                     map["ProvisionedIops"] = self.provisionedIops!
+                }
+                if self.readWriteMode != nil {
+                    map["ReadWriteMode"] = self.readWriteMode!
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
@@ -48110,6 +48375,9 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProvisionedIops"] as? Int64 {
                     self.provisionedIops = value
+                }
+                if let value = dict["ReadWriteMode"] as? String {
+                    self.readWriteMode = value
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value

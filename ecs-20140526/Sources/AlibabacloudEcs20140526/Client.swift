@@ -1563,6 +1563,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
             query["ProvisionedIops"] = request.provisionedIops!;
         }
+        if (!TeaUtils.Client.isUnset(request.readWriteMode)) {
+            query["ReadWriteMode"] = request.readWriteMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -2579,6 +2582,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
             query["ProvisionedIops"] = request.provisionedIops!;
+        }
+        if (!TeaUtils.Client.isUnset(request.readWriteMode)) {
+            query["ReadWriteMode"] = request.readWriteMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -8735,6 +8741,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDiagnosticReports(_ request: DescribeDiagnosticReportsRequest) async throws -> DescribeDiagnosticReportsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeDiagnosticReportsWithOptions(request as! DescribeDiagnosticReportsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDiskAttachmentsWithOptions(_ request: DescribeDiskAttachmentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskAttachmentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.diskId)) {
+            query["DiskId"] = request.diskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDiskAttachments",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDiskAttachmentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDiskAttachments(_ request: DescribeDiskAttachmentsRequest) async throws -> DescribeDiskAttachmentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDiskAttachmentsWithOptions(request as! DescribeDiskAttachmentsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
