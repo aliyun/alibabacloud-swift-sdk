@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "csas"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "csas.aliyuncs.com",
@@ -6061,6 +6065,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deviceTypes)) {
             query["DeviceTypes"] = request.deviceTypes ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.diskEncryptStatuses)) {
+            query["DiskEncryptStatuses"] = request.diskEncryptStatuses ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.dlpStatuses)) {
             query["DlpStatuses"] = request.dlpStatuses ?? [];
         }
@@ -7691,6 +7698,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.timeoutSec)) {
             body["TimeoutSec"] = request.timeoutSec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.urlAccessPaths)) {
+            bodyFlat["UrlAccessPaths"] = request.urlAccessPaths ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.userMarkStatus)) {
             body["UserMarkStatus"] = request.userMarkStatus ?? "";

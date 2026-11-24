@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3968,6 +3969,868 @@ public class Rule : Tea.TeaModel {
         }
         if let value = dict["Values"] as? [String] {
             self.values = value
+        }
+    }
+}
+
+public class TypedAIAsset : Tea.TeaModel {
+    public class IdentityIdentifiers : Tea.TeaModel {
+        public class PeProductIdentity : Tea.TeaModel {
+            public var companyName: String?
+
+            public var productName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.companyName != nil {
+                    map["company_name"] = self.companyName!
+                }
+                if self.productName != nil {
+                    map["product_name"] = self.productName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["company_name"] as? String {
+                    self.companyName = value
+                }
+                if let value = dict["product_name"] as? String {
+                    self.productName = value
+                }
+            }
+        }
+        public class WindowsAppxIdentity : Tea.TeaModel {
+            public var name: String?
+
+            public var publisher: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.publisher != nil {
+                    map["publisher"] = self.publisher!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["publisher"] as? String {
+                    self.publisher = value
+                }
+            }
+        }
+        public var desktopManifestName: [String]?
+
+        public var jetbrainsPluginId: [String]?
+
+        public var macosBundleId: [String]?
+
+        public var npmPackage: [String]?
+
+        public var peProductIdentity: [TypedAIAsset.IdentityIdentifiers.PeProductIdentity]?
+
+        public var pypiPackage: [String]?
+
+        public var vscodeExtensionId: [String]?
+
+        public var windowsAppxIdentity: [TypedAIAsset.IdentityIdentifiers.WindowsAppxIdentity]?
+
+        public var windowsPackageFamilyName: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopManifestName != nil {
+                map["desktop_manifest_name"] = self.desktopManifestName!
+            }
+            if self.jetbrainsPluginId != nil {
+                map["jetbrains_plugin_id"] = self.jetbrainsPluginId!
+            }
+            if self.macosBundleId != nil {
+                map["macos_bundle_id"] = self.macosBundleId!
+            }
+            if self.npmPackage != nil {
+                map["npm_package"] = self.npmPackage!
+            }
+            if self.peProductIdentity != nil {
+                var tmp : [Any] = []
+                for k in self.peProductIdentity! {
+                    tmp.append(k.toMap())
+                }
+                map["pe_product_identity"] = tmp
+            }
+            if self.pypiPackage != nil {
+                map["pypi_package"] = self.pypiPackage!
+            }
+            if self.vscodeExtensionId != nil {
+                map["vscode_extension_id"] = self.vscodeExtensionId!
+            }
+            if self.windowsAppxIdentity != nil {
+                var tmp : [Any] = []
+                for k in self.windowsAppxIdentity! {
+                    tmp.append(k.toMap())
+                }
+                map["windows_appx_identity"] = tmp
+            }
+            if self.windowsPackageFamilyName != nil {
+                map["windows_package_family_name"] = self.windowsPackageFamilyName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["desktop_manifest_name"] as? [String] {
+                self.desktopManifestName = value
+            }
+            if let value = dict["jetbrains_plugin_id"] as? [String] {
+                self.jetbrainsPluginId = value
+            }
+            if let value = dict["macos_bundle_id"] as? [String] {
+                self.macosBundleId = value
+            }
+            if let value = dict["npm_package"] as? [String] {
+                self.npmPackage = value
+            }
+            if let value = dict["pe_product_identity"] as? [Any?] {
+                var tmp : [TypedAIAsset.IdentityIdentifiers.PeProductIdentity] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.IdentityIdentifiers.PeProductIdentity()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.peProductIdentity = tmp
+            }
+            if let value = dict["pypi_package"] as? [String] {
+                self.pypiPackage = value
+            }
+            if let value = dict["vscode_extension_id"] as? [String] {
+                self.vscodeExtensionId = value
+            }
+            if let value = dict["windows_appx_identity"] as? [Any?] {
+                var tmp : [TypedAIAsset.IdentityIdentifiers.WindowsAppxIdentity] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.IdentityIdentifiers.WindowsAppxIdentity()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.windowsAppxIdentity = tmp
+            }
+            if let value = dict["windows_package_family_name"] as? [String] {
+                self.windowsPackageFamilyName = value
+            }
+        }
+    }
+    public class RecognitionEvidence : Tea.TeaModel {
+        public class AgentDeclaration : Tea.TeaModel {
+            public var content: String?
+
+            public var sourcePath: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.sourcePath != nil {
+                    map["source_path"] = self.sourcePath!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["source_path"] as? String {
+                    self.sourcePath = value
+                }
+            }
+        }
+        public class AutonomousExecution : Tea.TeaModel {
+            public var content: String?
+
+            public var sourcePath: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.sourcePath != nil {
+                    map["source_path"] = self.sourcePath!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["source_path"] as? String {
+                    self.sourcePath = value
+                }
+            }
+        }
+        public class ModelCall : Tea.TeaModel {
+            public var content: String?
+
+            public var sourcePath: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.sourcePath != nil {
+                    map["source_path"] = self.sourcePath!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["source_path"] as? String {
+                    self.sourcePath = value
+                }
+            }
+        }
+        public class StateManagement : Tea.TeaModel {
+            public var content: String?
+
+            public var sourcePath: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.sourcePath != nil {
+                    map["source_path"] = self.sourcePath!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["source_path"] as? String {
+                    self.sourcePath = value
+                }
+            }
+        }
+        public class ToolCall : Tea.TeaModel {
+            public var content: String?
+
+            public var sourcePath: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.sourcePath != nil {
+                    map["source_path"] = self.sourcePath!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["source_path"] as? String {
+                    self.sourcePath = value
+                }
+            }
+        }
+        public var agentDeclaration: [TypedAIAsset.RecognitionEvidence.AgentDeclaration]?
+
+        public var autonomousExecution: [TypedAIAsset.RecognitionEvidence.AutonomousExecution]?
+
+        public var modelCall: [TypedAIAsset.RecognitionEvidence.ModelCall]?
+
+        public var stateManagement: [TypedAIAsset.RecognitionEvidence.StateManagement]?
+
+        public var toolCall: [TypedAIAsset.RecognitionEvidence.ToolCall]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentDeclaration != nil {
+                var tmp : [Any] = []
+                for k in self.agentDeclaration! {
+                    tmp.append(k.toMap())
+                }
+                map["agent_declaration"] = tmp
+            }
+            if self.autonomousExecution != nil {
+                var tmp : [Any] = []
+                for k in self.autonomousExecution! {
+                    tmp.append(k.toMap())
+                }
+                map["autonomous_execution"] = tmp
+            }
+            if self.modelCall != nil {
+                var tmp : [Any] = []
+                for k in self.modelCall! {
+                    tmp.append(k.toMap())
+                }
+                map["model_call"] = tmp
+            }
+            if self.stateManagement != nil {
+                var tmp : [Any] = []
+                for k in self.stateManagement! {
+                    tmp.append(k.toMap())
+                }
+                map["state_management"] = tmp
+            }
+            if self.toolCall != nil {
+                var tmp : [Any] = []
+                for k in self.toolCall! {
+                    tmp.append(k.toMap())
+                }
+                map["tool_call"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["agent_declaration"] as? [Any?] {
+                var tmp : [TypedAIAsset.RecognitionEvidence.AgentDeclaration] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.RecognitionEvidence.AgentDeclaration()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.agentDeclaration = tmp
+            }
+            if let value = dict["autonomous_execution"] as? [Any?] {
+                var tmp : [TypedAIAsset.RecognitionEvidence.AutonomousExecution] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.RecognitionEvidence.AutonomousExecution()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.autonomousExecution = tmp
+            }
+            if let value = dict["model_call"] as? [Any?] {
+                var tmp : [TypedAIAsset.RecognitionEvidence.ModelCall] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.RecognitionEvidence.ModelCall()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.modelCall = tmp
+            }
+            if let value = dict["state_management"] as? [Any?] {
+                var tmp : [TypedAIAsset.RecognitionEvidence.StateManagement] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.RecognitionEvidence.StateManagement()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.stateManagement = tmp
+            }
+            if let value = dict["tool_call"] as? [Any?] {
+                var tmp : [TypedAIAsset.RecognitionEvidence.ToolCall] = []
+                for v in value {
+                    if v != nil {
+                        var model = TypedAIAsset.RecognitionEvidence.ToolCall()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.toolCall = tmp
+            }
+        }
+    }
+    public class RiskInfo : Tea.TeaModel {
+        public var highRiskCnt: Int64?
+
+        public var lowRiskCnt: Int64?
+
+        public var mediumRiskCnt: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.highRiskCnt != nil {
+                map["highRiskCnt"] = self.highRiskCnt!
+            }
+            if self.lowRiskCnt != nil {
+                map["lowRiskCnt"] = self.lowRiskCnt!
+            }
+            if self.mediumRiskCnt != nil {
+                map["mediumRiskCnt"] = self.mediumRiskCnt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["highRiskCnt"] as? Int64 {
+                self.highRiskCnt = value
+            }
+            if let value = dict["lowRiskCnt"] as? Int64 {
+                self.lowRiskCnt = value
+            }
+            if let value = dict["mediumRiskCnt"] as? Int64 {
+                self.mediumRiskCnt = value
+            }
+        }
+    }
+    public var accessType: String?
+
+    public var agentId: String?
+
+    public var configPath: String?
+
+    public var description_: String?
+
+    public var endpoint: String?
+
+    public var endpointType: String?
+
+    public var firstSeen: String?
+
+    public var form: String?
+
+    public var id: String?
+
+    public var identityIdentifiers: TypedAIAsset.IdentityIdentifiers?
+
+    public var installPath: String?
+
+    public var instanceLocalId: String?
+
+    public var lastCheckTime: String?
+
+    public var lastDetectTaskId: String?
+
+    public var lastSeen: String?
+
+    public var matchedRules: [String]?
+
+    public var mcpId: String?
+
+    public var productCode: String?
+
+    public var providerId: String?
+
+    public var providerName: String?
+
+    public var providerNameCn: String?
+
+    public var providerNameEn: String?
+
+    public var providerType: String?
+
+    public var recognitionEvidence: TypedAIAsset.RecognitionEvidence?
+
+    public var recognitionStatus: String?
+
+    public var riskInfo: TypedAIAsset.RiskInfo?
+
+    public var riskLevel: String?
+
+    public var scanId: String?
+
+    public var sourceType: String?
+
+    public var standardSha256: String?
+
+    public var transport: String?
+
+    public var vendor: Int32?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.identityIdentifiers?.validate()
+        try self.recognitionEvidence?.validate()
+        try self.riskInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.configPath != nil {
+            map["ConfigPath"] = self.configPath!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.endpointType != nil {
+            map["EndpointType"] = self.endpointType!
+        }
+        if self.firstSeen != nil {
+            map["FirstSeen"] = self.firstSeen!
+        }
+        if self.form != nil {
+            map["Form"] = self.form!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.identityIdentifiers != nil {
+            map["IdentityIdentifiers"] = self.identityIdentifiers?.toMap()
+        }
+        if self.installPath != nil {
+            map["InstallPath"] = self.installPath!
+        }
+        if self.instanceLocalId != nil {
+            map["InstanceLocalId"] = self.instanceLocalId!
+        }
+        if self.lastCheckTime != nil {
+            map["LastCheckTime"] = self.lastCheckTime!
+        }
+        if self.lastDetectTaskId != nil {
+            map["LastDetectTaskId"] = self.lastDetectTaskId!
+        }
+        if self.lastSeen != nil {
+            map["LastSeen"] = self.lastSeen!
+        }
+        if self.matchedRules != nil {
+            map["MatchedRules"] = self.matchedRules!
+        }
+        if self.mcpId != nil {
+            map["McpId"] = self.mcpId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.providerId != nil {
+            map["ProviderId"] = self.providerId!
+        }
+        if self.providerName != nil {
+            map["ProviderName"] = self.providerName!
+        }
+        if self.providerNameCn != nil {
+            map["ProviderNameCn"] = self.providerNameCn!
+        }
+        if self.providerNameEn != nil {
+            map["ProviderNameEn"] = self.providerNameEn!
+        }
+        if self.providerType != nil {
+            map["ProviderType"] = self.providerType!
+        }
+        if self.recognitionEvidence != nil {
+            map["RecognitionEvidence"] = self.recognitionEvidence?.toMap()
+        }
+        if self.recognitionStatus != nil {
+            map["RecognitionStatus"] = self.recognitionStatus!
+        }
+        if self.riskInfo != nil {
+            map["RiskInfo"] = self.riskInfo?.toMap()
+        }
+        if self.riskLevel != nil {
+            map["RiskLevel"] = self.riskLevel!
+        }
+        if self.scanId != nil {
+            map["ScanId"] = self.scanId!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        if self.standardSha256 != nil {
+            map["StandardSha256"] = self.standardSha256!
+        }
+        if self.transport != nil {
+            map["Transport"] = self.transport!
+        }
+        if self.vendor != nil {
+            map["Vendor"] = self.vendor!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessType"] as? String {
+            self.accessType = value
+        }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["ConfigPath"] as? String {
+            self.configPath = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["EndpointType"] as? String {
+            self.endpointType = value
+        }
+        if let value = dict["FirstSeen"] as? String {
+            self.firstSeen = value
+        }
+        if let value = dict["Form"] as? String {
+            self.form = value
+        }
+        if let value = dict["Id"] as? String {
+            self.id = value
+        }
+        if let value = dict["IdentityIdentifiers"] as? [String: Any?] {
+            var model = TypedAIAsset.IdentityIdentifiers()
+            model.fromMap(value)
+            self.identityIdentifiers = model
+        }
+        if let value = dict["InstallPath"] as? String {
+            self.installPath = value
+        }
+        if let value = dict["InstanceLocalId"] as? String {
+            self.instanceLocalId = value
+        }
+        if let value = dict["LastCheckTime"] as? String {
+            self.lastCheckTime = value
+        }
+        if let value = dict["LastDetectTaskId"] as? String {
+            self.lastDetectTaskId = value
+        }
+        if let value = dict["LastSeen"] as? String {
+            self.lastSeen = value
+        }
+        if let value = dict["MatchedRules"] as? [String] {
+            self.matchedRules = value
+        }
+        if let value = dict["McpId"] as? String {
+            self.mcpId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProviderId"] as? String {
+            self.providerId = value
+        }
+        if let value = dict["ProviderName"] as? String {
+            self.providerName = value
+        }
+        if let value = dict["ProviderNameCn"] as? String {
+            self.providerNameCn = value
+        }
+        if let value = dict["ProviderNameEn"] as? String {
+            self.providerNameEn = value
+        }
+        if let value = dict["ProviderType"] as? String {
+            self.providerType = value
+        }
+        if let value = dict["RecognitionEvidence"] as? [String: Any?] {
+            var model = TypedAIAsset.RecognitionEvidence()
+            model.fromMap(value)
+            self.recognitionEvidence = model
+        }
+        if let value = dict["RecognitionStatus"] as? String {
+            self.recognitionStatus = value
+        }
+        if let value = dict["RiskInfo"] as? [String: Any?] {
+            var model = TypedAIAsset.RiskInfo()
+            model.fromMap(value)
+            self.riskInfo = model
+        }
+        if let value = dict["RiskLevel"] as? String {
+            self.riskLevel = value
+        }
+        if let value = dict["ScanId"] as? String {
+            self.scanId = value
+        }
+        if let value = dict["SourceType"] as? String {
+            self.sourceType = value
+        }
+        if let value = dict["StandardSha256"] as? String {
+            self.standardSha256 = value
+        }
+        if let value = dict["Transport"] as? String {
+            self.transport = value
+        }
+        if let value = dict["Vendor"] as? Int32 {
+            self.vendor = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -29870,6 +30733,10 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var diskAvailable: Int32?
 
+        public var diskEncryptStatus: String?
+
+        public var diskEncryptStatusReason: String?
+
         public var diskUsed: Int32?
 
         public var dlpStatus: String?
@@ -30018,6 +30885,12 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if self.diskAvailable != nil {
                 map["DiskAvailable"] = self.diskAvailable!
+            }
+            if self.diskEncryptStatus != nil {
+                map["DiskEncryptStatus"] = self.diskEncryptStatus!
+            }
+            if self.diskEncryptStatusReason != nil {
+                map["DiskEncryptStatusReason"] = self.diskEncryptStatusReason!
             }
             if self.diskUsed != nil {
                 map["DiskUsed"] = self.diskUsed!
@@ -30200,6 +31073,12 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if let value = dict["DiskAvailable"] as? Int32 {
                 self.diskAvailable = value
+            }
+            if let value = dict["DiskEncryptStatus"] as? String {
+                self.diskEncryptStatus = value
+            }
+            if let value = dict["DiskEncryptStatusReason"] as? String {
+                self.diskEncryptStatusReason = value
             }
             if let value = dict["DiskUsed"] as? Int32 {
                 self.diskUsed = value
@@ -43923,6 +44802,44 @@ public class ListPrivateAccessApplicationL7SwitchesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class UrlAccessPaths : Tea.TeaModel {
+            public var allowMethods: [String]?
+
+            public var urls: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowMethods != nil {
+                    map["AllowMethods"] = self.allowMethods!
+                }
+                if self.urls != nil {
+                    map["Urls"] = self.urls!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllowMethods"] as? [String] {
+                    self.allowMethods = value
+                }
+                if let value = dict["Urls"] as? [String] {
+                    self.urls = value
+                }
+            }
+        }
         public var applicationId: String?
 
         public var devTagMarkStatus: String?
@@ -43936,6 +44853,8 @@ public class ListPrivateAccessApplicationL7SwitchesResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var timeoutSec: Int32?
+
+        public var urlAccessPaths: [ListPrivateAccessApplicationL7SwitchesResponseBody.L7Switches.UrlAccessPaths]?
 
         public var userMarkStatus: String?
 
@@ -43980,6 +44899,13 @@ public class ListPrivateAccessApplicationL7SwitchesResponseBody : Tea.TeaModel {
             if self.timeoutSec != nil {
                 map["TimeoutSec"] = self.timeoutSec!
             }
+            if self.urlAccessPaths != nil {
+                var tmp : [Any] = []
+                for k in self.urlAccessPaths! {
+                    tmp.append(k.toMap())
+                }
+                map["UrlAccessPaths"] = tmp
+            }
             if self.userMarkStatus != nil {
                 map["UserMarkStatus"] = self.userMarkStatus!
             }
@@ -44021,6 +44947,19 @@ public class ListPrivateAccessApplicationL7SwitchesResponseBody : Tea.TeaModel {
             }
             if let value = dict["TimeoutSec"] as? Int32 {
                 self.timeoutSec = value
+            }
+            if let value = dict["UrlAccessPaths"] as? [Any?] {
+                var tmp : [ListPrivateAccessApplicationL7SwitchesResponseBody.L7Switches.UrlAccessPaths] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPrivateAccessApplicationL7SwitchesResponseBody.L7Switches.UrlAccessPaths()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.urlAccessPaths = tmp
             }
             if let value = dict["UserMarkStatus"] as? String {
                 self.userMarkStatus = value
@@ -51297,6 +52236,8 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
     public var deviceTypes: [String]?
 
+    public var diskEncryptStatuses: [String]?
+
     public var dlpStatuses: [String]?
 
     public var hostname: String?
@@ -51370,6 +52311,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if self.deviceTypes != nil {
             map["DeviceTypes"] = self.deviceTypes!
+        }
+        if self.diskEncryptStatuses != nil {
+            map["DiskEncryptStatuses"] = self.diskEncryptStatuses!
         }
         if self.dlpStatuses != nil {
             map["DlpStatuses"] = self.dlpStatuses!
@@ -51450,6 +52394,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if let value = dict["DeviceTypes"] as? [String] {
             self.deviceTypes = value
+        }
+        if let value = dict["DiskEncryptStatuses"] as? [String] {
+            self.diskEncryptStatuses = value
         }
         if let value = dict["DlpStatuses"] as? [String] {
             self.dlpStatuses = value
@@ -51582,6 +52529,10 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
         public var deviceVersion: String?
 
         public var disk: String?
+
+        public var diskEncryptStatus: String?
+
+        public var diskEncryptStatusReason: String?
 
         public var dlpStatus: String?
 
@@ -51716,6 +52667,12 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if self.disk != nil {
                 map["Disk"] = self.disk!
+            }
+            if self.diskEncryptStatus != nil {
+                map["DiskEncryptStatus"] = self.diskEncryptStatus!
+            }
+            if self.diskEncryptStatusReason != nil {
+                map["DiskEncryptStatusReason"] = self.diskEncryptStatusReason!
             }
             if self.dlpStatus != nil {
                 map["DlpStatus"] = self.dlpStatus!
@@ -51872,6 +52829,12 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Disk"] as? String {
                 self.disk = value
+            }
+            if let value = dict["DiskEncryptStatus"] as? String {
+                self.diskEncryptStatus = value
+            }
+            if let value = dict["DiskEncryptStatusReason"] as? String {
+                self.diskEncryptStatusReason = value
             }
             if let value = dict["DlpStatus"] as? String {
                 self.dlpStatus = value
@@ -65487,6 +66450,44 @@ public class UpdatePrivateAccessApplicationL7SwitchRequest : Tea.TeaModel {
             }
         }
     }
+    public class UrlAccessPaths : Tea.TeaModel {
+        public var allowMethods: [String]?
+
+        public var urls: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowMethods != nil {
+                map["AllowMethods"] = self.allowMethods!
+            }
+            if self.urls != nil {
+                map["Urls"] = self.urls!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowMethods"] as? [String] {
+                self.allowMethods = value
+            }
+            if let value = dict["Urls"] as? [String] {
+                self.urls = value
+            }
+        }
+    }
     public var applicationId: String?
 
     public var devTagMarkStatus: String?
@@ -65500,6 +66501,8 @@ public class UpdatePrivateAccessApplicationL7SwitchRequest : Tea.TeaModel {
     public var status: String?
 
     public var timeoutSec: Int32?
+
+    public var urlAccessPaths: [UpdatePrivateAccessApplicationL7SwitchRequest.UrlAccessPaths]?
 
     public var userMarkStatus: String?
 
@@ -65544,6 +66547,13 @@ public class UpdatePrivateAccessApplicationL7SwitchRequest : Tea.TeaModel {
         if self.timeoutSec != nil {
             map["TimeoutSec"] = self.timeoutSec!
         }
+        if self.urlAccessPaths != nil {
+            var tmp : [Any] = []
+            for k in self.urlAccessPaths! {
+                tmp.append(k.toMap())
+            }
+            map["UrlAccessPaths"] = tmp
+        }
         if self.userMarkStatus != nil {
             map["UserMarkStatus"] = self.userMarkStatus!
         }
@@ -65585,6 +66595,19 @@ public class UpdatePrivateAccessApplicationL7SwitchRequest : Tea.TeaModel {
         }
         if let value = dict["TimeoutSec"] as? Int32 {
             self.timeoutSec = value
+        }
+        if let value = dict["UrlAccessPaths"] as? [Any?] {
+            var tmp : [UpdatePrivateAccessApplicationL7SwitchRequest.UrlAccessPaths] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdatePrivateAccessApplicationL7SwitchRequest.UrlAccessPaths()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.urlAccessPaths = tmp
         }
         if let value = dict["UserMarkStatus"] as? String {
             self.userMarkStatus = value
@@ -65635,6 +66658,44 @@ public class UpdatePrivateAccessApplicationL7SwitchResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class UrlAccessPaths : Tea.TeaModel {
+            public var allowMethods: [String]?
+
+            public var urls: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowMethods != nil {
+                    map["AllowMethods"] = self.allowMethods!
+                }
+                if self.urls != nil {
+                    map["Urls"] = self.urls!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllowMethods"] as? [String] {
+                    self.allowMethods = value
+                }
+                if let value = dict["Urls"] as? [String] {
+                    self.urls = value
+                }
+            }
+        }
         public var applicationId: String?
 
         public var devTagMarkStatus: String?
@@ -65648,6 +66709,8 @@ public class UpdatePrivateAccessApplicationL7SwitchResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var timeoutSec: Int32?
+
+        public var urlAccessPaths: [UpdatePrivateAccessApplicationL7SwitchResponseBody.L7Switch.UrlAccessPaths]?
 
         public var userMarkStatus: String?
 
@@ -65692,6 +66755,13 @@ public class UpdatePrivateAccessApplicationL7SwitchResponseBody : Tea.TeaModel {
             if self.timeoutSec != nil {
                 map["TimeoutSec"] = self.timeoutSec!
             }
+            if self.urlAccessPaths != nil {
+                var tmp : [Any] = []
+                for k in self.urlAccessPaths! {
+                    tmp.append(k.toMap())
+                }
+                map["UrlAccessPaths"] = tmp
+            }
             if self.userMarkStatus != nil {
                 map["UserMarkStatus"] = self.userMarkStatus!
             }
@@ -65733,6 +66803,19 @@ public class UpdatePrivateAccessApplicationL7SwitchResponseBody : Tea.TeaModel {
             }
             if let value = dict["TimeoutSec"] as? Int32 {
                 self.timeoutSec = value
+            }
+            if let value = dict["UrlAccessPaths"] as? [Any?] {
+                var tmp : [UpdatePrivateAccessApplicationL7SwitchResponseBody.L7Switch.UrlAccessPaths] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdatePrivateAccessApplicationL7SwitchResponseBody.L7Switch.UrlAccessPaths()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.urlAccessPaths = tmp
             }
             if let value = dict["UserMarkStatus"] as? String {
                 self.userMarkStatus = value
