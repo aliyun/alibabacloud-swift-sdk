@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -22143,6 +22144,8 @@ public class DescribeContextDBInfoResponseBody : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var minorVersion: String?
+
             public var nodeCount: Int32?
 
             public var openSearchInstanceName: String?
@@ -22193,6 +22196,9 @@ public class DescribeContextDBInfoResponseBody : Tea.TeaModel {
                 }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
+                }
+                if self.minorVersion != nil {
+                    map["MinorVersion"] = self.minorVersion!
                 }
                 if self.nodeCount != nil {
                     map["NodeCount"] = self.nodeCount!
@@ -22254,6 +22260,9 @@ public class DescribeContextDBInfoResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
+                }
+                if let value = dict["MinorVersion"] as? String {
+                    self.minorVersion = value
                 }
                 if let value = dict["NodeCount"] as? Int32 {
                     self.nodeCount = value
