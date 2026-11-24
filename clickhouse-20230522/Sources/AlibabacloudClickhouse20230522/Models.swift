@@ -16888,7 +16888,11 @@ public class ResetLangfuseUserPasswordResponse : Tea.TeaModel {
 }
 
 public class RestartDBInstanceRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
+
+    public var nodeList: [String]?
 
     public var regionId: String?
 
@@ -16906,8 +16910,14 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.nodeList != nil {
+            map["NodeList"] = self.nodeList!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -16917,8 +16927,14 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
+        }
+        if let value = dict["NodeList"] as? [String] {
+            self.nodeList = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
