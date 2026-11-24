@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -4517,6 +4518,8 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
 
         public var invoiceList: [DescribeInvoiceForIsvResponseBody.Result.InvoiceList]?
 
+        public var invoiceTitleRelation: String?
+
         public var materialType: String?
 
         public var modifiedTime: String?
@@ -4581,6 +4584,9 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["InvoiceList"] = tmp
+            }
+            if self.invoiceTitleRelation != nil {
+                map["InvoiceTitleRelation"] = self.invoiceTitleRelation!
             }
             if self.materialType != nil {
                 map["MaterialType"] = self.materialType!
@@ -4657,6 +4663,9 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
                     }
                 }
                 self.invoiceList = tmp
+            }
+            if let value = dict["InvoiceTitleRelation"] as? String {
+                self.invoiceTitleRelation = value
             }
             if let value = dict["MaterialType"] as? String {
                 self.materialType = value

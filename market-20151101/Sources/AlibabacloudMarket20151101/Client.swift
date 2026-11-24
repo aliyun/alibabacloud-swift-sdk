@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Market"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou": "market.aliyuncs.com",
@@ -32,8 +36,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "market.aliyuncs.com",
             "cn-shenzhen-finance-1": "market.aliyuncs.com",
             "cn-shanghai-finance-1": "market.aliyuncs.com",
-            "cn-north-2-gov-1": "market.aliyuncs.com",
-            "ap-southeast-1": "market.ap-southeast-1.aliyuncs.com"
+            "cn-north-2-gov-1": "market.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("market", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
