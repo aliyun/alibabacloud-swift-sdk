@@ -3932,106 +3932,6 @@ public class GeneralRephotographyDetectionRequest : Tea.TeaModel {
 public class GeneralRephotographyDetectionResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Result : Tea.TeaModel {
-            public class Grounding : Tea.TeaModel {
-                public class Regions : Tea.TeaModel {
-                    public var bbox2d: [Double]?
-
-                    public var label: String?
-
-                    public var text: String?
-
-                    public override init() {
-                        super.init()
-                    }
-
-                    public init(_ dict: [String: Any]) {
-                        super.init()
-                        self.fromMap(dict)
-                    }
-
-                    public override func validate() throws -> Void {
-                    }
-
-                    public override func toMap() -> [String : Any] {
-                        var map = super.toMap()
-                        if self.bbox2d != nil {
-                            map["Bbox2d"] = self.bbox2d!
-                        }
-                        if self.label != nil {
-                            map["Label"] = self.label!
-                        }
-                        if self.text != nil {
-                            map["Text"] = self.text!
-                        }
-                        return map
-                    }
-
-                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                        guard let dict else { return }
-                        if let value = dict["Bbox2d"] as? [Double] {
-                            self.bbox2d = value
-                        }
-                        if let value = dict["Label"] as? String {
-                            self.label = value
-                        }
-                        if let value = dict["Text"] as? String {
-                            self.text = value
-                        }
-                    }
-                }
-                public var coverage: String?
-
-                public var regions: [GeneralRephotographyDetectionResponseBody.Data.Result.Grounding.Regions]?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.coverage != nil {
-                        map["Coverage"] = self.coverage!
-                    }
-                    if self.regions != nil {
-                        var tmp : [Any] = []
-                        for k in self.regions! {
-                            tmp.append(k.toMap())
-                        }
-                        map["Regions"] = tmp
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                    guard let dict else { return }
-                    if let value = dict["Coverage"] as? String {
-                        self.coverage = value
-                    }
-                    if let value = dict["Regions"] as? [Any?] {
-                        var tmp : [GeneralRephotographyDetectionResponseBody.Data.Result.Grounding.Regions] = []
-                        for v in value {
-                            if v != nil {
-                                var model = GeneralRephotographyDetectionResponseBody.Data.Result.Grounding.Regions()
-                                if v != nil {
-                                    model.fromMap(v as? [String: Any?])
-                                }
-                                tmp.append(model)
-                            }
-                        }
-                        self.regions = tmp
-                    }
-                }
-            }
-            public var grounding: GeneralRephotographyDetectionResponseBody.Data.Result.Grounding?
-
             public var isFake: Bool?
 
             public var type: String?
@@ -4046,14 +3946,10 @@ public class GeneralRephotographyDetectionResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
-                try self.grounding?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
-                if self.grounding != nil {
-                    map["Grounding"] = self.grounding?.toMap()
-                }
                 if self.isFake != nil {
                     map["IsFake"] = self.isFake!
                 }
@@ -4065,11 +3961,6 @@ public class GeneralRephotographyDetectionResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["Grounding"] as? [String: Any?] {
-                    var model = GeneralRephotographyDetectionResponseBody.Data.Result.Grounding()
-                    model.fromMap(value)
-                    self.grounding = model
-                }
                 if let value = dict["IsFake"] as? Bool {
                     self.isFake = value
                 }
@@ -15398,6 +15289,111 @@ public class QueryDisplayKnowledgeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryDisplayKnowledgeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RealtimeSpeechTranslationRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class RealtimeSpeechTranslationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RealtimeSpeechTranslationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RealtimeSpeechTranslationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RealtimeSpeechTranslationResponseBody()
             model.fromMap(value)
             self.body = model
         }

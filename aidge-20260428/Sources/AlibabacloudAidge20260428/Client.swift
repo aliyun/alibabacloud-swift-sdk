@@ -2053,6 +2053,31 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func realtimeSpeechTranslationWithOptions(_ request: RealtimeSpeechTranslationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RealtimeSpeechTranslationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RealtimeSpeechTranslation",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RealtimeSpeechTranslationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func realtimeSpeechTranslation(_ request: RealtimeSpeechTranslationRequest) async throws -> RealtimeSpeechTranslationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await realtimeSpeechTranslationWithOptions(request as! RealtimeSpeechTranslationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func sizeChartDetectWithOptions(_ request: SizeChartDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SizeChartDetectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
