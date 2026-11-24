@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -4215,6 +4216,10 @@ public class AddKnowledgeFileRequest : Tea.TeaModel {
 }
 
 public class AddKnowledgeFileResponseBody : Tea.TeaModel {
+    public var id: Int64?
+
+    public var location: String?
+
     public var requestId: String?
 
     public override init() {
@@ -4231,6 +4236,12 @@ public class AddKnowledgeFileResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4239,6 +4250,12 @@ public class AddKnowledgeFileResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["Location"] as? String {
+            self.location = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
