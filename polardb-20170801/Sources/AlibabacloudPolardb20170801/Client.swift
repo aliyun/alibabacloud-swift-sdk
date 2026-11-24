@@ -2941,6 +2941,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCostRuleWithOptions(_ request: CreateCostRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCostRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bypassQuotaCheck)) {
+            query["BypassQuotaCheck"] = request.bypassQuotaCheck!;
+        }
         if (!TeaUtils.Client.isUnset(request.cacheCostPointsPerMillion)) {
             query["CacheCostPointsPerMillion"] = request.cacheCostPointsPerMillion ?? "";
         }
@@ -2967,6 +2970,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.inputCostPointsPerMillion)) {
             query["InputCostPointsPerMillion"] = request.inputCostPointsPerMillion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputTokenTier)) {
+            query["InputTokenTier"] = request.inputTokenTier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.inputTokenTiers)) {
             query["InputTokenTiers"] = request.inputTokenTiers ?? "";
@@ -4653,6 +4659,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modelCategory)) {
             query["ModelCategory"] = request.modelCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelMappings)) {
+            query["ModelMappings"] = request.modelMappings ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelRouting)) {
+            query["ModelRouting"] = request.modelRouting ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
@@ -21067,6 +21079,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyCostRuleWithOptions(_ request: ModifyCostRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCostRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bypassQuotaCheck)) {
+            query["BypassQuotaCheck"] = request.bypassQuotaCheck!;
+        }
         if (!TeaUtils.Client.isUnset(request.cacheCostPointsPerMillion)) {
             query["CacheCostPointsPerMillion"] = request.cacheCostPointsPerMillion ?? "";
         }
@@ -23816,6 +23831,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modelCategory)) {
             query["ModelCategory"] = request.modelCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelMappings)) {
+            query["ModelMappings"] = request.modelMappings ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelRouting)) {
+            query["ModelRouting"] = request.modelRouting ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pathPrefix)) {
             query["PathPrefix"] = request.pathPrefix ?? "";
