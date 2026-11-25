@@ -13636,6 +13636,8 @@ public class DescribeAclCheckRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var processStatus: String?
+
     public var taskId: String?
 
     public override init() {
@@ -13661,6 +13663,9 @@ public class DescribeAclCheckRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.processStatus != nil {
+            map["ProcessStatus"] = self.processStatus!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -13677,6 +13682,9 @@ public class DescribeAclCheckRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["ProcessStatus"] as? String {
+            self.processStatus = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -14205,11 +14213,246 @@ public class DescribeAclCheckResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RecommendOptions : Tea.TeaModel {
+                public class RecommendContent : Tea.TeaModel {
+                    public class Addresses : Tea.TeaModel {
+                        public var address: String?
+
+                        public var note: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.address != nil {
+                                map["Address"] = self.address!
+                            }
+                            if self.note != nil {
+                                map["Note"] = self.note!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Address"] as? String {
+                                self.address = value
+                            }
+                            if let value = dict["Note"] as? String {
+                                self.note = value
+                            }
+                        }
+                    }
+                    public var aclAction: String?
+
+                    public var addresses: [DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions.RecommendContent.Addresses]?
+
+                    public var applicationNameList: [String]?
+
+                    public var description_: String?
+
+                    public var destPort: String?
+
+                    public var destPortGroup: String?
+
+                    public var destPortType: String?
+
+                    public var destination: String?
+
+                    public var destinationType: String?
+
+                    public var order: Int64?
+
+                    public var proto: String?
+
+                    public var release: String?
+
+                    public var source: String?
+
+                    public var sourceType: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.aclAction != nil {
+                            map["AclAction"] = self.aclAction!
+                        }
+                        if self.addresses != nil {
+                            var tmp : [Any] = []
+                            for k in self.addresses! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Addresses"] = tmp
+                        }
+                        if self.applicationNameList != nil {
+                            map["ApplicationNameList"] = self.applicationNameList!
+                        }
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.destPort != nil {
+                            map["DestPort"] = self.destPort!
+                        }
+                        if self.destPortGroup != nil {
+                            map["DestPortGroup"] = self.destPortGroup!
+                        }
+                        if self.destPortType != nil {
+                            map["DestPortType"] = self.destPortType!
+                        }
+                        if self.destination != nil {
+                            map["Destination"] = self.destination!
+                        }
+                        if self.destinationType != nil {
+                            map["DestinationType"] = self.destinationType!
+                        }
+                        if self.order != nil {
+                            map["Order"] = self.order!
+                        }
+                        if self.proto != nil {
+                            map["Proto"] = self.proto!
+                        }
+                        if self.release != nil {
+                            map["Release"] = self.release!
+                        }
+                        if self.source != nil {
+                            map["Source"] = self.source!
+                        }
+                        if self.sourceType != nil {
+                            map["SourceType"] = self.sourceType!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AclAction"] as? String {
+                            self.aclAction = value
+                        }
+                        if let value = dict["Addresses"] as? [Any?] {
+                            var tmp : [DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions.RecommendContent.Addresses] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions.RecommendContent.Addresses()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.addresses = tmp
+                        }
+                        if let value = dict["ApplicationNameList"] as? [String] {
+                            self.applicationNameList = value
+                        }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["DestPort"] as? String {
+                            self.destPort = value
+                        }
+                        if let value = dict["DestPortGroup"] as? String {
+                            self.destPortGroup = value
+                        }
+                        if let value = dict["DestPortType"] as? String {
+                            self.destPortType = value
+                        }
+                        if let value = dict["Destination"] as? String {
+                            self.destination = value
+                        }
+                        if let value = dict["DestinationType"] as? String {
+                            self.destinationType = value
+                        }
+                        if let value = dict["Order"] as? Int64 {
+                            self.order = value
+                        }
+                        if let value = dict["Proto"] as? String {
+                            self.proto = value
+                        }
+                        if let value = dict["Release"] as? String {
+                            self.release = value
+                        }
+                        if let value = dict["Source"] as? String {
+                            self.source = value
+                        }
+                        if let value = dict["SourceType"] as? String {
+                            self.sourceType = value
+                        }
+                    }
+                }
+                public var actionType: String?
+
+                public var recommendContent: DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions.RecommendContent?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.recommendContent?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actionType != nil {
+                        map["ActionType"] = self.actionType!
+                    }
+                    if self.recommendContent != nil {
+                        map["RecommendContent"] = self.recommendContent?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ActionType"] as? String {
+                        self.actionType = value
+                    }
+                    if let value = dict["RecommendContent"] as? [String: Any?] {
+                        var model = DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions.RecommendContent()
+                        model.fromMap(value)
+                        self.recommendContent = model
+                    }
+                }
+            }
             public var acl: DescribeAclCheckResponseBody.CheckRecord.Acls.Acl?
 
             public var aclAssessmentDetail: String?
 
             public var aclStatus: String?
+
+            public var actionType: String?
+
+            public var errorMessage: String?
+
+            public var processStatus: String?
+
+            public var recommendOptions: [DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions]?
 
             public override init() {
                 super.init()
@@ -14235,6 +14478,22 @@ public class DescribeAclCheckResponseBody : Tea.TeaModel {
                 if self.aclStatus != nil {
                     map["AclStatus"] = self.aclStatus!
                 }
+                if self.actionType != nil {
+                    map["ActionType"] = self.actionType!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.processStatus != nil {
+                    map["ProcessStatus"] = self.processStatus!
+                }
+                if self.recommendOptions != nil {
+                    var tmp : [Any] = []
+                    for k in self.recommendOptions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RecommendOptions"] = tmp
+                }
                 return map
             }
 
@@ -14250,6 +14509,28 @@ public class DescribeAclCheckResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AclStatus"] as? String {
                     self.aclStatus = value
+                }
+                if let value = dict["ActionType"] as? String {
+                    self.actionType = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["ProcessStatus"] as? String {
+                    self.processStatus = value
+                }
+                if let value = dict["RecommendOptions"] as? [Any?] {
+                    var tmp : [DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeAclCheckResponseBody.CheckRecord.Acls.RecommendOptions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.recommendOptions = tmp
                 }
             }
         }
@@ -44643,6 +44924,10 @@ public class DescribeRiskEventGroupResponseBody : Tea.TeaModel {
 
         public var firstEventTime: Int32?
 
+        public var hitContent: String?
+
+        public var hitType: String?
+
         public var IPLocationInfo: DescribeRiskEventGroupResponseBody.DataList.IPLocationInfo?
 
         public var lastEventTime: Int32?
@@ -44716,6 +45001,12 @@ public class DescribeRiskEventGroupResponseBody : Tea.TeaModel {
             }
             if self.firstEventTime != nil {
                 map["FirstEventTime"] = self.firstEventTime!
+            }
+            if self.hitContent != nil {
+                map["HitContent"] = self.hitContent!
+            }
+            if self.hitType != nil {
+                map["HitType"] = self.hitType!
             }
             if self.IPLocationInfo != nil {
                 map["IPLocationInfo"] = self.IPLocationInfo?.toMap()
@@ -44797,6 +45088,12 @@ public class DescribeRiskEventGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["FirstEventTime"] as? Int32 {
                 self.firstEventTime = value
+            }
+            if let value = dict["HitContent"] as? String {
+                self.hitContent = value
+            }
+            if let value = dict["HitType"] as? String {
+                self.hitType = value
             }
             if let value = dict["IPLocationInfo"] as? [String: Any?] {
                 var model = DescribeRiskEventGroupResponseBody.DataList.IPLocationInfo()
