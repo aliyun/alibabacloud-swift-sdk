@@ -42903,6 +42903,8 @@ public class DescribeSupabaseInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var expired: Bool?
 
+        public var latestMinorVersion: String?
+
         public var lockMode: String?
 
         public var minorVersion: String?
@@ -42928,6 +42930,10 @@ public class DescribeSupabaseInstanceAttributeResponseBody : Tea.TeaModel {
         public var vSwitchId: String?
 
         public var vpcId: String?
+
+        public var webAppsHttpUrl: String?
+
+        public var webAppsUrl: String?
 
         public var zoneId: String?
 
@@ -42963,6 +42969,9 @@ public class DescribeSupabaseInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.expired != nil {
                 map["Expired"] = self.expired!
+            }
+            if self.latestMinorVersion != nil {
+                map["LatestMinorVersion"] = self.latestMinorVersion!
             }
             if self.lockMode != nil {
                 map["LockMode"] = self.lockMode!
@@ -43007,6 +43016,12 @@ public class DescribeSupabaseInstanceAttributeResponseBody : Tea.TeaModel {
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
+            if self.webAppsHttpUrl != nil {
+                map["WebAppsHttpUrl"] = self.webAppsHttpUrl!
+            }
+            if self.webAppsUrl != nil {
+                map["WebAppsUrl"] = self.webAppsUrl!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -43039,6 +43054,9 @@ public class DescribeSupabaseInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["Expired"] as? Bool {
                 self.expired = value
+            }
+            if let value = dict["LatestMinorVersion"] as? String {
+                self.latestMinorVersion = value
             }
             if let value = dict["LockMode"] as? String {
                 self.lockMode = value
@@ -43088,6 +43106,12 @@ public class DescribeSupabaseInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
+            }
+            if let value = dict["WebAppsHttpUrl"] as? String {
+                self.webAppsHttpUrl = value
+            }
+            if let value = dict["WebAppsUrl"] as? String {
+                self.webAppsUrl = value
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
