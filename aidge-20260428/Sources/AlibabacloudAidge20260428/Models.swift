@@ -3898,6 +3898,374 @@ public class EcomVideoRecreationResponse : Tea.TeaModel {
     }
 }
 
+public class GeneralImageGenerationRequest : Tea.TeaModel {
+    public var jobType: String?
+
+    public var mode: String?
+
+    public var n: Int32?
+
+    public var operation: String?
+
+    public var prompt: String?
+
+    public var promptExtend: Bool?
+
+    public var ratio: String?
+
+    public var referenceUrl: [String]?
+
+    public var resolution: String?
+
+    public var scene: String?
+
+    public var watermark: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobType != nil {
+            map["JobType"] = self.jobType!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.n != nil {
+            map["N"] = self.n!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.promptExtend != nil {
+            map["PromptExtend"] = self.promptExtend!
+        }
+        if self.ratio != nil {
+            map["Ratio"] = self.ratio!
+        }
+        if self.referenceUrl != nil {
+            map["ReferenceUrl"] = self.referenceUrl!
+        }
+        if self.resolution != nil {
+            map["Resolution"] = self.resolution!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.watermark != nil {
+            map["Watermark"] = self.watermark!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobType"] as? String {
+            self.jobType = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["N"] as? Int32 {
+            self.n = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["PromptExtend"] as? Bool {
+            self.promptExtend = value
+        }
+        if let value = dict["Ratio"] as? String {
+            self.ratio = value
+        }
+        if let value = dict["ReferenceUrl"] as? [String] {
+            self.referenceUrl = value
+        }
+        if let value = dict["Resolution"] as? String {
+            self.resolution = value
+        }
+        if let value = dict["Scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["Watermark"] as? Bool {
+            self.watermark = value
+        }
+    }
+}
+
+public class GeneralImageGenerationShrinkRequest : Tea.TeaModel {
+    public var jobType: String?
+
+    public var mode: String?
+
+    public var n: Int32?
+
+    public var operation: String?
+
+    public var prompt: String?
+
+    public var promptExtend: Bool?
+
+    public var ratio: String?
+
+    public var referenceUrlShrink: String?
+
+    public var resolution: String?
+
+    public var scene: String?
+
+    public var watermark: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobType != nil {
+            map["JobType"] = self.jobType!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.n != nil {
+            map["N"] = self.n!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.promptExtend != nil {
+            map["PromptExtend"] = self.promptExtend!
+        }
+        if self.ratio != nil {
+            map["Ratio"] = self.ratio!
+        }
+        if self.referenceUrlShrink != nil {
+            map["ReferenceUrl"] = self.referenceUrlShrink!
+        }
+        if self.resolution != nil {
+            map["Resolution"] = self.resolution!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.watermark != nil {
+            map["Watermark"] = self.watermark!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobType"] as? String {
+            self.jobType = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["N"] as? Int32 {
+            self.n = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["PromptExtend"] as? Bool {
+            self.promptExtend = value
+        }
+        if let value = dict["Ratio"] as? String {
+            self.ratio = value
+        }
+        if let value = dict["ReferenceUrl"] as? String {
+            self.referenceUrlShrink = value
+        }
+        if let value = dict["Resolution"] as? String {
+            self.resolution = value
+        }
+        if let value = dict["Scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["Watermark"] as? Bool {
+            self.watermark = value
+        }
+    }
+}
+
+public class GeneralImageGenerationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GeneralImageGenerationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GeneralImageGenerationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GeneralImageGenerationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GeneralImageGenerationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GeneralImageGenerationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GeneralRephotographyDetectionRequest : Tea.TeaModel {
     public var imageUrl: String?
 

@@ -552,6 +552,72 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generalImageGenerationWithOptions(_ tmpReq: GeneralImageGenerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GeneralImageGenerationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GeneralImageGenerationShrinkRequest = GeneralImageGenerationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.referenceUrl)) {
+            request.referenceUrlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.referenceUrl, "ReferenceUrl", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["JobType"] = request.jobType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mode)) {
+            query["Mode"] = request.mode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.n)) {
+            query["N"] = request.n!;
+        }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            query["Operation"] = request.operation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            query["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promptExtend)) {
+            query["PromptExtend"] = request.promptExtend!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ratio)) {
+            query["Ratio"] = request.ratio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.referenceUrlShrink)) {
+            query["ReferenceUrl"] = request.referenceUrlShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            query["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.watermark)) {
+            query["Watermark"] = request.watermark!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GeneralImageGeneration",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GeneralImageGenerationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generalImageGeneration(_ request: GeneralImageGenerationRequest) async throws -> GeneralImageGenerationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generalImageGenerationWithOptions(request as! GeneralImageGenerationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func generalRephotographyDetectionWithOptions(_ request: GeneralRephotographyDetectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GeneralRephotographyDetectionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
