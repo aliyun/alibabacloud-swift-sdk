@@ -410,6 +410,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.properties)) {
             body["properties"] = request.properties ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.skills)) {
+            body["skills"] = request.skills ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["type"] = request.type ?? "";
         }
@@ -465,6 +471,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enable)) {
             body["enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluatorVersion)) {
+            body["evaluatorVersion"] = request.evaluatorVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.files)) {
             body["files"] = request.files ?? [];
@@ -619,6 +628,57 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createExperimentRunWithOptions(agentSpace as! String, request as! CreateExperimentRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiModalTaskWithOptions(_ request: CreateMultiModalTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultiModalTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentSpace)) {
+            body["agentSpace"] = request.agentSpace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.args)) {
+            body["args"] = request.args ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.arn)) {
+            body["arn"] = request.arn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluatorRef)) {
+            body["evaluatorRef"] = request.evaluatorRef ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossRegion)) {
+            body["ossRegion"] = request.ossRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            body["taskName"] = request.taskName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultiModalTask",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/media-processings",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMultiModalTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiModalTask(_ request: CreateMultiModalTaskRequest) async throws -> CreateMultiModalTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createMultiModalTaskWithOptions(request as! CreateMultiModalTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1013,6 +1073,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentSpace)) {
             query["agentSpace"] = request.agentSpace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluatorVersion)) {
+            query["evaluatorVersion"] = request.evaluatorVersion ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1465,6 +1528,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentSpace)) {
             query["agentSpace"] = request.agentSpace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluatorVersion)) {
+            query["evaluatorVersion"] = request.evaluatorVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.version)) {
             query["version"] = request.version ?? "";
@@ -2018,6 +2084,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentSpace)) {
             query["agentSpace"] = request.agentSpace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluatorVersion)) {
+            query["evaluatorVersion"] = request.evaluatorVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
@@ -2999,6 +3068,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.config)) {
             body["config"] = request.config ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.createVersion)) {
+            body["createVersion"] = request.createVersion!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
@@ -3007,6 +3079,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.properties)) {
             body["properties"] = request.properties ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.skills)) {
+            body["skills"] = request.skills ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.version)) {
             body["version"] = request.version ?? "";
@@ -3061,6 +3139,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enable)) {
             body["enable"] = request.enable!;
         }
+        if (!TeaUtils.Client.isUnset(request.evaluatorVersion)) {
+            body["evaluatorVersion"] = request.evaluatorVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.files)) {
             body["files"] = request.files ?? [];
         }
@@ -3089,6 +3170,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateEvaluatorSkillWithOptions(name as! String, skillName as! String, request as! UpdateEvaluatorSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEvaluatorVersionStatusWithOptions(_ agentSpace: String, _ name: String, _ request: UpdateEvaluatorVersionStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateEvaluatorVersionStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expectedStatus)) {
+            body["expectedStatus"] = request.expectedStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionDescription)) {
+            body["versionDescription"] = request.versionDescription ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateEvaluatorVersionStatus",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/evaluators/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/version-status",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateEvaluatorVersionStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEvaluatorVersionStatus(_ agentSpace: String, _ name: String, _ request: UpdateEvaluatorVersionStatusRequest) async throws -> UpdateEvaluatorVersionStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateEvaluatorVersionStatusWithOptions(agentSpace as! String, name as! String, request as! UpdateEvaluatorVersionStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

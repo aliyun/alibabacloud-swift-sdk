@@ -4128,6 +4128,120 @@ public class CreateEvaluationTaskResponse : Tea.TeaModel {
 }
 
 public class CreateEvaluatorRequest : Tea.TeaModel {
+    public class Skills : Tea.TeaModel {
+        public class Files : Tea.TeaModel {
+            public var content: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public var description_: String?
+
+        public var displayName: String?
+
+        public var enable: Bool?
+
+        public var files: [CreateEvaluatorRequest.Skills.Files]?
+
+        public var skillName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.displayName != nil {
+                map["displayName"] = self.displayName!
+            }
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.files != nil {
+                var tmp : [Any] = []
+                for k in self.files! {
+                    tmp.append(k.toMap())
+                }
+                map["files"] = tmp
+            }
+            if self.skillName != nil {
+                map["skillName"] = self.skillName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["displayName"] as? String {
+                self.displayName = value
+            }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["files"] as? [Any?] {
+                var tmp : [CreateEvaluatorRequest.Skills.Files] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateEvaluatorRequest.Skills.Files()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.files = tmp
+            }
+            if let value = dict["skillName"] as? String {
+                self.skillName = value
+            }
+        }
+    }
     public var annotations: [String]?
 
     public var config: [String: Any]?
@@ -4141,6 +4255,10 @@ public class CreateEvaluatorRequest : Tea.TeaModel {
     public var name: String?
 
     public var properties: [String: Any]?
+
+    public var skills: [CreateEvaluatorRequest.Skills]?
+
+    public var status: String?
 
     public var type: String?
 
@@ -4185,6 +4303,16 @@ public class CreateEvaluatorRequest : Tea.TeaModel {
         if self.properties != nil {
             map["properties"] = self.properties!
         }
+        if self.skills != nil {
+            var tmp : [Any] = []
+            for k in self.skills! {
+                tmp.append(k.toMap())
+            }
+            map["skills"] = tmp
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -4222,6 +4350,22 @@ public class CreateEvaluatorRequest : Tea.TeaModel {
         }
         if let value = dict["properties"] as? [String: Any] {
             self.properties = value
+        }
+        if let value = dict["skills"] as? [Any?] {
+            var tmp : [CreateEvaluatorRequest.Skills] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateEvaluatorRequest.Skills()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.skills = tmp
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
         }
         if let value = dict["type"] as? String {
             self.type = value
@@ -4390,6 +4534,8 @@ public class CreateEvaluatorSkillRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var evaluatorVersion: String?
+
     public var files: [CreateEvaluatorSkillRequest.Files]?
 
     public var skillName: String?
@@ -4422,6 +4568,9 @@ public class CreateEvaluatorSkillRequest : Tea.TeaModel {
         if self.enable != nil {
             map["enable"] = self.enable!
         }
+        if self.evaluatorVersion != nil {
+            map["evaluatorVersion"] = self.evaluatorVersion!
+        }
         if self.files != nil {
             var tmp : [Any] = []
             for k in self.files! {
@@ -4451,6 +4600,9 @@ public class CreateEvaluatorSkillRequest : Tea.TeaModel {
         }
         if let value = dict["enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["evaluatorVersion"] as? String {
+            self.evaluatorVersion = value
         }
         if let value = dict["files"] as? [Any?] {
             var tmp : [CreateEvaluatorSkillRequest.Files] = []
@@ -5015,6 +5167,190 @@ public class CreateExperimentRunResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateExperimentRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateMultiModalTaskRequest : Tea.TeaModel {
+    public var agentSpace: String?
+
+    public var args: [String: Any]?
+
+    public var arn: String?
+
+    public var evaluatorRef: String?
+
+    public var ossRegion: String?
+
+    public var prompt: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentSpace != nil {
+            map["agentSpace"] = self.agentSpace!
+        }
+        if self.args != nil {
+            map["args"] = self.args!
+        }
+        if self.arn != nil {
+            map["arn"] = self.arn!
+        }
+        if self.evaluatorRef != nil {
+            map["evaluatorRef"] = self.evaluatorRef!
+        }
+        if self.ossRegion != nil {
+            map["ossRegion"] = self.ossRegion!
+        }
+        if self.prompt != nil {
+            map["prompt"] = self.prompt!
+        }
+        if self.taskName != nil {
+            map["taskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["agentSpace"] as? String {
+            self.agentSpace = value
+        }
+        if let value = dict["args"] as? [String: Any] {
+            self.args = value
+        }
+        if let value = dict["arn"] as? String {
+            self.arn = value
+        }
+        if let value = dict["evaluatorRef"] as? String {
+            self.evaluatorRef = value
+        }
+        if let value = dict["ossRegion"] as? String {
+            self.ossRegion = value
+        }
+        if let value = dict["prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["taskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class CreateMultiModalTaskResponseBody : Tea.TeaModel {
+    public var msg: String?
+
+    public var score: Double?
+
+    public var taskId: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.score != nil {
+            map["score"] = self.score!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        if self.taskName != nil {
+            map["taskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["msg"] as? String {
+            self.msg = value
+        }
+        if let value = dict["score"] as? Double {
+            self.score = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["taskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class CreateMultiModalTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateMultiModalTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateMultiModalTaskResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -7266,6 +7602,8 @@ public class DeleteEvaluatorResponse : Tea.TeaModel {
 public class DeleteEvaluatorSkillRequest : Tea.TeaModel {
     public var agentSpace: String?
 
+    public var evaluatorVersion: String?
+
     public override init() {
         super.init()
     }
@@ -7283,6 +7621,9 @@ public class DeleteEvaluatorSkillRequest : Tea.TeaModel {
         if self.agentSpace != nil {
             map["agentSpace"] = self.agentSpace!
         }
+        if self.evaluatorVersion != nil {
+            map["evaluatorVersion"] = self.evaluatorVersion!
+        }
         return map
     }
 
@@ -7290,6 +7631,9 @@ public class DeleteEvaluatorSkillRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["agentSpace"] as? String {
             self.agentSpace = value
+        }
+        if let value = dict["evaluatorVersion"] as? String {
+            self.evaluatorVersion = value
         }
     }
 }
@@ -11342,8 +11686,76 @@ public class GetEvaluatorRequest : Tea.TeaModel {
 
 public class GetEvaluatorResponseBody : Tea.TeaModel {
     public class Evaluator : Tea.TeaModel {
+        public class Skills : Tea.TeaModel {
+            public var currentVersion: String?
+
+            public var description_: String?
+
+            public var displayName: String?
+
+            public var enable: Bool?
+
+            public var skillName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.currentVersion != nil {
+                    map["currentVersion"] = self.currentVersion!
+                }
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
+                if self.displayName != nil {
+                    map["displayName"] = self.displayName!
+                }
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.skillName != nil {
+                    map["skillName"] = self.skillName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["currentVersion"] as? String {
+                    self.currentVersion = value
+                }
+                if let value = dict["description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["displayName"] as? String {
+                    self.displayName = value
+                }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["skillName"] as? String {
+                    self.skillName = value
+                }
+            }
+        }
         public class Versions : Tea.TeaModel {
             public var createdAt: Int64?
+
+            public var selectable: Bool?
+
+            public var status: String?
+
+            public var updatedAt: Int64?
 
             public var version: String?
 
@@ -11366,6 +11778,15 @@ public class GetEvaluatorResponseBody : Tea.TeaModel {
                 if self.createdAt != nil {
                     map["createdAt"] = self.createdAt!
                 }
+                if self.selectable != nil {
+                    map["selectable"] = self.selectable!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.updatedAt != nil {
+                    map["updatedAt"] = self.updatedAt!
+                }
                 if self.version != nil {
                     map["version"] = self.version!
                 }
@@ -11379,6 +11800,15 @@ public class GetEvaluatorResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["createdAt"] as? Int64 {
                     self.createdAt = value
+                }
+                if let value = dict["selectable"] as? Bool {
+                    self.selectable = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["updatedAt"] as? Int64 {
+                    self.updatedAt = value
                 }
                 if let value = dict["version"] as? String {
                     self.version = value
@@ -11409,6 +11839,12 @@ public class GetEvaluatorResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var properties: [String: Any]?
+
+        public var selectable: Bool?
+
+        public var skills: [GetEvaluatorResponseBody.Evaluator.Skills]?
+
+        public var status: String?
 
         public var type: String?
 
@@ -11463,6 +11899,19 @@ public class GetEvaluatorResponseBody : Tea.TeaModel {
             if self.properties != nil {
                 map["properties"] = self.properties!
             }
+            if self.selectable != nil {
+                map["selectable"] = self.selectable!
+            }
+            if self.skills != nil {
+                var tmp : [Any] = []
+                for k in self.skills! {
+                    tmp.append(k.toMap())
+                }
+                map["skills"] = tmp
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
             if self.type != nil {
                 map["type"] = self.type!
             }
@@ -11513,6 +11962,25 @@ public class GetEvaluatorResponseBody : Tea.TeaModel {
             }
             if let value = dict["properties"] as? [String: Any] {
                 self.properties = value
+            }
+            if let value = dict["selectable"] as? Bool {
+                self.selectable = value
+            }
+            if let value = dict["skills"] as? [Any?] {
+                var tmp : [GetEvaluatorResponseBody.Evaluator.Skills] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEvaluatorResponseBody.Evaluator.Skills()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.skills = tmp
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
             }
             if let value = dict["type"] as? String {
                 self.type = value
@@ -11629,6 +12097,8 @@ public class GetEvaluatorResponse : Tea.TeaModel {
 public class GetEvaluatorSkillRequest : Tea.TeaModel {
     public var agentSpace: String?
 
+    public var evaluatorVersion: String?
+
     public var version: String?
 
     public override init() {
@@ -11648,6 +12118,9 @@ public class GetEvaluatorSkillRequest : Tea.TeaModel {
         if self.agentSpace != nil {
             map["agentSpace"] = self.agentSpace!
         }
+        if self.evaluatorVersion != nil {
+            map["evaluatorVersion"] = self.evaluatorVersion!
+        }
         if self.version != nil {
             map["version"] = self.version!
         }
@@ -11658,6 +12131,9 @@ public class GetEvaluatorSkillRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["agentSpace"] as? String {
             self.agentSpace = value
+        }
+        if let value = dict["evaluatorVersion"] as? String {
+            self.evaluatorVersion = value
         }
         if let value = dict["version"] as? String {
             self.version = value
@@ -16747,6 +17223,8 @@ public class ListEvaluationTasksResponse : Tea.TeaModel {
 public class ListEvaluatorSkillsRequest : Tea.TeaModel {
     public var agentSpace: String?
 
+    public var evaluatorVersion: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -16768,6 +17246,9 @@ public class ListEvaluatorSkillsRequest : Tea.TeaModel {
         if self.agentSpace != nil {
             map["agentSpace"] = self.agentSpace!
         }
+        if self.evaluatorVersion != nil {
+            map["evaluatorVersion"] = self.evaluatorVersion!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -16781,6 +17262,9 @@ public class ListEvaluatorSkillsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["agentSpace"] as? String {
             self.agentSpace = value
+        }
+        if let value = dict["evaluatorVersion"] as? String {
+            self.evaluatorVersion = value
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
@@ -17085,6 +17569,10 @@ public class ListEvaluatorsResponseBody : Tea.TeaModel {
 
         public var properties: [String: Any]?
 
+        public var selectable: Bool?
+
+        public var status: String?
+
         public var type: String?
 
         public var updatedAt: Int64?
@@ -17127,6 +17615,12 @@ public class ListEvaluatorsResponseBody : Tea.TeaModel {
             if self.properties != nil {
                 map["properties"] = self.properties!
             }
+            if self.selectable != nil {
+                map["selectable"] = self.selectable!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
             if self.type != nil {
                 map["type"] = self.type!
             }
@@ -17161,6 +17655,12 @@ public class ListEvaluatorsResponseBody : Tea.TeaModel {
             }
             if let value = dict["properties"] as? [String: Any] {
                 self.properties = value
+            }
+            if let value = dict["selectable"] as? Bool {
+                self.selectable = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
             }
             if let value = dict["type"] as? String {
                 self.type = value
@@ -24037,15 +24537,135 @@ public class UpdateEvaluationTaskResponse : Tea.TeaModel {
 }
 
 public class UpdateEvaluatorRequest : Tea.TeaModel {
+    public class Skills : Tea.TeaModel {
+        public class Files : Tea.TeaModel {
+            public var content: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public var description_: String?
+
+        public var displayName: String?
+
+        public var enable: Bool?
+
+        public var files: [UpdateEvaluatorRequest.Skills.Files]?
+
+        public var skillName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.displayName != nil {
+                map["displayName"] = self.displayName!
+            }
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.files != nil {
+                var tmp : [Any] = []
+                for k in self.files! {
+                    tmp.append(k.toMap())
+                }
+                map["files"] = tmp
+            }
+            if self.skillName != nil {
+                map["skillName"] = self.skillName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["displayName"] as? String {
+                self.displayName = value
+            }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["files"] as? [Any?] {
+                var tmp : [UpdateEvaluatorRequest.Skills.Files] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateEvaluatorRequest.Skills.Files()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.files = tmp
+            }
+            if let value = dict["skillName"] as? String {
+                self.skillName = value
+            }
+        }
+    }
     public var annotations: [String]?
 
     public var config: [String: Any]?
+
+    public var createVersion: Bool?
 
     public var description_: String?
 
     public var displayName: String?
 
     public var properties: [String: Any]?
+
+    public var skills: [UpdateEvaluatorRequest.Skills]?
+
+    public var status: String?
 
     public var version: String?
 
@@ -24073,6 +24693,9 @@ public class UpdateEvaluatorRequest : Tea.TeaModel {
         if self.config != nil {
             map["config"] = self.config!
         }
+        if self.createVersion != nil {
+            map["createVersion"] = self.createVersion!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -24081,6 +24704,16 @@ public class UpdateEvaluatorRequest : Tea.TeaModel {
         }
         if self.properties != nil {
             map["properties"] = self.properties!
+        }
+        if self.skills != nil {
+            var tmp : [Any] = []
+            for k in self.skills! {
+                tmp.append(k.toMap())
+            }
+            map["skills"] = tmp
+        }
+        if self.status != nil {
+            map["status"] = self.status!
         }
         if self.version != nil {
             map["version"] = self.version!
@@ -24102,6 +24735,9 @@ public class UpdateEvaluatorRequest : Tea.TeaModel {
         if let value = dict["config"] as? [String: Any] {
             self.config = value
         }
+        if let value = dict["createVersion"] as? Bool {
+            self.createVersion = value
+        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
@@ -24110,6 +24746,22 @@ public class UpdateEvaluatorRequest : Tea.TeaModel {
         }
         if let value = dict["properties"] as? [String: Any] {
             self.properties = value
+        }
+        if let value = dict["skills"] as? [Any?] {
+            var tmp : [UpdateEvaluatorRequest.Skills] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateEvaluatorRequest.Skills()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.skills = tmp
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
         }
         if let value = dict["version"] as? String {
             self.version = value
@@ -24259,6 +24911,8 @@ public class UpdateEvaluatorSkillRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var evaluatorVersion: String?
+
     public var files: [UpdateEvaluatorSkillRequest.Files]?
 
     public var clientToken: String?
@@ -24289,6 +24943,9 @@ public class UpdateEvaluatorSkillRequest : Tea.TeaModel {
         if self.enable != nil {
             map["enable"] = self.enable!
         }
+        if self.evaluatorVersion != nil {
+            map["evaluatorVersion"] = self.evaluatorVersion!
+        }
         if self.files != nil {
             var tmp : [Any] = []
             for k in self.files! {
@@ -24315,6 +24972,9 @@ public class UpdateEvaluatorSkillRequest : Tea.TeaModel {
         }
         if let value = dict["enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["evaluatorVersion"] as? String {
+            self.evaluatorVersion = value
         }
         if let value = dict["files"] as? [Any?] {
             var tmp : [UpdateEvaluatorSkillRequest.Files] = []
@@ -24410,6 +25070,142 @@ public class UpdateEvaluatorSkillResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateEvaluatorSkillResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateEvaluatorVersionStatusRequest : Tea.TeaModel {
+    public var expectedStatus: String?
+
+    public var status: String?
+
+    public var version: String?
+
+    public var versionDescription: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expectedStatus != nil {
+            map["expectedStatus"] = self.expectedStatus!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        if self.versionDescription != nil {
+            map["versionDescription"] = self.versionDescription!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expectedStatus"] as? String {
+            self.expectedStatus = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
+        if let value = dict["versionDescription"] as? String {
+            self.versionDescription = value
+        }
+    }
+}
+
+public class UpdateEvaluatorVersionStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateEvaluatorVersionStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateEvaluatorVersionStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateEvaluatorVersionStatusResponseBody()
             model.fromMap(value)
             self.body = model
         }
