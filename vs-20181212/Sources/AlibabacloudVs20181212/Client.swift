@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "vs"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -5496,8 +5500,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listCloudAppInstallationsWithOptions(_ request: ListCloudAppInstallationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudAppInstallationsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listCloudAppInstallationsWithOptions(_ tmpReq: ListCloudAppInstallationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudAppInstallationsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListCloudAppInstallationsShrinkRequest = ListCloudAppInstallationsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.renderingInstanceIds)) {
+            request.renderingInstanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.renderingInstanceIds, "RenderingInstanceIds", "json")
+        }
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -8665,6 +8674,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func upgradeRenderingInstanceImage(_ request: UpgradeRenderingInstanceImageRequest) async throws -> UpgradeRenderingInstanceImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await upgradeRenderingInstanceImageWithOptions(request as! UpgradeRenderingInstanceImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradeRenderingServerImageWithOptions(_ tmpReq: UpgradeRenderingServerImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeRenderingServerImageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpgradeRenderingServerImageShrinkRequest = UpgradeRenderingServerImageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.renderingInstanceIds)) {
+            request.renderingInstanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.renderingInstanceIds, "RenderingInstanceIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.precheck)) {
+            query["Precheck"] = request.precheck!;
+        }
+        if (!TeaUtils.Client.isUnset(request.renderingInstanceIdsShrink)) {
+            query["RenderingInstanceIds"] = request.renderingInstanceIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpgradeRenderingServerImage",
+            "version": "2018-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradeRenderingServerImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradeRenderingServerImage(_ request: UpgradeRenderingServerImageRequest) async throws -> UpgradeRenderingServerImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await upgradeRenderingServerImageWithOptions(request as! UpgradeRenderingServerImageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
