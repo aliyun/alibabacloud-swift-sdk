@@ -244,6 +244,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteHttpApiRoutesWithOptions(_ httpApiId: String, _ request: BatchDeleteHttpApiRoutesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchDeleteHttpApiRoutesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteAll)) {
+            body["deleteAll"] = request.deleteAll!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeIds)) {
+            body["routeIds"] = request.routeIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchDeleteHttpApiRoutes",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-apis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(httpApiId)) + "/routes/batch-delete",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchDeleteHttpApiRoutesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteHttpApiRoutes(_ httpApiId: String, _ request: BatchDeleteHttpApiRoutesRequest) async throws -> BatchDeleteHttpApiRoutesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchDeleteHttpApiRoutesWithOptions(httpApiId as! String, request as! BatchDeleteHttpApiRoutesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchDeployHttpApiRoutesWithOptions(_ httpApiId: String, _ request: BatchDeployHttpApiRoutesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchDeployHttpApiRoutesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -418,6 +454,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await batchRemoveConsumerGroupConsumersWithOptions(consumerGroupId as! String, request as! BatchRemoveConsumerGroupConsumersRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUndeployHttpApiRoutesWithOptions(_ httpApiId: String, _ request: BatchUndeployHttpApiRoutesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUndeployHttpApiRoutesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.async)) {
+            body["async"] = request.async!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeIds)) {
+            body["routeIds"] = request.routeIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.undeployAll)) {
+            body["undeployAll"] = request.undeployAll!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUndeployHttpApiRoutes",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-apis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(httpApiId)) + "/routes/batch-undeploy",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUndeployHttpApiRoutesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUndeployHttpApiRoutes(_ httpApiId: String, _ request: BatchUndeployHttpApiRoutesRequest) async throws -> BatchUndeployHttpApiRoutesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchUndeployHttpApiRoutesWithOptions(httpApiId as! String, request as! BatchUndeployHttpApiRoutesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -638,6 +713,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["clientToken"] = request.clientToken ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callNamePrefix)) {
+            body["callNamePrefix"] = request.callNamePrefix ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             body["displayName"] = request.displayName ?? "";
         }
@@ -3470,6 +3548,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await detachAndDeletePolicyWithOptions(policyId as! String, request as! DetachAndDeletePolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detectHttpApiConflictsWithOptions(_ httpApiId: String, _ request: DetectHttpApiConflictsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DetectHttpApiConflictsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.restApiConfig)) {
+            body["restApiConfig"] = request.restApiConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            body["routeId"] = request.routeId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DetectHttpApiConflicts",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-apis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(httpApiId)) + "/detect-conflicts",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DetectHttpApiConflictsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detectHttpApiConflicts(_ httpApiId: String, _ request: DetectHttpApiConflictsRequest) async throws -> DetectHttpApiConflictsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await detectHttpApiConflictsWithOptions(httpApiId as! String, request as! DetectHttpApiConflictsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -10923,6 +11037,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.aiServiceConfig)) {
             body["aiServiceConfig"] = request.aiServiceConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.apiKeyIndexToRemove)) {
+            body["apiKeyIndexToRemove"] = request.apiKeyIndexToRemove!;
         }
         if (!TeaUtils.Client.isUnset(request.apiKeyReferencesToAdd)) {
             body["apiKeyReferencesToAdd"] = request.apiKeyReferencesToAdd ?? [];
