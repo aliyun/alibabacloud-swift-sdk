@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "PaiRecService"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pairecservice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -4914,6 +4918,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxcomputeSchema)) {
             query["MaxcomputeSchema"] = request.maxcomputeSchema ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tableType)) {
+            query["TableType"] = request.tableType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -6620,6 +6627,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: StartTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartTrafficControlTargetResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
@@ -6758,6 +6768,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: StopTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopTrafficControlTargetResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }

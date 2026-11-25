@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -20432,6 +20433,10 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
 
     public var executionTime: String?
 
+    public var flinkJobOutdated: String?
+
+    public var flinkJobs: String?
+
     public var flinkResourceId: String?
 
     public var flinkResourceName: String?
@@ -20531,6 +20536,12 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if self.executionTime != nil {
             map["ExecutionTime"] = self.executionTime!
+        }
+        if self.flinkJobOutdated != nil {
+            map["FlinkJobOutdated"] = self.flinkJobOutdated!
+        }
+        if self.flinkJobs != nil {
+            map["FlinkJobs"] = self.flinkJobs!
         }
         if self.flinkResourceId != nil {
             map["FlinkResourceId"] = self.flinkResourceId!
@@ -20654,6 +20665,12 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if let value = dict["ExecutionTime"] as? String {
             self.executionTime = value
+        }
+        if let value = dict["FlinkJobOutdated"] as? String {
+            self.flinkJobOutdated = value
+        }
+        if let value = dict["FlinkJobs"] as? String {
+            self.flinkJobs = value
         }
         if let value = dict["FlinkResourceId"] as? String {
             self.flinkResourceId = value
@@ -26721,6 +26738,8 @@ public class ListInstanceResourceSchemasResponse : Tea.TeaModel {
 public class ListInstanceResourceTablesRequest : Tea.TeaModel {
     public var maxcomputeSchema: String?
 
+    public var tableType: String?
+
     public override init() {
         super.init()
     }
@@ -26738,6 +26757,9 @@ public class ListInstanceResourceTablesRequest : Tea.TeaModel {
         if self.maxcomputeSchema != nil {
             map["MaxcomputeSchema"] = self.maxcomputeSchema!
         }
+        if self.tableType != nil {
+            map["TableType"] = self.tableType!
+        }
         return map
     }
 
@@ -26745,6 +26767,9 @@ public class ListInstanceResourceTablesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["MaxcomputeSchema"] as? String {
             self.maxcomputeSchema = value
+        }
+        if let value = dict["TableType"] as? String {
+            self.tableType = value
         }
     }
 }
@@ -32252,6 +32277,10 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
 
         public var executionTime: String?
 
+        public var flinkJobOutdated: String?
+
+        public var flinkJobs: String?
+
         public var flinkResourceId: String?
 
         public var flinkResourceName: String?
@@ -32356,6 +32385,12 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if self.executionTime != nil {
                 map["ExecutionTime"] = self.executionTime!
+            }
+            if self.flinkJobOutdated != nil {
+                map["FlinkJobOutdated"] = self.flinkJobOutdated!
+            }
+            if self.flinkJobs != nil {
+                map["FlinkJobs"] = self.flinkJobs!
             }
             if self.flinkResourceId != nil {
                 map["FlinkResourceId"] = self.flinkResourceId!
@@ -32485,6 +32520,12 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExecutionTime"] as? String {
                 self.executionTime = value
+            }
+            if let value = dict["FlinkJobOutdated"] as? String {
+                self.flinkJobOutdated = value
+            }
+            if let value = dict["FlinkJobs"] as? String {
+                self.flinkJobs = value
             }
             if let value = dict["FlinkResourceId"] as? String {
                 self.flinkResourceId = value
@@ -36911,6 +36952,8 @@ public class SplitTrafficControlTargetResponse : Tea.TeaModel {
 }
 
 public class StartTrafficControlTargetRequest : Tea.TeaModel {
+    public var environment: String?
+
     public var instanceId: String?
 
     public override init() {
@@ -36927,6 +36970,9 @@ public class StartTrafficControlTargetRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -36935,6 +36981,9 @@ public class StartTrafficControlTargetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Environment"] as? String {
+            self.environment = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -37375,6 +37424,8 @@ public class StopTrafficControlFlinkTaskResponse : Tea.TeaModel {
 }
 
 public class StopTrafficControlTargetRequest : Tea.TeaModel {
+    public var environment: String?
+
     public var instanceId: String?
 
     public override init() {
@@ -37391,6 +37442,9 @@ public class StopTrafficControlTargetRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -37399,6 +37453,9 @@ public class StopTrafficControlTargetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Environment"] as? String {
+            self.environment = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
