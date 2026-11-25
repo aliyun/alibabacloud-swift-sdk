@@ -2432,6 +2432,8 @@ public class E2BNetwork : Tea.TeaModel {
 
     public var maskRequestHost: String?
 
+    public var rules: [String: [[String: Any]]]?
+
     public override init() {
         super.init()
     }
@@ -2458,6 +2460,9 @@ public class E2BNetwork : Tea.TeaModel {
         if self.maskRequestHost != nil {
             map["maskRequestHost"] = self.maskRequestHost!
         }
+        if self.rules != nil {
+            map["rules"] = self.rules!
+        }
         return map
     }
 
@@ -2474,6 +2479,9 @@ public class E2BNetwork : Tea.TeaModel {
         }
         if let value = dict["maskRequestHost"] as? String {
             self.maskRequestHost = value
+        }
+        if let value = dict["rules"] as? [String: [[String: Any]]] {
+            self.rules = value
         }
     }
 }
@@ -4711,6 +4719,61 @@ public class InnerSandboxVolumeMount : Tea.TeaModel {
             var model = InnerSandboxVolumeMount.Oss()
             model.fromMap(value)
             self.oss = model
+        }
+    }
+}
+
+public class InnerUpdateSandboxNetworkInput : Tea.TeaModel {
+    public var allowInternetAccess: Bool?
+
+    public var allowOut: [String]?
+
+    public var denyOut: [String]?
+
+    public var rules: [String: [[String: Any]]]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowInternetAccess != nil {
+            map["allowInternetAccess"] = self.allowInternetAccess!
+        }
+        if self.allowOut != nil {
+            map["allowOut"] = self.allowOut!
+        }
+        if self.denyOut != nil {
+            map["denyOut"] = self.denyOut!
+        }
+        if self.rules != nil {
+            map["rules"] = self.rules!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["allowInternetAccess"] as? Bool {
+            self.allowInternetAccess = value
+        }
+        if let value = dict["allowOut"] as? [String] {
+            self.allowOut = value
+        }
+        if let value = dict["denyOut"] as? [String] {
+            self.denyOut = value
+        }
+        if let value = dict["rules"] as? [String: [[String: Any]]] {
+            self.rules = value
         }
     }
 }
@@ -7016,7 +7079,7 @@ public class PublicWarmPoolConfig : Tea.TeaModel {
 public class Quota : Tea.TeaModel {
     public var cpuCores: Int32?
 
-    public var createSessionWithSnapshotConcurrency: Int32?
+    public var createSandboxWithSnapshotConcurrency: Int32?
 
     public var createSnapshotConcurrency: Int32?
 
@@ -7049,8 +7112,8 @@ public class Quota : Tea.TeaModel {
         if self.cpuCores != nil {
             map["cpuCores"] = self.cpuCores!
         }
-        if self.createSessionWithSnapshotConcurrency != nil {
-            map["createSessionWithSnapshotConcurrency"] = self.createSessionWithSnapshotConcurrency!
+        if self.createSandboxWithSnapshotConcurrency != nil {
+            map["createSandboxWithSnapshotConcurrency"] = self.createSandboxWithSnapshotConcurrency!
         }
         if self.createSnapshotConcurrency != nil {
             map["createSnapshotConcurrency"] = self.createSnapshotConcurrency!
@@ -7081,8 +7144,8 @@ public class Quota : Tea.TeaModel {
         if let value = dict["cpuCores"] as? Int32 {
             self.cpuCores = value
         }
-        if let value = dict["createSessionWithSnapshotConcurrency"] as? Int32 {
-            self.createSessionWithSnapshotConcurrency = value
+        if let value = dict["createSandboxWithSnapshotConcurrency"] as? Int32 {
+            self.createSandboxWithSnapshotConcurrency = value
         }
         if let value = dict["createSnapshotConcurrency"] as? Int32 {
             self.createSnapshotConcurrency = value
@@ -7111,7 +7174,7 @@ public class Quota : Tea.TeaModel {
 public class QuotaUsage : Tea.TeaModel {
     public var cpuCores: Double?
 
-    public var createSessionWithSnapshotConcurrency: Int32?
+    public var createSandboxWithSnapshotConcurrency: Int32?
 
     public var createSnapshotConcurrency: Int32?
 
@@ -7142,8 +7205,8 @@ public class QuotaUsage : Tea.TeaModel {
         if self.cpuCores != nil {
             map["cpuCores"] = self.cpuCores!
         }
-        if self.createSessionWithSnapshotConcurrency != nil {
-            map["createSessionWithSnapshotConcurrency"] = self.createSessionWithSnapshotConcurrency!
+        if self.createSandboxWithSnapshotConcurrency != nil {
+            map["createSandboxWithSnapshotConcurrency"] = self.createSandboxWithSnapshotConcurrency!
         }
         if self.createSnapshotConcurrency != nil {
             map["createSnapshotConcurrency"] = self.createSnapshotConcurrency!
@@ -7171,8 +7234,8 @@ public class QuotaUsage : Tea.TeaModel {
         if let value = dict["cpuCores"] as? Double {
             self.cpuCores = value
         }
-        if let value = dict["createSessionWithSnapshotConcurrency"] as? Int32 {
-            self.createSessionWithSnapshotConcurrency = value
+        if let value = dict["createSandboxWithSnapshotConcurrency"] as? Int32 {
+            self.createSandboxWithSnapshotConcurrency = value
         }
         if let value = dict["createSnapshotConcurrency"] as? Int32 {
             self.createSnapshotConcurrency = value
