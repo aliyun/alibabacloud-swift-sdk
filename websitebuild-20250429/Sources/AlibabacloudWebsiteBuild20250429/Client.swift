@@ -2366,6 +2366,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deployOrderId)) {
             query["DeployOrderId"] = request.deployOrderId!;
         }
+        if (!TeaUtils.Client.isUnset(request.publishOrderId)) {
+            query["PublishOrderId"] = request.publishOrderId!;
+        }
         if (!TeaUtils.Client.isUnset(request.websiteDomain)) {
             query["WebsiteDomain"] = request.websiteDomain ?? "";
         }
@@ -5098,8 +5101,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func publishAppInstanceWithOptions(_ request: PublishAppInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishAppInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.artifactDigest)) {
+            query["ArtifactDigest"] = request.artifactDigest ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.candidateId)) {
+            query["CandidateId"] = request.candidateId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.deployChannel)) {
             query["DeployChannel"] = request.deployChannel ?? "";
@@ -5107,11 +5116,35 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ext)) {
+            query["Ext"] = request.ext ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idempotencyKey)) {
+            query["IdempotencyKey"] = request.idempotencyKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.logicalNumber)) {
             query["LogicalNumber"] = request.logicalNumber!;
         }
+        if (!TeaUtils.Client.isUnset(request.platformAppid)) {
+            query["PlatformAppid"] = request.platformAppid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginDeclarationHash)) {
+            query["PluginDeclarationHash"] = request.pluginDeclarationHash ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privacyDraftId)) {
+            query["PrivacyDraftId"] = request.privacyDraftId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privacyRevision)) {
+            query["PrivacyRevision"] = request.privacyRevision ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.publishNumber)) {
             query["PublishNumber"] = request.publishNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.publishOrderId)) {
+            query["PublishOrderId"] = request.publishOrderId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadSequence)) {
+            query["UploadSequence"] = request.uploadSequence!;
         }
         if (!TeaUtils.Client.isUnset(request.weappAction)) {
             query["WeappAction"] = request.weappAction ?? "";

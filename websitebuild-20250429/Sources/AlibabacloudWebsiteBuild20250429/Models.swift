@@ -1908,6 +1908,8 @@ public class AppServiceAggregate : Tea.TeaModel {
 
     public var userId: String?
 
+    public var visible: Bool?
+
     public override init() {
         super.init()
     }
@@ -1983,6 +1985,9 @@ public class AppServiceAggregate : Tea.TeaModel {
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
+        if self.visible != nil {
+            map["Visible"] = self.visible!
+        }
         return map
     }
 
@@ -2057,6 +2062,9 @@ public class AppServiceAggregate : Tea.TeaModel {
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
+        }
+        if let value = dict["Visible"] as? Bool {
+            self.visible = value
         }
     }
 }
@@ -22838,6 +22846,8 @@ public class GetAppPublishStatusRequest : Tea.TeaModel {
 
     public var deployOrderId: Int64?
 
+    public var publishOrderId: Int64?
+
     public var websiteDomain: String?
 
     public override init() {
@@ -22860,6 +22870,9 @@ public class GetAppPublishStatusRequest : Tea.TeaModel {
         if self.deployOrderId != nil {
             map["DeployOrderId"] = self.deployOrderId!
         }
+        if self.publishOrderId != nil {
+            map["PublishOrderId"] = self.publishOrderId!
+        }
         if self.websiteDomain != nil {
             map["WebsiteDomain"] = self.websiteDomain!
         }
@@ -22874,6 +22887,9 @@ public class GetAppPublishStatusRequest : Tea.TeaModel {
         if let value = dict["DeployOrderId"] as? Int64 {
             self.deployOrderId = value
         }
+        if let value = dict["PublishOrderId"] as? Int64 {
+            self.publishOrderId = value
+        }
         if let value = dict["WebsiteDomain"] as? String {
             self.websiteDomain = value
         }
@@ -22882,7 +22898,19 @@ public class GetAppPublishStatusRequest : Tea.TeaModel {
 
 public class GetAppPublishStatusResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
+        public var artifactDigest: String?
+
+        public var auditId: String?
+
+        public var bindingId: String?
+
         public var canQuickRevert: String?
+
+        public var candidateId: String?
+
+        public var candidateStatus: String?
+
+        public var commitHash: String?
 
         public var currentStep: String?
 
@@ -22908,11 +22936,27 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
 
         public var percent: Int32?
 
+        public var platformAppid: String?
+
+        public var pluginDeclarationHash: String?
+
+        public var pluginState: String?
+
+        public var privacyDraftId: String?
+
+        public var privacyRevision: String?
+
+        public var publishDiagnostics: String?
+
+        public var publishEnv: String?
+
         public var publishNumber: String?
 
         public var publishOrderId: Int64?
 
         public var publishTime: String?
+
+        public var readbackStatus: String?
 
         public var siteId: String?
 
@@ -22921,6 +22965,18 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
         public var steps: [String]?
 
         public var subchannel: String?
+
+        public var submitIntentStatus: String?
+
+        public var updatedAt: Int64?
+
+        public var uploadAttemptId: String?
+
+        public var uploadLeaseState: String?
+
+        public var uploadSequence: Int64?
+
+        public var uploadTicketState: String?
 
         public override init() {
             super.init()
@@ -22936,8 +22992,26 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.artifactDigest != nil {
+                map["ArtifactDigest"] = self.artifactDigest!
+            }
+            if self.auditId != nil {
+                map["AuditId"] = self.auditId!
+            }
+            if self.bindingId != nil {
+                map["BindingId"] = self.bindingId!
+            }
             if self.canQuickRevert != nil {
                 map["CanQuickRevert"] = self.canQuickRevert!
+            }
+            if self.candidateId != nil {
+                map["CandidateId"] = self.candidateId!
+            }
+            if self.candidateStatus != nil {
+                map["CandidateStatus"] = self.candidateStatus!
+            }
+            if self.commitHash != nil {
+                map["CommitHash"] = self.commitHash!
             }
             if self.currentStep != nil {
                 map["CurrentStep"] = self.currentStep!
@@ -22975,6 +23049,27 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             if self.percent != nil {
                 map["Percent"] = self.percent!
             }
+            if self.platformAppid != nil {
+                map["PlatformAppid"] = self.platformAppid!
+            }
+            if self.pluginDeclarationHash != nil {
+                map["PluginDeclarationHash"] = self.pluginDeclarationHash!
+            }
+            if self.pluginState != nil {
+                map["PluginState"] = self.pluginState!
+            }
+            if self.privacyDraftId != nil {
+                map["PrivacyDraftId"] = self.privacyDraftId!
+            }
+            if self.privacyRevision != nil {
+                map["PrivacyRevision"] = self.privacyRevision!
+            }
+            if self.publishDiagnostics != nil {
+                map["PublishDiagnostics"] = self.publishDiagnostics!
+            }
+            if self.publishEnv != nil {
+                map["PublishEnv"] = self.publishEnv!
+            }
             if self.publishNumber != nil {
                 map["PublishNumber"] = self.publishNumber!
             }
@@ -22983,6 +23078,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if self.publishTime != nil {
                 map["PublishTime"] = self.publishTime!
+            }
+            if self.readbackStatus != nil {
+                map["ReadbackStatus"] = self.readbackStatus!
             }
             if self.siteId != nil {
                 map["SiteId"] = self.siteId!
@@ -22996,13 +23094,49 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             if self.subchannel != nil {
                 map["Subchannel"] = self.subchannel!
             }
+            if self.submitIntentStatus != nil {
+                map["SubmitIntentStatus"] = self.submitIntentStatus!
+            }
+            if self.updatedAt != nil {
+                map["UpdatedAt"] = self.updatedAt!
+            }
+            if self.uploadAttemptId != nil {
+                map["UploadAttemptId"] = self.uploadAttemptId!
+            }
+            if self.uploadLeaseState != nil {
+                map["UploadLeaseState"] = self.uploadLeaseState!
+            }
+            if self.uploadSequence != nil {
+                map["UploadSequence"] = self.uploadSequence!
+            }
+            if self.uploadTicketState != nil {
+                map["UploadTicketState"] = self.uploadTicketState!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ArtifactDigest"] as? String {
+                self.artifactDigest = value
+            }
+            if let value = dict["AuditId"] as? String {
+                self.auditId = value
+            }
+            if let value = dict["BindingId"] as? String {
+                self.bindingId = value
+            }
             if let value = dict["CanQuickRevert"] as? String {
                 self.canQuickRevert = value
+            }
+            if let value = dict["CandidateId"] as? String {
+                self.candidateId = value
+            }
+            if let value = dict["CandidateStatus"] as? String {
+                self.candidateStatus = value
+            }
+            if let value = dict["CommitHash"] as? String {
+                self.commitHash = value
             }
             if let value = dict["CurrentStep"] as? String {
                 self.currentStep = value
@@ -23040,6 +23174,27 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             if let value = dict["Percent"] as? Int32 {
                 self.percent = value
             }
+            if let value = dict["PlatformAppid"] as? String {
+                self.platformAppid = value
+            }
+            if let value = dict["PluginDeclarationHash"] as? String {
+                self.pluginDeclarationHash = value
+            }
+            if let value = dict["PluginState"] as? String {
+                self.pluginState = value
+            }
+            if let value = dict["PrivacyDraftId"] as? String {
+                self.privacyDraftId = value
+            }
+            if let value = dict["PrivacyRevision"] as? String {
+                self.privacyRevision = value
+            }
+            if let value = dict["PublishDiagnostics"] as? String {
+                self.publishDiagnostics = value
+            }
+            if let value = dict["PublishEnv"] as? String {
+                self.publishEnv = value
+            }
             if let value = dict["PublishNumber"] as? String {
                 self.publishNumber = value
             }
@@ -23048,6 +23203,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["PublishTime"] as? String {
                 self.publishTime = value
+            }
+            if let value = dict["ReadbackStatus"] as? String {
+                self.readbackStatus = value
             }
             if let value = dict["SiteId"] as? String {
                 self.siteId = value
@@ -23060,6 +23218,24 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["Subchannel"] as? String {
                 self.subchannel = value
+            }
+            if let value = dict["SubmitIntentStatus"] as? String {
+                self.submitIntentStatus = value
+            }
+            if let value = dict["UpdatedAt"] as? Int64 {
+                self.updatedAt = value
+            }
+            if let value = dict["UploadAttemptId"] as? String {
+                self.uploadAttemptId = value
+            }
+            if let value = dict["UploadLeaseState"] as? String {
+                self.uploadLeaseState = value
+            }
+            if let value = dict["UploadSequence"] as? Int64 {
+                self.uploadSequence = value
+            }
+            if let value = dict["UploadTicketState"] as? String {
+                self.uploadTicketState = value
             }
         }
     }
@@ -37379,7 +37555,17 @@ public class ListAppPublishHistoryRequest : Tea.TeaModel {
 public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
         public class History : Tea.TeaModel {
+            public var artifactDigest: String?
+
+            public var auditId: String?
+
+            public var bindingId: String?
+
             public var canQuickRevert: String?
+
+            public var candidateId: String?
+
+            public var candidateStatus: String?
 
             public var commitHash: String?
 
@@ -37407,17 +37593,45 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
 
             public var percent: Int32?
 
+            public var platformAppid: String?
+
+            public var pluginDeclarationHash: String?
+
+            public var pluginState: String?
+
+            public var privacyDraftId: String?
+
+            public var privacyRevision: String?
+
+            public var publishDiagnostics: String?
+
+            public var publishEnv: String?
+
             public var publishNumber: String?
 
             public var publishOrderId: Int64?
 
             public var publishTime: String?
 
+            public var readbackStatus: String?
+
             public var stepCodes: [String]?
 
             public var steps: [String]?
 
             public var subchannel: String?
+
+            public var submitIntentStatus: String?
+
+            public var updatedAt: Int64?
+
+            public var uploadAttemptId: String?
+
+            public var uploadLeaseState: String?
+
+            public var uploadSequence: Int64?
+
+            public var uploadTicketState: String?
 
             public override init() {
                 super.init()
@@ -37433,8 +37647,23 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.artifactDigest != nil {
+                    map["ArtifactDigest"] = self.artifactDigest!
+                }
+                if self.auditId != nil {
+                    map["AuditId"] = self.auditId!
+                }
+                if self.bindingId != nil {
+                    map["BindingId"] = self.bindingId!
+                }
                 if self.canQuickRevert != nil {
                     map["CanQuickRevert"] = self.canQuickRevert!
+                }
+                if self.candidateId != nil {
+                    map["CandidateId"] = self.candidateId!
+                }
+                if self.candidateStatus != nil {
+                    map["CandidateStatus"] = self.candidateStatus!
                 }
                 if self.commitHash != nil {
                     map["CommitHash"] = self.commitHash!
@@ -37475,6 +37704,27 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if self.percent != nil {
                     map["Percent"] = self.percent!
                 }
+                if self.platformAppid != nil {
+                    map["PlatformAppid"] = self.platformAppid!
+                }
+                if self.pluginDeclarationHash != nil {
+                    map["PluginDeclarationHash"] = self.pluginDeclarationHash!
+                }
+                if self.pluginState != nil {
+                    map["PluginState"] = self.pluginState!
+                }
+                if self.privacyDraftId != nil {
+                    map["PrivacyDraftId"] = self.privacyDraftId!
+                }
+                if self.privacyRevision != nil {
+                    map["PrivacyRevision"] = self.privacyRevision!
+                }
+                if self.publishDiagnostics != nil {
+                    map["PublishDiagnostics"] = self.publishDiagnostics!
+                }
+                if self.publishEnv != nil {
+                    map["PublishEnv"] = self.publishEnv!
+                }
                 if self.publishNumber != nil {
                     map["PublishNumber"] = self.publishNumber!
                 }
@@ -37483,6 +37733,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if self.publishTime != nil {
                     map["PublishTime"] = self.publishTime!
+                }
+                if self.readbackStatus != nil {
+                    map["ReadbackStatus"] = self.readbackStatus!
                 }
                 if self.stepCodes != nil {
                     map["StepCodes"] = self.stepCodes!
@@ -37493,13 +37746,46 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if self.subchannel != nil {
                     map["Subchannel"] = self.subchannel!
                 }
+                if self.submitIntentStatus != nil {
+                    map["SubmitIntentStatus"] = self.submitIntentStatus!
+                }
+                if self.updatedAt != nil {
+                    map["UpdatedAt"] = self.updatedAt!
+                }
+                if self.uploadAttemptId != nil {
+                    map["UploadAttemptId"] = self.uploadAttemptId!
+                }
+                if self.uploadLeaseState != nil {
+                    map["UploadLeaseState"] = self.uploadLeaseState!
+                }
+                if self.uploadSequence != nil {
+                    map["UploadSequence"] = self.uploadSequence!
+                }
+                if self.uploadTicketState != nil {
+                    map["UploadTicketState"] = self.uploadTicketState!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ArtifactDigest"] as? String {
+                    self.artifactDigest = value
+                }
+                if let value = dict["AuditId"] as? String {
+                    self.auditId = value
+                }
+                if let value = dict["BindingId"] as? String {
+                    self.bindingId = value
+                }
                 if let value = dict["CanQuickRevert"] as? String {
                     self.canQuickRevert = value
+                }
+                if let value = dict["CandidateId"] as? String {
+                    self.candidateId = value
+                }
+                if let value = dict["CandidateStatus"] as? String {
+                    self.candidateStatus = value
                 }
                 if let value = dict["CommitHash"] as? String {
                     self.commitHash = value
@@ -37540,6 +37826,27 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if let value = dict["Percent"] as? Int32 {
                     self.percent = value
                 }
+                if let value = dict["PlatformAppid"] as? String {
+                    self.platformAppid = value
+                }
+                if let value = dict["PluginDeclarationHash"] as? String {
+                    self.pluginDeclarationHash = value
+                }
+                if let value = dict["PluginState"] as? String {
+                    self.pluginState = value
+                }
+                if let value = dict["PrivacyDraftId"] as? String {
+                    self.privacyDraftId = value
+                }
+                if let value = dict["PrivacyRevision"] as? String {
+                    self.privacyRevision = value
+                }
+                if let value = dict["PublishDiagnostics"] as? String {
+                    self.publishDiagnostics = value
+                }
+                if let value = dict["PublishEnv"] as? String {
+                    self.publishEnv = value
+                }
                 if let value = dict["PublishNumber"] as? String {
                     self.publishNumber = value
                 }
@@ -37549,6 +37856,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if let value = dict["PublishTime"] as? String {
                     self.publishTime = value
                 }
+                if let value = dict["ReadbackStatus"] as? String {
+                    self.readbackStatus = value
+                }
                 if let value = dict["StepCodes"] as? [String] {
                     self.stepCodes = value
                 }
@@ -37557,6 +37867,24 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Subchannel"] as? String {
                     self.subchannel = value
+                }
+                if let value = dict["SubmitIntentStatus"] as? String {
+                    self.submitIntentStatus = value
+                }
+                if let value = dict["UpdatedAt"] as? Int64 {
+                    self.updatedAt = value
+                }
+                if let value = dict["UploadAttemptId"] as? String {
+                    self.uploadAttemptId = value
+                }
+                if let value = dict["UploadLeaseState"] as? String {
+                    self.uploadLeaseState = value
+                }
+                if let value = dict["UploadSequence"] as? Int64 {
+                    self.uploadSequence = value
+                }
+                if let value = dict["UploadTicketState"] as? String {
+                    self.uploadTicketState = value
                 }
             }
         }
@@ -46704,15 +47032,35 @@ public class OperateSupabaseForAdminResponse : Tea.TeaModel {
 }
 
 public class PublishAppInstanceRequest : Tea.TeaModel {
+    public var artifactDigest: String?
+
     public var bizId: String?
+
+    public var candidateId: String?
 
     public var deployChannel: String?
 
     public var description_: String?
 
+    public var ext: String?
+
+    public var idempotencyKey: String?
+
     public var logicalNumber: Int32?
 
+    public var platformAppid: String?
+
+    public var pluginDeclarationHash: String?
+
+    public var privacyDraftId: String?
+
+    public var privacyRevision: String?
+
     public var publishNumber: String?
+
+    public var publishOrderId: Int64?
+
+    public var uploadSequence: Int64?
 
     public var weappAction: String?
 
@@ -46730,8 +47078,14 @@ public class PublishAppInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.artifactDigest != nil {
+            map["ArtifactDigest"] = self.artifactDigest!
+        }
         if self.bizId != nil {
             map["BizId"] = self.bizId!
+        }
+        if self.candidateId != nil {
+            map["CandidateId"] = self.candidateId!
         }
         if self.deployChannel != nil {
             map["DeployChannel"] = self.deployChannel!
@@ -46739,11 +47093,35 @@ public class PublishAppInstanceRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.ext != nil {
+            map["Ext"] = self.ext!
+        }
+        if self.idempotencyKey != nil {
+            map["IdempotencyKey"] = self.idempotencyKey!
+        }
         if self.logicalNumber != nil {
             map["LogicalNumber"] = self.logicalNumber!
         }
+        if self.platformAppid != nil {
+            map["PlatformAppid"] = self.platformAppid!
+        }
+        if self.pluginDeclarationHash != nil {
+            map["PluginDeclarationHash"] = self.pluginDeclarationHash!
+        }
+        if self.privacyDraftId != nil {
+            map["PrivacyDraftId"] = self.privacyDraftId!
+        }
+        if self.privacyRevision != nil {
+            map["PrivacyRevision"] = self.privacyRevision!
+        }
         if self.publishNumber != nil {
             map["PublishNumber"] = self.publishNumber!
+        }
+        if self.publishOrderId != nil {
+            map["PublishOrderId"] = self.publishOrderId!
+        }
+        if self.uploadSequence != nil {
+            map["UploadSequence"] = self.uploadSequence!
         }
         if self.weappAction != nil {
             map["WeappAction"] = self.weappAction!
@@ -46753,8 +47131,14 @@ public class PublishAppInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ArtifactDigest"] as? String {
+            self.artifactDigest = value
+        }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["CandidateId"] as? String {
+            self.candidateId = value
         }
         if let value = dict["DeployChannel"] as? String {
             self.deployChannel = value
@@ -46762,11 +47146,35 @@ public class PublishAppInstanceRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["Ext"] as? String {
+            self.ext = value
+        }
+        if let value = dict["IdempotencyKey"] as? String {
+            self.idempotencyKey = value
+        }
         if let value = dict["LogicalNumber"] as? Int32 {
             self.logicalNumber = value
         }
+        if let value = dict["PlatformAppid"] as? String {
+            self.platformAppid = value
+        }
+        if let value = dict["PluginDeclarationHash"] as? String {
+            self.pluginDeclarationHash = value
+        }
+        if let value = dict["PrivacyDraftId"] as? String {
+            self.privacyDraftId = value
+        }
+        if let value = dict["PrivacyRevision"] as? String {
+            self.privacyRevision = value
+        }
         if let value = dict["PublishNumber"] as? String {
             self.publishNumber = value
+        }
+        if let value = dict["PublishOrderId"] as? Int64 {
+            self.publishOrderId = value
+        }
+        if let value = dict["UploadSequence"] as? Int64 {
+            self.uploadSequence = value
         }
         if let value = dict["WeappAction"] as? String {
             self.weappAction = value
@@ -46776,7 +47184,39 @@ public class PublishAppInstanceRequest : Tea.TeaModel {
 
 public class PublishAppInstanceResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
+        public var artifactDigest: String?
+
+        public var auditId: String?
+
+        public var candidateId: String?
+
+        public var candidateStatus: String?
+
+        public var commitHash: String?
+
+        public var platformAppid: String?
+
+        public var pluginDeclarationHash: String?
+
+        public var pluginState: String?
+
+        public var privacyDraftId: String?
+
+        public var privacyRevision: String?
+
+        public var publishEnv: String?
+
+        public var publishNumber: String?
+
         public var publishOrderId: Int64?
+
+        public var readbackStatus: String?
+
+        public var submitIntentStatus: String?
+
+        public var updatedAt: Int64?
+
+        public var uploadSequence: Int64?
 
         public override init() {
             super.init()
@@ -46792,16 +47232,112 @@ public class PublishAppInstanceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.artifactDigest != nil {
+                map["ArtifactDigest"] = self.artifactDigest!
+            }
+            if self.auditId != nil {
+                map["AuditId"] = self.auditId!
+            }
+            if self.candidateId != nil {
+                map["CandidateId"] = self.candidateId!
+            }
+            if self.candidateStatus != nil {
+                map["CandidateStatus"] = self.candidateStatus!
+            }
+            if self.commitHash != nil {
+                map["CommitHash"] = self.commitHash!
+            }
+            if self.platformAppid != nil {
+                map["PlatformAppid"] = self.platformAppid!
+            }
+            if self.pluginDeclarationHash != nil {
+                map["PluginDeclarationHash"] = self.pluginDeclarationHash!
+            }
+            if self.pluginState != nil {
+                map["PluginState"] = self.pluginState!
+            }
+            if self.privacyDraftId != nil {
+                map["PrivacyDraftId"] = self.privacyDraftId!
+            }
+            if self.privacyRevision != nil {
+                map["PrivacyRevision"] = self.privacyRevision!
+            }
+            if self.publishEnv != nil {
+                map["PublishEnv"] = self.publishEnv!
+            }
+            if self.publishNumber != nil {
+                map["PublishNumber"] = self.publishNumber!
+            }
             if self.publishOrderId != nil {
                 map["PublishOrderId"] = self.publishOrderId!
+            }
+            if self.readbackStatus != nil {
+                map["ReadbackStatus"] = self.readbackStatus!
+            }
+            if self.submitIntentStatus != nil {
+                map["SubmitIntentStatus"] = self.submitIntentStatus!
+            }
+            if self.updatedAt != nil {
+                map["UpdatedAt"] = self.updatedAt!
+            }
+            if self.uploadSequence != nil {
+                map["UploadSequence"] = self.uploadSequence!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ArtifactDigest"] as? String {
+                self.artifactDigest = value
+            }
+            if let value = dict["AuditId"] as? String {
+                self.auditId = value
+            }
+            if let value = dict["CandidateId"] as? String {
+                self.candidateId = value
+            }
+            if let value = dict["CandidateStatus"] as? String {
+                self.candidateStatus = value
+            }
+            if let value = dict["CommitHash"] as? String {
+                self.commitHash = value
+            }
+            if let value = dict["PlatformAppid"] as? String {
+                self.platformAppid = value
+            }
+            if let value = dict["PluginDeclarationHash"] as? String {
+                self.pluginDeclarationHash = value
+            }
+            if let value = dict["PluginState"] as? String {
+                self.pluginState = value
+            }
+            if let value = dict["PrivacyDraftId"] as? String {
+                self.privacyDraftId = value
+            }
+            if let value = dict["PrivacyRevision"] as? String {
+                self.privacyRevision = value
+            }
+            if let value = dict["PublishEnv"] as? String {
+                self.publishEnv = value
+            }
+            if let value = dict["PublishNumber"] as? String {
+                self.publishNumber = value
+            }
             if let value = dict["PublishOrderId"] as? Int64 {
                 self.publishOrderId = value
+            }
+            if let value = dict["ReadbackStatus"] as? String {
+                self.readbackStatus = value
+            }
+            if let value = dict["SubmitIntentStatus"] as? String {
+                self.submitIntentStatus = value
+            }
+            if let value = dict["UpdatedAt"] as? Int64 {
+                self.updatedAt = value
+            }
+            if let value = dict["UploadSequence"] as? Int64 {
+                self.uploadSequence = value
             }
         }
     }
@@ -62694,6 +63230,16 @@ public class UpdateMiniAppBindingRequest : Tea.TeaModel {
 
 public class UpdateMiniAppBindingResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var privacyDraftId: String?
+
+        public var privacyRevision: String?
+
+        public var readbackStatus: String?
+
+        public var revision: Int64?
+
+        public var status: String?
+
         public var success: Bool?
 
         public override init() {
@@ -62710,6 +63256,21 @@ public class UpdateMiniAppBindingResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.privacyDraftId != nil {
+                map["PrivacyDraftId"] = self.privacyDraftId!
+            }
+            if self.privacyRevision != nil {
+                map["PrivacyRevision"] = self.privacyRevision!
+            }
+            if self.readbackStatus != nil {
+                map["ReadbackStatus"] = self.readbackStatus!
+            }
+            if self.revision != nil {
+                map["Revision"] = self.revision!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.success != nil {
                 map["Success"] = self.success!
             }
@@ -62718,6 +63279,21 @@ public class UpdateMiniAppBindingResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["PrivacyDraftId"] as? String {
+                self.privacyDraftId = value
+            }
+            if let value = dict["PrivacyRevision"] as? String {
+                self.privacyRevision = value
+            }
+            if let value = dict["ReadbackStatus"] as? String {
+                self.readbackStatus = value
+            }
+            if let value = dict["Revision"] as? Int64 {
+                self.revision = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
             if let value = dict["Success"] as? Bool {
                 self.success = value
             }
