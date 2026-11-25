@@ -293,9 +293,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["Source"] = request.source ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
-            query["SourceIp"] = request.sourceIp ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.sourceType)) {
             query["SourceType"] = request.sourceType ?? "";
         }
@@ -11619,9 +11616,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["Source"] = request.source ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
-            query["SourceIp"] = request.sourceIp ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.sourceType)) {
             query["SourceType"] = request.sourceType ?? "";
         }
@@ -13325,9 +13319,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
-            query["SourceIp"] = request.sourceIp ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

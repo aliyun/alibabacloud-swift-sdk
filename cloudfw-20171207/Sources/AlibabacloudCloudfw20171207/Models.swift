@@ -1401,8 +1401,6 @@ public class AddDnsFirewallPolicyRequest : Tea.TeaModel {
 
     public var source: String?
 
-    public var sourceIp: String?
-
     public var sourceType: String?
 
     public override init() {
@@ -1449,9 +1447,6 @@ public class AddDnsFirewallPolicyRequest : Tea.TeaModel {
         if self.source != nil {
             map["Source"] = self.source!
         }
-        if self.sourceIp != nil {
-            map["SourceIp"] = self.sourceIp!
-        }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
@@ -1489,9 +1484,6 @@ public class AddDnsFirewallPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Source"] as? String {
             self.source = value
-        }
-        if let value = dict["SourceIp"] as? String {
-            self.sourceIp = value
         }
         if let value = dict["SourceType"] as? String {
             self.sourceType = value
@@ -40460,6 +40452,8 @@ public class DescribePolicyAdvancedConfigRequest : Tea.TeaModel {
 }
 
 public class DescribePolicyAdvancedConfigResponseBody : Tea.TeaModel {
+    public var eips: [String]?
+
     public var internetSwitch: String?
 
     public var requestId: String?
@@ -40478,6 +40472,9 @@ public class DescribePolicyAdvancedConfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eips != nil {
+            map["Eips"] = self.eips!
+        }
         if self.internetSwitch != nil {
             map["InternetSwitch"] = self.internetSwitch!
         }
@@ -40489,6 +40486,9 @@ public class DescribePolicyAdvancedConfigResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Eips"] as? [String] {
+            self.eips = value
+        }
         if let value = dict["InternetSwitch"] as? String {
             self.internetSwitch = value
         }
@@ -40779,6 +40779,8 @@ public class DescribePostpayBillResponseBody : Tea.TeaModel {
 
         public var internetTraffic: Double?
 
+        public var isAgenticBilling: Bool?
+
         public var isDerated: Int32?
 
         public var logStorage: Int64?
@@ -40821,6 +40823,9 @@ public class DescribePostpayBillResponseBody : Tea.TeaModel {
             }
             if self.internetTraffic != nil {
                 map["InternetTraffic"] = self.internetTraffic!
+            }
+            if self.isAgenticBilling != nil {
+                map["IsAgenticBilling"] = self.isAgenticBilling!
             }
             if self.isDerated != nil {
                 map["IsDerated"] = self.isDerated!
@@ -40865,6 +40870,9 @@ public class DescribePostpayBillResponseBody : Tea.TeaModel {
             }
             if let value = dict["InternetTraffic"] as? Double {
                 self.internetTraffic = value
+            }
+            if let value = dict["IsAgenticBilling"] as? Bool {
+                self.isAgenticBilling = value
             }
             if let value = dict["IsDerated"] as? Int32 {
                 self.isDerated = value
@@ -42417,6 +42425,8 @@ public class DescribePrepayBillTotalResponseBody : Tea.TeaModel {
 
         public var internetTrafficBandwidth: Double?
 
+        public var isAgenticBilling: Bool?
+
         public var monthlyRemainingFreeTraffic: Double?
 
         public var natTrafficBandwidth: Double?
@@ -42467,6 +42477,9 @@ public class DescribePrepayBillTotalResponseBody : Tea.TeaModel {
             if self.internetTrafficBandwidth != nil {
                 map["InternetTrafficBandwidth"] = self.internetTrafficBandwidth!
             }
+            if self.isAgenticBilling != nil {
+                map["IsAgenticBilling"] = self.isAgenticBilling!
+            }
             if self.monthlyRemainingFreeTraffic != nil {
                 map["MonthlyRemainingFreeTraffic"] = self.monthlyRemainingFreeTraffic!
             }
@@ -42513,6 +42526,9 @@ public class DescribePrepayBillTotalResponseBody : Tea.TeaModel {
             }
             if let value = dict["InternetTrafficBandwidth"] as? Double {
                 self.internetTrafficBandwidth = value
+            }
+            if let value = dict["IsAgenticBilling"] as? Bool {
+                self.isAgenticBilling = value
             }
             if let value = dict["MonthlyRemainingFreeTraffic"] as? Double {
                 self.monthlyRemainingFreeTraffic = value
@@ -54443,6 +54459,8 @@ public class DescribeUserBuyVersionRequest : Tea.TeaModel {
 public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
     public var ackClusterConnectorQuota: Int64?
 
+    public var agentic: Int32?
+
     public var aliUid: Int64?
 
     public var defaultBandwidth: Int64?
@@ -54507,6 +54525,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.ackClusterConnectorQuota != nil {
             map["AckClusterConnectorQuota"] = self.ackClusterConnectorQuota!
+        }
+        if self.agentic != nil {
+            map["Agentic"] = self.agentic!
         }
         if self.aliUid != nil {
             map["AliUid"] = self.aliUid!
@@ -54587,6 +54608,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AckClusterConnectorQuota"] as? Int64 {
             self.ackClusterConnectorQuota = value
+        }
+        if let value = dict["Agentic"] as? Int32 {
+            self.agentic = value
         }
         if let value = dict["AliUid"] as? Int64 {
             self.aliUid = value
@@ -69337,8 +69361,6 @@ public class ModifyDnsFirewallPolicyRequest : Tea.TeaModel {
 
     public var source: String?
 
-    public var sourceIp: String?
-
     public var sourceType: String?
 
     public override init() {
@@ -69382,9 +69404,6 @@ public class ModifyDnsFirewallPolicyRequest : Tea.TeaModel {
         if self.source != nil {
             map["Source"] = self.source!
         }
-        if self.sourceIp != nil {
-            map["SourceIp"] = self.sourceIp!
-        }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
@@ -69419,9 +69438,6 @@ public class ModifyDnsFirewallPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Source"] as? String {
             self.source = value
-        }
-        if let value = dict["SourceIp"] as? String {
-            self.sourceIp = value
         }
         if let value = dict["SourceType"] as? String {
             self.sourceType = value
@@ -75729,8 +75745,6 @@ public class SetAutoProtectNewAssetsRequest : Tea.TeaModel {
 
     public var lang: String?
 
-    public var sourceIp: String?
-
     public override init() {
         super.init()
     }
@@ -75751,9 +75765,6 @@ public class SetAutoProtectNewAssetsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
-        if self.sourceIp != nil {
-            map["SourceIp"] = self.sourceIp!
-        }
         return map
     }
 
@@ -75764,9 +75775,6 @@ public class SetAutoProtectNewAssetsRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
-        }
-        if let value = dict["SourceIp"] as? String {
-            self.sourceIp = value
         }
     }
 }
