@@ -1,9 +1,113 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
+
+public class AICoachScriptHotWordItem : Tea.TeaModel {
+    public var creatorId: String?
+
+    public var creatorName: String?
+
+    public var description_: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var hotWord: String?
+
+    public var hotWordId: String?
+
+    public var modifierId: String?
+
+    public var modifierName: String?
+
+    public var scriptRecordId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.creatorId != nil {
+            map["creatorId"] = self.creatorId!
+        }
+        if self.creatorName != nil {
+            map["creatorName"] = self.creatorName!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.hotWord != nil {
+            map["hotWord"] = self.hotWord!
+        }
+        if self.hotWordId != nil {
+            map["hotWordId"] = self.hotWordId!
+        }
+        if self.modifierId != nil {
+            map["modifierId"] = self.modifierId!
+        }
+        if self.modifierName != nil {
+            map["modifierName"] = self.modifierName!
+        }
+        if self.scriptRecordId != nil {
+            map["scriptRecordId"] = self.scriptRecordId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["creatorId"] as? String {
+            self.creatorId = value
+        }
+        if let value = dict["creatorName"] as? String {
+            self.creatorName = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["gmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["gmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["hotWord"] as? String {
+            self.hotWord = value
+        }
+        if let value = dict["hotWordId"] as? String {
+            self.hotWordId = value
+        }
+        if let value = dict["modifierId"] as? String {
+            self.modifierId = value
+        }
+        if let value = dict["modifierName"] as? String {
+            self.modifierName = value
+        }
+        if let value = dict["scriptRecordId"] as? String {
+            self.scriptRecordId = value
+        }
+    }
+}
 
 public class AddDocumentInfo : Tea.TeaModel {
     public var documentType: String?
