@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1751,11 +1752,17 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
 
         public var capacity: Int64?
 
+        public var controlSn: String?
+
         public var instanceId: String?
 
         public var kvcsId: String?
 
         public var mountPointId: String?
+
+        public var nguid: String?
+
+        public var protocol_: String?
 
         public var regionId: String?
 
@@ -1787,6 +1794,9 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
             if self.capacity != nil {
                 map["Capacity"] = self.capacity!
             }
+            if self.controlSn != nil {
+                map["ControlSn"] = self.controlSn!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -1795,6 +1805,12 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
             }
             if self.mountPointId != nil {
                 map["MountPointId"] = self.mountPointId!
+            }
+            if self.nguid != nil {
+                map["Nguid"] = self.nguid!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -1822,6 +1838,9 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
             if let value = dict["Capacity"] as? Int64 {
                 self.capacity = value
             }
+            if let value = dict["ControlSn"] as? String {
+                self.controlSn = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
@@ -1830,6 +1849,12 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["MountPointId"] as? String {
                 self.mountPointId = value
+            }
+            if let value = dict["Nguid"] as? String {
+                self.nguid = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
