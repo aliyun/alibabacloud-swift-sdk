@@ -3205,13 +3205,67 @@ public class DLTablebaseInfo : Tea.TeaModel {
 }
 
 public class DataAgentApplication : Tea.TeaModel {
+    public class LastRequest : Tea.TeaModel {
+        public var action: String?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Action"] as? String {
+                self.action = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+        }
+    }
     public var agentId: String?
 
     public var appId: String?
 
     public var appName: String?
 
+    public var appUrl: String?
+
     public var applicationExtraInfo: String?
+
+    public var applicationRevision: Int64?
+
+    public var availabilityErrorCode: String?
+
+    public var availabilityErrorMessage: String?
 
     public var creatorName: String?
 
@@ -3223,11 +3277,195 @@ public class DataAgentApplication : Tea.TeaModel {
 
     public var gmtModified: String?
 
+    public var lastRequest: DataAgentApplication.LastRequest?
+
     public var mainUid: String?
+
+    public var observationStale: Bool?
+
+    public var ready: Bool?
 
     public var region: String?
 
     public var sessionId: String?
+
+    public var status: String?
+
+    public var vSwitchId: String?
+
+    public var vpcId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.lastRequest?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.appUrl != nil {
+            map["AppUrl"] = self.appUrl!
+        }
+        if self.applicationExtraInfo != nil {
+            map["ApplicationExtraInfo"] = self.applicationExtraInfo!
+        }
+        if self.applicationRevision != nil {
+            map["ApplicationRevision"] = self.applicationRevision!
+        }
+        if self.availabilityErrorCode != nil {
+            map["AvailabilityErrorCode"] = self.availabilityErrorCode!
+        }
+        if self.availabilityErrorMessage != nil {
+            map["AvailabilityErrorMessage"] = self.availabilityErrorMessage!
+        }
+        if self.creatorName != nil {
+            map["CreatorName"] = self.creatorName!
+        }
+        if self.creatorUid != nil {
+            map["CreatorUid"] = self.creatorUid!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.gmtCreated != nil {
+            map["GmtCreated"] = self.gmtCreated!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.lastRequest != nil {
+            map["LastRequest"] = self.lastRequest?.toMap()
+        }
+        if self.mainUid != nil {
+            map["MainUid"] = self.mainUid!
+        }
+        if self.observationStale != nil {
+            map["ObservationStale"] = self.observationStale!
+        }
+        if self.ready != nil {
+            map["Ready"] = self.ready!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["AppUrl"] as? String {
+            self.appUrl = value
+        }
+        if let value = dict["ApplicationExtraInfo"] as? String {
+            self.applicationExtraInfo = value
+        }
+        if let value = dict["ApplicationRevision"] as? Int64 {
+            self.applicationRevision = value
+        }
+        if let value = dict["AvailabilityErrorCode"] as? String {
+            self.availabilityErrorCode = value
+        }
+        if let value = dict["AvailabilityErrorMessage"] as? String {
+            self.availabilityErrorMessage = value
+        }
+        if let value = dict["CreatorName"] as? String {
+            self.creatorName = value
+        }
+        if let value = dict["CreatorUid"] as? String {
+            self.creatorUid = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GmtCreated"] as? String {
+            self.gmtCreated = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["LastRequest"] as? [String: Any?] {
+            var model = DataAgentApplication.LastRequest()
+            model.fromMap(value)
+            self.lastRequest = model
+        }
+        if let value = dict["MainUid"] as? String {
+            self.mainUid = value
+        }
+        if let value = dict["ObservationStale"] as? Bool {
+            self.observationStale = value
+        }
+        if let value = dict["Ready"] as? Bool {
+            self.ready = value
+        }
+        if let value = dict["Region"] as? String {
+            self.region = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class DataAgentApplicationAgreement : Tea.TeaModel {
+    public var expiresAt: String?
+
+    public var regionId: String?
+
+    public var signedAt: String?
 
     public var status: String?
 
@@ -3247,41 +3485,14 @@ public class DataAgentApplication : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.agentId != nil {
-            map["AgentId"] = self.agentId!
+        if self.expiresAt != nil {
+            map["ExpiresAt"] = self.expiresAt!
         }
-        if self.appId != nil {
-            map["AppId"] = self.appId!
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
         }
-        if self.appName != nil {
-            map["AppName"] = self.appName!
-        }
-        if self.applicationExtraInfo != nil {
-            map["ApplicationExtraInfo"] = self.applicationExtraInfo!
-        }
-        if self.creatorName != nil {
-            map["CreatorName"] = self.creatorName!
-        }
-        if self.creatorUid != nil {
-            map["CreatorUid"] = self.creatorUid!
-        }
-        if self.description_ != nil {
-            map["Description"] = self.description_!
-        }
-        if self.gmtCreated != nil {
-            map["GmtCreated"] = self.gmtCreated!
-        }
-        if self.gmtModified != nil {
-            map["GmtModified"] = self.gmtModified!
-        }
-        if self.mainUid != nil {
-            map["MainUid"] = self.mainUid!
-        }
-        if self.region != nil {
-            map["Region"] = self.region!
-        }
-        if self.sessionId != nil {
-            map["SessionId"] = self.sessionId!
+        if self.signedAt != nil {
+            map["SignedAt"] = self.signedAt!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -3294,41 +3505,14 @@ public class DataAgentApplication : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["AgentId"] as? String {
-            self.agentId = value
+        if let value = dict["ExpiresAt"] as? String {
+            self.expiresAt = value
         }
-        if let value = dict["AppId"] as? String {
-            self.appId = value
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if let value = dict["AppName"] as? String {
-            self.appName = value
-        }
-        if let value = dict["ApplicationExtraInfo"] as? String {
-            self.applicationExtraInfo = value
-        }
-        if let value = dict["CreatorName"] as? String {
-            self.creatorName = value
-        }
-        if let value = dict["CreatorUid"] as? String {
-            self.creatorUid = value
-        }
-        if let value = dict["Description"] as? String {
-            self.description_ = value
-        }
-        if let value = dict["GmtCreated"] as? String {
-            self.gmtCreated = value
-        }
-        if let value = dict["GmtModified"] as? String {
-            self.gmtModified = value
-        }
-        if let value = dict["MainUid"] as? String {
-            self.mainUid = value
-        }
-        if let value = dict["Region"] as? String {
-            self.region = value
-        }
-        if let value = dict["SessionId"] as? String {
-            self.sessionId = value
+        if let value = dict["SignedAt"] as? String {
+            self.signedAt = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -6974,321 +7158,6 @@ public class AddUserToDataAgentWorkspaceResponse : Tea.TeaModel {
     }
 }
 
-public class BatchCreateDataLakePartitionsRequest : Tea.TeaModel {
-    public var catalogName: String?
-
-    public var dbName: String?
-
-    public var ifNotExists: Bool?
-
-    public var needResult: Bool?
-
-    public var partitionInputs: [DLPartitionInput]?
-
-    public var tableName: String?
-
-    public var tid: Int64?
-
-    public var workspaceId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.catalogName != nil {
-            map["CatalogName"] = self.catalogName!
-        }
-        if self.dbName != nil {
-            map["DbName"] = self.dbName!
-        }
-        if self.ifNotExists != nil {
-            map["IfNotExists"] = self.ifNotExists!
-        }
-        if self.needResult != nil {
-            map["NeedResult"] = self.needResult!
-        }
-        if self.partitionInputs != nil {
-            var tmp : [Any] = []
-            for k in self.partitionInputs! {
-                tmp.append(k.toMap())
-            }
-            map["PartitionInputs"] = tmp
-        }
-        if self.tableName != nil {
-            map["TableName"] = self.tableName!
-        }
-        if self.tid != nil {
-            map["Tid"] = self.tid!
-        }
-        if self.workspaceId != nil {
-            map["WorkspaceId"] = self.workspaceId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["CatalogName"] as? String {
-            self.catalogName = value
-        }
-        if let value = dict["DbName"] as? String {
-            self.dbName = value
-        }
-        if let value = dict["IfNotExists"] as? Bool {
-            self.ifNotExists = value
-        }
-        if let value = dict["NeedResult"] as? Bool {
-            self.needResult = value
-        }
-        if let value = dict["PartitionInputs"] as? [Any?] {
-            var tmp : [DLPartitionInput] = []
-            for v in value {
-                if v != nil {
-                    var model = DLPartitionInput()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.partitionInputs = tmp
-        }
-        if let value = dict["TableName"] as? String {
-            self.tableName = value
-        }
-        if let value = dict["Tid"] as? Int64 {
-            self.tid = value
-        }
-        if let value = dict["WorkspaceId"] as? Int64 {
-            self.workspaceId = value
-        }
-    }
-}
-
-public class BatchCreateDataLakePartitionsShrinkRequest : Tea.TeaModel {
-    public var catalogName: String?
-
-    public var dbName: String?
-
-    public var ifNotExists: Bool?
-
-    public var needResult: Bool?
-
-    public var partitionInputsShrink: String?
-
-    public var tableName: String?
-
-    public var tid: Int64?
-
-    public var workspaceId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.catalogName != nil {
-            map["CatalogName"] = self.catalogName!
-        }
-        if self.dbName != nil {
-            map["DbName"] = self.dbName!
-        }
-        if self.ifNotExists != nil {
-            map["IfNotExists"] = self.ifNotExists!
-        }
-        if self.needResult != nil {
-            map["NeedResult"] = self.needResult!
-        }
-        if self.partitionInputsShrink != nil {
-            map["PartitionInputs"] = self.partitionInputsShrink!
-        }
-        if self.tableName != nil {
-            map["TableName"] = self.tableName!
-        }
-        if self.tid != nil {
-            map["Tid"] = self.tid!
-        }
-        if self.workspaceId != nil {
-            map["WorkspaceId"] = self.workspaceId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["CatalogName"] as? String {
-            self.catalogName = value
-        }
-        if let value = dict["DbName"] as? String {
-            self.dbName = value
-        }
-        if let value = dict["IfNotExists"] as? Bool {
-            self.ifNotExists = value
-        }
-        if let value = dict["NeedResult"] as? Bool {
-            self.needResult = value
-        }
-        if let value = dict["PartitionInputs"] as? String {
-            self.partitionInputsShrink = value
-        }
-        if let value = dict["TableName"] as? String {
-            self.tableName = value
-        }
-        if let value = dict["Tid"] as? Int64 {
-            self.tid = value
-        }
-        if let value = dict["WorkspaceId"] as? Int64 {
-            self.workspaceId = value
-        }
-    }
-}
-
-public class BatchCreateDataLakePartitionsResponseBody : Tea.TeaModel {
-    public var errorCode: String?
-
-    public var errorMessage: String?
-
-    public var partitions: [DLPartition]?
-
-    public var requestId: String?
-
-    public var success: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.errorCode != nil {
-            map["ErrorCode"] = self.errorCode!
-        }
-        if self.errorMessage != nil {
-            map["ErrorMessage"] = self.errorMessage!
-        }
-        if self.partitions != nil {
-            var tmp : [Any] = []
-            for k in self.partitions! {
-                tmp.append(k.toMap())
-            }
-            map["Partitions"] = tmp
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["ErrorCode"] as? String {
-            self.errorCode = value
-        }
-        if let value = dict["ErrorMessage"] as? String {
-            self.errorMessage = value
-        }
-        if let value = dict["Partitions"] as? [Any?] {
-            var tmp : [DLPartition] = []
-            for v in value {
-                if v != nil {
-                    var model = DLPartition()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.partitions = tmp
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-        if let value = dict["Success"] as? String {
-            self.success = value
-        }
-    }
-}
-
-public class BatchCreateDataLakePartitionsResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: BatchCreateDataLakePartitionsResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = BatchCreateDataLakePartitionsResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
 public class CheckDataAgentMemoryConfigRequest : Tea.TeaModel {
     public var DMSUnit: String?
 
@@ -8773,9 +8642,15 @@ public class CreateAirflowRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableLineage: Bool?
+
     public var enableServerless: Bool?
 
     public var gracefulShutdownTimeout: Int32?
+
+    public var lineageReplicas: Int32?
+
+    public var lineageSpec: String?
 
     public var ossBucketName: String?
 
@@ -8838,11 +8713,20 @@ public class CreateAirflowRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableLineage != nil {
+            map["EnableLineage"] = self.enableLineage!
+        }
         if self.enableServerless != nil {
             map["EnableServerless"] = self.enableServerless!
         }
         if self.gracefulShutdownTimeout != nil {
             map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+        }
+        if self.lineageReplicas != nil {
+            map["LineageReplicas"] = self.lineageReplicas!
+        }
+        if self.lineageSpec != nil {
+            map["LineageSpec"] = self.lineageSpec!
         }
         if self.ossBucketName != nil {
             map["OssBucketName"] = self.ossBucketName!
@@ -8913,11 +8797,20 @@ public class CreateAirflowRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EnableLineage"] as? Bool {
+            self.enableLineage = value
+        }
         if let value = dict["EnableServerless"] as? Bool {
             self.enableServerless = value
         }
         if let value = dict["GracefulShutdownTimeout"] as? Int32 {
             self.gracefulShutdownTimeout = value
+        }
+        if let value = dict["LineageReplicas"] as? Int32 {
+            self.lineageReplicas = value
+        }
+        if let value = dict["LineageSpec"] as? String {
+            self.lineageSpec = value
         }
         if let value = dict["OssBucketName"] as? String {
             self.ossBucketName = value
@@ -8970,9 +8863,15 @@ public class CreateAirflowShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableLineage: Bool?
+
     public var enableServerless: Bool?
 
     public var gracefulShutdownTimeout: Int32?
+
+    public var lineageReplicas: Int32?
+
+    public var lineageSpec: String?
 
     public var ossBucketName: String?
 
@@ -9031,11 +8930,20 @@ public class CreateAirflowShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableLineage != nil {
+            map["EnableLineage"] = self.enableLineage!
+        }
         if self.enableServerless != nil {
             map["EnableServerless"] = self.enableServerless!
         }
         if self.gracefulShutdownTimeout != nil {
             map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+        }
+        if self.lineageReplicas != nil {
+            map["LineageReplicas"] = self.lineageReplicas!
+        }
+        if self.lineageSpec != nil {
+            map["LineageSpec"] = self.lineageSpec!
         }
         if self.ossBucketName != nil {
             map["OssBucketName"] = self.ossBucketName!
@@ -9096,11 +9004,20 @@ public class CreateAirflowShrinkRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EnableLineage"] as? Bool {
+            self.enableLineage = value
+        }
         if let value = dict["EnableServerless"] as? Bool {
             self.enableServerless = value
         }
         if let value = dict["GracefulShutdownTimeout"] as? Int32 {
             self.gracefulShutdownTimeout = value
+        }
+        if let value = dict["LineageReplicas"] as? Int32 {
+            self.lineageReplicas = value
+        }
+        if let value = dict["LineageSpec"] as? String {
+            self.lineageSpec = value
         }
         if let value = dict["OssBucketName"] as? String {
             self.ossBucketName = value
@@ -9160,11 +9077,17 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var enableLineage: Bool?
+
         public var enableServerless: Bool?
 
         public var gmtCreated: String?
 
         public var gracefulShutdownTimeout: Int32?
+
+        public var lineageReplicas: Int32?
+
+        public var lineageSpec: String?
 
         public var ossBucketName: String?
 
@@ -9238,6 +9161,9 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.enableLineage != nil {
+                map["EnableLineage"] = self.enableLineage!
+            }
             if self.enableServerless != nil {
                 map["EnableServerless"] = self.enableServerless!
             }
@@ -9246,6 +9172,12 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             }
             if self.gracefulShutdownTimeout != nil {
                 map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+            }
+            if self.lineageReplicas != nil {
+                map["LineageReplicas"] = self.lineageReplicas!
+            }
+            if self.lineageSpec != nil {
+                map["LineageSpec"] = self.lineageSpec!
             }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
@@ -9328,6 +9260,9 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["EnableLineage"] as? Bool {
+                self.enableLineage = value
+            }
             if let value = dict["EnableServerless"] as? Bool {
                 self.enableServerless = value
             }
@@ -9336,6 +9271,12 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             }
             if let value = dict["GracefulShutdownTimeout"] as? Int32 {
                 self.gracefulShutdownTimeout = value
+            }
+            if let value = dict["LineageReplicas"] as? Int32 {
+                self.lineageReplicas = value
+            }
+            if let value = dict["LineageSpec"] as? String {
+                self.lineageSpec = value
             }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value
@@ -22767,7 +22708,13 @@ public class GetAirflowResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var enableLineage: Bool?
+
         public var gmtCreated: String?
+
+        public var lineageReplicas: Int32?
+
+        public var lineageSpec: String?
 
         public var ossBucketName: String?
 
@@ -22833,8 +22780,17 @@ public class GetAirflowResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.enableLineage != nil {
+                map["EnableLineage"] = self.enableLineage!
+            }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
+            }
+            if self.lineageReplicas != nil {
+                map["LineageReplicas"] = self.lineageReplicas!
+            }
+            if self.lineageSpec != nil {
+                map["LineageSpec"] = self.lineageSpec!
             }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
@@ -22904,8 +22860,17 @@ public class GetAirflowResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["EnableLineage"] as? Bool {
+                self.enableLineage = value
+            }
             if let value = dict["GmtCreated"] as? String {
                 self.gmtCreated = value
+            }
+            if let value = dict["LineageReplicas"] as? Int32 {
+                self.lineageReplicas = value
+            }
+            if let value = dict["LineageSpec"] as? String {
+                self.lineageSpec = value
             }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value
@@ -23778,7 +23743,11 @@ public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var accelerationRatio: Double?
 
+        public var peakConcurrency: Double?
+
         public var rateLimitedSessionCount: Int64?
+
+        public var totalLlmQueueDuration: Double?
 
         public var totalLlmWaitDuration: Double?
 
@@ -23809,8 +23778,14 @@ public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
             if self.accelerationRatio != nil {
                 map["AccelerationRatio"] = self.accelerationRatio!
             }
+            if self.peakConcurrency != nil {
+                map["PeakConcurrency"] = self.peakConcurrency!
+            }
             if self.rateLimitedSessionCount != nil {
                 map["RateLimitedSessionCount"] = self.rateLimitedSessionCount!
+            }
+            if self.totalLlmQueueDuration != nil {
+                map["TotalLlmQueueDuration"] = self.totalLlmQueueDuration!
             }
             if self.totalLlmWaitDuration != nil {
                 map["TotalLlmWaitDuration"] = self.totalLlmWaitDuration!
@@ -23838,8 +23813,14 @@ public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
             if let value = dict["AccelerationRatio"] as? Double {
                 self.accelerationRatio = value
             }
+            if let value = dict["PeakConcurrency"] as? Double {
+                self.peakConcurrency = value
+            }
             if let value = dict["RateLimitedSessionCount"] as? Int64 {
                 self.rateLimitedSessionCount = value
+            }
+            if let value = dict["TotalLlmQueueDuration"] as? Double {
+                self.totalLlmQueueDuration = value
             }
             if let value = dict["TotalLlmWaitDuration"] as? Double {
                 self.totalLlmWaitDuration = value
@@ -24122,6 +24103,8 @@ public class GetDataAgentTaskModelUsageMetricsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var beginTime: Int64?
 
+        public var concurrency: Double?
+
         public var endTime: Int64?
 
         public var tpm: Int64?
@@ -24143,6 +24126,9 @@ public class GetDataAgentTaskModelUsageMetricsResponseBody : Tea.TeaModel {
             if self.beginTime != nil {
                 map["BeginTime"] = self.beginTime!
             }
+            if self.concurrency != nil {
+                map["Concurrency"] = self.concurrency!
+            }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
@@ -24156,6 +24142,9 @@ public class GetDataAgentTaskModelUsageMetricsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["BeginTime"] as? Int64 {
                 self.beginTime = value
+            }
+            if let value = dict["Concurrency"] as? Double {
+                self.concurrency = value
             }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
@@ -29920,7 +29909,13 @@ public class ListAirflowsResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var enableLineage: Bool?
+
             public var gmtCreated: String?
+
+            public var lineageReplicas: Int32?
+
+            public var lineageSpec: String?
 
             public var ossBucketName: String?
 
@@ -29984,8 +29979,17 @@ public class ListAirflowsResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.enableLineage != nil {
+                    map["EnableLineage"] = self.enableLineage!
+                }
                 if self.gmtCreated != nil {
                     map["GmtCreated"] = self.gmtCreated!
+                }
+                if self.lineageReplicas != nil {
+                    map["LineageReplicas"] = self.lineageReplicas!
+                }
+                if self.lineageSpec != nil {
+                    map["LineageSpec"] = self.lineageSpec!
                 }
                 if self.ossBucketName != nil {
                     map["OssBucketName"] = self.ossBucketName!
@@ -30052,8 +30056,17 @@ public class ListAirflowsResponseBody : Tea.TeaModel {
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
+                if let value = dict["EnableLineage"] as? Bool {
+                    self.enableLineage = value
+                }
                 if let value = dict["GmtCreated"] as? String {
                     self.gmtCreated = value
+                }
+                if let value = dict["LineageReplicas"] as? Int32 {
+                    self.lineageReplicas = value
+                }
+                if let value = dict["LineageSpec"] as? String {
+                    self.lineageSpec = value
                 }
                 if let value = dict["OssBucketName"] as? String {
                     self.ossBucketName = value
@@ -45003,9 +45016,15 @@ public class UpdateAirflowRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableLineage: Bool?
+
     public var enableServerless: Bool?
 
     public var gracefulShutdownTimeout: Int32?
+
+    public var lineageReplicas: Int32?
+
+    public var lineageSpec: String?
 
     public var pluginsDir: String?
 
@@ -45056,11 +45075,20 @@ public class UpdateAirflowRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableLineage != nil {
+            map["EnableLineage"] = self.enableLineage!
+        }
         if self.enableServerless != nil {
             map["EnableServerless"] = self.enableServerless!
         }
         if self.gracefulShutdownTimeout != nil {
             map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+        }
+        if self.lineageReplicas != nil {
+            map["LineageReplicas"] = self.lineageReplicas!
+        }
+        if self.lineageSpec != nil {
+            map["LineageSpec"] = self.lineageSpec!
         }
         if self.pluginsDir != nil {
             map["PluginsDir"] = self.pluginsDir!
@@ -45113,11 +45141,20 @@ public class UpdateAirflowRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EnableLineage"] as? Bool {
+            self.enableLineage = value
+        }
         if let value = dict["EnableServerless"] as? Bool {
             self.enableServerless = value
         }
         if let value = dict["GracefulShutdownTimeout"] as? Int32 {
             self.gracefulShutdownTimeout = value
+        }
+        if let value = dict["LineageReplicas"] as? Int32 {
+            self.lineageReplicas = value
+        }
+        if let value = dict["LineageSpec"] as? String {
+            self.lineageSpec = value
         }
         if let value = dict["PluginsDir"] as? String {
             self.pluginsDir = value
@@ -45152,9 +45189,15 @@ public class UpdateAirflowShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableLineage: Bool?
+
     public var enableServerless: Bool?
 
     public var gracefulShutdownTimeout: Int32?
+
+    public var lineageReplicas: Int32?
+
+    public var lineageSpec: String?
 
     public var pluginsDir: String?
 
@@ -45201,11 +45244,20 @@ public class UpdateAirflowShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableLineage != nil {
+            map["EnableLineage"] = self.enableLineage!
+        }
         if self.enableServerless != nil {
             map["EnableServerless"] = self.enableServerless!
         }
         if self.gracefulShutdownTimeout != nil {
             map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+        }
+        if self.lineageReplicas != nil {
+            map["LineageReplicas"] = self.lineageReplicas!
+        }
+        if self.lineageSpec != nil {
+            map["LineageSpec"] = self.lineageSpec!
         }
         if self.pluginsDir != nil {
             map["PluginsDir"] = self.pluginsDir!
@@ -45248,11 +45300,20 @@ public class UpdateAirflowShrinkRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EnableLineage"] as? Bool {
+            self.enableLineage = value
+        }
         if let value = dict["EnableServerless"] as? Bool {
             self.enableServerless = value
         }
         if let value = dict["GracefulShutdownTimeout"] as? Int32 {
             self.gracefulShutdownTimeout = value
+        }
+        if let value = dict["LineageReplicas"] as? Int32 {
+            self.lineageReplicas = value
+        }
+        if let value = dict["LineageSpec"] as? String {
+            self.lineageSpec = value
         }
         if let value = dict["PluginsDir"] as? String {
             self.pluginsDir = value
@@ -45292,6 +45353,8 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var enableLineage: Bool?
+
         public var enableServerless: Bool?
 
         public var environments: String?
@@ -45299,6 +45362,10 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
         public var gmtCreated: String?
 
         public var gracefulShutdownTimeout: Int32?
+
+        public var lineageReplicas: Int32?
+
+        public var lineageSpec: String?
 
         public var ossBucketName: String?
 
@@ -45373,6 +45440,9 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.enableLineage != nil {
+                map["EnableLineage"] = self.enableLineage!
+            }
             if self.enableServerless != nil {
                 map["EnableServerless"] = self.enableServerless!
             }
@@ -45384,6 +45454,12 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             }
             if self.gracefulShutdownTimeout != nil {
                 map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+            }
+            if self.lineageReplicas != nil {
+                map["LineageReplicas"] = self.lineageReplicas!
+            }
+            if self.lineageSpec != nil {
+                map["LineageSpec"] = self.lineageSpec!
             }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
@@ -45469,6 +45545,9 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["EnableLineage"] as? Bool {
+                self.enableLineage = value
+            }
             if let value = dict["EnableServerless"] as? Bool {
                 self.enableServerless = value
             }
@@ -45480,6 +45559,12 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             }
             if let value = dict["GracefulShutdownTimeout"] as? Int32 {
                 self.gracefulShutdownTimeout = value
+            }
+            if let value = dict["LineageReplicas"] as? Int32 {
+                self.lineageReplicas = value
+            }
+            if let value = dict["LineageSpec"] as? String {
+                self.lineageSpec = value
             }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value

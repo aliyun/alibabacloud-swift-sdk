@@ -214,65 +214,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchCreateDataLakePartitionsWithOptions(_ tmpReq: BatchCreateDataLakePartitionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCreateDataLakePartitionsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: BatchCreateDataLakePartitionsShrinkRequest = BatchCreateDataLakePartitionsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.partitionInputs)) {
-            request.partitionInputsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.partitionInputs, "PartitionInputs", "json")
-        }
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.catalogName)) {
-            query["CatalogName"] = request.catalogName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.dbName)) {
-            query["DbName"] = request.dbName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ifNotExists)) {
-            query["IfNotExists"] = request.ifNotExists!;
-        }
-        if (!TeaUtils.Client.isUnset(request.needResult)) {
-            query["NeedResult"] = request.needResult!;
-        }
-        if (!TeaUtils.Client.isUnset(request.tableName)) {
-            query["TableName"] = request.tableName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.tid)) {
-            query["Tid"] = request.tid!;
-        }
-        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
-            query["WorkspaceId"] = request.workspaceId!;
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.partitionInputsShrink)) {
-            body["PartitionInputs"] = request.partitionInputsShrink ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "BatchCreateDataLakePartitions",
-            "version": "2025-04-14",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(BatchCreateDataLakePartitionsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchCreateDataLakePartitions(_ request: BatchCreateDataLakePartitionsRequest) async throws -> BatchCreateDataLakePartitionsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await batchCreateDataLakePartitionsWithOptions(request as! BatchCreateDataLakePartitionsRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkDataAgentMemoryConfigWithOptions(_ request: CheckDataAgentMemoryConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckDataAgentMemoryConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -492,11 +433,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableLineage)) {
+            query["EnableLineage"] = request.enableLineage!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableServerless)) {
             query["EnableServerless"] = request.enableServerless!;
         }
         if (!TeaUtils.Client.isUnset(request.gracefulShutdownTimeout)) {
             query["GracefulShutdownTimeout"] = request.gracefulShutdownTimeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lineageReplicas)) {
+            query["LineageReplicas"] = request.lineageReplicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lineageSpec)) {
+            query["LineageSpec"] = request.lineageSpec ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
             query["OssBucketName"] = request.ossBucketName ?? "";
@@ -5717,11 +5667,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableLineage)) {
+            query["EnableLineage"] = request.enableLineage!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableServerless)) {
             query["EnableServerless"] = request.enableServerless!;
         }
         if (!TeaUtils.Client.isUnset(request.gracefulShutdownTimeout)) {
             query["GracefulShutdownTimeout"] = request.gracefulShutdownTimeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lineageReplicas)) {
+            query["LineageReplicas"] = request.lineageReplicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lineageSpec)) {
+            query["LineageSpec"] = request.lineageSpec ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pluginsDir)) {
             query["PluginsDir"] = request.pluginsDir ?? "";
