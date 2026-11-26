@@ -13,9 +13,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
         self._spi = gatewayClient
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-beijing": "internetbankopen.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("internetbankopen", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
