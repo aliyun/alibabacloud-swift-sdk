@@ -37545,6 +37545,8 @@ public class ListDeviceBelongIdentifiersRequest : Tea.TeaModel {
 
     public var identifierType: String?
 
+    public var identifierValues: [String]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -37574,6 +37576,9 @@ public class ListDeviceBelongIdentifiersRequest : Tea.TeaModel {
         if self.identifierType != nil {
             map["IdentifierType"] = self.identifierType!
         }
+        if self.identifierValues != nil {
+            map["IdentifierValues"] = self.identifierValues!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -37596,6 +37601,9 @@ public class ListDeviceBelongIdentifiersRequest : Tea.TeaModel {
         }
         if let value = dict["IdentifierType"] as? String {
             self.identifierType = value
+        }
+        if let value = dict["IdentifierValues"] as? [String] {
+            self.identifierValues = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value

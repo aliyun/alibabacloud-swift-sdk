@@ -4609,6 +4609,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.identifierType)) {
             body["IdentifierType"] = request.identifierType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.identifierValues)) {
+            bodyFlat["IdentifierValues"] = request.identifierValues ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
