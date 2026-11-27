@@ -265,6 +265,8 @@ public class DistillationTemplate : Tea.TeaModel {
 
     public var description_: String?
 
+    public var doc: String?
+
     public var inputDatasetMustBeDirectory: Bool?
 
     public var inputExampleUri: String?
@@ -323,6 +325,9 @@ public class DistillationTemplate : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.doc != nil {
+            map["Doc"] = self.doc!
         }
         if self.inputDatasetMustBeDirectory != nil {
             map["InputDatasetMustBeDirectory"] = self.inputDatasetMustBeDirectory!
@@ -401,6 +406,9 @@ public class DistillationTemplate : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Doc"] as? String {
+            self.doc = value
         }
         if let value = dict["InputDatasetMustBeDirectory"] as? Bool {
             self.inputDatasetMustBeDirectory = value
@@ -580,6 +588,8 @@ public class DistillationTemplateSummary : Tea.TeaModel {
 
     public var description_: String?
 
+    public var doc: String?
+
     public var jobType: String?
 
     public var orderNumber: Int32?
@@ -616,6 +626,9 @@ public class DistillationTemplateSummary : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.doc != nil {
+            map["Doc"] = self.doc!
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
@@ -659,6 +672,9 @@ public class DistillationTemplateSummary : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Doc"] as? String {
+            self.doc = value
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value
