@@ -17455,6 +17455,10 @@ public class CreateInspectionTaskResponse : Tea.TeaModel {
 }
 
 public class CreateKBSyncLinkRequest : Tea.TeaModel {
+    public var aiTableMcpEndpoint: String?
+
+    public var chatMemberStaleTtlSeconds: Int32?
+
     public var clientId: String?
 
     public var clientSecret: String?
@@ -17471,7 +17475,13 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var selectionMode: String?
+
+    public var selectionRules: String?
+
     public var sheetMcpEndpoint: String?
+
+    public var sourceDeleteSyncEnabled: Bool?
 
     public var sourceDir: String?
 
@@ -17501,6 +17511,12 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aiTableMcpEndpoint != nil {
+            map["AiTableMcpEndpoint"] = self.aiTableMcpEndpoint!
+        }
+        if self.chatMemberStaleTtlSeconds != nil {
+            map["ChatMemberStaleTtlSeconds"] = self.chatMemberStaleTtlSeconds!
+        }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
@@ -17525,8 +17541,17 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.selectionMode != nil {
+            map["SelectionMode"] = self.selectionMode!
+        }
+        if self.selectionRules != nil {
+            map["SelectionRules"] = self.selectionRules!
+        }
         if self.sheetMcpEndpoint != nil {
             map["SheetMcpEndpoint"] = self.sheetMcpEndpoint!
+        }
+        if self.sourceDeleteSyncEnabled != nil {
+            map["SourceDeleteSyncEnabled"] = self.sourceDeleteSyncEnabled!
         }
         if self.sourceDir != nil {
             map["SourceDir"] = self.sourceDir!
@@ -17554,6 +17579,12 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AiTableMcpEndpoint"] as? String {
+            self.aiTableMcpEndpoint = value
+        }
+        if let value = dict["ChatMemberStaleTtlSeconds"] as? Int32 {
+            self.chatMemberStaleTtlSeconds = value
+        }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
         }
@@ -17578,8 +17609,17 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["SelectionMode"] as? String {
+            self.selectionMode = value
+        }
+        if let value = dict["SelectionRules"] as? String {
+            self.selectionRules = value
+        }
         if let value = dict["SheetMcpEndpoint"] as? String {
             self.sheetMcpEndpoint = value
+        }
+        if let value = dict["SourceDeleteSyncEnabled"] as? Bool {
+            self.sourceDeleteSyncEnabled = value
         }
         if let value = dict["SourceDir"] as? String {
             self.sourceDir = value
@@ -17620,11 +17660,17 @@ public class CreateKBSyncLinkResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var selectionMode: String?
+
+    public var selectionRules: String?
+
     public var sourceDir: String?
 
     public var syncIntervalMinutes: Int32?
 
     public var syncStatus: String?
+
+    public var taskId: Int32?
 
     public override init() {
         super.init()
@@ -17661,6 +17707,12 @@ public class CreateKBSyncLinkResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.selectionMode != nil {
+            map["SelectionMode"] = self.selectionMode!
+        }
+        if self.selectionRules != nil {
+            map["SelectionRules"] = self.selectionRules!
+        }
         if self.sourceDir != nil {
             map["SourceDir"] = self.sourceDir!
         }
@@ -17669,6 +17721,9 @@ public class CreateKBSyncLinkResponseBody : Tea.TeaModel {
         }
         if self.syncStatus != nil {
             map["SyncStatus"] = self.syncStatus!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
         }
         return map
     }
@@ -17696,6 +17751,12 @@ public class CreateKBSyncLinkResponseBody : Tea.TeaModel {
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["SelectionMode"] as? String {
+            self.selectionMode = value
+        }
+        if let value = dict["SelectionRules"] as? String {
+            self.selectionRules = value
+        }
         if let value = dict["SourceDir"] as? String {
             self.sourceDir = value
         }
@@ -17704,6 +17765,9 @@ public class CreateKBSyncLinkResponseBody : Tea.TeaModel {
         }
         if let value = dict["SyncStatus"] as? String {
             self.syncStatus = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
         }
     }
 }
@@ -17771,6 +17835,8 @@ public class CreateKnowledgeBaseRequest : Tea.TeaModel {
 
     public var searchMode: String?
 
+    public var sourceDeleteSyncEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -17803,6 +17869,9 @@ public class CreateKnowledgeBaseRequest : Tea.TeaModel {
         if self.searchMode != nil {
             map["SearchMode"] = self.searchMode!
         }
+        if self.sourceDeleteSyncEnabled != nil {
+            map["SourceDeleteSyncEnabled"] = self.sourceDeleteSyncEnabled!
+        }
         return map
     }
 
@@ -17826,6 +17895,9 @@ public class CreateKnowledgeBaseRequest : Tea.TeaModel {
         if let value = dict["SearchMode"] as? String {
             self.searchMode = value
         }
+        if let value = dict["SourceDeleteSyncEnabled"] as? Bool {
+            self.sourceDeleteSyncEnabled = value
+        }
     }
 }
 
@@ -17833,6 +17905,8 @@ public class CreateKnowledgeBaseResponseBody : Tea.TeaModel {
     public var knowledgeBaseId: String?
 
     public var requestId: String?
+
+    public var taskId: Int32?
 
     public override init() {
         super.init()
@@ -17854,6 +17928,9 @@ public class CreateKnowledgeBaseResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -17864,6 +17941,9 @@ public class CreateKnowledgeBaseResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
         }
     }
 }
@@ -84611,6 +84691,8 @@ public class DescribeKBSyncLinkAttributeRequest : Tea.TeaModel {
 
 public class DescribeKBSyncLinkAttributeResponseBody : Tea.TeaModel {
     public class Config : Tea.TeaModel {
+        public var chatMemberStaleTtlSeconds: Int32?
+
         public var feishuChatMemberStaleTtlSeconds: Int32?
 
         public var userId: String?
@@ -84629,6 +84711,9 @@ public class DescribeKBSyncLinkAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.chatMemberStaleTtlSeconds != nil {
+                map["ChatMemberStaleTtlSeconds"] = self.chatMemberStaleTtlSeconds!
+            }
             if self.feishuChatMemberStaleTtlSeconds != nil {
                 map["FeishuChatMemberStaleTtlSeconds"] = self.feishuChatMemberStaleTtlSeconds!
             }
@@ -84640,6 +84725,9 @@ public class DescribeKBSyncLinkAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ChatMemberStaleTtlSeconds"] as? Int32 {
+                self.chatMemberStaleTtlSeconds = value
+            }
             if let value = dict["FeishuChatMemberStaleTtlSeconds"] as? Int32 {
                 self.feishuChatMemberStaleTtlSeconds = value
             }
@@ -84663,6 +84751,12 @@ public class DescribeKBSyncLinkAttributeResponseBody : Tea.TeaModel {
     public var linkName: String?
 
     public var requestId: String?
+
+    public var selectionMode: String?
+
+    public var selectionRules: String?
+
+    public var sourceDeleteSyncEnabled: Bool?
 
     public var sourceDir: String?
 
@@ -84709,6 +84803,15 @@ public class DescribeKBSyncLinkAttributeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.selectionMode != nil {
+            map["SelectionMode"] = self.selectionMode!
+        }
+        if self.selectionRules != nil {
+            map["SelectionRules"] = self.selectionRules!
+        }
+        if self.sourceDeleteSyncEnabled != nil {
+            map["SourceDeleteSyncEnabled"] = self.sourceDeleteSyncEnabled!
+        }
         if self.sourceDir != nil {
             map["SourceDir"] = self.sourceDir!
         }
@@ -84748,6 +84851,15 @@ public class DescribeKBSyncLinkAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SelectionMode"] as? String {
+            self.selectionMode = value
+        }
+        if let value = dict["SelectionRules"] as? String {
+            self.selectionRules = value
+        }
+        if let value = dict["SourceDeleteSyncEnabled"] as? Bool {
+            self.sourceDeleteSyncEnabled = value
         }
         if let value = dict["SourceDir"] as? String {
             self.sourceDir = value
@@ -86144,6 +86256,8 @@ public class DescribeKnowledgeBaseAttributeResponseBody : Tea.TeaModel {
 
     public var shardCount: Int32?
 
+    public var sourceDeleteSyncEnabled: Bool?
+
     public var status: String?
 
     public var totalDocs: Int32?
@@ -86194,6 +86308,9 @@ public class DescribeKnowledgeBaseAttributeResponseBody : Tea.TeaModel {
         if self.shardCount != nil {
             map["ShardCount"] = self.shardCount!
         }
+        if self.sourceDeleteSyncEnabled != nil {
+            map["SourceDeleteSyncEnabled"] = self.sourceDeleteSyncEnabled!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -86237,6 +86354,9 @@ public class DescribeKnowledgeBaseAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ShardCount"] as? Int32 {
             self.shardCount = value
+        }
+        if let value = dict["SourceDeleteSyncEnabled"] as? Bool {
+            self.sourceDeleteSyncEnabled = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -144187,6 +144307,10 @@ public class UpdateExtensionsResponse : Tea.TeaModel {
 }
 
 public class UpdateKBSyncLinkRequest : Tea.TeaModel {
+    public var aiTableMcpEndpoint: String?
+
+    public var chatMemberStaleTtlSeconds: Int32?
+
     public var clientId: String?
 
     public var clientSecret: String?
@@ -144201,7 +144325,13 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var selectionMode: String?
+
+    public var selectionRules: String?
+
     public var sheetMcpEndpoint: String?
+
+    public var sourceDeleteSyncEnabled: Bool?
 
     public var syncEnabled: Bool?
 
@@ -144227,6 +144357,12 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aiTableMcpEndpoint != nil {
+            map["AiTableMcpEndpoint"] = self.aiTableMcpEndpoint!
+        }
+        if self.chatMemberStaleTtlSeconds != nil {
+            map["ChatMemberStaleTtlSeconds"] = self.chatMemberStaleTtlSeconds!
+        }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
@@ -144248,8 +144384,17 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.selectionMode != nil {
+            map["SelectionMode"] = self.selectionMode!
+        }
+        if self.selectionRules != nil {
+            map["SelectionRules"] = self.selectionRules!
+        }
         if self.sheetMcpEndpoint != nil {
             map["SheetMcpEndpoint"] = self.sheetMcpEndpoint!
+        }
+        if self.sourceDeleteSyncEnabled != nil {
+            map["SourceDeleteSyncEnabled"] = self.sourceDeleteSyncEnabled!
         }
         if self.syncEnabled != nil {
             map["SyncEnabled"] = self.syncEnabled!
@@ -144271,6 +144416,12 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AiTableMcpEndpoint"] as? String {
+            self.aiTableMcpEndpoint = value
+        }
+        if let value = dict["ChatMemberStaleTtlSeconds"] as? Int32 {
+            self.chatMemberStaleTtlSeconds = value
+        }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
         }
@@ -144292,8 +144443,17 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["SelectionMode"] as? String {
+            self.selectionMode = value
+        }
+        if let value = dict["SelectionRules"] as? String {
+            self.selectionRules = value
+        }
         if let value = dict["SheetMcpEndpoint"] as? String {
             self.sheetMcpEndpoint = value
+        }
+        if let value = dict["SourceDeleteSyncEnabled"] as? Bool {
+            self.sourceDeleteSyncEnabled = value
         }
         if let value = dict["SyncEnabled"] as? Bool {
             self.syncEnabled = value
@@ -144318,7 +144478,13 @@ public class UpdateKBSyncLinkResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var selectionMode: String?
+
+    public var selectionRules: String?
+
     public var syncSchedule: String?
+
+    public var taskId: Int32?
 
     public override init() {
         super.init()
@@ -144340,8 +144506,17 @@ public class UpdateKBSyncLinkResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.selectionMode != nil {
+            map["SelectionMode"] = self.selectionMode!
+        }
+        if self.selectionRules != nil {
+            map["SelectionRules"] = self.selectionRules!
+        }
         if self.syncSchedule != nil {
             map["SyncSchedule"] = self.syncSchedule!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
         }
         return map
     }
@@ -144354,8 +144529,17 @@ public class UpdateKBSyncLinkResponseBody : Tea.TeaModel {
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["SelectionMode"] as? String {
+            self.selectionMode = value
+        }
+        if let value = dict["SelectionRules"] as? String {
+            self.selectionRules = value
+        }
         if let value = dict["SyncSchedule"] as? String {
             self.syncSchedule = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
         }
     }
 }
@@ -144421,6 +144605,8 @@ public class UpdateKnowledgeBaseRequest : Tea.TeaModel {
 
     public var searchMode: String?
 
+    public var sourceDeleteSyncEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -144450,6 +144636,9 @@ public class UpdateKnowledgeBaseRequest : Tea.TeaModel {
         if self.searchMode != nil {
             map["SearchMode"] = self.searchMode!
         }
+        if self.sourceDeleteSyncEnabled != nil {
+            map["SourceDeleteSyncEnabled"] = self.sourceDeleteSyncEnabled!
+        }
         return map
     }
 
@@ -144470,6 +144659,9 @@ public class UpdateKnowledgeBaseRequest : Tea.TeaModel {
         if let value = dict["SearchMode"] as? String {
             self.searchMode = value
         }
+        if let value = dict["SourceDeleteSyncEnabled"] as? Bool {
+            self.sourceDeleteSyncEnabled = value
+        }
     }
 }
 
@@ -144477,6 +144669,8 @@ public class UpdateKnowledgeBaseResponseBody : Tea.TeaModel {
     public var knowledgeBaseId: String?
 
     public var requestId: String?
+
+    public var taskId: Int32?
 
     public override init() {
         super.init()
@@ -144498,6 +144692,9 @@ public class UpdateKnowledgeBaseResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -144508,6 +144705,9 @@ public class UpdateKnowledgeBaseResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
         }
     }
 }

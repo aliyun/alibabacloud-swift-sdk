@@ -4352,6 +4352,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createKBSyncLinkWithOptions(_ request: CreateKBSyncLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKBSyncLinkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiTableMcpEndpoint)) {
+            query["AiTableMcpEndpoint"] = request.aiTableMcpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatMemberStaleTtlSeconds)) {
+            query["ChatMemberStaleTtlSeconds"] = request.chatMemberStaleTtlSeconds!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["ClientId"] = request.clientId ?? "";
         }
@@ -4376,8 +4382,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.selectionMode)) {
+            query["SelectionMode"] = request.selectionMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectionRules)) {
+            query["SelectionRules"] = request.selectionRules ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sheetMcpEndpoint)) {
             query["SheetMcpEndpoint"] = request.sheetMcpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDeleteSyncEnabled)) {
+            query["SourceDeleteSyncEnabled"] = request.sourceDeleteSyncEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceDir)) {
             query["SourceDir"] = request.sourceDir ?? "";
@@ -4445,6 +4460,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.searchMode)) {
             query["SearchMode"] = request.searchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDeleteSyncEnabled)) {
+            query["SourceDeleteSyncEnabled"] = request.sourceDeleteSyncEnabled!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -26839,6 +26857,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateKBSyncLinkWithOptions(_ request: UpdateKBSyncLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKBSyncLinkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiTableMcpEndpoint)) {
+            query["AiTableMcpEndpoint"] = request.aiTableMcpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatMemberStaleTtlSeconds)) {
+            query["ChatMemberStaleTtlSeconds"] = request.chatMemberStaleTtlSeconds!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["ClientId"] = request.clientId ?? "";
         }
@@ -26860,8 +26884,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.selectionMode)) {
+            query["SelectionMode"] = request.selectionMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectionRules)) {
+            query["SelectionRules"] = request.selectionRules ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sheetMcpEndpoint)) {
             query["SheetMcpEndpoint"] = request.sheetMcpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDeleteSyncEnabled)) {
+            query["SourceDeleteSyncEnabled"] = request.sourceDeleteSyncEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.syncEnabled)) {
             query["SyncEnabled"] = request.syncEnabled!;
@@ -26920,6 +26953,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.searchMode)) {
             query["SearchMode"] = request.searchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDeleteSyncEnabled)) {
+            query["SourceDeleteSyncEnabled"] = request.sourceDeleteSyncEnabled!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
