@@ -54,6 +54,8 @@ public class AttachKVCacheStoreRequest : Tea.TeaModel {
         }
     }
     public class ResourceIds : Tea.TeaModel {
+        public var instanceId: String?
+
         public var kvcsId: String?
 
         public var vscId: String?
@@ -72,6 +74,9 @@ public class AttachKVCacheStoreRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
             if self.kvcsId != nil {
                 map["KvcsId"] = self.kvcsId!
             }
@@ -83,6 +88,9 @@ public class AttachKVCacheStoreRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
             if let value = dict["KvcsId"] as? String {
                 self.kvcsId = value
             }
@@ -1080,6 +1088,8 @@ public class DescribeZonesResponse : Tea.TeaModel {
 
 public class DetachKVCacheStoreRequest : Tea.TeaModel {
     public class ResourceIds : Tea.TeaModel {
+        public var instanceId: String?
+
         public var kvcsId: String?
 
         public var vscId: String?
@@ -1098,6 +1108,9 @@ public class DetachKVCacheStoreRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
             if self.kvcsId != nil {
                 map["KvcsId"] = self.kvcsId!
             }
@@ -1109,6 +1122,9 @@ public class DetachKVCacheStoreRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
             if let value = dict["KvcsId"] as? String {
                 self.kvcsId = value
             }
@@ -1183,6 +1199,8 @@ public class DetachKVCacheStoreResponseBody : Tea.TeaModel {
 
         public var errorMessage: String?
 
+        public var instanceId: String?
+
         public var kvcsId: String?
 
         public var status: String?
@@ -1209,6 +1227,9 @@ public class DetachKVCacheStoreResponseBody : Tea.TeaModel {
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
             }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
             if self.kvcsId != nil {
                 map["KvcsId"] = self.kvcsId!
             }
@@ -1228,6 +1249,9 @@ public class DetachKVCacheStoreResponseBody : Tea.TeaModel {
             }
             if let value = dict["ErrorMessage"] as? String {
                 self.errorMessage = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
             if let value = dict["KvcsId"] as? String {
                 self.kvcsId = value
