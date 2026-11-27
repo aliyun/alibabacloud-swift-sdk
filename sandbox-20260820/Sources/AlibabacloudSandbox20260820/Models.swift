@@ -11467,6 +11467,8 @@ public class GetResourceUsageRequest : Tea.TeaModel {
 
     public var sandboxPlan: String?
 
+    public var snapshotID: String?
+
     public var startTime: String?
 
     public var teamID: String?
@@ -11501,6 +11503,9 @@ public class GetResourceUsageRequest : Tea.TeaModel {
         if self.sandboxPlan != nil {
             map["sandboxPlan"] = self.sandboxPlan!
         }
+        if self.snapshotID != nil {
+            map["snapshotID"] = self.snapshotID!
+        }
         if self.startTime != nil {
             map["startTime"] = self.startTime!
         }
@@ -11530,6 +11535,9 @@ public class GetResourceUsageRequest : Tea.TeaModel {
         if let value = dict["sandboxPlan"] as? String {
             self.sandboxPlan = value
         }
+        if let value = dict["snapshotID"] as? String {
+            self.snapshotID = value
+        }
         if let value = dict["startTime"] as? String {
             self.startTime = value
         }
@@ -11553,6 +11561,8 @@ public class GetResourceUsageShrinkRequest : Tea.TeaModel {
     public var groupByShrink: String?
 
     public var sandboxPlan: String?
+
+    public var snapshotID: String?
 
     public var startTime: String?
 
@@ -11588,6 +11598,9 @@ public class GetResourceUsageShrinkRequest : Tea.TeaModel {
         if self.sandboxPlan != nil {
             map["sandboxPlan"] = self.sandboxPlan!
         }
+        if self.snapshotID != nil {
+            map["snapshotID"] = self.snapshotID!
+        }
         if self.startTime != nil {
             map["startTime"] = self.startTime!
         }
@@ -11616,6 +11629,9 @@ public class GetResourceUsageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["sandboxPlan"] as? String {
             self.sandboxPlan = value
+        }
+        if let value = dict["snapshotID"] as? String {
+            self.snapshotID = value
         }
         if let value = dict["startTime"] as? String {
             self.startTime = value

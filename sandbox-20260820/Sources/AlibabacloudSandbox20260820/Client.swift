@@ -716,6 +716,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sandboxPlan)) {
             query["sandboxPlan"] = request.sandboxPlan ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.snapshotID)) {
+            query["snapshotID"] = request.snapshotID ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["startTime"] = request.startTime ?? "";
         }
