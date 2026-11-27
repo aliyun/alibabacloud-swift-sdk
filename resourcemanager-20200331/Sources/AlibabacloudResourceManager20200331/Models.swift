@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3100,7 +3101,11 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var displayName: String?
+
+    public var dryRun: Bool?
 
     public var name: String?
 
@@ -3120,8 +3125,14 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -3138,8 +3149,14 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -4842,6 +4859,10 @@ public class DeletePolicyVersionResponse : Tea.TeaModel {
 }
 
 public class DeleteResourceGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -4858,6 +4879,12 @@ public class DeleteResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -4866,6 +4893,12 @@ public class DeleteResourceGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
