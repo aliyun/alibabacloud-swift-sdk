@@ -4082,6 +4082,85 @@ public class AlertRuleTemplateApplyRecord : Tea.TeaModel {
     }
 }
 
+public class AlertRuleTemplateBody : Tea.TeaModel {
+    public var description_: String?
+
+    public var labels: String?
+
+    public var ruleConfigs: String?
+
+    public var scenes: String?
+
+    public var schemaVersion: String?
+
+    public var status: Int32?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.labels != nil {
+            map["labels"] = self.labels!
+        }
+        if self.ruleConfigs != nil {
+            map["ruleConfigs"] = self.ruleConfigs!
+        }
+        if self.scenes != nil {
+            map["scenes"] = self.scenes!
+        }
+        if self.schemaVersion != nil {
+            map["schemaVersion"] = self.schemaVersion!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.templateName != nil {
+            map["templateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["labels"] as? String {
+            self.labels = value
+        }
+        if let value = dict["ruleConfigs"] as? String {
+            self.ruleConfigs = value
+        }
+        if let value = dict["scenes"] as? String {
+            self.scenes = value
+        }
+        if let value = dict["schemaVersion"] as? String {
+            self.schemaVersion = value
+        }
+        if let value = dict["status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["templateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
 public class AlertRuleTimeSpan : Tea.TeaModel {
     public var dayOfWeek: [Int32]?
 
@@ -13642,6 +13721,53 @@ public class MigrationStatusFilter : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["isMigrated"] as? Bool {
             self.isMigrated = value
+        }
+    }
+}
+
+public class MissionConnectorTarget : Tea.TeaModel {
+    public var displayName: String?
+
+    public var id: String?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayName != nil {
+            map["displayName"] = self.displayName!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.targetType != nil {
+            map["targetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["displayName"] as? String {
+            self.displayName = value
+        }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["targetType"] as? String {
+            self.targetType = value
         }
     }
 }
@@ -34585,6 +34711,8 @@ public class CreateServiceRequest : Tea.TeaModel {
 
     public var tags: [CreateServiceRequest.Tags]?
 
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -34630,6 +34758,9 @@ public class CreateServiceRequest : Tea.TeaModel {
             }
             map["tags"] = tmp
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -34671,6 +34802,9 @@ public class CreateServiceRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
@@ -34773,6 +34907,7 @@ public class CreateServiceResponse : Tea.TeaModel {
 }
 
 public class CreateServiceObservabilityRequest : Tea.TeaModel {
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -34788,11 +34923,17 @@ public class CreateServiceObservabilityRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -39009,7 +39150,12 @@ public class DeletePrometheusVirtualInstanceResponse : Tea.TeaModel {
     }
 }
 
-public class DeleteServiceRequest : Tea.TeaModel {
+public class DeleteRumSymbolFilesRequest : Tea.TeaModel {
+    public var filePaths: [String]?
+
+    public var serviceId: String?
+
+    public var workspace: String?
 
     public override init() {
         super.init()
@@ -39025,11 +39171,173 @@ public class DeleteServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.filePaths != nil {
+            map["filePaths"] = self.filePaths!
+        }
+        if self.serviceId != nil {
+            map["serviceId"] = self.serviceId!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["filePaths"] as? [String] {
+            self.filePaths = value
+        }
+        if let value = dict["serviceId"] as? String {
+            self.serviceId = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class DeleteRumSymbolFilesResponseBody : Tea.TeaModel {
+    public var deletedObjectCount: Int32?
+
+    public var requestId: String?
+
+    public var requestedFileCount: Int32?
+
+    public var requestedObjectCount: Int32?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deletedObjectCount != nil {
+            map["deletedObjectCount"] = self.deletedObjectCount!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.requestedFileCount != nil {
+            map["requestedFileCount"] = self.requestedFileCount!
+        }
+        if self.requestedObjectCount != nil {
+            map["requestedObjectCount"] = self.requestedObjectCount!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["deletedObjectCount"] as? Int32 {
+            self.deletedObjectCount = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["requestedFileCount"] as? Int32 {
+            self.requestedFileCount = value
+        }
+        if let value = dict["requestedObjectCount"] as? Int32 {
+            self.requestedObjectCount = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteRumSymbolFilesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRumSymbolFilesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRumSymbolFilesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteServiceRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
+        }
     }
 }
 
@@ -53357,6 +53665,722 @@ public class GetPrometheusViewResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetPrometheusViewResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRumSymbolFileParamsRequest : Tea.TeaModel {
+    public var debugId: String?
+
+    public var fileKind: String?
+
+    public var fileName: String?
+
+    public var serviceId: String?
+
+    public var version: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.debugId != nil {
+            map["debugId"] = self.debugId!
+        }
+        if self.fileKind != nil {
+            map["fileKind"] = self.fileKind!
+        }
+        if self.fileName != nil {
+            map["fileName"] = self.fileName!
+        }
+        if self.serviceId != nil {
+            map["serviceId"] = self.serviceId!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["debugId"] as? String {
+            self.debugId = value
+        }
+        if let value = dict["fileKind"] as? String {
+            self.fileKind = value
+        }
+        if let value = dict["fileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["serviceId"] as? String {
+            self.serviceId = value
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class GetRumSymbolFileParamsResponseBody : Tea.TeaModel {
+    public var formData: [String: String]?
+
+    public var requestId: String?
+
+    public var uploadUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.formData != nil {
+            map["formData"] = self.formData!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.uploadUrl != nil {
+            map["uploadUrl"] = self.uploadUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["formData"] as? [String: String] {
+            self.formData = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["uploadUrl"] as? String {
+            self.uploadUrl = value
+        }
+    }
+}
+
+public class GetRumSymbolFileParamsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRumSymbolFileParamsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRumSymbolFileParamsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRumSymbolFilesRequest : Tea.TeaModel {
+    public var artifactType: String?
+
+    public var keywords: [String]?
+
+    public var nextToken: String?
+
+    public var pageSize: Int64?
+
+    public var platform: String?
+
+    public var serviceId: String?
+
+    public var version: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactType != nil {
+            map["artifactType"] = self.artifactType!
+        }
+        if self.keywords != nil {
+            map["keywords"] = self.keywords!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.platform != nil {
+            map["platform"] = self.platform!
+        }
+        if self.serviceId != nil {
+            map["serviceId"] = self.serviceId!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["artifactType"] as? String {
+            self.artifactType = value
+        }
+        if let value = dict["keywords"] as? [String] {
+            self.keywords = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["pageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["platform"] as? String {
+            self.platform = value
+        }
+        if let value = dict["serviceId"] as? String {
+            self.serviceId = value
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class GetRumSymbolFilesResponseBody : Tea.TeaModel {
+    public class Files : Tea.TeaModel {
+        public var artifactPath: String?
+
+        public var artifactType: String?
+
+        public var fileName: String?
+
+        public var matchedKeywords: [String]?
+
+        public var platform: String?
+
+        public var size: Int64?
+
+        public var source: String?
+
+        public var updateTime: Int64?
+
+        public var uuid: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.artifactPath != nil {
+                map["artifactPath"] = self.artifactPath!
+            }
+            if self.artifactType != nil {
+                map["artifactType"] = self.artifactType!
+            }
+            if self.fileName != nil {
+                map["fileName"] = self.fileName!
+            }
+            if self.matchedKeywords != nil {
+                map["matchedKeywords"] = self.matchedKeywords!
+            }
+            if self.platform != nil {
+                map["platform"] = self.platform!
+            }
+            if self.size != nil {
+                map["size"] = self.size!
+            }
+            if self.source != nil {
+                map["source"] = self.source!
+            }
+            if self.updateTime != nil {
+                map["updateTime"] = self.updateTime!
+            }
+            if self.uuid != nil {
+                map["uuid"] = self.uuid!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["artifactPath"] as? String {
+                self.artifactPath = value
+            }
+            if let value = dict["artifactType"] as? String {
+                self.artifactType = value
+            }
+            if let value = dict["fileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["matchedKeywords"] as? [String] {
+                self.matchedKeywords = value
+            }
+            if let value = dict["platform"] as? String {
+                self.platform = value
+            }
+            if let value = dict["size"] as? Int64 {
+                self.size = value
+            }
+            if let value = dict["source"] as? String {
+                self.source = value
+            }
+            if let value = dict["updateTime"] as? Int64 {
+                self.updateTime = value
+            }
+            if let value = dict["uuid"] as? String {
+                self.uuid = value
+            }
+            if let value = dict["version"] as? String {
+                self.version = value
+            }
+        }
+    }
+    public var files: [GetRumSymbolFilesResponseBody.Files]?
+
+    public var hasMore: Bool?
+
+    public var nextToken: String?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.files != nil {
+            var tmp : [Any] = []
+            for k in self.files! {
+                tmp.append(k.toMap())
+            }
+            map["files"] = tmp
+        }
+        if self.hasMore != nil {
+            map["hasMore"] = self.hasMore!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["files"] as? [Any?] {
+            var tmp : [GetRumSymbolFilesResponseBody.Files] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRumSymbolFilesResponseBody.Files()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.files = tmp
+        }
+        if let value = dict["hasMore"] as? Bool {
+            self.hasMore = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["pageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetRumSymbolFilesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRumSymbolFilesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRumSymbolFilesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRumSymbolicStackRequest : Tea.TeaModel {
+    public var fileInfo: String?
+
+    public var images: String?
+
+    public var pid: String?
+
+    public var serviceId: String?
+
+    public var stack: String?
+
+    public var stackType: String?
+
+    public var threadId: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileInfo != nil {
+            map["fileInfo"] = self.fileInfo!
+        }
+        if self.images != nil {
+            map["images"] = self.images!
+        }
+        if self.pid != nil {
+            map["pid"] = self.pid!
+        }
+        if self.serviceId != nil {
+            map["serviceId"] = self.serviceId!
+        }
+        if self.stack != nil {
+            map["stack"] = self.stack!
+        }
+        if self.stackType != nil {
+            map["stackType"] = self.stackType!
+        }
+        if self.threadId != nil {
+            map["threadId"] = self.threadId!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["fileInfo"] as? String {
+            self.fileInfo = value
+        }
+        if let value = dict["images"] as? String {
+            self.images = value
+        }
+        if let value = dict["pid"] as? String {
+            self.pid = value
+        }
+        if let value = dict["serviceId"] as? String {
+            self.serviceId = value
+        }
+        if let value = dict["stack"] as? String {
+            self.stack = value
+        }
+        if let value = dict["stackType"] as? String {
+            self.stackType = value
+        }
+        if let value = dict["threadId"] as? String {
+            self.threadId = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class GetRumSymbolicStackResponseBody : Tea.TeaModel {
+    public var column: Int64?
+
+    public var line: Int64?
+
+    public var lines: [String]?
+
+    public var name: String?
+
+    public var requestId: String?
+
+    public var source: String?
+
+    public var threadId: String?
+
+    public var traceInfo: [String]?
+
+    public var traceMarkLine: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.column != nil {
+            map["column"] = self.column!
+        }
+        if self.line != nil {
+            map["line"] = self.line!
+        }
+        if self.lines != nil {
+            map["lines"] = self.lines!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.source != nil {
+            map["source"] = self.source!
+        }
+        if self.threadId != nil {
+            map["threadId"] = self.threadId!
+        }
+        if self.traceInfo != nil {
+            map["traceInfo"] = self.traceInfo!
+        }
+        if self.traceMarkLine != nil {
+            map["traceMarkLine"] = self.traceMarkLine!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["column"] as? Int64 {
+            self.column = value
+        }
+        if let value = dict["line"] as? Int64 {
+            self.line = value
+        }
+        if let value = dict["lines"] as? [String] {
+            self.lines = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["source"] as? String {
+            self.source = value
+        }
+        if let value = dict["threadId"] as? String {
+            self.threadId = value
+        }
+        if let value = dict["traceInfo"] as? [String] {
+            self.traceInfo = value
+        }
+        if let value = dict["traceMarkLine"] as? Int64 {
+            self.traceMarkLine = value
+        }
+    }
+}
+
+public class GetRumSymbolicStackResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRumSymbolicStackResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRumSymbolicStackResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -85562,6 +86586,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public var serviceStatus: String?
 
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -85588,6 +86614,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         if self.serviceStatus != nil {
             map["serviceStatus"] = self.serviceStatus!
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -85604,6 +86633,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if let value = dict["serviceStatus"] as? String {
             self.serviceStatus = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }

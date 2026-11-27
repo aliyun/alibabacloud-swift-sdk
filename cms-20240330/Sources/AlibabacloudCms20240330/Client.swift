@@ -1470,6 +1470,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createServiceWithOptions(_ workspace: String, _ request: CreateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.attributes)) {
             body["attributes"] = request.attributes ?? "";
@@ -1500,6 +1504,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1527,8 +1532,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createServiceObservabilityWithOptions(_ workspace: String, _ type: String, _ request: CreateServiceObservabilityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceObservabilityResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateServiceObservability",
@@ -2671,10 +2681,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRumSymbolFilesWithOptions(_ request: DeleteRumSymbolFilesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRumSymbolFilesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filePaths)) {
+            body["filePaths"] = request.filePaths ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["serviceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRumSymbolFiles",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/rum/symbolFiles/delete",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRumSymbolFilesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRumSymbolFiles(_ request: DeleteRumSymbolFilesRequest) async throws -> DeleteRumSymbolFilesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteRumSymbolFilesWithOptions(request as! DeleteRumSymbolFilesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteServiceWithOptions(_ workspace: String, _ serviceId: String, _ request: DeleteServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DeleteService",
@@ -4275,6 +4329,162 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getPrometheusViewWithOptions(prometheusViewId as! String, request as! GetPrometheusViewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRumSymbolFileParamsWithOptions(_ request: GetRumSymbolFileParamsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRumSymbolFileParamsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.debugId)) {
+            body["debugId"] = request.debugId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileKind)) {
+            body["fileKind"] = request.fileKind ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            body["fileName"] = request.fileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["serviceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRumSymbolFileParams",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/rum/symbolFile/upload/policies",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRumSymbolFileParamsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRumSymbolFileParams(_ request: GetRumSymbolFileParamsRequest) async throws -> GetRumSymbolFileParamsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getRumSymbolFileParamsWithOptions(request as! GetRumSymbolFileParamsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRumSymbolFilesWithOptions(_ request: GetRumSymbolFilesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRumSymbolFilesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.artifactType)) {
+            body["artifactType"] = request.artifactType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keywords)) {
+            body["keywords"] = request.keywords ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            body["platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["serviceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRumSymbolFiles",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/rum/symbolFiles/query",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRumSymbolFilesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRumSymbolFiles(_ request: GetRumSymbolFilesRequest) async throws -> GetRumSymbolFilesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getRumSymbolFilesWithOptions(request as! GetRumSymbolFilesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRumSymbolicStackWithOptions(_ request: GetRumSymbolicStackRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRumSymbolicStackResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileInfo)) {
+            body["fileInfo"] = request.fileInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.images)) {
+            body["images"] = request.images ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pid)) {
+            body["pid"] = request.pid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["serviceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stack)) {
+            body["stack"] = request.stack ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stackType)) {
+            body["stackType"] = request.stackType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threadId)) {
+            body["threadId"] = request.threadId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRumSymbolicStack",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/rum/symbolic",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRumSymbolicStackResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRumSymbolicStack(_ request: GetRumSymbolicStackRequest) async throws -> GetRumSymbolicStackResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getRumSymbolicStackWithOptions(request as! GetRumSymbolicStackRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8281,6 +8491,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateServiceWithOptions(_ workspace: String, _ serviceId: String, _ request: UpdateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.attributes)) {
             body["attributes"] = request.attributes ?? "";
@@ -8296,6 +8510,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
