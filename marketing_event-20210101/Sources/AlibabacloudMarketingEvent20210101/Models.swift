@@ -5626,6 +5626,10 @@ public class VerifyActivityAdmissionResponseBody : Tea.TeaModel {
 
         public var allowedDates: [String]?
 
+        public var channelName: String?
+
+        public var customerLabels: [String]?
+
         public var decision: String?
 
         public var endTime: String?
@@ -5671,6 +5675,12 @@ public class VerifyActivityAdmissionResponseBody : Tea.TeaModel {
             if self.allowedDates != nil {
                 map["AllowedDates"] = self.allowedDates!
             }
+            if self.channelName != nil {
+                map["ChannelName"] = self.channelName!
+            }
+            if self.customerLabels != nil {
+                map["CustomerLabels"] = self.customerLabels!
+            }
             if self.decision != nil {
                 map["Decision"] = self.decision!
             }
@@ -5714,6 +5724,12 @@ public class VerifyActivityAdmissionResponseBody : Tea.TeaModel {
             }
             if let value = dict["AllowedDates"] as? [String] {
                 self.allowedDates = value
+            }
+            if let value = dict["ChannelName"] as? String {
+                self.channelName = value
+            }
+            if let value = dict["CustomerLabels"] as? [String] {
+                self.customerLabels = value
             }
             if let value = dict["Decision"] as? String {
                 self.decision = value
