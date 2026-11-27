@@ -28872,6 +28872,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var routingControllerNodeCountFree: Int32?
+
+            public var routingControllerNodeCountPaid: Int32?
+
+            public var routingControllerNodeSize: String?
+
             public var secondaryVSwitchId: String?
 
             public var secondaryZoneId: String?
@@ -29017,6 +29023,15 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                if self.routingControllerNodeCountFree != nil {
+                    map["RoutingControllerNodeCountFree"] = self.routingControllerNodeCountFree!
+                }
+                if self.routingControllerNodeCountPaid != nil {
+                    map["RoutingControllerNodeCountPaid"] = self.routingControllerNodeCountPaid!
+                }
+                if self.routingControllerNodeSize != nil {
+                    map["RoutingControllerNodeSize"] = self.routingControllerNodeSize!
                 }
                 if self.secondaryVSwitchId != nil {
                     map["SecondaryVSwitchId"] = self.secondaryVSwitchId!
@@ -29166,6 +29181,15 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
+                }
+                if let value = dict["RoutingControllerNodeCountFree"] as? Int32 {
+                    self.routingControllerNodeCountFree = value
+                }
+                if let value = dict["RoutingControllerNodeCountPaid"] as? Int32 {
+                    self.routingControllerNodeCountPaid = value
+                }
+                if let value = dict["RoutingControllerNodeSize"] as? String {
+                    self.routingControllerNodeSize = value
                 }
                 if let value = dict["SecondaryVSwitchId"] as? String {
                     self.secondaryVSwitchId = value
