@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -3834,6 +3835,8 @@ public class CreateDataFlowTaskResponse : Tea.TeaModel {
 }
 
 public class CreateDirRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var fileSystemId: String?
 
     public var ownerGroupId: Int32?
@@ -3860,6 +3863,9 @@ public class CreateDirRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
@@ -3883,6 +3889,9 @@ public class CreateDirRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["FileSystemId"] as? String {
             self.fileSystemId = value
         }
@@ -7332,6 +7341,8 @@ public class DeleteDataFlowResponse : Tea.TeaModel {
 }
 
 public class DeleteFileSystemRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var fileSystemId: String?
 
     public override init() {
@@ -7348,6 +7359,9 @@ public class DeleteFileSystemRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
@@ -7356,6 +7370,9 @@ public class DeleteFileSystemRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["FileSystemId"] as? String {
             self.fileSystemId = value
         }
@@ -7948,6 +7965,8 @@ public class DeleteLogAnalysisResponse : Tea.TeaModel {
 }
 
 public class DeleteMountTargetRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var fileSystemId: String?
 
     public var mountTargetDomain: String?
@@ -7966,6 +7985,9 @@ public class DeleteMountTargetRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
@@ -7977,6 +7999,9 @@ public class DeleteMountTargetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["FileSystemId"] as? String {
             self.fileSystemId = value
         }
@@ -29473,6 +29498,8 @@ public class SetAgenticSpaceQuotaResponse : Tea.TeaModel {
 }
 
 public class SetDirQuotaRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var fileCountLimit: Int64?
 
     public var fileSystemId: String?
@@ -29501,6 +29528,9 @@ public class SetDirQuotaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fileCountLimit != nil {
             map["FileCountLimit"] = self.fileCountLimit!
         }
@@ -29527,6 +29557,9 @@ public class SetDirQuotaRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["FileCountLimit"] as? Int64 {
             self.fileCountLimit = value
         }
@@ -30359,6 +30392,8 @@ public class TagResourcesRequest : Tea.TeaModel {
             }
         }
     }
+    public var dryRun: Bool?
+
     public var resourceId: [String]?
 
     public var resourceType: String?
@@ -30379,6 +30414,9 @@ public class TagResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
@@ -30397,6 +30435,9 @@ public class TagResourcesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["ResourceId"] as? [String] {
             self.resourceId = value
         }

@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "NAS"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hangzhou-finance": "nas.cn-hangzhou-dg-a01.aliyuncs.com",
@@ -1049,6 +1053,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDirWithOptions(_ request: CreateDirRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDirResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
         }
@@ -1967,6 +1974,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteFileSystemWithOptions(_ request: DeleteFileSystemRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFileSystemResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
         }
@@ -2140,6 +2150,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMountTargetWithOptions(_ request: DeleteMountTargetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMountTargetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
         }
@@ -5246,6 +5259,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setDirQuotaWithOptions(_ request: SetDirQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDirQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileCountLimit)) {
             query["FileCountLimit"] = request.fileCountLimit!;
         }
@@ -5489,6 +5505,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func tagResourcesWithOptions(_ request: TagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             query["ResourceId"] = request.resourceId ?? [];
         }
